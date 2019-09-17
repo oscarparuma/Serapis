@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.AppName}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+
+            <h:form>
+                <p:panel>
+                    <p:panel header="#{bundle.AsignarCitas} #{citapersonaController.actDatPern.codigoPersona}">
+                        <h:panelGrid columns="1">
+                            <p:panelGrid columns="2">
+
+                                <p:outputLabel value="#{bundle.CreateCitapersonaLabel_fechaCita}" for="fechaCita" />
+                                <p:calendar locale="es" lang="es" size="15" id="fechaCita" pattern="MM/dd/yyyy HH:mm" value="#{citapersonaController.selected.fechaCita}" showOn="button" 
+                                            required="true" requiredMessage="#{bundle.CreateCitapersonaRequiredMessage_fechaCita}">
+                                </p:calendar>
+
+                                <p:outputLabel value="#{bundle.CreateCitapersonaLabel_codigoConsultorio}" for="codigoConsultorio" />
+                                <p:selectOneMenu id="codigoConsultorio" value="#{citapersonaController.selected.codigoConsultorio}" required="true" requiredMessage="#{bundle.CreateCitapersonaRequiredMessage_codigoConsultorio}"  styleClass="input"  >
+                                    <f:selectItem  itemLabel="-Seleccione- " />
+                                    <f:selectItems value="#{consultorioController.getSedeXConsultorio(usuarioController.selected.codigoSede)}"/>
+                                    <p:ajax  process="codigoConsultorio" event="change"  />
+                                </p:selectOneMenu>
+                                <p:outputLabel value="#{bundle.CreateCitapersonaLabel_codigoExamenRealizar}" for="codigoExamenRealizar" />
+                                <p:selectOneMenu id="codigoExamenRealizar" value="#{citapersonaController.selected.codigoExamenRealizar}" title="#{bundle.CreateCitapersonaTitle_codigoExamenRealizar}" required="true" requiredMessage="#{bundle.CreateCitapersonaRequiredMessage_codigoExamenRealizar}">
+                                    <f:selectItems value="#{tipoexamenController.itemsAvailableSelectOne}"/>
+                                </p:selectOneMenu>
+                                <p:outputLabel value="#{bundle.CreateCitapersonaLabel_codigoEps}" for="codigoEps" />
+                                <p:selectOneMenu id="codigoEps" value="#{citapersonaController.selected.codigoEps}" title="#{bundle.CreateCitapersonaTitle_codigoEps}" required="true" requiredMessage="#{bundle.CreateCitapersonaRequiredMessage_codigoEps}" >
+                                    <f:selectItem  itemLabel="-Seleccione- " />
+                                    <f:selectItems value="#{epsController.getEpsXSede(usuarioController.selected.codigoSede)}"/>
+                                    <p:ajax  process="codigoEps"  update="codigoExamen" event="change"  />
+                                </p:selectOneMenu>
+
+
+                                <p:outputLabel value="#{bundle.CreateCitapersonaLabel_codigoExamen}" for="codigoExamen" />
+                                <p:selectOneMenu filter="true" filterMatchMode="contains" required="true" rendererType="#{bundle.CreateCitapersonaRequiredMessage_codigoExamenRealizar}" id="codigoExamen"  requiredMessage="#{bundle.CreateCitapersonaRequiredMessage_codigoEps}" value="#{citapersonaController.selected.codigoExamen}" >
+                                    <f:selectItem  itemLabel="-Seleccione- " />
+                                    <f:selectItems value="#{procedimientosedeController.getSedeXProcedimiento(usuarioController.selected.codigoSede)}"/>
+                                    <p:ajax process="codigoExamen" event="change"/>
+                                </p:selectOneMenu>
+                            </p:panelGrid>
+                            <p:panel>
+                                <p:commandButton style="margin-right: 10px;" id="createButton" icon="ui-icon-plus"  process="@all" styleClass="button" ajax="false" action="#{citapersonaController.create}" value="#{bundle.CreateCitapersonaSaveLink}" />
+                                <p:commandButton id="editButton" icon="ui-icon-pencil"  process="@all" styleClass="button" ajax="false" action="/vista/citaPersona/AsignarCitas" value="#{bundle.CreateCitapersonaShowAllLink}" immediate="true"/>
+                            </p:panel>
+
+                        </h:panelGrid>
+
+                    </p:panel>
+                </p:panel>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

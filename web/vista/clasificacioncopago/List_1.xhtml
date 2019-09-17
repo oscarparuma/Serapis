@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListClasificacioncopagoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListClasificacioncopagoEmpty}" rendered="#{clasificacioncopagoController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{clasificacioncopagoController.items.rowCount > 0}">
+                    <h:outputText value="#{clasificacioncopagoController.pagination.pageFirstItem + 1}..#{clasificacioncopagoController.pagination.pageLastItem + 1}/#{clasificacioncopagoController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{clasificacioncopagoController.previous}" value="#{bundle.Previous} #{clasificacioncopagoController.pagination.pageSize}" rendered="#{clasificacioncopagoController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{clasificacioncopagoController.next}" value="#{bundle.Next} #{clasificacioncopagoController.pagination.pageSize}" rendered="#{clasificacioncopagoController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{clasificacioncopagoController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListClasificacioncopagoTitle_codigoCopago}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.codigoCopago}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListClasificacioncopagoTitle_activo}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.activo}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListClasificacioncopagoTitle_fechaRegistro}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.fechaRegistro}">
+                                <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListClasificacioncopagoTitle_valorCopago}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.valorCopago}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListClasificacioncopagoTitle_clasificacionCopago}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.clasificacionCopago}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListClasificacioncopagoTitle_totalCopago}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.totalCopago}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListClasificacioncopagoTitle_clasificacionEps}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.clasificacionEps}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListClasificacioncopagoTitle_codigoEps}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.codigoEps}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListClasificacioncopagoTitle_codigoNivelCopago}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.codigoNivelCopago}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListClasificacioncopagoTitle_tipoExamen}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.tipoExamen}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListClasificacioncopagoTitle_codigoUsuario}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.codigoUsuario}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{clasificacioncopagoController.prepareView}" value="#{bundle.ListClasificacioncopagoViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{clasificacioncopagoController.prepareEdit}" value="#{bundle.ListClasificacioncopagoEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{clasificacioncopagoController.destroy}" value="#{bundle.ListClasificacioncopagoDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{clasificacioncopagoController.prepareCreate}" value="#{bundle.ListClasificacioncopagoCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListClasificacioncopagoIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

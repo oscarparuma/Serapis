@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.AppName}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <p:panel header="#{bundle.ListCitaAsignadas}">
+                    <!-- aqui se colocan los botones para seleccionar el  radicado por regional funcionario o todas -->
+                    <p:panel rendered="false">
+                        <h:panelGrid columns="2">
+                            <p:fieldset>
+                                <p:panelGrid columns="1">
+                                    <h:selectOneRadio id="tipoListado" value="#{citapersonaController.radicador}"  styleClass="input" >
+                                        <f:selectItem  itemValue='1' itemDisabled="#{!usuarioController.selected.listaXFuncionario}"  itemLabel="#{bundle.Funcionario}"/>                                        
+                                        <p:ajax event="click" listener="#{citapersonaController.actualizarListado}" process="@this" update="lucho, lalmeida" />
+                                    </h:selectOneRadio>
+                                </p:panelGrid>
+                            </p:fieldset>
+                        </h:panelGrid>
+                    </p:panel>
+                    <p:outputPanel id="lucho" >
+                        <p:dataTable id="lalmeida" value="#{citapersonaController.items}" var="item" emptyMessage=" "  style="border:solid 1px">
+                          <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListCitapersonaTitle_codigoPersonaCita}"/>
+                            </f:facet>
+                            <h:outputText value=" #{item.codigoPersonaCita}"/>
+                        </p:column>                          
+
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="#{bundle.ListCitapersonaTitle_cscIngreso}"/>
+                                </f:facet>
+                                <h:outputText value="#{item.cscIngreso}"/>
+                            </p:column>
+
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="#{bundle.FechaCita}"/>
+                                </f:facet>
+                                <h:outputText value="#{item.fechaCita}">
+                                    <f:convertDateTime pattern="yyyy-MM-dd" />
+                                </h:outputText>
+                            </p:column>
+                             <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="#{bundle.horaCita}"/>
+                                </f:facet>
+                                <h:outputText value="#{item.fechaCita}">
+                                    <f:convertDateTime pattern="HH:mm" />
+                                </h:outputText>
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="#{bundle.ListCitapersonaTitle_codigoSede}"/>
+                                </f:facet>
+                                <h:outputText value=" #{item.codigoSede}"/>
+                            </p:column>
+
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="#{bundle.ListCitapersonaTitle_codigoExamenRealizar}"/>
+                                </f:facet>
+                                <h:outputText value=" #{item.codigoExamenRealizar}"/>
+                            </p:column>
+
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="#{bundle.ListCitapersonaTitle_genero}"/>
+                                </f:facet>
+                                <h:outputText value="#{item.genero}"/>
+                            </p:column>
+
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="#{bundle.ListCitapersonaTitle_codigoProfesional}"/>
+                                </f:facet>
+                                <h:outputText value=" #{item.codigoProfesional}"/>
+                            </p:column>
+
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="#{bundle.ListCitapersonaTitle_codigoExamen}"/>
+                                </f:facet>
+                                <h:outputText value=" #{item.codigoExamen}"/>
+                            </p:column>
+
+
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="#{bundle.ListCitapersonaTitle_codigoEps}"/>
+                                </f:facet>
+                                <h:outputText value=" #{item.codigoEps}"/>
+                            </p:column>
+
+                        </p:dataTable>
+                    </p:outputPanel>
+                </p:panel>
+
+                <br />
+                <h:commandLink action="#{citapersonaController.prepareCreate}" value="#{bundle.ListCitapersonaCreateLink}"/>
+                <br />
+                <br />
+                
+                
+                
+                <h:link outcome="/index" value="#{bundle.ListCitapersonaIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

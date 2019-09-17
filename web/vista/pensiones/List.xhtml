@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListPensionesTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListPensionesEmpty}" rendered="#{pensionesController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{pensionesController.items.rowCount > 0}">
+                    <h:outputText value="#{pensionesController.pagination.pageFirstItem + 1}..#{pensionesController.pagination.pageLastItem + 1}/#{pensionesController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{pensionesController.previous}" value="#{bundle.Previous} #{pensionesController.pagination.pageSize}" rendered="#{pensionesController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{pensionesController.next}" value="#{bundle.Next} #{pensionesController.pagination.pageSize}" rendered="#{pensionesController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{pensionesController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPensionesTitle_codigoPensiones}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.codigoPensiones}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPensionesTitle_identificacionPensiones}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.identificacionPensiones}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPensionesTitle_nombrePensiones}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.nombrePensiones}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPensionesTitle_direccion}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.direccion}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPensionesTitle_telefono}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.telefono}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPensionesTitle_fechaRegistro}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.fechaRegistro}">
+                                <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPensionesTitle_fechaModificacion}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.fechaModificacion}">
+                                <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPensionesTitle_clasificacionPensiones}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.clasificacionPensiones}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPensionesTitle_codigoAsignado}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.codigoAsignado}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPensionesTitle_activo}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.activo}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPensionesTitle_tipoAdministradora}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.tipoAdministradora}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPensionesTitle_contacto}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.contacto}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPensionesTitle_codigoClasificacion}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.codigoClasificacion}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPensionesTitle_codigoDepartamento}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.codigoDepartamento}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPensionesTitle_codigoMunicipio}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.codigoMunicipio}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPensionesTitle_codigoUsuario}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.codigoUsuario}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPensionesTitle_usuarioModifico}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.usuarioModifico}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{pensionesController.prepareView}" value="#{bundle.ListPensionesViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{pensionesController.prepareEdit}" value="#{bundle.ListPensionesEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{pensionesController.destroy}" value="#{bundle.ListPensionesDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{pensionesController.prepareCreate}" value="#{bundle.ListPensionesCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListPensionesIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

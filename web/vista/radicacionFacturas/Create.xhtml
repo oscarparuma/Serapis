@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.AppName}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+
+            <h:form>
+                <div class="container text-center">   
+                    <div class="row">
+                        <div class="col-sm-3 well">
+                            <p:panel header="#{bundle.SelecFact}" style="border: solid 1px;">
+                                <p:panelGrid columns="2" style="border: solid 1px;">
+                                    <p:outputLabel value="#{bundle.CreateRadicacionFacturasLabel_codigoEps}" for="codigoEps" />
+                                    <p:selectOneMenu id="codigoEps" value="#{facturaRadicacionController.radicacionFacturasController.selected.codigoEps}"  styleClass="input"  >
+                                        <f:selectItem  itemLabel="-Seleccione- " />
+                                        <f:selectItems value="#{epsController.getEpsXSede(usuarioController.selected.codigoSede)}"/>
+                                        <p:ajax  process="codigoEps" update="codigoFactura" event="change"  />
+                                    </p:selectOneMenu>  
+                                    <p:outputLabel value="#{bundle.CreateRadicacionFacturasLabel_codigoFactura}" for="codigoFactura" />
+                                    <p:selectOneMenu id="codigoFactura" value="#{radicacionFacturasController.selected.codigoFactura}"  styleClass="input"  >
+                                        <f:selectItem  itemLabel="-Seleccione- " />
+                                        <f:selectItems value="#{radicacionFacturasController.radicaXEps}"/>
+                                    <p:ajax  process="codigoFactura" event="change"  />
+                                        
+                                                                            
+                                    </p:selectOneMenu>
+
+
+
+                                    <f:facet name="footer">
+                                        <p:panel>
+                                            <p:commandButton  id="createButton" icon="ui-icon-plus" process="@all" styleClass="button" ajax="false" action="#{radicacionFacturasController.create}" value="#{bundle.Guardar}" />
+                                            <p:commandButton icon="ui-icon-pencil" process="@all" styleClass="button" ajax="false" action="#{radicacionFacturasController.prepareList}" value="#{bundle.Regresar}" immediate="true"/>
+                                        </p:panel>
+                                    </f:facet>
+                                </p:panelGrid>
+                            </p:panel>
+                        </div>
+                    </div>
+                </div>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

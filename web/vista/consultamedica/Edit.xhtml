@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:pe="http://primefaces.org/ui/extensions"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.AppName}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+
+            <h:form>
+                <p:panel>
+                    <div align="center">
+                        <div class="container text-center">   
+                            <div class="row">
+                                <div class="col-sm-3 well"> 
+                                    <p:panel header="#{bundle.CreateConsultamedicaTitle} #{consultamedicaController.actAgenCit.codigoPersonaCita}" >
+                                        <p:panelGrid columns="1" >
+                                            <p:panel header="#{consultamedicaController.actAgenCit.codigoExamen}">
+
+                                                <h:panelGrid columns="4">
+                                                    <p:outputLabel value="#{bundle.CreateConsultamedicaLabel_codigoFinalidad}" for="codigoFinalidad" />
+                                                    <p:selectOneMenu filter="true" filterMatchMode="contains" id="codigoFinalidad" value="#{consultamedicaController.selected.codigoFinalidad}" >
+                                                        <f:selectItems value="#{finalidadconsultaController.itemsAvailableSelectOne}"/>
+                                                    </p:selectOneMenu>
+
+                                                    <p:outputLabel value="#{bundle.CreateConsultamedicaLabel_codigoCausa}" for="codigoCausa" />
+                                                    <p:selectOneMenu  filter="true" filterMatchMode="contains" id="codigoCausa" value="#{consultamedicaController.selected.codigoCausa}" >
+                                                        <f:selectItems value="#{causaexternaController.itemsAvailableSelectOne}"/>
+                                                    </p:selectOneMenu>
+                                                </h:panelGrid>
+                                            </p:panel>
+                                            <p:panel header="#{bundle.CreateConsultamedicaLabel_evolucionPaciente}" style=" width: 1100px;">
+                                                <p:textEditor widgetVar="evolucionPaciente" value="#{consultamedicaController.selected.evolucionPaciente}" height="400"  style="margin-bottom:10px"/>
+                                            </p:panel>
+                                            <p:panel>
+                                                <p:commandButton style="margin-right: 10px;" rendered="#{citapersonaController.selected.finalizada=='N'}" id="createButton" icon="ui-icon-plus"  process="@all" styleClass="button" ajax="false" action="#{consultamedicaController.update}" value="#{bundle.Modificar}" immediate="false" />
+                                                <p:commandButton style="margin-right: 10px;" id="editButton" icon="ui-icon-plus" process="@all" styleClass="button" ajax="false" action="#{citapersonaController.prepareListDigIngresoList}"  value="#{bundle.DiagnosticoIngreso}" />
+                                                <p:commandButton id="viewButton"   icon="ui-icon-arrowthick-1-w" process="@all" styleClass="button" ajax="false" action="/vista/citapersona/List" value="#{bundle.Regresar}" immediate="true"/>
+                                            </p:panel>
+                                        </p:panelGrid>
+                                    </p:panel>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </p:panel>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

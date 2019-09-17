@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditLocalidadTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditLocalidadLabel_codigoLocalidad}" for="codigoLocalidad" />
+                    <h:inputText id="codigoLocalidad" value="#{localidadController.selected.codigoLocalidad}" title="#{bundle.EditLocalidadTitle_codigoLocalidad}" required="true" requiredMessage="#{bundle.EditLocalidadRequiredMessage_codigoLocalidad}"/>
+                    <h:outputLabel value="#{bundle.EditLocalidadLabel_nombreLocalidad}" for="nombreLocalidad" />
+                    <h:inputText id="nombreLocalidad" value="#{localidadController.selected.nombreLocalidad}" title="#{bundle.EditLocalidadTitle_nombreLocalidad}" />
+                    <h:outputLabel value="#{bundle.EditLocalidadLabel_activo}" for="activo" />
+                    <h:inputText id="activo" value="#{localidadController.selected.activo}" title="#{bundle.EditLocalidadTitle_activo}" />
+                    <h:outputLabel value="#{bundle.EditLocalidadLabel_fechaRegistro}" for="fechaRegistro" />
+                    <h:inputText id="fechaRegistro" value="#{localidadController.selected.fechaRegistro}" title="#{bundle.EditLocalidadTitle_fechaRegistro}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditLocalidadLabel_fechaModificacion}" for="fechaModificacion" />
+                    <h:inputText id="fechaModificacion" value="#{localidadController.selected.fechaModificacion}" title="#{bundle.EditLocalidadTitle_fechaModificacion}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditLocalidadLabel_codigoMunicipio}" for="codigoMunicipio" />
+                    <h:selectOneMenu id="codigoMunicipio" value="#{localidadController.selected.codigoMunicipio}" title="#{bundle.EditLocalidadTitle_codigoMunicipio}" >
+                        <f:selectItems value="#{municipioController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditLocalidadLabel_codigoUsuario}" for="codigoUsuario" />
+                    <h:selectOneMenu id="codigoUsuario" value="#{localidadController.selected.codigoUsuario}" title="#{bundle.EditLocalidadTitle_codigoUsuario}" >
+                        <f:selectItems value="#{usuarioController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditLocalidadLabel_codigoUsuarioModifico}" for="codigoUsuarioModifico" />
+                    <h:selectOneMenu id="codigoUsuarioModifico" value="#{localidadController.selected.codigoUsuarioModifico}" title="#{bundle.EditLocalidadTitle_codigoUsuarioModifico}" >
+                        <f:selectItems value="#{usuarioController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{localidadController.update}" value="#{bundle.EditLocalidadSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditLocalidadViewLink}"/>
+                <br />
+                <h:commandLink action="#{localidadController.prepareList}" value="#{bundle.EditLocalidadShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditLocalidadIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

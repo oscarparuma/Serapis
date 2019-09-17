@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewAdministracionTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewAdministracionLabel_codigoAdministracion}"/>
+                    <h:outputText value="#{administracionController.selected.codigoAdministracion}" title="#{bundle.ViewAdministracionTitle_codigoAdministracion}"/>
+                    <h:outputText value="#{bundle.ViewAdministracionLabel_nombreaAdministracion}"/>
+                    <h:outputText value="#{administracionController.selected.nombreaAdministracion}" title="#{bundle.ViewAdministracionTitle_nombreaAdministracion}"/>
+                    <h:outputText value="#{bundle.ViewAdministracionLabel_activo}"/>
+                    <h:outputText value="#{administracionController.selected.activo}" title="#{bundle.ViewAdministracionTitle_activo}"/>
+                    <h:outputText value="#{bundle.ViewAdministracionLabel_fechaRegistro}"/>
+                    <h:outputText value="#{administracionController.selected.fechaRegistro}" title="#{bundle.ViewAdministracionTitle_fechaRegistro}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewAdministracionLabel_fechaModificacion}"/>
+                    <h:outputText value="#{administracionController.selected.fechaModificacion}" title="#{bundle.ViewAdministracionTitle_fechaModificacion}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewAdministracionLabel_codigoUsuarioModifico}"/>
+                    <h:outputText value="#{administracionController.selected.codigoUsuarioModifico}" title="#{bundle.ViewAdministracionTitle_codigoUsuarioModifico}"/>
+                    <h:outputText value="#{bundle.ViewAdministracionLabel_codigoUsuario}"/>
+                    <h:outputText value="#{administracionController.selected.codigoUsuario}" title="#{bundle.ViewAdministracionTitle_codigoUsuario}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{administracionController.destroyAndView}" value="#{bundle.ViewAdministracionDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewAdministracionEditLink}"/>
+                <br />
+                <h:commandLink action="#{administracionController.prepareCreate}" value="#{bundle.ViewAdministracionCreateLink}" />
+                <br />
+                <h:commandLink action="#{administracionController.prepareList}" value="#{bundle.ViewAdministracionShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewAdministracionIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

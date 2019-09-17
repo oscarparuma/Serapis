@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+   
+    <ui:composition>
+
+        <p:dialog id="DatospersonaEditDlg" widgetVar="DatospersonaEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ActivarA} #{datospersonaController.selected.nombres} #{datospersonaController.selected.apellidos}">
+            <h:form id="DatospersonaEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="6" rendered="#{datospersonaController.selected != null}">
+                        
+                        <p:outputLabel value="#{bundle.EditDatospersonaLabel_estadoActual}" for="estadoActual" />
+                        <p:selectOneMenu id="estadoActual" value="#{datospersonaController.selected.estadoActual}" styleClass="input" >
+                            <f:selectItem noSelectionOption="true" itemLabel="   "/>                       
+                            <f:selectItem itemValue="S" itemLabel="SI"/>
+                        </p:selectOneMenu>
+                        
+                       
+                        
+                    </p:panelGrid>
+                    <p:commandButton style="margin-right: 10px;" actionListener="#{datospersonaController.update}" value="#{bundle.Save}" update="display,:DatospersonaListForm:datalist,:growl" oncomplete="handleSubmit(args, 'DatospersonaEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="DatospersonaEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+      
+</html>

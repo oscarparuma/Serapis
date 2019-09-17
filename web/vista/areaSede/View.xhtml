@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewAreaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewAreaLabel_codigoArea}"/>
+                    <h:outputText value="#{areaController.selected.codigoArea}" title="#{bundle.ViewAreaTitle_codigoArea}"/>
+                    <h:outputText value="#{bundle.ViewAreaLabel_nombreArea}"/>
+                    <h:outputText value="#{areaController.selected.nombreArea}" title="#{bundle.ViewAreaTitle_nombreArea}"/>
+                    <h:outputText value="#{bundle.ViewAreaLabel_activo}"/>
+                    <h:outputText value="#{areaController.selected.activo}" title="#{bundle.ViewAreaTitle_activo}"/>
+                    <h:outputText value="#{bundle.ViewAreaLabel_fechaRegistro}"/>
+                    <h:outputText value="#{areaController.selected.fechaRegistro}" title="#{bundle.ViewAreaTitle_fechaRegistro}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewAreaLabel_fechaModificacion}"/>
+                    <h:outputText value="#{areaController.selected.fechaModificacion}" title="#{bundle.ViewAreaTitle_fechaModificacion}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewAreaLabel_siglasArea}"/>
+                    <h:outputText value="#{areaController.selected.siglasArea}" title="#{bundle.ViewAreaTitle_siglasArea}"/>
+                    <h:outputText value="#{bundle.ViewAreaLabel_direccion}"/>
+                    <h:outputText value="#{areaController.selected.direccion}" title="#{bundle.ViewAreaTitle_direccion}"/>
+                    <h:outputText value="#{bundle.ViewAreaLabel_telefono}"/>
+                    <h:outputText value="#{areaController.selected.telefono}" title="#{bundle.ViewAreaTitle_telefono}"/>
+                    <h:outputText value="#{bundle.ViewAreaLabel_email}"/>
+                    <h:outputText value="#{areaController.selected.email}" title="#{bundle.ViewAreaTitle_email}"/>
+                    <h:outputText value="#{bundle.ViewAreaLabel_logo}"/>
+                    <h:outputText value="#{areaController.selected.logo}" title="#{bundle.ViewAreaTitle_logo}"/>
+                    <h:outputText value="#{bundle.ViewAreaLabel_encabezado}"/>
+                    <h:outputText value="#{areaController.selected.encabezado}" title="#{bundle.ViewAreaTitle_encabezado}"/>
+                    <h:outputText value="#{bundle.ViewAreaLabel_piePagina}"/>
+                    <h:outputText value="#{areaController.selected.piePagina}" title="#{bundle.ViewAreaTitle_piePagina}"/>
+                    <h:outputText value="#{bundle.ViewAreaLabel_codigoMunicipio}"/>
+                    <h:outputText value="#{areaController.selected.codigoMunicipio}" title="#{bundle.ViewAreaTitle_codigoMunicipio}"/>
+                    <h:outputText value="#{bundle.ViewAreaLabel_codigoSede}"/>
+                    <h:outputText value="#{areaController.selected.codigoSede}" title="#{bundle.ViewAreaTitle_codigoSede}"/>
+                    <h:outputText value="#{bundle.ViewAreaLabel_codigousuario}"/>
+                    <h:outputText value="#{areaController.selected.codigousuario}" title="#{bundle.ViewAreaTitle_codigousuario}"/>
+                    <h:outputText value="#{bundle.ViewAreaLabel_codigoUsuarioModifico}"/>
+                    <h:outputText value="#{areaController.selected.codigoUsuarioModifico}" title="#{bundle.ViewAreaTitle_codigoUsuarioModifico}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{areaController.destroyAndView}" value="#{bundle.ViewAreaDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewAreaEditLink}"/>
+                <br />
+                <h:commandLink action="#{areaController.prepareCreate}" value="#{bundle.ViewAreaCreateLink}" />
+                <br />
+                <h:commandLink action="#{areaController.prepareList}" value="#{bundle.ViewAreaShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewAreaIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

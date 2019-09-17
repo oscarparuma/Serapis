@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewNivelEducativoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewNivelEducativoLabel_codigoNivelEducativo}"/>
+                    <h:outputText value="#{nivelEducativoController.selected.codigoNivelEducativo}" title="#{bundle.ViewNivelEducativoTitle_codigoNivelEducativo}"/>
+                    <h:outputText value="#{bundle.ViewNivelEducativoLabel_nombreNivelEducativo}"/>
+                    <h:outputText value="#{nivelEducativoController.selected.nombreNivelEducativo}" title="#{bundle.ViewNivelEducativoTitle_nombreNivelEducativo}"/>
+                    <h:outputText value="#{bundle.ViewNivelEducativoLabel_activo}"/>
+                    <h:outputText value="#{nivelEducativoController.selected.activo}" title="#{bundle.ViewNivelEducativoTitle_activo}"/>
+                    <h:outputText value="#{bundle.ViewNivelEducativoLabel_fechaRegistro}"/>
+                    <h:outputText value="#{nivelEducativoController.selected.fechaRegistro}" title="#{bundle.ViewNivelEducativoTitle_fechaRegistro}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewNivelEducativoLabel_fechaModificacion}"/>
+                    <h:outputText value="#{nivelEducativoController.selected.fechaModificacion}" title="#{bundle.ViewNivelEducativoTitle_fechaModificacion}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewNivelEducativoLabel_codigoUsuario}"/>
+                    <h:outputText value="#{nivelEducativoController.selected.codigoUsuario}" title="#{bundle.ViewNivelEducativoTitle_codigoUsuario}"/>
+                    <h:outputText value="#{bundle.ViewNivelEducativoLabel_codigoUsuarioModifico}"/>
+                    <h:outputText value="#{nivelEducativoController.selected.codigoUsuarioModifico}" title="#{bundle.ViewNivelEducativoTitle_codigoUsuarioModifico}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{nivelEducativoController.destroyAndView}" value="#{bundle.ViewNivelEducativoDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewNivelEducativoEditLink}"/>
+                <br />
+                <h:commandLink action="#{nivelEducativoController.prepareCreate}" value="#{bundle.ViewNivelEducativoCreateLink}" />
+                <br />
+                <h:commandLink action="#{nivelEducativoController.prepareList}" value="#{bundle.ViewNivelEducativoShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewNivelEducativoIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

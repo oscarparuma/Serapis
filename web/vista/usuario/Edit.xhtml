@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">   
+
+    <ui:composition template="/templateIngreso.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditUsuarioTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form>
+                <div align="center" >
+                    <h:panelGrid columns="1" >
+                        <br/>
+                        <div align="center">
+                            <p:panel style="min-width: 200px;">
+
+
+                                <p:panel header="#{bundle.EditUsuarioContTitle}">
+                                    <br></br>
+                                    <p:panel>
+                                        <p:panelGrid columns="2" id="matchGrid">
+                                            <h:outputText  value="#{bundle.ViewUsuarioLabel_codigoUsuario}"/>
+                                            <h:outputText value="#{usuarioController.selected.codigoUsuario}"/>
+                                            <h:outputText value="#{bundle.ViewUsuarioLabel_nombreUsuario}"/>
+                                            <h:outputText value="#{usuarioController.selected.nombreUsuario}" />
+                                            <p:outputLabel for="pwd1" value="#{bundle.EditUsuarioLabel_clave}"/>
+                                            <p:password id="pwd1" value="#{usuarioController.selected.clave}" match="pwd2" label="No coinciden las contraseñas" required="true" feedback="true" inline="true"
+                                                        promptLabel="Ingrese Contraseña" weakLabel="Contraseña Débil" goodLabel="Contraseña Buena" strongLabel="Contraseña Fuerte" />
+                                            <h:outputLabel for="pwd2" value="Confirmar Contraseña: *" />
+                                            <p:password id="pwd2" value="#{usuarioController.selected.clave}"  required="true" feedback="true" inline="true"
+                                                        promptLabel="Ingrese Contraseña" weakLabel="Contraseña Débil" goodLabel="Contraseña Buena" strongLabel="Contraseña Fuerte" />
+                                        </p:panelGrid>
+                                        <br />
+                                        <p:growl id="growl" life="2000" />
+                                        <div align="center">
+                                            <p:commandButton icon="ui-icon-pencil" style="margin-right: 10px;" process="@all"  id="ajax" update="pwd1, pwd2, growl" action="#{usuarioController.update}" value="#{bundle.EditUsuarioSaveLink}" styleClass="ui-priority-primary"/> 
+                                            <p:commandButton icon="ui-icon-circle-arrow-w" process="@all" styleClass="button" ajax="false" action="/index.xhtml?faces-redirect=true" value="#{bundle.EditUsuarioShowAllLink}" immediate="true"/>
+                                        </div>
+                                    </p:panel>
+                                    <br></br><br></br>
+                                            <h:panelGroup>
+                                                    <p:graphicImage value="/imagenes/ImagSisitema/l-serapis.png" />
+                                            </h:panelGroup>
+
+                                </p:panel>
+                            </p:panel>  
+                        </div>
+                    </h:panelGrid>
+                </div>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+
+
+        <ui:define name="title">
+            <h:outputText value="#{bundle.AppName}"></h:outputText>
+        </ui:define>
+
+        <ui:define name="body">
+            <h:form id="ClasificacioncopagoListForm">
+                <p:panel style="max-width: 1025px" header="#{bundle.ValCuotModerEps}">
+                    <p:dataTable id="datalist" value="#{clasificacioncopagoController.items}" var="item"
+                                 selectionMode="single"  paginator="true" rowKey="#{item.codigoCopago}" rows="10" rowsPerPageTemplate="10,20,30,40,50" >
+
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.codigoNivelCopago}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.codigoNivelCopago}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ValCuotModer}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.valorCopago}"/>
+                        </p:column>
+
+
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.activo}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.activo}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{item.fechaRegistro}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.fechaRegistro}">
+                                <f:convertDateTime pattern="yyyy-MM-dd" />
+                            </h:outputText>
+                        </p:column>
+
+
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.Registrado}"/>
+                            </f:facet>
+                            <h:outputText value=" #{item.codigoUsuario}"/>
+                        </p:column>
+                        <f:facet name="footer">
+                            <p:commandButton style="margin-right: 10px;" id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{clasificacioncopagoController.prepareCreate}" update=":ClasificacioncopagoCreateForm" oncomplete="PF('ClasificacioncopagoCreateDialog').show()"/>
+                            <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{bundle.Edit}" update=":ClasificacioncopagoEditForm" oncomplete="PF('ClasificacioncopagoEditDialog').show()" disabled="#{empty clasificacioncopagoController.selected}"/>
+                        </f:facet>
+                    </p:dataTable>
+                </p:panel>
+            </h:form>
+
+            <ui:include src="Create.xhtml"/>
+            <ui:include src="Edit.xhtml"/>
+
+        </ui:define>
+    </ui:composition>
+
+</html>

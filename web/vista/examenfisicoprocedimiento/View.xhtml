@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewExamenfisicoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewExamenfisicoLabel_consecutivo}"/>
+                    <h:outputText value="#{examenfisicoController.selected.consecutivo}" title="#{bundle.ViewExamenfisicoTitle_consecutivo}"/>
+                    <h:outputText value="#{bundle.ViewExamenfisicoLabel_cabeza}"/>
+                    <h:outputText value="#{examenfisicoController.selected.cabeza}" title="#{bundle.ViewExamenfisicoTitle_cabeza}"/>
+                    <h:outputText value="#{bundle.ViewExamenfisicoLabel_ojos}"/>
+                    <h:outputText value="#{examenfisicoController.selected.ojos}" title="#{bundle.ViewExamenfisicoTitle_ojos}"/>
+                    <h:outputText value="#{bundle.ViewExamenfisicoLabel_oidos}"/>
+                    <h:outputText value="#{examenfisicoController.selected.oidos}" title="#{bundle.ViewExamenfisicoTitle_oidos}"/>
+                    <h:outputText value="#{bundle.ViewExamenfisicoLabel_agudezaAuditiva}"/>
+                    <h:outputText value="#{examenfisicoController.selected.agudezaAuditiva}" title="#{bundle.ViewExamenfisicoTitle_agudezaAuditiva}"/>
+                    <h:outputText value="#{bundle.ViewExamenfisicoLabel_nariz}"/>
+                    <h:outputText value="#{examenfisicoController.selected.nariz}" title="#{bundle.ViewExamenfisicoTitle_nariz}"/>
+                    <h:outputText value="#{bundle.ViewExamenfisicoLabel_faringe}"/>
+                    <h:outputText value="#{examenfisicoController.selected.faringe}" title="#{bundle.ViewExamenfisicoTitle_faringe}"/>
+                    <h:outputText value="#{bundle.ViewExamenfisicoLabel_dental}"/>
+                    <h:outputText value="#{examenfisicoController.selected.dental}" title="#{bundle.ViewExamenfisicoTitle_dental}"/>
+                    <h:outputText value="#{bundle.ViewExamenfisicoLabel_cuello}"/>
+                    <h:outputText value="#{examenfisicoController.selected.cuello}" title="#{bundle.ViewExamenfisicoTitle_cuello}"/>
+                    <h:outputText value="#{bundle.ViewExamenfisicoLabel_aparatoCirculatorio}"/>
+                    <h:outputText value="#{examenfisicoController.selected.aparatoCirculatorio}" title="#{bundle.ViewExamenfisicoTitle_aparatoCirculatorio}"/>
+                    <h:outputText value="#{bundle.ViewExamenfisicoLabel_aparatoRespitatorio}"/>
+                    <h:outputText value="#{examenfisicoController.selected.aparatoRespitatorio}" title="#{bundle.ViewExamenfisicoTitle_aparatoRespitatorio}"/>
+                    <h:outputText value="#{bundle.ViewExamenfisicoLabel_abdomen}"/>
+                    <h:outputText value="#{examenfisicoController.selected.abdomen}" title="#{bundle.ViewExamenfisicoTitle_abdomen}"/>
+                    <h:outputText value="#{bundle.ViewExamenfisicoLabel_genitales}"/>
+                    <h:outputText value="#{examenfisicoController.selected.genitales}" title="#{bundle.ViewExamenfisicoTitle_genitales}"/>
+                    <h:outputText value="#{bundle.ViewExamenfisicoLabel_tanner}"/>
+                    <h:outputText value="#{examenfisicoController.selected.tanner}" title="#{bundle.ViewExamenfisicoTitle_tanner}"/>
+                    <h:outputText value="#{bundle.ViewExamenfisicoLabel_neurologico}"/>
+                    <h:outputText value="#{examenfisicoController.selected.neurologico}" title="#{bundle.ViewExamenfisicoTitle_neurologico}"/>
+                    <h:outputText value="#{bundle.ViewExamenfisicoLabel_desarrolloSicomotor}"/>
+                    <h:outputText value="#{examenfisicoController.selected.desarrolloSicomotor}" title="#{bundle.ViewExamenfisicoTitle_desarrolloSicomotor}"/>
+                    <h:outputText value="#{bundle.ViewExamenfisicoLabel_osteomuscular}"/>
+                    <h:outputText value="#{examenfisicoController.selected.osteomuscular}" title="#{bundle.ViewExamenfisicoTitle_osteomuscular}"/>
+                    <h:outputText value="#{bundle.ViewExamenfisicoLabel_pielFanelas}"/>
+                    <h:outputText value="#{examenfisicoController.selected.pielFanelas}" title="#{bundle.ViewExamenfisicoTitle_pielFanelas}"/>
+                    <h:outputText value="#{bundle.ViewExamenfisicoLabel_sistemasGanglionar}"/>
+                    <h:outputText value="#{examenfisicoController.selected.sistemasGanglionar}" title="#{bundle.ViewExamenfisicoTitle_sistemasGanglionar}"/>
+                    <h:outputText value="#{bundle.ViewExamenfisicoLabel_bcg}"/>
+                    <h:outputText value="#{examenfisicoController.selected.bcg}" title="#{bundle.ViewExamenfisicoTitle_bcg}"/>
+                    <h:outputText value="#{bundle.ViewExamenfisicoLabel_otros}"/>
+                    <h:outputText value="#{examenfisicoController.selected.otros}" title="#{bundle.ViewExamenfisicoTitle_otros}"/>
+                    <h:outputText value="#{bundle.ViewExamenfisicoLabel_fechaRegistro}"/>
+                    <h:outputText value="#{examenfisicoController.selected.fechaRegistro}" title="#{bundle.ViewExamenfisicoTitle_fechaRegistro}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewExamenfisicoLabel_fechaModificacion}"/>
+                    <h:outputText value="#{examenfisicoController.selected.fechaModificacion}" title="#{bundle.ViewExamenfisicoTitle_fechaModificacion}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewExamenfisicoLabel_modificadoPor}"/>
+                    <h:outputText value="#{examenfisicoController.selected.modificadoPor}" title="#{bundle.ViewExamenfisicoTitle_modificadoPor}"/>
+                    <h:outputText value="#{bundle.ViewExamenfisicoLabel_codigoUsuario}"/>
+                    <h:outputText value="#{examenfisicoController.selected.codigoUsuario}" title="#{bundle.ViewExamenfisicoTitle_codigoUsuario}"/>
+                    <h:outputText value="#{bundle.ViewExamenfisicoLabel_codigoPersona}"/>
+                    <h:outputText value="#{examenfisicoController.selected.codigoPersona}" title="#{bundle.ViewExamenfisicoTitle_codigoPersona}"/>
+                    <h:outputText value="#{bundle.ViewExamenfisicoLabel_codigoCita}"/>
+                    <h:outputText value="#{examenfisicoController.selected.codigoCita}" title="#{bundle.ViewExamenfisicoTitle_codigoCita}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{examenfisicoController.destroyAndView}" value="#{bundle.ViewExamenfisicoDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewExamenfisicoEditLink}"/>
+                <br />
+                <h:commandLink action="#{examenfisicoController.prepareCreate}" value="#{bundle.ViewExamenfisicoCreateLink}" />
+                <br />
+                <h:commandLink action="#{examenfisicoController.prepareList}" value="#{bundle.ViewExamenfisicoShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewExamenfisicoIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

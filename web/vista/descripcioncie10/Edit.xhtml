@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditDescripcioncie10Title}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditDescripcioncie10Label_codigoDescripcionCie10}" for="codigoDescripcionCie10" />
+                    <h:inputText id="codigoDescripcionCie10" value="#{descripcioncie10Controller.selected.codigoDescripcionCie10}" title="#{bundle.EditDescripcioncie10Title_codigoDescripcionCie10}" required="true" requiredMessage="#{bundle.EditDescripcioncie10RequiredMessage_codigoDescripcionCie10}"/>
+                    <h:outputLabel value="#{bundle.EditDescripcioncie10Label_nombreDescripcion}" for="nombreDescripcion" />
+                    <h:inputText id="nombreDescripcion" value="#{descripcioncie10Controller.selected.nombreDescripcion}" title="#{bundle.EditDescripcioncie10Title_nombreDescripcion}" />
+                    <h:outputLabel value="#{bundle.EditDescripcioncie10Label_activo}" for="activo" />
+                    <h:inputText id="activo" value="#{descripcioncie10Controller.selected.activo}" title="#{bundle.EditDescripcioncie10Title_activo}" />
+                    <h:outputLabel value="#{bundle.EditDescripcioncie10Label_fechaRegistro}" for="fechaRegistro" />
+                    <h:inputText id="fechaRegistro" value="#{descripcioncie10Controller.selected.fechaRegistro}" title="#{bundle.EditDescripcioncie10Title_fechaRegistro}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditDescripcioncie10Label_fechaModificacion}" for="fechaModificacion" />
+                    <h:inputText id="fechaModificacion" value="#{descripcioncie10Controller.selected.fechaModificacion}" title="#{bundle.EditDescripcioncie10Title_fechaModificacion}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditDescripcioncie10Label_codigoCie10}" for="codigoCie10" />
+                    <h:selectOneMenu id="codigoCie10" value="#{descripcioncie10Controller.selected.codigoCie10}" title="#{bundle.EditDescripcioncie10Title_codigoCie10}" >
+                        <f:selectItems value="#{cie10Controller.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditDescripcioncie10Label_codigoUsuario}" for="codigoUsuario" />
+                    <h:selectOneMenu id="codigoUsuario" value="#{descripcioncie10Controller.selected.codigoUsuario}" title="#{bundle.EditDescripcioncie10Title_codigoUsuario}" >
+                        <f:selectItems value="#{usuarioController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditDescripcioncie10Label_codigoUsuarioModifico}" for="codigoUsuarioModifico" />
+                    <h:selectOneMenu id="codigoUsuarioModifico" value="#{descripcioncie10Controller.selected.codigoUsuarioModifico}" title="#{bundle.EditDescripcioncie10Title_codigoUsuarioModifico}" >
+                        <f:selectItems value="#{usuarioController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{descripcioncie10Controller.update}" value="#{bundle.EditDescripcioncie10SaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditDescripcioncie10ViewLink}"/>
+                <br />
+                <h:commandLink action="#{descripcioncie10Controller.prepareList}" value="#{bundle.EditDescripcioncie10ShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditDescripcioncie10IndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

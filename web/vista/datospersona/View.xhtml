@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/templateIngreso.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.AppName}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+
+            <h:form>
+                <p:panel>
+                    <div align="center">                        
+                        <div class="container text-center">   
+                            <div class="row">
+                                <div class="col-sm-3 well">
+                                    <h:panelGrid columns="1">
+                                        <p:panel header="#{bundle.DatosPersonales} #{datospersonaController.selected.nombres} #{datospersonaController.selected.segundoNombre} #{datospersonaController.selected.apellidos} #{datospersonaController.selected.segundoApellido}">
+                                            <p:panelGrid columns="6">
+                                                <h:outputText value="#{bundle.ViewDatospersonaLabel_codigoDocumentoIdentidad}"/>
+                                                <h:outputText value=" #{datospersonaController.selected.codigoDocumentoIdentidad}" />                              
+                                                <h:outputText value="#{datospersonaController.selected.numeroDocumentoIdentidad}" />
+                                                <h:outputText value="#{datospersonaController.selected.nombres} #{datospersonaController.selected.apellidos}"/>                               
+                                                <h:outputText value="#{bundle.ViewDatospersonaLabel_genero}"/>
+                                                <h:outputText value="#{datospersonaController.selected.genero}"/>
+
+                                                <h:outputText value="#{bundle.ViewDatospersonaLabel_fechaNacimiento}"/>
+                                                <h:outputText value="#{datospersonaController.selected.fechaNacimiento}" >
+                                                    <f:convertDateTime pattern="yyyy-MM-dd" />
+                                                </h:outputText>
+                                                <h:outputText value="#{bundle.ViewDatospersonaLabel_codigoMunicipioNacimiento}"/>
+                                                <h:outputText value=" #{datospersonaController.selected.codigoMunicipioNacimiento}" />
+                                                <h:outputText value="#{bundle.ViewDatospersonaLabel_edadAnos}"/>
+                                                <h:panelGroup>
+                                                    <h:outputText value="#{datospersonaController.selected.edadPersona}"/>
+                                                    <h:outputText value=" #{datospersonaController.selected.codigoTipoEdad}"/>
+                                                </h:panelGroup>
+                                                <h:outputText value="#{bundle.ViewDatospersonaLabel_codigoEstadoCivil}"/>
+                                                <h:outputText value=" #{datospersonaController.selected.codigoEstadoCivil}"/>
+                                                <h:outputText value="#{bundle.ViewDatospersonaLabel_personasACargo}"/>
+                                                <h:outputText value="#{datospersonaController.selected.personasACargo}"/>
+                                                <h:outputText value="#{bundle.ViewDatospersonaLabel_email}"/>
+                                                <h:outputText value="#{datospersonaController.selected.email}"/>                               
+                                                <h:outputText value="#{bundle.ViewDatospersonaLabel_codigoMunicipioResidencia}"/>
+                                                <h:outputText value=" #{datospersonaController.selected.codigoMunicipioResidencia}"/>
+                                                <h:outputText value="#{bundle.ViewDatospersonaLabel_direccion}"/>
+                                                <h:outputText value="#{datospersonaController.selected.direccion}" />
+                                                <h:outputText value="#{bundle.ViewDatospersonaLabel_telefono}"/>
+                                                <h:outputText value="#{datospersonaController.selected.telefono}" />
+                                                <h:outputText value="#{bundle.ViewDatospersonaLabel_codigoZonaResidencia}"/>
+                                                <h:outputText value=" #{datospersonaController.selected.codigoZonaResidencia}"/>
+                                                <h:outputText value="#{bundle.ViewDatospersonaLabel_codigoAfiliacion}"/>
+                                                <h:outputText value=" #{datospersonaController.selected.codigoAfiliacion}"/>
+                                                <h:outputText value="#{bundle.ViewDatospersonaLabel_codigoNivelAfiliacion}"/>
+                                                <h:outputText value="#{datospersonaController.selected.nivelAfiliacion}"/>
+                                                <h:outputText value="#{bundle.ViewDatospersonaLabel_fechaRegistro}"/>
+                                                <h:outputText value="#{datospersonaController.selected.fechaRegistro}">
+                                                    <f:convertDateTime pattern="yyyy-MM-dd" />
+                                                </h:outputText>
+                                            </p:panelGrid> 
+                                            <p:panelGrid columns="4">
+                                                <h:outputText value="#{bundle.ViewDatospersonaLabel_codigoTipoUsuario}"/>
+                                                <h:outputText value=" #{datospersonaController.selected.codigoTipoUsuario}"/>
+                                            </p:panelGrid>
+                                            <f:facet name="footer" >
+                                                <div align="center">
+                                                    <p:commandButton style="margin-right: 10px;" id="viewButton"   icon="ui-icon-search" process="@all" styleClass="button" ajax="false" action="/vista/datospersona/ReactivarPersona.xhtml"  value="#{bundle.ViewDatospersonaEditLink}"/>
+                                                    <p:commandButton  style="margin-right: 10px;" id="editButtonU" icon="ui-icon-pencil" process="@all" styleClass="button" ajax="false" action="#{usuarioController.prepareListXUsuario(usuarioController.selected)}"  value="#{bundle.AsigCita}"/>
+                                                    <p:commandButton icon="ui-icon-pencil" process="@all" styleClass="button" ajax="false" action="/vista/menuSistema/MenuConsultas" value="#{bundle.Regresar}" immediate="true"/>
+                                                </div>   
+                                            </f:facet>
+                                        </p:panel>
+
+                                        <h:panelGrid columns="3" rendered="false">
+                                            <p:panel header="#{bundle.fotoPersona}" widgetVar="250">
+                                                <h:outputText value="#{datospersonaController.selected.fotoPersona}"/>
+                                            </p:panel>
+                                        </h:panelGrid>
+
+
+                                    </h:panelGrid>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </p:panel>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

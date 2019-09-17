@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewCodigoRipsTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewCodigoRipsLabel_codigoRipsSede}"/>
+                    <h:outputText value="#{codigoRipsController.selected.codigoRipsSede}" title="#{bundle.ViewCodigoRipsTitle_codigoRipsSede}"/>
+                    <h:outputText value="#{bundle.ViewCodigoRipsLabel_codigoRips}"/>
+                    <h:outputText value="#{codigoRipsController.selected.codigoRips}" title="#{bundle.ViewCodigoRipsTitle_codigoRips}"/>
+                    <h:outputText value="#{bundle.ViewCodigoRipsLabel_codigoRipsAnterior}"/>
+                    <h:outputText value="#{codigoRipsController.selected.codigoRipsAnterior}" title="#{bundle.ViewCodigoRipsTitle_codigoRipsAnterior}"/>
+                    <h:outputText value="#{bundle.ViewCodigoRipsLabel_fechaRegistro}"/>
+                    <h:outputText value="#{codigoRipsController.selected.fechaRegistro}" title="#{bundle.ViewCodigoRipsTitle_fechaRegistro}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewCodigoRipsLabel_codigoUsuario}"/>
+                    <h:outputText value="#{codigoRipsController.selected.codigoUsuario}" title="#{bundle.ViewCodigoRipsTitle_codigoUsuario}"/>
+                    <h:outputText value="#{bundle.ViewCodigoRipsLabel_codigoProcedimintoSede}"/>
+                    <h:outputText value="#{codigoRipsController.selected.codigoProcedimintoSede}" title="#{bundle.ViewCodigoRipsTitle_codigoProcedimintoSede}"/>
+                    <h:outputText value="#{bundle.ViewCodigoRipsLabel_codigoSede}"/>
+                    <h:outputText value="#{codigoRipsController.selected.codigoSede}" title="#{bundle.ViewCodigoRipsTitle_codigoSede}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{codigoRipsController.destroyAndView}" value="#{bundle.ViewCodigoRipsDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewCodigoRipsEditLink}"/>
+                <br />
+                <h:commandLink action="#{codigoRipsController.prepareCreate}" value="#{bundle.ViewCodigoRipsCreateLink}" />
+                <br />
+                <h:commandLink action="#{codigoRipsController.prepareList}" value="#{bundle.ViewCodigoRipsShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewCodigoRipsIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

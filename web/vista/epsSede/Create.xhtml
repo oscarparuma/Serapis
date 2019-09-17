@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/templateIngreso.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.AppName}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form>
+                <p:panel>
+                    <div align="center">
+                        <br></br>
+                        <div class="container text-center">   
+                            <div class="row">
+                                <div class="col-sm-3 well">
+                                    <p:panel header="#{bundle.epsDatos}" >
+                                        <br></br><br></br>
+                                        <div align="center">
+                                            <p:panel style="min-width: 400px; max-width: 600px; border: 0px solid;">
+                                                <h:panelGrid columns="2">
+                                                    <h:outputLabel value="#{bundle.CreateEpsSedeLabel_codigoClasificacionEps}" for="codigoClasificacionEps" />
+                                                    <p:selectOneMenu id="codigoClasificacionEps" value="#{epsSedeController.selected.codigoClasificacionEps}" title="#{bundle.CreateEpsSedeTitle_codigoClasificacionEps}" required="true" requiredMessage="#{bundle.CreateEpsSedeRequiredMessage_codigoClasificacionEps}">
+                                                        <f:selectItems value="#{clasificacionEpsController.itemsAvailableSelectOne}"/>
+                                                    </p:selectOneMenu>
+                                                    <p:outputLabel value="#{bundle.CreateEpsSedeLabel_identificacionEps}" for="identificacionEps" />
+                                                    <p:inputText id="identificacionEps" value="#{epsSedeController.selected.identificacionEps}" title="#{bundle.CreateEpsSedeTitle_identificacionEps}" required="true" requiredMessage="#{bundle.CreateEpsSedeRequiredMessage_identificacionEps}"/>
+                                                    <p:outputLabel value="#{bundle.CreateEpsSedeLabel_nombreEps}" for="nombreEps" />
+                                                    <p:inputText id="nombreEps" style="text-transform: uppercase" onkeyup="javascript:this.value = this.value.toUpperCase();" value="#{epsSedeController.selected.nombreEps}" title="#{bundle.CreateEpsSedeTitle_nombreEps}" required="true" requiredMessage="#{bundle.CreateEpsSedeRequiredMessage_nombreEps}"/>
+                                                    <p:outputLabel value="#{bundle.CreateEpsSedeLabel_codigoAsignado}" for="codigoAsignado" />
+                                                    <p:inputText id="codigoAsignado" value="#{epsSedeController.selected.codigoAsignado}" title="#{bundle.CreateEpsSedeTitle_codigoAsignado}" required="true" requiredMessage="#{bundle.CreateEpsSedeRequiredMessage_codigoAsignado}"/>
+
+                                                </h:panelGrid>
+                                                <f:facet name="footer">
+                                                    <p:panel>
+                                                        <br></br>
+                                                        <div align="center">
+                                                            <p:commandButton style="margin-right: 10px;" id="editButton"   icon="ui-icon-plus" process="@all" styleClass="button" ajax="false" action="#{epsSedeController.create}" value="#{bundle.ListEpsSedeCreateLink}"/>
+                                                            <p:commandButton id="editButtonE"  icon="ui-icon-circle-arrow-w" process="@all" styleClass="button" ajax="false" action="#{epsSedeController.prepareList}" value="#{bundle.Regresar}" immediate="true"/>
+                                                        </div>
+                                                    </p:panel>
+                                                </f:facet>
+                                            </p:panel>
+                                            <h:panelGroup>
+                                                <br></br><br></br>
+                                                <p:graphicImage value="/imagenes/ImagSisitema/l-serapis.png" />
+                                            </h:panelGroup>
+                                        </div>
+                                    </p:panel>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </p:panel>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

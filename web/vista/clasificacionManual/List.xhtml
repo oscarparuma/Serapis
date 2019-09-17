@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListClasificacionManualTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListClasificacionManualEmpty}" rendered="#{clasificacionManualController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{clasificacionManualController.items.rowCount > 0}">
+                    <h:outputText value="#{clasificacionManualController.pagination.pageFirstItem + 1}..#{clasificacionManualController.pagination.pageLastItem + 1}/#{clasificacionManualController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{clasificacionManualController.previous}" value="#{bundle.Previous} #{clasificacionManualController.pagination.pageSize}" rendered="#{clasificacionManualController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{clasificacionManualController.next}" value="#{bundle.Next} #{clasificacionManualController.pagination.pageSize}" rendered="#{clasificacionManualController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{clasificacionManualController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListClasificacionManualTitle_codigoClasificacionManual}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.codigoClasificacionManual}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListClasificacionManualTitle_nombreClasificacionManual}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.nombreClasificacionManual}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListClasificacionManualTitle_activo}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.activo}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListClasificacionManualTitle_codigoManualTarifario}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.codigoManualTarifario}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{clasificacionManualController.prepareView}" value="#{bundle.ListClasificacionManualViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{clasificacionManualController.prepareEdit}" value="#{bundle.ListClasificacionManualEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{clasificacionManualController.destroy}" value="#{bundle.ListClasificacionManualDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{clasificacionManualController.prepareCreate}" value="#{bundle.ListClasificacionManualCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListClasificacionManualIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

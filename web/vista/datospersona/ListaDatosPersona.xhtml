@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    
+        <ui:composition template="/template.xhtml">
+
+
+            <ui:define name="title">
+                <h:outputText value="#{bundle.AppName}"></h:outputText>
+            </ui:define>
+
+            <ui:define name="body">
+                <h:form id="DatospersonaListForm">
+                    <p:panel header="#{bundle.ListCitasPersona}">
+                        <p:panel rendered="#{datospersonaController.selected.datoscargoList.size()!=0}">
+                            <p:dataTable id="datalist" value="#{datospersonaController.listaDatosPersonaCedula}" var="item">
+
+
+                                <p:column width="115">
+                                    <f:facet name="header">
+                                        <h:outputText  value="#{bundle.Seleccione}"/>
+                                    </f:facet>
+                                    <p:commandButton id="viewButton"   icon="ui-icon-search" process="@all" styleClass="button" ajax="false" action="#{datospersonaController.prepareView(item)}" value="#{bundle.Seleccione}"/>
+                                </p:column>
+
+
+
+                                <p:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="#{bundle.ListDatospersonaTitle_numeroDocumentoIdentidad}"/>
+                                    </f:facet>
+                                    <h:outputText value="#{item.numeroDocumentoIdentidad}"/>
+                                </p:column>
+                                <p:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="#{bundle.ListDatospersonaTitle_nombres}"/>
+                                    </f:facet>
+                                    <h:outputText value="#{item.nombres}"/>
+                                </p:column>
+                                <p:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="#{bundle.ListDatospersonaTitle_apellidos}"/>
+                                    </f:facet>
+                                    <h:outputText value="#{item.apellidos}"/>
+                                </p:column>
+
+                                <p:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="#{bundle.ListDatospersonaTitle_telefono}"/>
+                                    </f:facet>
+                                    <h:outputText value="#{item.telefono}"/>
+                                </p:column>
+
+                                <p:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="#{bundle.ListDatospersonaTitle_codigoEmpresa}"/>
+                                    </f:facet>
+                                    <h:outputText value=" #{item.codigoEmpresa}"/>
+                                </p:column>                        
+                                <p:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="#{bundle.ListDatospersonaTitle_sucursalEmpresa}"/>
+                                    </f:facet>
+                                    <h:outputText value=" #{item.sucursalEmpresa}"/>
+                                </p:column>
+                                <p:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="#{bundle.ListDatospersonaTitle_fechaRegistro}"/>
+                                    </f:facet>
+                                    <h:outputText value="#{item.fechaRegistro}">
+                                        <f:convertDateTime pattern="yyyy-MM-dd" />
+                                    </h:outputText>
+                                </p:column>
+                                <p:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="#{bundle.ListDatospersonaTitle_codigoUsuario}"/>
+                                    </f:facet>
+                                    <h:outputText style="text-transform: uppercase" value=" #{item.codigoUsuario}"/>
+                                </p:column>
+
+                            </p:dataTable>
+                        </p:panel>
+                        <p:panel>
+                            <p:commandButton style="margin-right: 10px;" id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{datospersonaController.prepareCreate}" update=":DatospersonaCreateForm" oncomplete="PF('DatospersonaCreateDialog').show()"/>
+
+                        </p:panel>
+                    </p:panel>
+                </h:form>
+
+                <ui:include src="Create.xhtml"/>
+                <ui:include src="Edit.xhtml"/>
+
+            </ui:define>
+        </ui:composition>
+   
+</html>

@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.AppName}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <div class="col-lg-8">
+                    <p:panel>
+                        <div align="center">
+                            <p:panel header="#{bundle.regCarteraSede} #{bundle.factNo} #{listaRadicadoEpsController.selected.facturaNumero}">
+                                <div class="panel-body">
+                                    <div class="col-lg-4">
+                                        <p:dataTable id="lalmeida"  reflow="true" value="#{pagosEpsController.items}" var="item" emptyMessage=" " selectionMode="single"  paginator="true"  rowKey="#{item.codigoPago}" rows="20"  rowsPerPageTemplate="20,50,100">
+                                            <p:column>
+                                                <f:facet name="header">
+                                                    <h:outputText value="#{bundle.ListPagosEpsTitle_codigoFactura}"/>
+                                                </f:facet>
+                                                <h:outputText value="#{item.codigoFactura}"/>
+                                            </p:column>
+                                            <p:column>
+                                                <f:facet name="header">
+                                                    <h:outputText value="#{bundle.ListPagosEpsTitle_codigoEps}"/>
+                                                </f:facet>
+                                                <h:outputText value=" #{item.codigoEps}"/>
+                                            </p:column>
+                                            <p:column>
+                                                <f:facet name="header">
+                                                    <h:outputText value="#{bundle.ListPagosEpsTitle_numeroSoportePago}"/>
+                                                </f:facet>
+                                                <h:outputText value="#{item.numeroSoportePago}"/>
+                                            </p:column>                                           
+                                            <p:column>
+                                                <f:facet name="header">
+                                                    <h:outputText value="#{bundle.ListPagosEpsTitle_valorSaldo}"/>
+                                                </f:facet>
+                                                <h:outputText value="#{item.valorSaldo}">
+                                                <f:convertNumber pattern="$ #,###.00" /> 
+                                                </h:outputText>
+                                            </p:column>
+                                             <p:column>
+                                                <f:facet name="header">
+                                                    <h:outputText value="#{bundle.ListPagosEpsTitle_valorCancelado}"/>
+                                                </f:facet>
+                                                 <h:outputText value="#{item.valorCancelado}">
+                                                 <f:convertNumber pattern="$ #,###.00" /> 
+                                                 </h:outputText>
+                                            </p:column>
+                                            <p:column>
+                                                <f:facet name="header">
+                                                    <h:outputText value="#{bundle.ListPagosEpsTitle_saldoActual}"/>
+                                                </f:facet>
+                                                <h:outputText value="#{item.saldoActual}">
+                                                <f:convertNumber pattern="$ #,###.00" /> 
+                                                </h:outputText>
+                                            </p:column>
+                                            <p:column>
+                                                <f:facet name="header">
+                                                    <h:outputText value="#{bundle.ListPagosEpsTitle_fechaRegistro}"/>
+                                                </f:facet>
+                                                <h:outputText value="#{item.fechaRegistro}">
+                                                    <f:convertDateTime pattern="yyyy-MM-dd" />
+                                                </h:outputText>
+                                            </p:column>
+                                            <p:column>
+                                                <f:facet name="header">
+                                                    <h:outputText value="#{bundle.ListPagosEpsTitle_fechaSoportePago}"/>
+                                                </f:facet>
+                                                <h:outputText value="#{item.fechaSoportePago}">
+                                                    <f:convertDateTime pattern="yyyy-MM-dd" />
+                                                </h:outputText>
+                                            </p:column>
+                                            <p:column>
+                                                <f:facet name="header">
+                                                    <h:outputText value="#{bundle.ListPagosEpsTitle_codigoUsuario}"/>
+                                                </f:facet>
+                                                <h:outputText value=" #{item.codigoUsuario}"/>
+                                            </p:column>
+                                        </p:dataTable>
+                                         <f:facet name="footer">
+                                                <p:panel>
+                                                    <div align="center"  >                                        
+                                                        <p:panel>
+                                                            <p:commandButton style="max-width: 200px; margin-right: 10px;" id="createButton" icon="ui-icon-plus" action="#{pagosEpsController.prepareCreate}" value="#{bundle.ListPagosEpsCreateLink}"/>
+                                                            <p:commandButton style="max-width: 150px; margin-right: 10px;" id="editButton"   icon="ui-icon-circle-arrow-w" action="#{listaRadicadoEpsController.prepareDetalleCarteraSede(item)}" value="#{bundle.Regresar}"/>
+                                                        </p:panel>                                   
+                                                    </div>
+                                                </p:panel>
+                                            </f:facet>
+                                    </div>
+                                </div>
+                            </p:panel>  
+                        </div>
+                    </p:panel>
+                </div>
+              </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

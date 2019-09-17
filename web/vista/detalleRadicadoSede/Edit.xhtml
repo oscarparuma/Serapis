@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditDetalleRadicadoSedeTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditDetalleRadicadoSedeLabel_codigoDetalleRadicado}" for="codigoDetalleRadicado" />
+                    <h:inputText id="codigoDetalleRadicado" value="#{detalleRadicadoSedeController.selected.codigoDetalleRadicado}" title="#{bundle.EditDetalleRadicadoSedeTitle_codigoDetalleRadicado}" required="true" requiredMessage="#{bundle.EditDetalleRadicadoSedeRequiredMessage_codigoDetalleRadicado}"/>
+                    <h:outputLabel value="#{bundle.EditDetalleRadicadoSedeLabel_numeroDocumentoIdentidad}" for="numeroDocumentoIdentidad" />
+                    <h:inputText id="numeroDocumentoIdentidad" value="#{detalleRadicadoSedeController.selected.numeroDocumentoIdentidad}" title="#{bundle.EditDetalleRadicadoSedeTitle_numeroDocumentoIdentidad}" />
+                    <h:outputLabel value="#{bundle.EditDetalleRadicadoSedeLabel_valorFacturaTotal}" for="valorFacturaTotal" />
+                    <h:inputText id="valorFacturaTotal" value="#{detalleRadicadoSedeController.selected.valorFacturaTotal}" title="#{bundle.EditDetalleRadicadoSedeTitle_valorFacturaTotal}" />
+                    <h:outputLabel value="#{bundle.EditDetalleRadicadoSedeLabel_valorCopago}" for="valorCopago" />
+                    <h:inputText id="valorCopago" value="#{detalleRadicadoSedeController.selected.valorCopago}" title="#{bundle.EditDetalleRadicadoSedeTitle_valorCopago}" />
+                    <h:outputLabel value="#{bundle.EditDetalleRadicadoSedeLabel_valorFacturado}" for="valorFacturado" />
+                    <h:inputText id="valorFacturado" value="#{detalleRadicadoSedeController.selected.valorFacturado}" title="#{bundle.EditDetalleRadicadoSedeTitle_valorFacturado}" />
+                    <h:outputLabel value="#{bundle.EditDetalleRadicadoSedeLabel_valorTotalFactura}" for="valorTotalFactura" />
+                    <h:inputText id="valorTotalFactura" value="#{detalleRadicadoSedeController.selected.valorTotalFactura}" title="#{bundle.EditDetalleRadicadoSedeTitle_valorTotalFactura}" />
+                    <h:outputLabel value="#{bundle.EditDetalleRadicadoSedeLabel_valorTotalCopago}" for="valorTotalCopago" />
+                    <h:inputText id="valorTotalCopago" value="#{detalleRadicadoSedeController.selected.valorTotalCopago}" title="#{bundle.EditDetalleRadicadoSedeTitle_valorTotalCopago}" />
+                    <h:outputLabel value="#{bundle.EditDetalleRadicadoSedeLabel_fechaRegistro}" for="fechaRegistro" />
+                    <h:inputText id="fechaRegistro" value="#{detalleRadicadoSedeController.selected.fechaRegistro}" title="#{bundle.EditDetalleRadicadoSedeTitle_fechaRegistro}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditDetalleRadicadoSedeLabel_fechaSistema}" for="fechaSistema" />
+                    <h:inputText id="fechaSistema" value="#{detalleRadicadoSedeController.selected.fechaSistema}" title="#{bundle.EditDetalleRadicadoSedeTitle_fechaSistema}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditDetalleRadicadoSedeLabel_estado}" for="estado" />
+                    <h:inputText id="estado" value="#{detalleRadicadoSedeController.selected.estado}" title="#{bundle.EditDetalleRadicadoSedeTitle_estado}" />
+                    <h:outputLabel value="#{bundle.EditDetalleRadicadoSedeLabel_saldoRadicado}" for="saldoRadicado" />
+                    <h:inputText id="saldoRadicado" value="#{detalleRadicadoSedeController.selected.saldoRadicado}" title="#{bundle.EditDetalleRadicadoSedeTitle_saldoRadicado}" />
+                    <h:outputLabel value="#{bundle.EditDetalleRadicadoSedeLabel_saldoListado}" for="saldoListado" />
+                    <h:inputText id="saldoListado" value="#{detalleRadicadoSedeController.selected.saldoListado}" title="#{bundle.EditDetalleRadicadoSedeTitle_saldoListado}" />
+                    <h:outputLabel value="#{bundle.EditDetalleRadicadoSedeLabel_codigoPersona}" for="codigoPersona" />
+                    <h:selectOneMenu id="codigoPersona" value="#{detalleRadicadoSedeController.selected.codigoPersona}" title="#{bundle.EditDetalleRadicadoSedeTitle_codigoPersona}" >
+                        <f:selectItems value="#{datospersonaController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditDetalleRadicadoSedeLabel_codigoEps}" for="codigoEps" />
+                    <h:selectOneMenu id="codigoEps" value="#{detalleRadicadoSedeController.selected.codigoEps}" title="#{bundle.EditDetalleRadicadoSedeTitle_codigoEps}" >
+                        <f:selectItems value="#{epsController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditDetalleRadicadoSedeLabel_codigoFactura}" for="codigoFactura" />
+                    <h:selectOneMenu id="codigoFactura" value="#{detalleRadicadoSedeController.selected.codigoFactura}" title="#{bundle.EditDetalleRadicadoSedeTitle_codigoFactura}" >
+                        <f:selectItems value="#{facturacionController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditDetalleRadicadoSedeLabel_codigoListadoRadicado}" for="codigoListadoRadicado" />
+                    <h:selectOneMenu id="codigoListadoRadicado" value="#{detalleRadicadoSedeController.selected.codigoListadoRadicado}" title="#{bundle.EditDetalleRadicadoSedeTitle_codigoListadoRadicado}" >
+                        <f:selectItems value="#{listaRadicadoEpsController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditDetalleRadicadoSedeLabel_codigoSede}" for="codigoSede" />
+                    <h:selectOneMenu id="codigoSede" value="#{detalleRadicadoSedeController.selected.codigoSede}" title="#{bundle.EditDetalleRadicadoSedeTitle_codigoSede}" >
+                        <f:selectItems value="#{sedeController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditDetalleRadicadoSedeLabel_codigoUsuario}" for="codigoUsuario" />
+                    <h:selectOneMenu id="codigoUsuario" value="#{detalleRadicadoSedeController.selected.codigoUsuario}" title="#{bundle.EditDetalleRadicadoSedeTitle_codigoUsuario}" >
+                        <f:selectItems value="#{usuarioController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{detalleRadicadoSedeController.update}" value="#{bundle.EditDetalleRadicadoSedeSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditDetalleRadicadoSedeViewLink}"/>
+                <br />
+                <h:commandLink action="#{detalleRadicadoSedeController.prepareList}" value="#{bundle.EditDetalleRadicadoSedeShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditDetalleRadicadoSedeIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

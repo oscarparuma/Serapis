@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:pe="http://primefaces.org/ui/extensions"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.AppName}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+
+            <h:form>
+                <p:panel header="#{bundle.OtrRecomMedica} #{recomendacionesMedicasOtrasController.actAgenCit.codigoPersonaCita}" >
+                    <p:panel>
+                        <h:panelGrid columns="1">
+                            <p:panel header="#{bundle.CreateRecomendacionesMedicasOtrasLabel_recoMedica}">
+                                <pe:ckEditor height="150" width="975" customConfig="#{request.contextPath}/resources/ckeditor.js" id="recoMedica" value="#{recomendacionesMedicasOtrasController.selected.recoMedica}" 
+                                             toolbar="[['Source', 'Cut','Copy','Paste','PasteText','PasteFromWord','-', 'SpellChecker', 'Bold', 'Italic', 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock',  'NumberedList', 'BulletedList', 'Scayt'], 
+                                             { name: 'styles', items: [ 'FontSize' ] }]" >                            
+                                </pe:ckEditor>
+                            </p:panel>
+
+
+                        </h:panelGrid>
+                    </p:panel>
+                    <p:panel>
+                        <p:commandButton style="margin-right: 10px;" id="createButton" icon="ui-icon-plus"  process="@all" styleClass="button" ajax="false" action="#{recomendacionesMedicasOtrasController.update}" value="#{bundle.CreateRecomendacionesMedicasOtrasSaveLink}" immediate="false" />
+                        <p:commandButton id="viewButton"   icon="ui-icon-search" process="@all" styleClass="button" ajax="false" action="/vista/recomendacionesmedicamentos/List.xhtml" value="#{bundle.Regresar}" immediate="true"/>
+
+                    </p:panel>
+                </p:panel>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

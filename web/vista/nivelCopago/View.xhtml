@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewNivelCopagoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewNivelCopagoLabel_codigoNivel}"/>
+                    <h:outputText value="#{nivelCopagoController.selected.codigoNivel}" title="#{bundle.ViewNivelCopagoTitle_codigoNivel}"/>
+                    <h:outputText value="#{bundle.ViewNivelCopagoLabel_nombre}"/>
+                    <h:outputText value="#{nivelCopagoController.selected.nombre}" title="#{bundle.ViewNivelCopagoTitle_nombre}"/>
+                    <h:outputText value="#{bundle.ViewNivelCopagoLabel_activo}"/>
+                    <h:outputText value="#{nivelCopagoController.selected.activo}" title="#{bundle.ViewNivelCopagoTitle_activo}"/>
+                    <h:outputText value="#{bundle.ViewNivelCopagoLabel_fechaRegistro}"/>
+                    <h:outputText value="#{nivelCopagoController.selected.fechaRegistro}" title="#{bundle.ViewNivelCopagoTitle_fechaRegistro}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewNivelCopagoLabel_fechaModificacion}"/>
+                    <h:outputText value="#{nivelCopagoController.selected.fechaModificacion}" title="#{bundle.ViewNivelCopagoTitle_fechaModificacion}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewNivelCopagoLabel_porcentajeIncremento}"/>
+                    <h:outputText value="#{nivelCopagoController.selected.porcentajeIncremento}" title="#{bundle.ViewNivelCopagoTitle_porcentajeIncremento}"/>
+                    <h:outputText value="#{bundle.ViewNivelCopagoLabel_valorCopago}"/>
+                    <h:outputText value="#{nivelCopagoController.selected.valorCopago}" title="#{bundle.ViewNivelCopagoTitle_valorCopago}"/>
+                    <h:outputText value="#{bundle.ViewNivelCopagoLabel_valorTotalCopago}"/>
+                    <h:outputText value="#{nivelCopagoController.selected.valorTotalCopago}" title="#{bundle.ViewNivelCopagoTitle_valorTotalCopago}"/>
+                    <h:outputText value="#{bundle.ViewNivelCopagoLabel_tipoClasificacionEps}"/>
+                    <h:outputText value="#{nivelCopagoController.selected.tipoClasificacionEps}" title="#{bundle.ViewNivelCopagoTitle_tipoClasificacionEps}"/>
+                    <h:outputText value="#{bundle.ViewNivelCopagoLabel_codigoUsuario}"/>
+                    <h:outputText value="#{nivelCopagoController.selected.codigoUsuario}" title="#{bundle.ViewNivelCopagoTitle_codigoUsuario}"/>
+                    <h:outputText value="#{bundle.ViewNivelCopagoLabel_modificadoPor}"/>
+                    <h:outputText value="#{nivelCopagoController.selected.modificadoPor}" title="#{bundle.ViewNivelCopagoTitle_modificadoPor}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{nivelCopagoController.destroyAndView}" value="#{bundle.ViewNivelCopagoDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewNivelCopagoEditLink}"/>
+                <br />
+                <h:commandLink action="#{nivelCopagoController.prepareCreate}" value="#{bundle.ViewNivelCopagoCreateLink}" />
+                <br />
+                <h:commandLink action="#{nivelCopagoController.prepareList}" value="#{bundle.ViewNivelCopagoShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewNivelCopagoIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

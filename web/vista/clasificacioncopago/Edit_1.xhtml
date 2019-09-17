@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditClasificacioncopagoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditClasificacioncopagoLabel_codigoCopago}" for="codigoCopago" />
+                    <h:inputText id="codigoCopago" value="#{clasificacioncopagoController.selected.codigoCopago}" title="#{bundle.EditClasificacioncopagoTitle_codigoCopago}" required="true" requiredMessage="#{bundle.EditClasificacioncopagoRequiredMessage_codigoCopago}"/>
+                    <h:outputLabel value="#{bundle.EditClasificacioncopagoLabel_activo}" for="activo" />
+                    <h:inputText id="activo" value="#{clasificacioncopagoController.selected.activo}" title="#{bundle.EditClasificacioncopagoTitle_activo}" />
+                    <h:outputLabel value="#{bundle.EditClasificacioncopagoLabel_fechaRegistro}" for="fechaRegistro" />
+                    <h:inputText id="fechaRegistro" value="#{clasificacioncopagoController.selected.fechaRegistro}" title="#{bundle.EditClasificacioncopagoTitle_fechaRegistro}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditClasificacioncopagoLabel_valorCopago}" for="valorCopago" />
+                    <h:inputText id="valorCopago" value="#{clasificacioncopagoController.selected.valorCopago}" title="#{bundle.EditClasificacioncopagoTitle_valorCopago}" />
+                    <h:outputLabel value="#{bundle.EditClasificacioncopagoLabel_clasificacionCopago}" for="clasificacionCopago" />
+                    <h:inputText id="clasificacionCopago" value="#{clasificacioncopagoController.selected.clasificacionCopago}" title="#{bundle.EditClasificacioncopagoTitle_clasificacionCopago}" />
+                    <h:outputLabel value="#{bundle.EditClasificacioncopagoLabel_totalCopago}" for="totalCopago" />
+                    <h:inputText id="totalCopago" value="#{clasificacioncopagoController.selected.totalCopago}" title="#{bundle.EditClasificacioncopagoTitle_totalCopago}" />
+                    <h:outputLabel value="#{bundle.EditClasificacioncopagoLabel_clasificacionEps}" for="clasificacionEps" />
+                    <h:selectOneMenu id="clasificacionEps" value="#{clasificacioncopagoController.selected.clasificacionEps}" title="#{bundle.EditClasificacioncopagoTitle_clasificacionEps}" >
+                        <f:selectItems value="#{clasificacionEpsController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditClasificacioncopagoLabel_codigoEps}" for="codigoEps" />
+                    <h:selectOneMenu id="codigoEps" value="#{clasificacioncopagoController.selected.codigoEps}" title="#{bundle.EditClasificacioncopagoTitle_codigoEps}" >
+                        <f:selectItems value="#{epsController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditClasificacioncopagoLabel_codigoNivelCopago}" for="codigoNivelCopago" />
+                    <h:selectOneMenu id="codigoNivelCopago" value="#{clasificacioncopagoController.selected.codigoNivelCopago}" title="#{bundle.EditClasificacioncopagoTitle_codigoNivelCopago}" >
+                        <f:selectItems value="#{nivelCopagoController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditClasificacioncopagoLabel_tipoExamen}" for="tipoExamen" />
+                    <h:selectOneMenu id="tipoExamen" value="#{clasificacioncopagoController.selected.tipoExamen}" title="#{bundle.EditClasificacioncopagoTitle_tipoExamen}" >
+                        <f:selectItems value="#{tipoexamenController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditClasificacioncopagoLabel_codigoUsuario}" for="codigoUsuario" />
+                    <h:selectOneMenu id="codigoUsuario" value="#{clasificacioncopagoController.selected.codigoUsuario}" title="#{bundle.EditClasificacioncopagoTitle_codigoUsuario}" >
+                        <f:selectItems value="#{usuarioController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{clasificacioncopagoController.update}" value="#{bundle.EditClasificacioncopagoSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditClasificacioncopagoViewLink}"/>
+                <br />
+                <h:commandLink action="#{clasificacioncopagoController.prepareList}" value="#{bundle.EditClasificacioncopagoShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditClasificacioncopagoIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

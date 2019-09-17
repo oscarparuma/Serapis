@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListClasificacionProfesionPersonaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListClasificacionProfesionPersonaEmpty}" rendered="#{clasificacionProfesionPersonaController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{clasificacionProfesionPersonaController.items.rowCount > 0}">
+                    <h:outputText value="#{clasificacionProfesionPersonaController.pagination.pageFirstItem + 1}..#{clasificacionProfesionPersonaController.pagination.pageLastItem + 1}/#{clasificacionProfesionPersonaController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{clasificacionProfesionPersonaController.previous}" value="#{bundle.Previous} #{clasificacionProfesionPersonaController.pagination.pageSize}" rendered="#{clasificacionProfesionPersonaController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{clasificacionProfesionPersonaController.next}" value="#{bundle.Next} #{clasificacionProfesionPersonaController.pagination.pageSize}" rendered="#{clasificacionProfesionPersonaController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{clasificacionProfesionPersonaController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListClasificacionProfesionPersonaTitle_codigoClasificacionProfesion}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.codigoClasificacionProfesion}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListClasificacionProfesionPersonaTitle_nombreClasificacionProfesion}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.nombreClasificacionProfesion}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListClasificacionProfesionPersonaTitle_activo}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.activo}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListClasificacionProfesionPersonaTitle_fecharegistro}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.fecharegistro}">
+                                <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListClasificacionProfesionPersonaTitle_fechaModificacion}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.fechaModificacion}">
+                                <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListClasificacionProfesionPersonaTitle_codigoProfesionPersona}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.codigoProfesionPersona}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListClasificacionProfesionPersonaTitle_codigoUsuario}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.codigoUsuario}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListClasificacionProfesionPersonaTitle_modificadoPor}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.modificadoPor}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{clasificacionProfesionPersonaController.prepareView}" value="#{bundle.ListClasificacionProfesionPersonaViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{clasificacionProfesionPersonaController.prepareEdit}" value="#{bundle.ListClasificacionProfesionPersonaEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{clasificacionProfesionPersonaController.destroy}" value="#{bundle.ListClasificacionProfesionPersonaDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{clasificacionProfesionPersonaController.prepareCreate}" value="#{bundle.ListClasificacionProfesionPersonaCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListClasificacionProfesionPersonaIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

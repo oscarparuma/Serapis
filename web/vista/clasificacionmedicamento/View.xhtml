@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewClasificacionmedicamentoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewClasificacionmedicamentoLabel_codigoClasificacionmedicamento}"/>
+                    <h:outputText value="#{clasificacionmedicamentoController.selected.codigoClasificacionmedicamento}" title="#{bundle.ViewClasificacionmedicamentoTitle_codigoClasificacionmedicamento}"/>
+                    <h:outputText value="#{bundle.ViewClasificacionmedicamentoLabel_nombre}"/>
+                    <h:outputText value="#{clasificacionmedicamentoController.selected.nombre}" title="#{bundle.ViewClasificacionmedicamentoTitle_nombre}"/>
+                    <h:outputText value="#{bundle.ViewClasificacionmedicamentoLabel_activo}"/>
+                    <h:outputText value="#{clasificacionmedicamentoController.selected.activo}" title="#{bundle.ViewClasificacionmedicamentoTitle_activo}"/>
+                    <h:outputText value="#{bundle.ViewClasificacionmedicamentoLabel_fechaRegistro}"/>
+                    <h:outputText value="#{clasificacionmedicamentoController.selected.fechaRegistro}" title="#{bundle.ViewClasificacionmedicamentoTitle_fechaRegistro}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewClasificacionmedicamentoLabel_fechaModificacion}"/>
+                    <h:outputText value="#{clasificacionmedicamentoController.selected.fechaModificacion}" title="#{bundle.ViewClasificacionmedicamentoTitle_fechaModificacion}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewClasificacionmedicamentoLabel_codigoUsuario}"/>
+                    <h:outputText value="#{clasificacionmedicamentoController.selected.codigoUsuario}" title="#{bundle.ViewClasificacionmedicamentoTitle_codigoUsuario}"/>
+                    <h:outputText value="#{bundle.ViewClasificacionmedicamentoLabel_modificadoPor}"/>
+                    <h:outputText value="#{clasificacionmedicamentoController.selected.modificadoPor}" title="#{bundle.ViewClasificacionmedicamentoTitle_modificadoPor}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{clasificacionmedicamentoController.destroyAndView}" value="#{bundle.ViewClasificacionmedicamentoDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewClasificacionmedicamentoEditLink}"/>
+                <br />
+                <h:commandLink action="#{clasificacionmedicamentoController.prepareCreate}" value="#{bundle.ViewClasificacionmedicamentoCreateLink}" />
+                <br />
+                <h:commandLink action="#{clasificacionmedicamentoController.prepareList}" value="#{bundle.ViewClasificacionmedicamentoShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewClasificacionmedicamentoIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

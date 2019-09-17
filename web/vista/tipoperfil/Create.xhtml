@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateTipoperfilTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateTipoperfilLabel_codigoPerfil}" for="codigoPerfil" />
+                    <h:inputText id="codigoPerfil" value="#{tipoperfilController.selected.codigoPerfil}" title="#{bundle.CreateTipoperfilTitle_codigoPerfil}" required="true" requiredMessage="#{bundle.CreateTipoperfilRequiredMessage_codigoPerfil}"/>
+                    <h:outputLabel value="#{bundle.CreateTipoperfilLabel_nombrePerfil}" for="nombrePerfil" />
+                    <h:inputText id="nombrePerfil" value="#{tipoperfilController.selected.nombrePerfil}" title="#{bundle.CreateTipoperfilTitle_nombrePerfil}" />
+                    <h:outputLabel value="#{bundle.CreateTipoperfilLabel_activo}" for="activo" />
+                    <h:inputText id="activo" value="#{tipoperfilController.selected.activo}" title="#{bundle.CreateTipoperfilTitle_activo}" />
+                    <h:outputLabel value="#{bundle.CreateTipoperfilLabel_fechaRegistro}" for="fechaRegistro" />
+                    <h:inputText id="fechaRegistro" value="#{tipoperfilController.selected.fechaRegistro}" title="#{bundle.CreateTipoperfilTitle_fechaRegistro}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreateTipoperfilLabel_fechaModificacion}" for="fechaModificacion" />
+                    <h:inputText id="fechaModificacion" value="#{tipoperfilController.selected.fechaModificacion}" title="#{bundle.CreateTipoperfilTitle_fechaModificacion}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreateTipoperfilLabel_codigoUsuario}" for="codigoUsuario" />
+                    <h:selectOneMenu id="codigoUsuario" value="#{tipoperfilController.selected.codigoUsuario}" title="#{bundle.CreateTipoperfilTitle_codigoUsuario}" >
+                        <f:selectItems value="#{usuarioController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateTipoperfilLabel_codigoUsuarioModifico}" for="codigoUsuarioModifico" />
+                    <h:selectOneMenu id="codigoUsuarioModifico" value="#{tipoperfilController.selected.codigoUsuarioModifico}" title="#{bundle.CreateTipoperfilTitle_codigoUsuarioModifico}" >
+                        <f:selectItems value="#{usuarioController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{tipoperfilController.create}" value="#{bundle.CreateTipoperfilSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{tipoperfilController.prepareList}" value="#{bundle.CreateTipoperfilShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateTipoperfilIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

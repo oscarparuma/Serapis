@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewCarteraSedeTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form>
+                <div align="center">
+                    <div class="container text-center">   
+                        <div class="row">
+                            <div class="col-sm-3 well">
+                                <p:panel style="max-width: 1025px" header=" #{carteraSedeController.selected.codigoSede} #{bundle.RecibPago} #{carteraSedeController.selected.reciboPago}">
+                                    <p:fieldset legend="#{carteraSedeController.selected.codigoCitaPersona.primerNombre} #{carteraSedeController.selected.codigoCitaPersona.segundoNombre} #{carteraSedeController.selected.codigoCitaPersona.primerApellido} #{carteraSedeController.selected.codigoCitaPersona.segundoApellido}">
+                                        <p:panelGrid columns="2">
+                                            <h:outputText value="#{bundle.ViewCarteraSedeLabel_codigoFacturacion}"/>
+                                            <h:outputText value=" #{carteraSedeController.selected.codigoFacturacion}" />
+                                            <h:outputText value="#{bundle.ViewCarteraSedeLabel_valorCancelado}"/>
+                                            <h:outputText value="#{carteraSedeController.selected.valorCancelado}" >
+                                                <f:convertNumber pattern="$ #,###.00" />
+                                            </h:outputText>
+                                            <h:outputText value="#{bundle.ViewCarteraSedeLabel_fechaRegistro}"/>
+                                            <h:outputText value="#{carteraSedeController.selected.fechaRegistro}" >
+                                                <f:convertDateTime pattern="yyyy-MM-dd HH:mm:ss" timeZone="America/Bogota"/>
+                                            </h:outputText>
+                                            <h:outputText value="#{bundle.ViewCarteraSedeLabel_codigoUsuario}"/>
+                                            <h:outputText value=" #{carteraSedeController.selected.codigoUsuario}"/>
+                                        </p:panelGrid>  
+                                    </p:fieldset>
+                                    <p:panel>
+                                        <p:commandButton style="margin-right: 10px;" id="editButtonI" icon="ui-icon-link" process="@all" styleClass="button" ajax="false" action="#{carteraSedeController.reportReciboPago}" value="#{bundle.botImprimirRecb}"/>
+                                        <p:commandButton id="editButton" icon="ui-icon-pencil" process="@all" styleClass="button" ajax="false" action="#{facturacionController.prepareListFacturacionXSedes(usuarioController.selected)}" value="#{bundle.CreateFacturacionShowAllLink}" immediate="true"/>
+                                    </p:panel>
+                                </p:panel>
+                            </div> 
+                        </div> 
+                    </div> 
+                </div> 
+            </h:form>
+
+        </ui:define>
+    </ui:composition>
+
+</html>

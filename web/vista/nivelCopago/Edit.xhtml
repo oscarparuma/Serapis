@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditNivelCopagoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditNivelCopagoLabel_codigoNivel}" for="codigoNivel" />
+                    <h:inputText id="codigoNivel" value="#{nivelCopagoController.selected.codigoNivel}" title="#{bundle.EditNivelCopagoTitle_codigoNivel}" required="true" requiredMessage="#{bundle.EditNivelCopagoRequiredMessage_codigoNivel}"/>
+                    <h:outputLabel value="#{bundle.EditNivelCopagoLabel_nombre}" for="nombre" />
+                    <h:inputText id="nombre" value="#{nivelCopagoController.selected.nombre}" title="#{bundle.EditNivelCopagoTitle_nombre}" />
+                    <h:outputLabel value="#{bundle.EditNivelCopagoLabel_activo}" for="activo" />
+                    <h:inputText id="activo" value="#{nivelCopagoController.selected.activo}" title="#{bundle.EditNivelCopagoTitle_activo}" />
+                    <h:outputLabel value="#{bundle.EditNivelCopagoLabel_fechaRegistro}" for="fechaRegistro" />
+                    <h:inputText id="fechaRegistro" value="#{nivelCopagoController.selected.fechaRegistro}" title="#{bundle.EditNivelCopagoTitle_fechaRegistro}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditNivelCopagoLabel_fechaModificacion}" for="fechaModificacion" />
+                    <h:inputText id="fechaModificacion" value="#{nivelCopagoController.selected.fechaModificacion}" title="#{bundle.EditNivelCopagoTitle_fechaModificacion}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditNivelCopagoLabel_porcentajeIncremento}" for="porcentajeIncremento" />
+                    <h:inputText id="porcentajeIncremento" value="#{nivelCopagoController.selected.porcentajeIncremento}" title="#{bundle.EditNivelCopagoTitle_porcentajeIncremento}" />
+                    <h:outputLabel value="#{bundle.EditNivelCopagoLabel_valorCopago}" for="valorCopago" />
+                    <h:inputText id="valorCopago" value="#{nivelCopagoController.selected.valorCopago}" title="#{bundle.EditNivelCopagoTitle_valorCopago}" />
+                    <h:outputLabel value="#{bundle.EditNivelCopagoLabel_valorTotalCopago}" for="valorTotalCopago" />
+                    <h:inputText id="valorTotalCopago" value="#{nivelCopagoController.selected.valorTotalCopago}" title="#{bundle.EditNivelCopagoTitle_valorTotalCopago}" />
+                    <h:outputLabel value="#{bundle.EditNivelCopagoLabel_tipoClasificacionEps}" for="tipoClasificacionEps" />
+                    <h:selectOneMenu id="tipoClasificacionEps" value="#{nivelCopagoController.selected.tipoClasificacionEps}" title="#{bundle.EditNivelCopagoTitle_tipoClasificacionEps}" >
+                        <f:selectItems value="#{clasificacionEpsController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditNivelCopagoLabel_codigoUsuario}" for="codigoUsuario" />
+                    <h:selectOneMenu id="codigoUsuario" value="#{nivelCopagoController.selected.codigoUsuario}" title="#{bundle.EditNivelCopagoTitle_codigoUsuario}" >
+                        <f:selectItems value="#{usuarioController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditNivelCopagoLabel_modificadoPor}" for="modificadoPor" />
+                    <h:selectOneMenu id="modificadoPor" value="#{nivelCopagoController.selected.modificadoPor}" title="#{bundle.EditNivelCopagoTitle_modificadoPor}" >
+                        <f:selectItems value="#{usuarioController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{nivelCopagoController.update}" value="#{bundle.EditNivelCopagoSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditNivelCopagoViewLink}"/>
+                <br />
+                <h:commandLink action="#{nivelCopagoController.prepareList}" value="#{bundle.EditNivelCopagoShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditNivelCopagoIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

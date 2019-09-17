@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/templateIngreso.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.AppName}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+
+            <h:form>
+                <p:panel>
+                    <div align="center">
+                        <div class="container text-center">   
+                            <div class="row">
+                                <div class="col-sm-3 well">
+                                    <p:panel header="#{bundle.RegDatUsuariosSerapis}">
+                                        <div align="center">
+                                            <p:panel>
+                                                <div align="center">
+                                                    <br></br>
+                                                    <h:panelGrid columns="1">
+                                                        <p:panel>
+                                                            <div align="center">
+                                                                <h:outputLabel style="font-size:22px" value="#{bundle.descUsuarioSede}"/>
+                                                                <br></br>
+                                                                <h:outputLabel style="font-size:22px" value="#{bundle.descUsuarioSede1}"/>
+                                                            </div>
+                                                        </p:panel>
+                                                        <p:panel>
+                                                            <div align="center">
+                                                                 <br></br>
+                                                                 <br></br>
+                                                                <h:panelGrid columns="2">
+                                                                    <p:outputLabel value="#{bundle.CreateUsuarioLabel_codigoUsuario}" for="codigoUsuario" />
+                                                                    <p:inputText size="30" id="codigoUsuario" value="#{usuarioController.selected.codigoUsuario}" title="#{bundle.CreateUsuarioTitle_codigoUsuario}" required="true" requiredMessage="#{bundle.CreateUsuarioRequiredMessage_codigoUsuario}"/>
+                                                                    <p:outputLabel value="#{bundle.CreateUsuarioLabel_clave}" for="clave" />
+                                                                    <p:password size="30" id="clave" value="#{usuarioController.selected.clave}" title="#{bundle.CreateUsuarioTitle_clave}" redisplay="false" autocomplete="false" required="true" requiredMessage="#{bundle.CreateUsuarioRequiredMessage_clave}"/>
+                                                                    <p:outputLabel value="#{bundle.CreateUsuarioLabel_nombreUsuario}" for="nombreUsuario" />
+                                                                    <p:inputText size="30" id="nombreUsuario" style="text-transform: uppercase" onkeyup="javascript:this.value = this.value.toUpperCase();" value="#{usuarioController.selected.nombreUsuario}" title="#{bundle.CreateUsuarioTitle_nombreUsuario}" required="true" requiredMessage="#{bundle.CreateUsuarioRequiredMessage_nombreUsuario}"/>
+                                                                    <p:outputLabel value="#{bundle.CreateUsuarioLabel_registroMedico}" for="registroMedico" />
+                                                                    <p:inputText size="30" id="registroMedico" value="#{usuarioController.selected.registroMedico}" title="#{bundle.CreateUsuarioTitle_registroMedico}" />
+                                                                    <p:outputLabel value="#{bundle.CreateUsuarioLabel_codigoCargo}" for="codigoCargo" />
+                                                                    <p:selectOneMenu style="min-width: 230px;" id="codigoCargo" value="#{usuarioController.selected.codigoCargo}" title="#{bundle.CreateUsuarioTitle_codigoCargo}" required="true" requiredMessage="#{bundle.CreateUsuarioRequiredMessage_codigoCargo}">
+                                                                        <f:selectItems value="#{cargosedeController.itemsAvailableSelectOne}"/>
+                                                                    </p:selectOneMenu>
+                                                                    <p:outputLabel value="#{bundle.CreateUsuarioLabel_codigoEspecialidad}" for="codigoEspecialidad" />
+                                                                    <p:selectOneMenu style="min-width: 230px;" id="codigoEspecialidad" value="#{usuarioController.selected.codigoEspecialidad}" title="#{bundle.CreateUsuarioTitle_codigoEspecialidad}" required="true" requiredMessage="#{bundle.CreateUsuarioRequiredMessage_codigoEspecialidad}">
+                                                                        <f:selectItems value="#{especialidadsedeController.itemsAvailableSelectOne}"/>
+                                                                    </p:selectOneMenu>
+                                                                    <p:outputLabel value="#{bundle.CreateUsuarioLabel_esMedico}" for="esMedico" />                                                                   
+                                                                    <p:selectOneMenu style="min-width: 230px;" id="esMedico" value="#{usuarioController.selected.esMedico}" title="#{bundle.CreateUsuarioTitle_esMedico}" styleClass="input" required="true" requiredMessage="#{bundle.CreateUsuarioRequiredMessage_esMedico}"  >
+                                                                        <f:selectItem noSelectionOption="true" itemLabel=" ---- "/>
+                                                                        <f:selectItem itemValue="N" itemLabel="NO"/>
+                                                                        <f:selectItem itemValue="S" itemLabel="SI"/>
+                                                                    </p:selectOneMenu>
+                                                                   
+
+                                                                </h:panelGrid>
+
+                                                            </div>
+                                                        </p:panel>
+                                                        <f:facet name="footer">
+                                                            <p:panel>
+                                                                <br></br>
+                                                                <div align="center">
+                                                                    <p:commandButton style="margin-right: 10px;" id="createButton" icon="ui-icon-plus" process="@all" styleClass="button" ajax="false" action="#{usuarioController.createSede}" value="#{bundle.CreateUsuarioSaveLink}"/>
+                                                                    <p:commandButton icon="ui-icon-circle-arrow-w" process="@all" styleClass="button" ajax="false" action="/index" value="#{bundle.Regresar}" immediate="true"/>
+                                                                </div>
+                                                            </p:panel>
+                                                        </f:facet>
+                                                    </h:panelGrid>
+                                                </div>
+                                            </p:panel>
+                                        </div>
+                                    </p:panel>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </p:panel>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

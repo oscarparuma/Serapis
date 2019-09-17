@@ -1,0 +1,83 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">  
+
+    <f:view contentType="text/html">
+        <h:head>
+            <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+            <meta http-equiv="expires" content="-1"/>
+            <meta name="Robots" content="nofollow" />
+            <title><ui:insert name="title">"#{bundle.AppName}"</ui:insert></title>
+            <link rel="shortcut icon" href="#{request.contextPath}/logo.jpg" />
+            <link rel="icon" href="#{request.contextPath}/logo.jpg" /> 
+            
+            <h:outputStylesheet name="serapis.css" />
+        </h:head>
+
+        <h:body>
+            <h:form>
+                <p:idleMonitor id="yyy2" timeout="1800000"
+                               onidle="idleDialog.show();"   />
+                <p:dialog header="Sesión finalizada" resizable="false" closable="false"
+                          widgetVar="idleDialog" modal="true" width="400">
+                    <h:panelGrid columns="2">
+                        <p:graphicImage value="/imagenes/ingreso/logo.jpg" height="100" width="100" />
+                        <h:panelGroup>
+                            <div style=" text-align:justify; font-size: 16px; color:#df6; font-weight: bold">
+                                <h:outputText value="Por politica de seguridad, el sistema se cierra automaticamente a los 30 minutos de no recibir interacción por parte del usuario  " />
+                            </div>
+                        </h:panelGroup>
+                    </h:panelGrid>
+                    <div style=" text-align:center" >
+                        <p:commandButton ajax="false" value="Aceptar"/>
+                    </div>
+                </p:dialog>
+            </h:form>
+            <div class="ui-g">
+                <div class="ui-g-12 ui-md-6 ui-lg-3">
+                    <img src="#{request.contextPath}/imagenes/index/logo.png"></img>
+                </div>
+            </div>
+            <div id="fondo">
+                
+
+                <div id="centrar" style="text-align:center"> <h1>Serapis Médico poderosa y moderna herramienta para el manejo ágil y eficiente de la consulta médica y el consultorio</h1>
+            
+                <h:form>
+                    <div align="center">
+                        <br/>
+
+                        <h:panelGrid columns="2">
+                            <h:panelGroup>
+                                <h:panelGrid columns="2">
+
+                                    <div align="justify">
+                                        <h:panelGrid columns="2">
+                                            <p:commandButton  style="font-size: 18px;" id="Sede" ajax="true"  action="vista/sede/consultasDatosSedeIngreso.xhtml?faces-redirect=true" value="Configuración Serapis"/>
+                                            <p:commandButton style=" font-size: 18px;" id="Ingreso" ajax="true"  action="/indexUsuario.xhtml?faces-redirect=true" value="Ingreso Serapis"/>
+                                        </h:panelGrid>
+                                    </div>
+                                </h:panelGrid>
+                            </h:panelGroup>
+                        </h:panelGrid>
+                        <br/><br/>
+                    </div>         
+                    <br/><br/>
+                </h:form>
+            </div>
+                </div>
+
+
+            <div class="ui-g-12 footer"> © Serapis web / info@serapismedico.com</div>
+
+
+        </h:body>
+    </f:view>
+</html>
+
+
+

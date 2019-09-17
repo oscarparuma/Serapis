@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewValorExamenSedeTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewValorExamenSedeLabel_codigoValorExamen}"/>
+                    <h:outputText value="#{valorExamenSedeController.selected.codigoValorExamen}" title="#{bundle.ViewValorExamenSedeTitle_codigoValorExamen}"/>
+                    <h:outputText value="#{bundle.ViewValorExamenSedeLabel_fechaRegistro}"/>
+                    <h:outputText value="#{valorExamenSedeController.selected.fechaRegistro}" title="#{bundle.ViewValorExamenSedeTitle_fechaRegistro}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewValorExamenSedeLabel_codigoUsuario}"/>
+                    <h:outputText value="#{valorExamenSedeController.selected.codigoUsuario}" title="#{bundle.ViewValorExamenSedeTitle_codigoUsuario}"/>
+                    <h:outputText value="#{bundle.ViewValorExamenSedeLabel_valorAnterior}"/>
+                    <h:outputText value="#{valorExamenSedeController.selected.valorAnterior}" title="#{bundle.ViewValorExamenSedeTitle_valorAnterior}"/>
+                    <h:outputText value="#{bundle.ViewValorExamenSedeLabel_valor}"/>
+                    <h:outputText value="#{valorExamenSedeController.selected.valor}" title="#{bundle.ViewValorExamenSedeTitle_valor}"/>
+                    <h:outputText value="#{bundle.ViewValorExamenSedeLabel_codigoProcedimintoSede}"/>
+                    <h:outputText value="#{valorExamenSedeController.selected.codigoProcedimintoSede}" title="#{bundle.ViewValorExamenSedeTitle_codigoProcedimintoSede}"/>
+                    <h:outputText value="#{bundle.ViewValorExamenSedeLabel_codigoSede}"/>
+                    <h:outputText value="#{valorExamenSedeController.selected.codigoSede}" title="#{bundle.ViewValorExamenSedeTitle_codigoSede}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{valorExamenSedeController.destroyAndView}" value="#{bundle.ViewValorExamenSedeDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewValorExamenSedeEditLink}"/>
+                <br />
+                <h:commandLink action="#{valorExamenSedeController.prepareCreate}" value="#{bundle.ViewValorExamenSedeCreateLink}" />
+                <br />
+                <h:commandLink action="#{valorExamenSedeController.prepareList}" value="#{bundle.ViewValorExamenSedeShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewValorExamenSedeIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

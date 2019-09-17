@@ -1,0 +1,366 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">  
+
+    <f:view contentType="text/html">
+        <h:head>
+            <h:outputStylesheet library="default" name="css/style.css" /> 
+            <h:outputScript library="default" name="js/script.js" /> 
+            <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+            <meta http-equiv="expires" content="-1"/>
+            <meta name="Robots" content="nofollow" />
+            <title><ui:insert name="title">#{bundle.AppName}</ui:insert></title>
+            <link type="text/css" rel="stylesheet" href="#{request.contextPath}/themes/start/skin.css" />
+            <style type="text/css">
+                label, td { font-family: Arial,Verdana,sans-serif; font-size: 11px;
+                }
+                select {font-weight:bold }
+                th{font-size: 11px}
+
+            </style>
+        </h:head>
+
+        <h:body>
+
+
+            <p:layout style="max-width: 2000px; min-height:10px">
+                <p:layoutUnit styleClass="ui-widget ui-widget-header ui-corner-all" position="north"  size="75"
+                              closable="false" collapsible="false" resizable="false" >
+                    <p:graphicImage value="/imagenes/ingreso/logo1.jpg" height="85" width="800" />
+                </p:layoutUnit>
+
+                <p:layoutUnit  styleClass="ui-layout-north ui-layout-unit-content ui-widget ui-widget-header ui-corner-all"  
+                               position="north" size="120"
+                               closable="false" collapsible="false"  resizable="false" >
+                    <p:layout style="min-width: 2000px; min-height:90px">
+                        <p:layoutUnit position="center">
+                            <div align="center" >
+                                <h:panelGrid columns="4">
+                                    <p:graphicImage value="/imagenes/ingreso/logoQ.jpg" height="70px" />     
+                                    <h:panelGroup></h:panelGroup><h:panelGroup></h:panelGroup>
+                                    <p:graphicImage value="/imagenes/ingreso/logo1.jpg" height="70px" />     
+                                </h:panelGrid>
+                            </div>                            
+                        </p:layoutUnit>                                
+                        <p:layoutUnit position="west" size="110" >
+                            <p:graphicImage value="/imagenes/ingreso/logo.jpg"  height="60px" />                        
+                        </p:layoutUnit>    
+                        <p:layoutUnit position="east" size="110" >
+                            <p:graphicImage value="/imagenes/ingreso/rt.jpg"  height="60px" />                        
+                        </p:layoutUnit>    
+                    </p:layout>
+                </p:layoutUnit>
+                <!-- aqui se empieza la validación del usuario -->
+                <p:layoutUnit position="center" header="#{bundle.ForSolicitud}" style="font-size: 16px;" >
+                    <h:panelGrid columns="1">
+                        <h:form  >
+                            <p:fieldset legend="#{bundle.CamObliga}" style="font-size: 16px;">
+                                <p:panelGrid columns="1">
+                                    <p:panel style="max-width: 2000px;">
+                                        <p:panel header="#{bundle.DatosConsult}" style=" size: 16px;">
+
+                                            <p:panelGrid columns="4">
+                                                <p:outputLabel value="#{bundle.CreateSolicitudingresoLabel_identificacionNit}" for="identificacionNit" style="font-size: 14px;"/>
+                                                <p:inputText id="identificacionNit" value="#{solicitudingresoController.selected.identificacionNit}" 
+                                                             required="true" requiredMessage="#{bundle.CreateSolicitudingresoRequiredMessage_identificacionNit}"
+                                                             title="#{bundle.CreateSolicitudingresoTitle_identificacionNit}" />
+                                                <p:outputLabel value="#{bundle.CreateSolicitudingresoLabel_nombreSede}" for="nombreSede" style="font-size: 14px;"/>
+                                                <p:inputText size="30" style="text-transform: uppercase" onkeyup="javascript:this.value = this.value.toUpperCase();" id="nombreSede" value="#{solicitudingresoController.selected.nombreSede}" 
+                                                             required="true" requiredMessage="#{bundle.CreateSolicitudingresoRequiredMessage_nombreSede}"
+                                                             title="#{bundle.CreateSolicitudingresoTitle_nombreSede}" />
+                                                <p:outputLabel value="#{bundle.CreateSolicitudingresoLabel_paginaWeb}" for="paginaWeb" style="font-size: 14px;"/>
+                                                <p:inputText id="paginaWeb" value="#{solicitudingresoController.selected.paginaWeb}" title="#{bundle.CreateSolicitudingresoTitle_paginaWeb}" />
+                                                <p:outputLabel value="#{bundle.CreateSolicitudingresoLabel_direccion}" for="direccion" style="font-size: 14px;"/>
+                                                <p:inputText size="30" style="text-transform: uppercase" onkeyup="javascript:this.value = this.value.toUpperCase();" id="direccion" value="#{solicitudingresoController.selected.direccion}" 
+                                                             required="true" requiredMessage="#{bundle.CreateSolicitudingresoRequiredMessage_direccion}"
+                                                             title="#{bundle.CreateSolicitudingresoTitle_direccion}" />
+                                                <p:outputLabel value="#{bundle.CreateSolicitudingresoLabel_siglasSede}" for="siglasSede" style="font-size: 14px;"/>
+                                                <p:inputText style="text-transform: uppercase" onkeyup="javascript:this.value = this.value.toUpperCase();" id="siglasSede" value="#{solicitudingresoController.selected.siglasSede}" title="#{bundle.CreateSolicitudingresoTitle_siglasSede}" />
+                                                <p:outputLabel value="#{bundle.CreateSolicitudingresoLabel_email}" for="email" style="font-size: 14px;"/>
+                                                <p:inputText size="30" id="email" value="#{solicitudingresoController.selected.email}" 
+                                                             title="#{bundle.CreateSolicitudingresoTitle_email}" />
+
+                                                <p:outputLabel value="#{bundle.CreateSolicitudingresoLabel_telefono}" for="telefono" style="font-size: 14px;"/>
+                                                <p:inputText id="telefono" value="#{solicitudingresoController.selected.telefono}" 
+                                                             required="true" requiredMessage="#{bundle.CreateSolicitudingresoRequiredMessage_telefono}"
+                                                             title="#{bundle.CreateSolicitudingresoTitle_telefono}" />
+                                                <p:outputLabel value="#{bundle.CreateSolicitudingresoLabel_consultorios}" for="consultorios" style="font-size: 14px;"/>
+                                                <p:inputTextarea rows="1" cols="30" style="text-transform: uppercase" onkeyup="javascript:this.value = this.value.toUpperCase();" id="consultorios" value="#{solicitudingresoController.selected.consultorios}" title="#{bundle.CreateSolicitudingresoTitle_consultorios}" />
+
+
+
+
+                                                <p:outputLabel  value="#{bundle.CreateDepartamentoLabel_codigoPais}" for="codigoPais" style="font-size: 14px;"/>
+                                                <p:selectOneMenu id="codigoPais" value="#{solicitudingresoController.paisSelected}"
+                                                                 styleClass="input" >
+                                                    <f:selectItem noSelectionOption="true" itemLabel="-Seleccione- " />
+                                                    <f:selectItems value="#{paisController.itemsAvailableSelectMany}"/>
+                                                    <p:ajax process="codigoPais" update="codigoDepartamento, codigoMunicipio" event="change"  />
+                                                </p:selectOneMenu>
+                                                <p:outputLabel  value="#{bundle.CreateMunicipioLabel_codigoDepartamento}" for="codigoDepartamento" style="font-size: 14px;"/>
+                                                <p:selectOneMenu id="codigoDepartamento" value="#{solicitudingresoController.departamentoSelected}"
+                                                                 styleClass="input"  >
+                                                    <f:selectItem noSelectionOption="true" itemLabel="-Seleccione- " />
+                                                    <f:selectItems value="#{solicitudingresoController.paisSelected.departamentoList}"/>
+                                                    <p:ajax process="codigoDepartamento"  update="codigoMunicipio" event="change" />
+                                                </p:selectOneMenu>
+                                                <p:outputLabel  value="#{bundle.CreateSolicitudingresoLabel_codigoMunicipio}" for="codigoMunicipio" style="font-size: 14px;"/>
+                                                <p:selectOneMenu  id="codigoMunicipio" required="true" requiredMessage="#{bundle.CreateSolicitudingresoRequiredMessage_codigoMunicipio}" 
+                                                                  value="#{solicitudingresoController.selected.codigoMunicipio}"
+                                                                  styleClass="input"  >
+                                                    <f:selectItem noSelectionOption="true" itemLabel="-Seleccione- " />
+                                                    <f:selectItems value="#{solicitudingresoController.departamentoSelected.municipioList}"/>
+                                                    <p:ajax process="codigoMunicipio" event="change" />
+                                                </p:selectOneMenu> 
+                                            </p:panelGrid>
+                                        </p:panel>
+                                        <p:panel header="#{bundle.regUsuariosSede}" style="max-width: 2000px; font-size: 12px;">
+                                            <p:panelGrid columns="7">
+                                                <h:panelGroup>
+                                                    <p:outputLabel value="#{bundle.CreateSolicitudingresoLabel_numeroIdentificacion}" for="numeroIdentificacion" style="font-size: 14px;"/>
+                                                    <br/>
+                                                    <p:inputText id="numeroIdentificacion"  value="#{solicitudingresoController.selected.numeroIdentificacion}" title="#{bundle.CreateSolicitudingresoTitle_numeroIdentificacion}" />
+                                                </h:panelGroup>
+                                                <h:panelGroup>
+                                                    <p:outputLabel value="#{bundle.CreateSolicitudingresoLabel_nombreUsuario}" for="nombreUsuario" style="font-size: 14px;"/>
+                                                    <br/>
+                                                    <p:inputText style="text-transform: uppercase" onkeyup="javascript:this.value = this.value.toUpperCase();" id="nombreUsuario" value="#{solicitudingresoController.selected.nombreUsuario}" title="#{bundle.CreateSolicitudingresoTitle_nombreUsuario}" />
+                                                </h:panelGroup>
+                                                <h:panelGroup>
+                                                    <p:outputLabel value="#{bundle.CreateSolicitudingresoLabel_registroMedico}" for="registroMedico" style="font-size: 14px;"/>
+                                                    <br/>
+                                                    <p:inputText id="registroMedico" value="#{solicitudingresoController.selected.registroMedico}" title="#{bundle.CreateSolicitudingresoTitle_registroMedico}" />
+                                                </h:panelGroup>
+                                                <h:panelGroup>
+                                                    <p:outputLabel value="#{bundle.CreateSolicitudingresoLabel_codigoCargo}" for="codigoCargo" style="font-size: 14px;"/>
+                                                    <br/>
+                                                    <p:selectOneMenu id="codigoCargo" value="#{solicitudingresoController.selected.codigoCargo}" title="#{bundle.CreateSolicitudingresoTitle_codigoCargo}" >
+                                                        <f:selectItems value="#{cargosedeController.itemsAvailableSelectOne}"/>
+                                                    </p:selectOneMenu>
+                                                </h:panelGroup>
+                                                <h:panelGroup>
+                                                    <p:outputLabel value="#{bundle.CreateSolicitudingresoLabel_otroCargo}" for="otroCargo" style="font-size: 14px;"/>
+                                                    <br/>
+                                                    <p:inputTextarea rows="1" cols="30" style="text-transform: uppercase" onkeyup="javascript:this.value = this.value.toUpperCase();" id="otroCargo" value="#{solicitudingresoController.selected.otroCargo}" title="#{bundle.CreateSolicitudingresoTitle_otroCargo}" />
+                                                </h:panelGroup>
+                                                <h:panelGroup>
+                                                    <p:outputLabel value="#{bundle.CreateSolicitudingresoLabel_codigoEspecialidad}" for="codigoEspecialidad" style="font-size: 14px;"/>
+                                                    <br/>
+                                                    <p:selectOneMenu id="codigoEspecialidad" value="#{solicitudingresoController.selected.codigoEspecialidad}" title="#{bundle.CreateSolicitudingresoTitle_codigoEspecialidad}" >
+                                                        <f:selectItems value="#{especialidadsedeController.itemsAvailableSelectOne}"/>
+                                                    </p:selectOneMenu>
+                                                </h:panelGroup>
+                                                <h:panelGroup>
+                                                    <p:outputLabel value="#{bundle.CreateSolicitudingresoLabel_otraEspecialidad}" for="otraEspecialidad" style="font-size: 14px;"/>
+                                                    <br/>
+                                                    <p:inputTextarea rows="1" cols="30" style="text-transform: uppercase" onkeyup="javascript:this.value = this.value.toUpperCase();" id="otraEspecialidad" value="#{solicitudingresoController.selected.otraEspecialidad}" title="#{bundle.CreateSolicitudingresoTitle_otraEspecialidad}" />
+                                                </h:panelGroup>
+
+
+
+                                                <h:panelGroup>
+                                                    <p:outputLabel value="#{bundle.CreateSolicitudingresoLabel_numeroIdentificacion}" for="numeroIdentificacion" style="font-size: 14px;"/>
+                                                    <br/>
+                                                    <p:inputText id="numeroIdentificacionA" value="#{solicitudingresoController.selected.numeroIdentificacionA}" title="#{bundle.CreateSolicitudingresoTitle_numeroIdentificacion}" />
+                                                </h:panelGroup>
+                                                <h:panelGroup>
+                                                    <p:outputLabel value="#{bundle.CreateSolicitudingresoLabel_nombreUsuario}" for="nombreUsuario" style="font-size: 14px;"/>
+                                                    <br/>
+                                                    <p:inputText style="text-transform: uppercase" onkeyup="javascript:this.value = this.value.toUpperCase();" id="nombreUsuarioA" value="#{solicitudingresoController.selected.nombreUsuarioA}" title="#{bundle.CreateSolicitudingresoTitle_nombreUsuario}" />
+                                                </h:panelGroup>
+                                                <h:panelGroup>
+                                                    <p:outputLabel value="#{bundle.CreateSolicitudingresoLabel_registroMedico}" for="registroMedico" style="font-size: 14px;"/>
+                                                    <br/>
+                                                    <p:inputText id="registroMedicoA" value="#{solicitudingresoController.selected.registroMedicoA}" title="#{bundle.CreateSolicitudingresoTitle_registroMedico}" />
+                                                </h:panelGroup>
+                                                <h:panelGroup>
+                                                    <p:outputLabel value="#{bundle.CreateSolicitudingresoLabel_codigoCargo}" for="codigoCargo" style="font-size: 14px;"/>
+                                                    <br/>
+                                                    <p:selectOneMenu id="codigoCargoA" value="#{solicitudingresoController.selected.codigoCargoA}" title="#{bundle.CreateSolicitudingresoTitle_codigoCargo}" >
+                                                        <f:selectItems value="#{cargosedeController.itemsAvailableSelectOne}"/>
+                                                    </p:selectOneMenu>
+                                                </h:panelGroup>
+                                                <h:panelGroup>
+                                                    <p:outputLabel value="#{bundle.CreateSolicitudingresoLabel_otroCargo}" for="otroCargo" style="font-size: 14px;"/>
+                                                    <br/>
+                                                    <p:inputTextarea rows="1" cols="30" style="text-transform: uppercase" onkeyup="javascript:this.value = this.value.toUpperCase();" id="otroCargoA" value="#{solicitudingresoController.selected.otroCargoA}" title="#{bundle.CreateSolicitudingresoTitle_otroCargo}" />
+                                                </h:panelGroup>
+                                                <h:panelGroup>
+                                                    <p:outputLabel value="#{bundle.CreateSolicitudingresoLabel_codigoEspecialidad}" for="codigoEspecialidad" style="font-size: 14px;"/>
+                                                    <br/>
+                                                    <p:selectOneMenu id="codigoEspecialidadA" value="#{solicitudingresoController.selected.codigoEspecialidadA}" title="#{bundle.CreateSolicitudingresoTitle_codigoEspecialidad}" >
+                                                        <f:selectItems value="#{especialidadsedeController.itemsAvailableSelectOne}"/>
+                                                    </p:selectOneMenu>
+                                                </h:panelGroup>
+                                                <h:panelGroup>
+                                                    <p:outputLabel value="#{bundle.CreateSolicitudingresoLabel_otraEspecialidad}" for="otraEspecialidad" style="font-size: 14px;"/>
+                                                    <br/>
+                                                    <p:inputTextarea rows="1" cols="30" style="text-transform: uppercase" onkeyup="javascript:this.value = this.value.toUpperCase();" id="otraEspecialidadA" value="#{solicitudingresoController.selected.otraEspecialidadA}" title="#{bundle.CreateSolicitudingresoTitle_otraEspecialidad}" />
+                                                </h:panelGroup>
+
+
+                                                <h:panelGroup>
+                                                    <p:outputLabel value="#{bundle.CreateSolicitudingresoLabel_numeroIdentificacion}" for="numeroIdentificacion" style="font-size: 14px;"/>
+                                                    <br/>
+                                                    <p:inputText id="numeroIdentificacionB" value="#{solicitudingresoController.selected.numeroIdentificacionB}" title="#{bundle.CreateSolicitudingresoTitle_numeroIdentificacion}" />
+                                                </h:panelGroup>
+                                                <h:panelGroup>
+                                                    <p:outputLabel value="#{bundle.CreateSolicitudingresoLabel_nombreUsuario}" for="nombreUsuario" style="font-size: 14px;"/>
+                                                    <br/>
+                                                    <p:inputText id="nombreUsuarioB" style="text-transform: uppercase" onkeyup="javascript:this.value = this.value.toUpperCase();" value="#{solicitudingresoController.selected.nombreUsuarioB}" title="#{bundle.CreateSolicitudingresoTitle_nombreUsuario}" />
+                                                </h:panelGroup>
+                                                <h:panelGroup>
+                                                    <p:outputLabel value="#{bundle.CreateSolicitudingresoLabel_registroMedico}" for="registroMedico" style="font-size: 14px;"/>
+                                                    <br/>
+                                                    <p:inputText id="registroMedicoB" value="#{solicitudingresoController.selected.registroMedicoB}" title="#{bundle.CreateSolicitudingresoTitle_registroMedico}" />
+                                                </h:panelGroup>
+                                                <h:panelGroup>
+                                                    <p:outputLabel value="#{bundle.CreateSolicitudingresoLabel_codigoCargo}" for="codigoCargo" style="font-size: 14px;"/>
+                                                    <br/>
+                                                    <p:selectOneMenu id="codigoCargoB" value="#{solicitudingresoController.selected.codigoCargoB}" title="#{bundle.CreateSolicitudingresoTitle_codigoCargo}" >
+                                                        <f:selectItems value="#{cargosedeController.itemsAvailableSelectOne}"/>
+                                                    </p:selectOneMenu>
+                                                </h:panelGroup>
+                                                <h:panelGroup>
+                                                    <p:outputLabel value="#{bundle.CreateSolicitudingresoLabel_otroCargo}" for="otroCargo" style="font-size: 14px;"/>
+                                                    <br/>
+                                                    <p:inputTextarea rows="1" cols="30" style="text-transform: uppercase" onkeyup="javascript:this.value = this.value.toUpperCase();" id="otroCargoB" value="#{solicitudingresoController.selected.otroCargoB}" title="#{bundle.CreateSolicitudingresoTitle_otroCargo}" />
+                                                </h:panelGroup>
+                                                <h:panelGroup>
+                                                    <p:outputLabel value="#{bundle.CreateSolicitudingresoLabel_codigoEspecialidad}" for="codigoEspecialidad" style="font-size: 14px;"/>
+                                                    <br/>
+                                                    <p:selectOneMenu id="codigoEspecialidadB" value="#{solicitudingresoController.selected.codigoEspecialidadB}" title="#{bundle.CreateSolicitudingresoTitle_codigoEspecialidad}" >
+                                                        <f:selectItems value="#{especialidadsedeController.itemsAvailableSelectOne}"/>
+                                                    </p:selectOneMenu>
+                                                </h:panelGroup>
+                                                <h:panelGroup>
+                                                    <p:outputLabel value="#{bundle.CreateSolicitudingresoLabel_otraEspecialidad}" for="otraEspecialidad" style="font-size: 14px;"/>
+                                                    <br/>
+                                                    <p:inputTextarea rows="1" cols="30" style="text-transform: uppercase" onkeyup="javascript:this.value = this.value.toUpperCase();" id="otraEspecialidadB" value="#{solicitudingresoController.selected.otraEspecialidadB}" title="#{bundle.CreateSolicitudingresoTitle_otraEspecialidad}" />
+                                                </h:panelGroup>
+
+                                                <h:panelGroup>
+                                                    <p:outputLabel value="#{bundle.CreateSolicitudingresoLabel_numeroIdentificacion}" for="numeroIdentificacion" style="font-size: 14px;"/>
+                                                    <br/>
+                                                    <p:inputText id="numeroIdentificacionC" value="#{solicitudingresoController.selected.numeroIdentificacionC}" title="#{bundle.CreateSolicitudingresoTitle_numeroIdentificacion}" />
+                                                </h:panelGroup>
+                                                <h:panelGroup>
+                                                    <p:outputLabel value="#{bundle.CreateSolicitudingresoLabel_nombreUsuario}" for="nombreUsuario" style="font-size: 14px;"/>
+                                                    <br/>
+                                                    <p:inputText style="text-transform: uppercase" onkeyup="javascript:this.value = this.value.toUpperCase();" id="nombreUsuarioC" value="#{solicitudingresoController.selected.nombreUsuarioC}" title="#{bundle.CreateSolicitudingresoTitle_nombreUsuario}" />
+                                                </h:panelGroup>
+                                                <h:panelGroup>
+                                                    <p:outputLabel value="#{bundle.CreateSolicitudingresoLabel_registroMedico}" for="registroMedico" style="font-size: 14px;"/>
+                                                    <br/>
+                                                    <p:inputText id="registroMedicoC" value="#{solicitudingresoController.selected.registroMedicoC}" title="#{bundle.CreateSolicitudingresoTitle_registroMedico}" />
+                                                </h:panelGroup>
+                                                <h:panelGroup>
+                                                    <p:outputLabel value="#{bundle.CreateSolicitudingresoLabel_codigoCargo}" for="codigoCargo" style="font-size: 14px;"/>
+                                                    <br/>
+                                                    <p:selectOneMenu id="codigoCargoC" value="#{solicitudingresoController.selected.codigoCargoC}" title="#{bundle.CreateSolicitudingresoTitle_codigoCargo}" >
+                                                        <f:selectItems value="#{cargosedeController.itemsAvailableSelectOne}"/>
+                                                    </p:selectOneMenu>
+                                                </h:panelGroup>
+                                                <h:panelGroup>
+                                                    <p:outputLabel value="#{bundle.CreateSolicitudingresoLabel_otroCargo}" for="otroCargo" style="font-size: 14px;"/>
+                                                    <br/>
+                                                    <p:inputTextarea rows="1" cols="30" style="text-transform: uppercase" onkeyup="javascript:this.value = this.value.toUpperCase();" id="otroCargoC" value="#{solicitudingresoController.selected.otroCargoC}" title="#{bundle.CreateSolicitudingresoTitle_otroCargo}" />
+                                                </h:panelGroup>
+                                                <h:panelGroup>
+                                                    <p:outputLabel value="#{bundle.CreateSolicitudingresoLabel_codigoEspecialidad}" for="codigoEspecialidad" style="font-size: 14px;"/>
+                                                    <br/>
+                                                    <p:selectOneMenu id="codigoEspecialidadC" value="#{solicitudingresoController.selected.codigoEspecialidadC}" title="#{bundle.CreateSolicitudingresoTitle_codigoEspecialidad}" >
+                                                        <f:selectItems value="#{especialidadsedeController.itemsAvailableSelectOne}"/>
+                                                    </p:selectOneMenu>
+                                                </h:panelGroup>
+                                                <h:panelGroup>
+                                                    <p:outputLabel value="#{bundle.CreateSolicitudingresoLabel_otraEspecialidad}" for="otraEspecialidad" style="font-size: 14px;"/>
+                                                    <br/>
+                                                    <p:inputTextarea rows="1" cols="30" style="text-transform: uppercase" onkeyup="javascript:this.value = this.value.toUpperCase();" id="otraEspecialidadC" value="#{solicitudingresoController.selected.otraEspecialidadC}" title="#{bundle.CreateSolicitudingresoTitle_otraEspecialidad}" />
+                                                </h:panelGroup>
+
+                                                <h:panelGroup>
+                                                    <p:outputLabel value="#{bundle.CreateSolicitudingresoLabel_numeroIdentificacion}" for="numeroIdentificacion" style="font-size: 14px;"/>
+                                                    <br/>
+                                                    <p:inputText id="numeroIdentificacionD" value="#{solicitudingresoController.selected.numeroIdentificacionD}" title="#{bundle.CreateSolicitudingresoTitle_numeroIdentificacion}" />
+                                                </h:panelGroup>
+                                                <h:panelGroup>
+                                                    <p:outputLabel value="#{bundle.CreateSolicitudingresoLabel_nombreUsuario}" for="nombreUsuario" style="font-size: 14px;"/>
+                                                    <br/>
+                                                    <p:inputText style="text-transform: uppercase" onkeyup="javascript:this.value = this.value.toUpperCase();" id="nombreUsuarioD" value="#{solicitudingresoController.selected.nombreUsuarioD}" title="#{bundle.CreateSolicitudingresoTitle_nombreUsuario}" />
+                                                </h:panelGroup>
+                                                <h:panelGroup>
+                                                    <p:outputLabel value="#{bundle.CreateSolicitudingresoLabel_registroMedico}" for="registroMedico" style="font-size: 14px;"/>
+                                                    <br/>
+                                                    <p:inputText id="registroMedicoD" value="#{solicitudingresoController.selected.registroMedicoD}" title="#{bundle.CreateSolicitudingresoTitle_registroMedico}" />
+                                                </h:panelGroup>
+                                                <h:panelGroup>
+                                                    <p:outputLabel value="#{bundle.CreateSolicitudingresoLabel_codigoCargo}" for="codigoCargo" style="font-size: 14px;"/>
+                                                    <br/>
+                                                    <p:selectOneMenu id="codigoCargoD" value="#{solicitudingresoController.selected.codigoCargoD}" title="#{bundle.CreateSolicitudingresoTitle_codigoCargo}" >
+                                                        <f:selectItems value="#{cargosedeController.itemsAvailableSelectOne}"/>
+                                                    </p:selectOneMenu>
+                                                </h:panelGroup>
+                                                <h:panelGroup>
+                                                    <p:outputLabel value="#{bundle.CreateSolicitudingresoLabel_otroCargo}" for="otroCargo" style="font-size: 14px;"/>
+                                                    <br/>
+                                                    <p:inputTextarea rows="1" cols="30" style="text-transform: uppercase" onkeyup="javascript:this.value = this.value.toUpperCase();" id="otroCargoD" value="#{solicitudingresoController.selected.otroCargoD}" title="#{bundle.CreateSolicitudingresoTitle_otroCargo}" />
+                                                </h:panelGroup>
+                                                <h:panelGroup>
+                                                    <p:outputLabel value="#{bundle.CreateSolicitudingresoLabel_codigoEspecialidad}" for="codigoEspecialidad" style="font-size: 14px;"/>
+                                                    <br/>
+                                                    <p:selectOneMenu id="codigoEspecialidadD" value="#{solicitudingresoController.selected.codigoEspecialidadD}" title="#{bundle.CreateSolicitudingresoTitle_codigoEspecialidad}" >
+                                                        <f:selectItems value="#{especialidadsedeController.itemsAvailableSelectOne}"/>
+                                                    </p:selectOneMenu>
+                                                </h:panelGroup>
+                                                <h:panelGroup>
+                                                    <p:outputLabel value="#{bundle.CreateSolicitudingresoLabel_otraEspecialidad}" for="otraEspecialidad" style="font-size: 14px;"/>
+                                                    <br/>
+                                                    <p:inputTextarea rows="1" cols="30" style="text-transform: uppercase" onkeyup="javascript:this.value = this.value.toUpperCase();" id="otraEspecialidadD" value="#{solicitudingresoController.selected.otraEspecialidadD}" title="#{bundle.CreateSolicitudingresoTitle_otraEspecialidad}" />
+                                                </h:panelGroup>
+
+
+                                            </p:panelGrid>
+
+                                            <f:facet name="footer">
+
+                                                <p:commandButton style="font-size: 16px;" id="createButton" icon="ui-icon-plus" process="@all" styleClass="button" ajax="false" action="#{solicitudingresoController.create}" value="#{bundle.CreateSolicitudingresoSaveLink}" />
+                                                <p:commandButton style="font-size: 16px;" styleClass="button" ajax="false" action="/index" value="Regresar" immediate="true"/>
+
+                                            </f:facet>
+
+                                        </p:panel>
+
+
+
+
+                                    </p:panel>
+
+
+
+
+
+
+
+
+
+
+
+                                </p:panelGrid>
+                            </p:fieldset>
+                        </h:form>
+                    </h:panelGrid>
+                </p:layoutUnit>
+
+
+            </p:layout>
+        </h:body>
+    </f:view>
+</html>
+
+
+

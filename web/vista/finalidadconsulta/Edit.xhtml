@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditFinalidadconsultaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditFinalidadconsultaLabel_codigo}" for="codigo" />
+                    <h:inputText id="codigo" value="#{finalidadconsultaController.selected.codigo}" title="#{bundle.EditFinalidadconsultaTitle_codigo}" required="true" requiredMessage="#{bundle.EditFinalidadconsultaRequiredMessage_codigo}"/>
+                    <h:outputLabel value="#{bundle.EditFinalidadconsultaLabel_nombre}" for="nombre" />
+                    <h:inputText id="nombre" value="#{finalidadconsultaController.selected.nombre}" title="#{bundle.EditFinalidadconsultaTitle_nombre}" />
+                    <h:outputLabel value="#{bundle.EditFinalidadconsultaLabel_activo}" for="activo" />
+                    <h:inputText id="activo" value="#{finalidadconsultaController.selected.activo}" title="#{bundle.EditFinalidadconsultaTitle_activo}" />
+                    <h:outputLabel value="#{bundle.EditFinalidadconsultaLabel_fechaRegistro}" for="fechaRegistro" />
+                    <h:inputText id="fechaRegistro" value="#{finalidadconsultaController.selected.fechaRegistro}" title="#{bundle.EditFinalidadconsultaTitle_fechaRegistro}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditFinalidadconsultaLabel_fechaModificacion}" for="fechaModificacion" />
+                    <h:inputText id="fechaModificacion" value="#{finalidadconsultaController.selected.fechaModificacion}" title="#{bundle.EditFinalidadconsultaTitle_fechaModificacion}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditFinalidadconsultaLabel_codigoUsuario}" for="codigoUsuario" />
+                    <h:selectOneMenu id="codigoUsuario" value="#{finalidadconsultaController.selected.codigoUsuario}" title="#{bundle.EditFinalidadconsultaTitle_codigoUsuario}" >
+                        <f:selectItems value="#{usuarioController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditFinalidadconsultaLabel_modificadoPor}" for="modificadoPor" />
+                    <h:selectOneMenu id="modificadoPor" value="#{finalidadconsultaController.selected.modificadoPor}" title="#{bundle.EditFinalidadconsultaTitle_modificadoPor}" >
+                        <f:selectItems value="#{usuarioController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{finalidadconsultaController.update}" value="#{bundle.EditFinalidadconsultaSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditFinalidadconsultaViewLink}"/>
+                <br />
+                <h:commandLink action="#{finalidadconsultaController.prepareList}" value="#{bundle.EditFinalidadconsultaShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditFinalidadconsultaIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

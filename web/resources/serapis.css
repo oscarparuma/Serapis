@@ -1,0 +1,61 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans|Roboto:400,700');
+
+body
+{
+background: url("#{resource['imagenes/backg-index.jpg']}") no-repeat center center fixed;
+-webkit-background-size: cover;
+-moz-background-size: cover;
+-o-background-size: cover;
+background-size: cover;
+color:white;
+}
+
+#fondo {
+    position: relative;
+}
+
+#centrar {
+    position: absolute;
+	top: 50%;
+	left: 50%;
+	height: 50%;
+	width: 60%;
+	margin: 15% -25% -25% -30%;
+}
+
+h1{
+	font-family: 'Roboto';
+	font-size: 36px;
+	color: #fff;
+	text-shadow: 1px 1px 4px rgba(150, 150, 150, 1);
+}
+
+.ui-button-text-only .ui-button-text {
+    font-family: 'Roboto';
+    font-size: 18px;
+    background-image:-webkit-linear-gradient(top, #5DADE2, #002a80);
+    border-color: #a1eef9;
+    color: white;
+    border-color:inherit;
+   
+    cursor:pointer;
+    font-size: 20px;
+    padding:0.3em 1em 0.3em 2.1em;}
+
+    /* botones  texto*/
+
+.footer{
+font-family: Roboto, times;	
+font-size: 1,05em;
+	background-color:#265a99;
+  bottom:0;
+  color:#FFFFFF;
+  left:0;
+  padding:10px 10px 0;
+  position:fixed;
+  text-align:center;
+  width:100%;
+  z-index:100; 
+  margin-right:auto
+
+}

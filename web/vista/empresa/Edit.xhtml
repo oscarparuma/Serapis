@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditEmpresaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditEmpresaLabel_consecutivoEmpresa}" for="consecutivoEmpresa" />
+                    <h:inputText id="consecutivoEmpresa" value="#{empresaController.selected.consecutivoEmpresa}" title="#{bundle.EditEmpresaTitle_consecutivoEmpresa}" required="true" requiredMessage="#{bundle.EditEmpresaRequiredMessage_consecutivoEmpresa}"/>
+                    <h:outputLabel value="#{bundle.EditEmpresaLabel_identificacionEmpresa}" for="identificacionEmpresa" />
+                    <h:inputText id="identificacionEmpresa" value="#{empresaController.selected.identificacionEmpresa}" title="#{bundle.EditEmpresaTitle_identificacionEmpresa}" />
+                    <h:outputLabel value="#{bundle.EditEmpresaLabel_nombreEmpresa}" for="nombreEmpresa" />
+                    <h:inputText id="nombreEmpresa" value="#{empresaController.selected.nombreEmpresa}" title="#{bundle.EditEmpresaTitle_nombreEmpresa}" />
+                    <h:outputLabel value="#{bundle.EditEmpresaLabel_direccion}" for="direccion" />
+                    <h:inputText id="direccion" value="#{empresaController.selected.direccion}" title="#{bundle.EditEmpresaTitle_direccion}" />
+                    <h:outputLabel value="#{bundle.EditEmpresaLabel_telefono}" for="telefono" />
+                    <h:inputText id="telefono" value="#{empresaController.selected.telefono}" title="#{bundle.EditEmpresaTitle_telefono}" />
+                    <h:outputLabel value="#{bundle.EditEmpresaLabel_fechaRegistro}" for="fechaRegistro" />
+                    <h:inputText id="fechaRegistro" value="#{empresaController.selected.fechaRegistro}" title="#{bundle.EditEmpresaTitle_fechaRegistro}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditEmpresaLabel_fechaModificacion}" for="fechaModificacion" />
+                    <h:inputText id="fechaModificacion" value="#{empresaController.selected.fechaModificacion}" title="#{bundle.EditEmpresaTitle_fechaModificacion}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditEmpresaLabel_codigoAsignado}" for="codigoAsignado" />
+                    <h:inputText id="codigoAsignado" value="#{empresaController.selected.codigoAsignado}" title="#{bundle.EditEmpresaTitle_codigoAsignado}" />
+                    <h:outputLabel value="#{bundle.EditEmpresaLabel_activo}" for="activo" />
+                    <h:inputText id="activo" value="#{empresaController.selected.activo}" title="#{bundle.EditEmpresaTitle_activo}" />
+                    <h:outputLabel value="#{bundle.EditEmpresaLabel_nombreContacto}" for="nombreContacto" />
+                    <h:inputText id="nombreContacto" value="#{empresaController.selected.nombreContacto}" title="#{bundle.EditEmpresaTitle_nombreContacto}" />
+                    <h:outputLabel value="#{bundle.EditEmpresaLabel_codigoDepartamento}" for="codigoDepartamento" />
+                    <h:selectOneMenu id="codigoDepartamento" value="#{empresaController.selected.codigoDepartamento}" title="#{bundle.EditEmpresaTitle_codigoDepartamento}" >
+                        <f:selectItems value="#{departamentoController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditEmpresaLabel_codigoMunicipio}" for="codigoMunicipio" />
+                    <h:selectOneMenu id="codigoMunicipio" value="#{empresaController.selected.codigoMunicipio}" title="#{bundle.EditEmpresaTitle_codigoMunicipio}" >
+                        <f:selectItems value="#{municipioController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditEmpresaLabel_codigoUsuario}" for="codigoUsuario" />
+                    <h:selectOneMenu id="codigoUsuario" value="#{empresaController.selected.codigoUsuario}" title="#{bundle.EditEmpresaTitle_codigoUsuario}" >
+                        <f:selectItems value="#{usuarioController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditEmpresaLabel_usuarioModifico}" for="usuarioModifico" />
+                    <h:selectOneMenu id="usuarioModifico" value="#{empresaController.selected.usuarioModifico}" title="#{bundle.EditEmpresaTitle_usuarioModifico}" >
+                        <f:selectItems value="#{usuarioController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{empresaController.update}" value="#{bundle.EditEmpresaSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditEmpresaViewLink}"/>
+                <br />
+                <h:commandLink action="#{empresaController.prepareList}" value="#{bundle.EditEmpresaShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditEmpresaIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

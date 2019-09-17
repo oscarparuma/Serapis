@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewReligionTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewReligionLabel_codigoReligion}"/>
+                    <h:outputText value="#{religionController.selected.codigoReligion}" title="#{bundle.ViewReligionTitle_codigoReligion}"/>
+                    <h:outputText value="#{bundle.ViewReligionLabel_nombreReligion}"/>
+                    <h:outputText value="#{religionController.selected.nombreReligion}" title="#{bundle.ViewReligionTitle_nombreReligion}"/>
+                    <h:outputText value="#{bundle.ViewReligionLabel_activa}"/>
+                    <h:outputText value="#{religionController.selected.activa}" title="#{bundle.ViewReligionTitle_activa}"/>
+                    <h:outputText value="#{bundle.ViewReligionLabel_fechaRegistro}"/>
+                    <h:outputText value="#{religionController.selected.fechaRegistro}" title="#{bundle.ViewReligionTitle_fechaRegistro}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewReligionLabel_fechaModificacion}"/>
+                    <h:outputText value="#{religionController.selected.fechaModificacion}" title="#{bundle.ViewReligionTitle_fechaModificacion}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewReligionLabel_codigoUsuario}"/>
+                    <h:outputText value="#{religionController.selected.codigoUsuario}" title="#{bundle.ViewReligionTitle_codigoUsuario}"/>
+                    <h:outputText value="#{bundle.ViewReligionLabel_codigoUsuarioModifico}"/>
+                    <h:outputText value="#{religionController.selected.codigoUsuarioModifico}" title="#{bundle.ViewReligionTitle_codigoUsuarioModifico}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{religionController.destroyAndView}" value="#{bundle.ViewReligionDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewReligionEditLink}"/>
+                <br />
+                <h:commandLink action="#{religionController.prepareCreate}" value="#{bundle.ViewReligionCreateLink}" />
+                <br />
+                <h:commandLink action="#{religionController.prepareList}" value="#{bundle.ViewReligionShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewReligionIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

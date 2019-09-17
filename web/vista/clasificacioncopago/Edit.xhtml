@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ClasificacioncopagoEditDlg" widgetVar="ClasificacioncopagoEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditClasificacioncopagoTitle}">
+            <h:form id="ClasificacioncopagoEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{clasificacioncopagoController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditClasificacioncopagoLabel_codigoCopago}" for="codigoCopago" />
+                        <p:inputText id="codigoCopago" value="#{clasificacioncopagoController.selected.codigoCopago}" title="#{bundle.EditClasificacioncopagoTitle_codigoCopago}" required="true" requiredMessage="#{bundle.EditClasificacioncopagoRequiredMessage_codigoCopago}"/>
+                        <p:outputLabel value="#{bundle.EditClasificacioncopagoLabel_activo}" for="activo" />
+                        <p:inputText id="activo" value="#{clasificacioncopagoController.selected.activo}" title="#{bundle.EditClasificacioncopagoTitle_activo}" />
+                        <p:outputLabel value="#{bundle.EditClasificacioncopagoLabel_fechaRegistro}" for="fechaRegistro" />
+                        <p:calendar id="fechaRegistro" pattern="MM/dd/yyyy HH:mm:ss" value="#{clasificacioncopagoController.selected.fechaRegistro}" title="#{bundle.EditClasificacioncopagoTitle_fechaRegistro}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditClasificacioncopagoLabel_valorCopago}" for="valorCopago" />
+                        <p:inputText id="valorCopago" value="#{clasificacioncopagoController.selected.valorCopago}" title="#{bundle.EditClasificacioncopagoTitle_valorCopago}" />
+                        <p:outputLabel value="#{bundle.EditClasificacioncopagoLabel_clasificacionCopago}" for="clasificacionCopago" />
+                        <p:inputText id="clasificacionCopago" value="#{clasificacioncopagoController.selected.clasificacionCopago}" title="#{bundle.EditClasificacioncopagoTitle_clasificacionCopago}" />
+                        <p:outputLabel value="#{bundle.EditClasificacioncopagoLabel_totalCopago}" for="totalCopago" />
+                        <p:inputText id="totalCopago" value="#{clasificacioncopagoController.selected.totalCopago}" title="#{bundle.EditClasificacioncopagoTitle_totalCopago}" />
+                        <p:outputLabel value="#{bundle.EditClasificacioncopagoLabel_clasificacionEps}" for="clasificacionEps" />
+                        <p:selectOneMenu id="clasificacionEps" value="#{clasificacioncopagoController.selected.clasificacionEps}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{clasificacionEpsController.itemsAvailableSelectOne}"
+                                           var="clasificacionEpsItem"
+                                           itemValue="#{clasificacionEpsItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditClasificacioncopagoLabel_codigoEps}" for="codigoEps" />
+                        <p:selectOneMenu id="codigoEps" value="#{clasificacioncopagoController.selected.codigoEps}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{epsController.itemsAvailableSelectOne}"
+                                           var="codigoEpsItem"
+                                           itemValue="#{codigoEpsItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditClasificacioncopagoLabel_codigoNivelCopago}" for="codigoNivelCopago" />
+                        <p:selectOneMenu id="codigoNivelCopago" value="#{clasificacioncopagoController.selected.codigoNivelCopago}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{nivelCopagoController.itemsAvailableSelectOne}"
+                                           var="codigoNivelCopagoItem"
+                                           itemValue="#{codigoNivelCopagoItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditClasificacioncopagoLabel_tipoExamen}" for="tipoExamen" />
+                        <p:selectOneMenu id="tipoExamen" value="#{clasificacioncopagoController.selected.tipoExamen}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{tipoexamenController.itemsAvailableSelectOne}"
+                                           var="tipoExamenItem"
+                                           itemValue="#{tipoExamenItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditClasificacioncopagoLabel_codigoUsuario}" for="codigoUsuario" />
+                        <p:selectOneMenu id="codigoUsuario" value="#{clasificacioncopagoController.selected.codigoUsuario}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{usuarioController.itemsAvailableSelectOne}"
+                                           var="codigoUsuarioItem"
+                                           itemValue="#{codigoUsuarioItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{clasificacioncopagoController.update}" value="#{bundle.Save}" update="display,:ClasificacioncopagoListForm:datalist,:growl" oncomplete="handleSubmit(args, 'ClasificacioncopagoEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="ClasificacioncopagoEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

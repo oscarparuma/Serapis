@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/templateIngreso.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditConsultorioTitle}"></h:outputText>
+        </ui:define>
+        <br></br><br></br>
+        <ui:define name="body">
+            <h:form>
+                <p:panel>
+                    <div align="center">
+                        <div class="container text-center">   
+                            <div class="row">
+                                <div class="col-sm-3 well">
+                                    <p:panel header="#{bundle.consSEde}" >
+                                        <br></br><br></br>
+                                        <div align="center">
+                                            <p:panel>
+                                                <p:panelGrid columns="2">
+                                                    <p:outputLabel value="#{bundle.CreateConsultorioLabel_nombreConsultorio}" for="nombreConsultorio" />
+                                                    <p:inputText size="30" style="text-transform: uppercase" onkeyup="javascript:this.value = this.value.toUpperCase();" id="nombreConsultorio" 
+                                                                 value="#{consultorioController.selected.nombreConsultorio}" required="true" requiredMessage="#{bundle.CreateConsultorioRequiredMessage_nombreConsultorio}"
+                                                                 title="#{bundle.CreateConsultorioTitle_nombreConsultorio}" />
+                                                    <p:outputLabel value="#{bundle.CreateConsultorioLabel_ubicacion}" for="ubicacion" />
+                                                    <p:inputText size="30"  style="text-transform: uppercase" onkeyup="javascript:this.value = this.value.toUpperCase();" id="ubicacion" 
+                                                                 value="#{consultorioController.selected.ubicacion}"  required="true" requiredMessage="#{bundle.CreateConsultorioRequiredMessage_ubicacion}"
+                                                                 title="#{bundle.CreateConsultorioTitle_ubicacion}" />
+                                                    <p:outputLabel value="#{bundle.CreateConsutorio_activo}" for="activo" />
+                                                    <p:selectOneMenu style="min-width: 230px;" id="activo" value="#{consultorioController.selected.activo}" styleClass="input" required="true" requiredMessage="#{bundle.CreateConsultorioRequiredMessage_activo}">
+                                                        <f:selectItem noSelectionOption="true" itemLabel="   "/>                       
+                                                        <f:selectItem itemValue="S" itemLabel="SI"/>
+                                                        <f:selectItem itemValue="N" itemLabel="NO"/>
+                                                    </p:selectOneMenu> 
+                                                </p:panelGrid>
+                                                <f:facet name="footer">
+                                                    <br></br>
+                                                    <p:panel>
+                                                        <div align="center">
+                                                            <p:commandButton style="margin-right: 10px;" id="createButton" icon="ui-icon-plus" process="@all" styleClass="button" ajax="false" action="#{consultorioController.update}" value="#{bundle.CreateUsuarioSaveLink}" />
+                                                            <p:commandButton id="editButton" icon="ui-icon-circle-arrow-w" process="@all" styleClass="button" ajax="false" action="#{consultorioController.prepareListXConsultorio(usuarioController.selected)}" value="#{bundle.CreateSedeShowAllLink}" immediate="true"/>
+                                                        </div>
+                                                    </p:panel>
+                                                </f:facet>
+                                            </p:panel>
+                                            <br></br><br></br><br></br>
+                                            <h:panelGroup>
+                                                    <p:graphicImage value="/imagenes/ImagSisitema/l-serapis.png" />
+                                            </h:panelGroup>
+                                        </div>
+                                    </p:panel>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </p:panel>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

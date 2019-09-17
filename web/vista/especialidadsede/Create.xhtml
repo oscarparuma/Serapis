@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateEspecialidadsedeTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateEspecialidadsedeLabel_codigoEspecialidad}" for="codigoEspecialidad" />
+                    <h:inputText id="codigoEspecialidad" value="#{especialidadsedeController.selected.codigoEspecialidad}" title="#{bundle.CreateEspecialidadsedeTitle_codigoEspecialidad}" required="true" requiredMessage="#{bundle.CreateEspecialidadsedeRequiredMessage_codigoEspecialidad}"/>
+                    <h:outputLabel value="#{bundle.CreateEspecialidadsedeLabel_nombreEspecialidad}" for="nombreEspecialidad" />
+                    <h:inputText id="nombreEspecialidad" value="#{especialidadsedeController.selected.nombreEspecialidad}" title="#{bundle.CreateEspecialidadsedeTitle_nombreEspecialidad}" />
+                    <h:outputLabel value="#{bundle.CreateEspecialidadsedeLabel_activo}" for="activo" />
+                    <h:inputText id="activo" value="#{especialidadsedeController.selected.activo}" title="#{bundle.CreateEspecialidadsedeTitle_activo}" />
+                    <h:outputLabel value="#{bundle.CreateEspecialidadsedeLabel_fechaRegistro}" for="fechaRegistro" />
+                    <h:inputText id="fechaRegistro" value="#{especialidadsedeController.selected.fechaRegistro}" title="#{bundle.CreateEspecialidadsedeTitle_fechaRegistro}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreateEspecialidadsedeLabel_fechaModificacion}" for="fechaModificacion" />
+                    <h:inputText id="fechaModificacion" value="#{especialidadsedeController.selected.fechaModificacion}" title="#{bundle.CreateEspecialidadsedeTitle_fechaModificacion}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreateEspecialidadsedeLabel_codigoSede}" for="codigoSede" />
+                    <h:selectOneMenu id="codigoSede" value="#{especialidadsedeController.selected.codigoSede}" title="#{bundle.CreateEspecialidadsedeTitle_codigoSede}" >
+                        <f:selectItems value="#{sedeController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateEspecialidadsedeLabel_codigoUsuario}" for="codigoUsuario" />
+                    <h:selectOneMenu id="codigoUsuario" value="#{especialidadsedeController.selected.codigoUsuario}" title="#{bundle.CreateEspecialidadsedeTitle_codigoUsuario}" >
+                        <f:selectItems value="#{usuarioController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateEspecialidadsedeLabel_codigousUarioModifico}" for="codigousUarioModifico" />
+                    <h:selectOneMenu id="codigousUarioModifico" value="#{especialidadsedeController.selected.codigousUarioModifico}" title="#{bundle.CreateEspecialidadsedeTitle_codigousUarioModifico}" >
+                        <f:selectItems value="#{usuarioController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{especialidadsedeController.create}" value="#{bundle.CreateEspecialidadsedeSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{especialidadsedeController.prepareList}" value="#{bundle.CreateEspecialidadsedeShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateEspecialidadsedeIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

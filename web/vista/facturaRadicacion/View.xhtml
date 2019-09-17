@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewFacturaRadicacionTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+
+            <h:form>
+                <p:panel header="#{bundle.datosAseguradora}">
+                    <p:panelGrid columns="2">
+                        <h:outputText value="#{bundle.ViewFacturaRadicacionLabel_codigoEps}"/>
+                        <h:outputText value=" #{facturaRadicacionController.selected.codigoEps}"/>
+                        <h:outputText value="#{bundle.ViewEpsLabel_identificacionEps}"/>
+                        <h:outputText value="#{facturaRadicacionController.selected.codigoEps.identificacionEps}"/>
+                        <h:outputText value="#{bundle.ViewEpsLabel_direccion}"/>
+                        <h:outputText value="#{facturaRadicacionController.selected.codigoEps.direccion}" />
+                        <h:outputText value="#{bundle.ViewEpsLabel_telefono}"/>
+                        <h:outputText value="#{facturaRadicacionController.selected.codigoEps.telefono}"/>
+                        <h:outputText value="#{bundle.ViewEpsLabel_codigoMunicipio}"/>
+                        <h:outputText value=" #{facturaRadicacionController.selected.codigoEps.codigoMunicipio}"/>
+                    </p:panelGrid>
+                    <f:facet name="footer">
+                        <p:commandButton  id="editButton" icon="ui-icon-circle-arrow-ws" process="@all" styleClass="button" ajax="false" action="#{facturaRadicacionController.prepareListRadicacionFacturasList()}"  value="#{bundle.RegistrarFact}" />
+                      
+                    </f:facet>
+                </p:panel>
+
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.AppName}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+
+            <h:form>
+                <div align="center">
+                <p:panelGrid columns="1" >
+                    <p:panel header="#{bundle.ListFormulamedicaTitle}  #{formulamedicaController.actAgenCit.codigoPersonaCita}">
+                        <br></br>
+                        <p:panelGrid columns="2">
+                            <p:outputLabel value="#{bundle.CreateFormulamedicaLabel_codigoClasificacionMedicamento}" for="codigoClasificacionMedicamento" />
+                            <p:selectOneMenu style="min-width: 280px;" id="codigoClasificacionMedicamento" value="#{formulamedicaController.selected.codigoClasificacionMedicamento}" styleClass="input">
+                                <f:selectItem noSelectionOption="true" itemLabel="-Seleccione- " />
+                                <f:selectItems value="#{clasificacionmedicamentoController.itemsAvailableSelectOne}"/>
+                                <p:ajax process="codigoClasificacionMedicamento"  update="codigoMedicamento" event="change" />
+                            </p:selectOneMenu>
+                            <p:outputLabel value="#{bundle.CreateFormulamedicaLabel_codigoMedicamento}" for="codigoMedicamento" />
+                            <p:selectOneMenu style="min-width: 280px; max-width: 800px;" filter="true" filterMatchMode="contains" id="codigoMedicamento" required="true" requiredMessage="#{bundle.CreateFormulamedicaRequiredMessage_codigoMedicamento}" value="#{formulamedicaController.selected.codigoMedicamento}" styleClass="input"  >
+                                <f:selectItem noSelectionOption="true" itemLabel="-Seleccione- " />
+                                <f:selectItems value="#{formulamedicaController.selected.codigoClasificacionMedicamento.plmList}"/>
+                                <p:ajax  process="codigoMedicamento" event="change" />
+                            </p:selectOneMenu>
+                            <p:outputLabel  value="#{bundle.CreateFormulamedicaLabel_cantidad}" for="cantidad" />
+                            <p:inputText size="40" maxlength="2" id="cantidad" required="true" requiredMessage="#{bundle.CreateFormulamedicaRequiredMessage_cantidad}" value="#{formulamedicaController.selected.cantidad}"  />
+                            <p:outputLabel value="#{bundle.CreateFormulamedicaLabel_dosificacionMedicamento}" for="dosificacionMedicamento" />
+                            <p:inputTextarea rows="4" cols="40" id="dosificacionMedicamento" required="true" requiredMessage="#{bundle.CreateFormulamedicaRequiredMessage_dosificacionMedicamento}" value="#{formulamedicaController.selected.dosificacionMedicamento}"/>
+                        </p:panelGrid>
+                        <div align="center">
+                            <br></br>
+                            <p:panel>
+                        <p:commandButton style="margin-right: 10px;" icon="ui-icon-disk" action="#{formulamedicaController.create}" value="#{bundle.CreateFormulamedicaSaveLink}" />
+                        <p:commandButton icon="ui-icon-circle-arrow-w" action="#{formulamedicaController.prepareList}" value="#{bundle.CreateFormulamedicaShowAllLink}" immediate="true"/>
+                    </p:panel>
+                            </div>
+                    </p:panel>
+
+                </p:panelGrid>
+                    <br></br><br></br>
+                                            <h:panelGroup>
+                                                    <p:graphicImage value="/imagenes/ImagSisitema/l-serapis.png" />
+                                            </h:panelGroup>
+
+              </div>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

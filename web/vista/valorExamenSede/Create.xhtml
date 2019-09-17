@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateValorExamenSedeTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateValorExamenSedeLabel_codigoValorExamen}" for="codigoValorExamen" />
+                    <h:inputText id="codigoValorExamen" value="#{valorExamenSedeController.selected.codigoValorExamen}" title="#{bundle.CreateValorExamenSedeTitle_codigoValorExamen}" required="true" requiredMessage="#{bundle.CreateValorExamenSedeRequiredMessage_codigoValorExamen}"/>
+                    <h:outputLabel value="#{bundle.CreateValorExamenSedeLabel_fechaRegistro}" for="fechaRegistro" />
+                    <h:inputText id="fechaRegistro" value="#{valorExamenSedeController.selected.fechaRegistro}" title="#{bundle.CreateValorExamenSedeTitle_fechaRegistro}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreateValorExamenSedeLabel_codigoUsuario}" for="codigoUsuario" />
+                    <h:inputText id="codigoUsuario" value="#{valorExamenSedeController.selected.codigoUsuario}" title="#{bundle.CreateValorExamenSedeTitle_codigoUsuario}" />
+                    <h:outputLabel value="#{bundle.CreateValorExamenSedeLabel_valorAnterior}" for="valorAnterior" />
+                    <h:inputText id="valorAnterior" value="#{valorExamenSedeController.selected.valorAnterior}" title="#{bundle.CreateValorExamenSedeTitle_valorAnterior}" />
+                    <h:outputLabel value="#{bundle.CreateValorExamenSedeLabel_valor}" for="valor" />
+                    <h:inputText id="valor" value="#{valorExamenSedeController.selected.valor}" title="#{bundle.CreateValorExamenSedeTitle_valor}" />
+                    <h:outputLabel value="#{bundle.CreateValorExamenSedeLabel_codigoProcedimintoSede}" for="codigoProcedimintoSede" />
+                    <h:selectOneMenu id="codigoProcedimintoSede" value="#{valorExamenSedeController.selected.codigoProcedimintoSede}" title="#{bundle.CreateValorExamenSedeTitle_codigoProcedimintoSede}" >
+                        <f:selectItems value="#{procedimientosedeController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateValorExamenSedeLabel_codigoSede}" for="codigoSede" />
+                    <h:selectOneMenu id="codigoSede" value="#{valorExamenSedeController.selected.codigoSede}" title="#{bundle.CreateValorExamenSedeTitle_codigoSede}" >
+                        <f:selectItems value="#{sedeController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{valorExamenSedeController.create}" value="#{bundle.CreateValorExamenSedeSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{valorExamenSedeController.prepareList}" value="#{bundle.CreateValorExamenSedeShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateValorExamenSedeIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

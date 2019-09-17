@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.AppName}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+          
+            <h:form >
+                <p:panel header="#{bundle.ListIndicacionmedicaTitle}" style=" width: 600px;">
+
+                    <p:panelGrid columns="2">
+
+                        <p:outputLabel value="#{bundle.CreateIndicacionmedicaLabel_recomendacionesMedicas}" for="recomendacionesMedicas" />
+                        <p:inputTextarea rows="2" cols="50" id="recomendacionesMedicas" value="#{indicacionmedicaController.selected.recomendacionesMedicas}" title="#{bundle.CreateIndicacionmedicaTitle_recomendacionesMedicas}" />
+
+
+                    </p:panelGrid>
+                    <p:panel>
+
+                        <p:commandButton id="createButton" icon="ui-icon-plus" process="@all" styleClass="button" ajax="false" action="#{indicacionmedicaController.update}" value="#{bundle.EditIndicacionmedicaSaveLink}"/>
+                        <p:commandButton id="editButton" icon="ui-icon-plus" process="@all" styleClass="button" ajax="false" action="#{indicacionmedicaController.prepareList}" value="#{bundle.EditIndicacionmedicaShowAllLink}" immediate="true"/>
+
+                    </p:panel>
+
+
+                </p:panel>
+            </h:form>
+            
+            
+        </ui:define>
+    </ui:composition>
+
+</html>

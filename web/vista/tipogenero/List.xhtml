@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListTipogeneroTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListTipogeneroEmpty}" rendered="#{tipogeneroController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{tipogeneroController.items.rowCount > 0}">
+                    <h:outputText value="#{tipogeneroController.pagination.pageFirstItem + 1}..#{tipogeneroController.pagination.pageLastItem + 1}/#{tipogeneroController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{tipogeneroController.previous}" value="#{bundle.Previous} #{tipogeneroController.pagination.pageSize}" rendered="#{tipogeneroController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{tipogeneroController.next}" value="#{bundle.Next} #{tipogeneroController.pagination.pageSize}" rendered="#{tipogeneroController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{tipogeneroController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListTipogeneroTitle_codigoGenero}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.codigoGenero}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListTipogeneroTitle_nombreGenero}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.nombreGenero}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListTipogeneroTitle_activo}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.activo}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{tipogeneroController.prepareView}" value="#{bundle.ListTipogeneroViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{tipogeneroController.prepareEdit}" value="#{bundle.ListTipogeneroEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{tipogeneroController.destroy}" value="#{bundle.ListTipogeneroDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{tipogeneroController.prepareCreate}" value="#{bundle.ListTipogeneroCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListTipogeneroIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

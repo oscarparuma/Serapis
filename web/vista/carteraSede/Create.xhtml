@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.AppName}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+
+            <h:form>
+                <div align="center">
+                    <div class="container text-center">   
+                        <div class="row">
+                            <div class="col-sm-3 well">
+                                <p:panel header=" #{facturacionController.selected.codigoSede}" >
+                                    <p:panelGrid columns="1" >
+                                        <p:panel>
+                                            <p:column>
+                                                <p:panelGrid columns="4">
+                                                    <h:panelGroup>
+                                                        <p:outputLabel  value="#{bundle.NumIdenti}"/>
+                                                        <br/><br/>
+                                                        <p:outputLabel value="#{facturacionController.selected.numeroDocumento}"/> 
+                                                    </h:panelGroup>
+                                                    <h:panelGroup>
+                                                        <p:outputLabel  value="#{bundle.nomPaciente}"/>
+                                                        <br/><br/>  
+                                                        <p:outputLabel value=" #{facturacionController.selected.codigoPersona}"/>
+                                                    </h:panelGroup>
+                                                    <h:panelGroup>
+                                                        <p:outputLabel  value="#{bundle.clasEps}"/>
+                                                        <br/><br/>
+                                                        <p:outputLabel value=" #{facturacionController.selected.codigoEps}"/>
+                                                    </h:panelGroup>
+                                                    <h:panelGroup>                            
+                                                        <p:outputLabel  value="#{bundle.CreateCarteraSedeLabel_codigoMedioPago}" for="codigoMedioPago" />
+                                                        <br/><br/>
+                                                        <p:selectOneMenu id="codigoMedioPago" value="#{carteraSedeController.selected.codigoMedioPago}" required="true" requiredMessage="#{bundle.CreateCarteraSedeRequiredMessage_codigoMedioPago}">
+                                                            <f:selectItems value="#{medioPagoController.itemsAvailableSelectOne}"/>
+                                                        </p:selectOneMenu>
+                                                    </h:panelGroup>
+                                                    <h:panelGroup>
+                                                        <h:outputLabel   value="#{bundle.nivelAfil}"  />
+                                                        <br/><br/>
+                                                        <h:outputText value="#{facturacionController.selected.codigoNivelCopago}"/>
+                                                    </h:panelGroup>
+                                                    <h:panelGroup>
+                                                        <p:outputLabel  value="#{bundle.valConsul}">
+                                                            <f:convertNumber pattern="$ #,###.00" />                           
+                                                        </p:outputLabel>
+                                                        <br/><br/>
+                                                        <h:outputText value="#{facturacionController.selected.valorUnitario}">
+                                                            <f:convertNumber pattern="$ #,###.00" />
+                                                        </h:outputText>
+                                                    </h:panelGroup>
+                                                    <h:panelGroup>
+                                                        <p:outputLabel value="#{bundle.valCuotModer}"/>
+                                                        <br/><br/>
+                                                        <h:outputText value="#{facturacionController.selected.valorCopago}">
+                                                            <f:convertNumber pattern="$ #,###.00" />
+                                                        </h:outputText>
+                                                    </h:panelGroup>
+
+                                                    <h:panelGroup>
+                                                        <p:panel header="#{bundle.CreateCarteraSedeLabel_valorCancelado}">
+                                                            <p:inputNumber id="valorCancelado" required="true" requiredMessage="#{bundle.CreateCarteraSedeRequiredMessage_valorCancelado}" value="#{carteraSedeController.selected.valorCancelado}"/>
+                                                        </p:panel>
+                                                    </h:panelGroup>
+
+                                                </p:panelGrid>
+                                                <p:panel>
+                                                    <p:commandButton style="margin-right: 10px;" id="createButton" icon="ui-icon-plus" process="@all" styleClass="button" ajax="false" action="#{carteraSedeController.create}" value="#{bundle.botRegistrar}" />
+                                                    <p:commandButton id="editButton" icon="ui-icon-pencil" process="@all" styleClass="button" ajax="false" action="#{facturacionController.prepareListFacturacionXSedes(usuarioController.selected)}" value="#{bundle.CreateFacturacionShowAllLink}" immediate="true"/>
+                                                </p:panel>
+                                            </p:column>
+                                        </p:panel>
+                                    </p:panelGrid>
+                                </p:panel>
+                            </div> 
+                        </div> 
+                    </div> 
+                </div> 
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

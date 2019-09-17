@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditBarrioTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditBarrioLabel_codigoBarrio}" for="codigoBarrio" />
+                    <h:inputText id="codigoBarrio" value="#{barrioController.selected.codigoBarrio}" title="#{bundle.EditBarrioTitle_codigoBarrio}" required="true" requiredMessage="#{bundle.EditBarrioRequiredMessage_codigoBarrio}"/>
+                    <h:outputLabel value="#{bundle.EditBarrioLabel_nombreBarrio}" for="nombreBarrio" />
+                    <h:inputText id="nombreBarrio" value="#{barrioController.selected.nombreBarrio}" title="#{bundle.EditBarrioTitle_nombreBarrio}" />
+                    <h:outputLabel value="#{bundle.EditBarrioLabel_activo}" for="activo" />
+                    <h:inputText id="activo" value="#{barrioController.selected.activo}" title="#{bundle.EditBarrioTitle_activo}" />
+                    <h:outputLabel value="#{bundle.EditBarrioLabel_fechaRegistro}" for="fechaRegistro" />
+                    <h:inputText id="fechaRegistro" value="#{barrioController.selected.fechaRegistro}" title="#{bundle.EditBarrioTitle_fechaRegistro}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditBarrioLabel_fechaModificacion}" for="fechaModificacion" />
+                    <h:inputText id="fechaModificacion" value="#{barrioController.selected.fechaModificacion}" title="#{bundle.EditBarrioTitle_fechaModificacion}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditBarrioLabel_codigoLocalidad}" for="codigoLocalidad" />
+                    <h:selectOneMenu id="codigoLocalidad" value="#{barrioController.selected.codigoLocalidad}" title="#{bundle.EditBarrioTitle_codigoLocalidad}" >
+                        <f:selectItems value="#{localidadController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditBarrioLabel_codigoMunicipio}" for="codigoMunicipio" />
+                    <h:selectOneMenu id="codigoMunicipio" value="#{barrioController.selected.codigoMunicipio}" title="#{bundle.EditBarrioTitle_codigoMunicipio}" >
+                        <f:selectItems value="#{municipioController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditBarrioLabel_codigoUpz}" for="codigoUpz" />
+                    <h:selectOneMenu id="codigoUpz" value="#{barrioController.selected.codigoUpz}" title="#{bundle.EditBarrioTitle_codigoUpz}" >
+                        <f:selectItems value="#{upzController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditBarrioLabel_codigoUsuario}" for="codigoUsuario" />
+                    <h:selectOneMenu id="codigoUsuario" value="#{barrioController.selected.codigoUsuario}" title="#{bundle.EditBarrioTitle_codigoUsuario}" >
+                        <f:selectItems value="#{usuarioController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditBarrioLabel_codigousuarioModifico}" for="codigousuarioModifico" />
+                    <h:selectOneMenu id="codigousuarioModifico" value="#{barrioController.selected.codigousuarioModifico}" title="#{bundle.EditBarrioTitle_codigousuarioModifico}" >
+                        <f:selectItems value="#{usuarioController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{barrioController.update}" value="#{bundle.EditBarrioSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditBarrioViewLink}"/>
+                <br />
+                <h:commandLink action="#{barrioController.prepareList}" value="#{bundle.EditBarrioShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditBarrioIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

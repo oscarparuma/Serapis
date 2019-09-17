@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.AppName}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <p:panel >
+                <h:form id="DiagnosticoIngresoListForm">
+
+                    <p:panelGrid columns="2" >
+                        <p:panel header="#{bundle.DiagnosticoIngreso} #{diagnosticoIngresoController.actAgenCit.codigoPersonaCita}" style=" width: 1450px; border: solid 1px;">
+                            <p:dataTable id="datalist" value="#{diagnosticoIngresoController.items}" var="item" emptyMessage=" ">
+                                <p:column >
+                                    <f:facet name="header">
+                                        <h:outputText value="#{bundle.ListDiagnosticoIngresoTitle_codigoCie10}" style="font-size: 14px;"/>
+                                    </f:facet>
+                                    <h:panelGrid columns="1">
+                                        <p:panelGrid columns="2" >
+
+                                            <h:outputText value="#{bundle.ListDiagnosticoIngresoTitle_codigoCie10}" style="font-size: 14px;"/>
+                                            <h:outputText value="#{bundle.ListDiagnosticoIngresoTitle_clasificacionCie10}" style="font-size: 14px;"/>
+                                            <h:outputText value=" #{item.codigoCie10}"/>                                            
+                                            <h:outputText value=" #{item.clasificacionCie10}"/>  
+                                            <h:outputText value=" #{item.codigoCie10A}"/>                                            
+                                            <h:outputText value=" #{item.clasificacionCie10A}"/> 
+                                            <h:outputText value=" #{item.codigoCie10B}"/>                                            
+                                            <h:outputText value=" #{item.clasificacionCie10B}"/> 
+                                            <h:outputText value=" #{item.codigoCie10C}"/>                                            
+                                            <h:outputText value=" #{item.clasificacionCie10C}"/> 
+                                            <h:outputText value=" #{item.codigoCie10D}"/>                                            
+                                            <h:outputText value=" #{item.clasificacionCie10D}"/> 
+                                            <h:outputText value=" #{item.codigoCie10E}"/>                                            
+                                            <h:outputText value=" #{item.clasificacionCie10E}"/> 
+                                            <h:outputText value=" #{item.codigoCie10F}"/>                                            
+                                            <h:outputText value=" #{item.clasificacionCie10F}"/> 
+                                            <h:outputText value=" #{item.codigoCie10G}"/>                                            
+                                            <h:outputText value=" #{item.clasificacionCie10G}"/> 
+                                        </p:panelGrid>
+                                    </h:panelGrid>
+                                </p:column>
+                                <p:column width="110">
+                                    <f:facet name="header">
+                                        <h:outputText value="#{bundle.ListDiagnosticoIngresoTitle_fechaRegistro}"/>
+                                    </f:facet>
+                                    <h:outputText value="#{item.fechaRegistro}">
+                                        <f:convertDateTime pattern="yyyy-MM-dd" />
+                                    </h:outputText>
+                                </p:column>
+                                <p:column width="150">
+                                    <f:facet name="header">
+                                        <h:outputText value="#{bundle.ListDiagnosticoIngresoTitle_codigoUsuario}" />
+                                    </f:facet>
+                                    <h:outputText style="text-transform: uppercase" value=" #{item.codigoUsuario}"/>
+                                </p:column>
+                                <p:column width="120" rendered="#{citapersonaController.selected.finalizada=='N'}" >
+                                    <f:facet name="header">
+                                        <h:outputText value="#{bundle.Seleccione}"/>
+                                    </f:facet>
+                                    <p:commandButton  id="editButton9" icon="ui-icon-plus" process="@all" styleClass="button" ajax="false" action="#{diagnosticoIngresoController.prepareEditDiagnosticoIngreso(item)}"  value="#{bundle.Modificar}"/>
+                                </p:column>
+                                <f:facet name="footer">
+                                    <p:commandButton style="margin-right: 10px;" rendered="#{citapersonaController.selected.botDiag=='S'}" id="createButtonC" icon="ui-icon-plus" process="@all"  ajax="false" action="#{diagnosticoIngresoController.prepareCreate}" value="#{bundle.RegistrarDiagnostico}" />
+                                    <p:commandButton  style="margin-right: 10px;" id="editButtonMD" icon="ui-icon-plus" process="@all" styleClass="button" ajax="false" action="#{citapersonaController.prepareListExamenesApoyoDiagnosticoProcedimientoList}"  value="#{bundle.ExamApoyDiag}" />
+                                    <p:commandButton id="editButtonE"   icon="fa-arrow-left" process="@all" styleClass="button" ajax="false" action="/vista/examenfisico/List" value="#{bundle.Regresar}" immediate="true"/>
+
+                                </f:facet>
+
+                            </p:dataTable>
+                        </p:panel>
+                    </p:panelGrid>
+
+
+
+
+
+
+                </h:form>
+            </p:panel>
+
+        </ui:define>
+    </ui:composition>
+
+</html>

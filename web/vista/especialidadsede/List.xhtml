@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListEspecialidadsedeTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListEspecialidadsedeEmpty}" rendered="#{especialidadsedeController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{especialidadsedeController.items.rowCount > 0}">
+                    <h:outputText value="#{especialidadsedeController.pagination.pageFirstItem + 1}..#{especialidadsedeController.pagination.pageLastItem + 1}/#{especialidadsedeController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{especialidadsedeController.previous}" value="#{bundle.Previous} #{especialidadsedeController.pagination.pageSize}" rendered="#{especialidadsedeController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{especialidadsedeController.next}" value="#{bundle.Next} #{especialidadsedeController.pagination.pageSize}" rendered="#{especialidadsedeController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{especialidadsedeController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEspecialidadsedeTitle_codigoEspecialidad}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.codigoEspecialidad}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEspecialidadsedeTitle_nombreEspecialidad}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.nombreEspecialidad}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEspecialidadsedeTitle_activo}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.activo}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEspecialidadsedeTitle_fechaRegistro}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.fechaRegistro}">
+                                <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEspecialidadsedeTitle_fechaModificacion}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.fechaModificacion}">
+                                <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEspecialidadsedeTitle_codigoSede}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.codigoSede}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEspecialidadsedeTitle_codigoUsuario}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.codigoUsuario}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEspecialidadsedeTitle_codigousUarioModifico}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.codigousUarioModifico}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{especialidadsedeController.prepareView}" value="#{bundle.ListEspecialidadsedeViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{especialidadsedeController.prepareEdit}" value="#{bundle.ListEspecialidadsedeEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{especialidadsedeController.destroy}" value="#{bundle.ListEspecialidadsedeDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{especialidadsedeController.prepareCreate}" value="#{bundle.ListEspecialidadsedeCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListEspecialidadsedeIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

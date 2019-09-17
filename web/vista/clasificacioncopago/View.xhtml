@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewClasificacioncopagoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewClasificacioncopagoLabel_codigoCopago}"/>
+                    <h:outputText value="#{clasificacioncopagoController.selected.codigoCopago}" title="#{bundle.ViewClasificacioncopagoTitle_codigoCopago}"/>
+                    <h:outputText value="#{bundle.ViewClasificacioncopagoLabel_activo}"/>
+                    <h:outputText value="#{clasificacioncopagoController.selected.activo}" title="#{bundle.ViewClasificacioncopagoTitle_activo}"/>
+                    <h:outputText value="#{bundle.ViewClasificacioncopagoLabel_fechaRegistro}"/>
+                    <h:outputText value="#{clasificacioncopagoController.selected.fechaRegistro}" title="#{bundle.ViewClasificacioncopagoTitle_fechaRegistro}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewClasificacioncopagoLabel_valorCopago}"/>
+                    <h:outputText value="#{clasificacioncopagoController.selected.valorCopago}" title="#{bundle.ViewClasificacioncopagoTitle_valorCopago}"/>
+                    <h:outputText value="#{bundle.ViewClasificacioncopagoLabel_clasificacionCopago}"/>
+                    <h:outputText value="#{clasificacioncopagoController.selected.clasificacionCopago}" title="#{bundle.ViewClasificacioncopagoTitle_clasificacionCopago}"/>
+                    <h:outputText value="#{bundle.ViewClasificacioncopagoLabel_totalCopago}"/>
+                    <h:outputText value="#{clasificacioncopagoController.selected.totalCopago}" title="#{bundle.ViewClasificacioncopagoTitle_totalCopago}"/>
+                    <h:outputText value="#{bundle.ViewClasificacioncopagoLabel_clasificacionEps}"/>
+                    <h:outputText value="#{clasificacioncopagoController.selected.clasificacionEps}" title="#{bundle.ViewClasificacioncopagoTitle_clasificacionEps}"/>
+                    <h:outputText value="#{bundle.ViewClasificacioncopagoLabel_codigoEps}"/>
+                    <h:outputText value="#{clasificacioncopagoController.selected.codigoEps}" title="#{bundle.ViewClasificacioncopagoTitle_codigoEps}"/>
+                    <h:outputText value="#{bundle.ViewClasificacioncopagoLabel_codigoNivelCopago}"/>
+                    <h:outputText value="#{clasificacioncopagoController.selected.codigoNivelCopago}" title="#{bundle.ViewClasificacioncopagoTitle_codigoNivelCopago}"/>
+                    <h:outputText value="#{bundle.ViewClasificacioncopagoLabel_tipoExamen}"/>
+                    <h:outputText value="#{clasificacioncopagoController.selected.tipoExamen}" title="#{bundle.ViewClasificacioncopagoTitle_tipoExamen}"/>
+                    <h:outputText value="#{bundle.ViewClasificacioncopagoLabel_codigoUsuario}"/>
+                    <h:outputText value="#{clasificacioncopagoController.selected.codigoUsuario}" title="#{bundle.ViewClasificacioncopagoTitle_codigoUsuario}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{clasificacioncopagoController.destroyAndView}" value="#{bundle.ViewClasificacioncopagoDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewClasificacioncopagoEditLink}"/>
+                <br />
+                <h:commandLink action="#{clasificacioncopagoController.prepareCreate}" value="#{bundle.ViewClasificacioncopagoCreateLink}" />
+                <br />
+                <h:commandLink action="#{clasificacioncopagoController.prepareList}" value="#{bundle.ViewClasificacioncopagoShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewClasificacioncopagoIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

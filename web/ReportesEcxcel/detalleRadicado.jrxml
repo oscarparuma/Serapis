@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="detalleRadicado" language="groovy" pageWidth="2122" pageHeight="670" columnWidth="2082" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" isIgnorePagination="true" uuid="cd0a28c6-d2d6-43c0-8e48-4b9fd34b54a0">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="fechaInicial" class="java.sql.Timestamp"/>
+	<parameter name="fechaFinal" class="java.sql.Timestamp"/>
+	<parameter name="codigoSede" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT     sede.nombreSede, ListaRadicadoEps.facturaNumero, facturacion.codigoFactura, datospersona.codigoDocumentoIdentidad, datospersona.numeroDocumentoIdentidad, datospersona.Apellidos,
+                      datospersona.Nombres, datospersona.segundoApellido, datospersona.segundoNombre, datospersona.genero, DetalleRadicadoSede.valorCanceladoEps, DetalleRadicadoSede.saldoTotal,
+                      DetalleRadicadoSede.valorGlosa, DetalleRadicadoSede.valorAceptado, DetalleRadicadoSede.valorReclamado, DetalleRadicadoSede.glosa, EpsSede.identificacionEps, EpsSede.codigoAsignado,
+                      EpsSede.nombreEps, DetalleRadicadoSede.fechaSistema, ListaRadicadoEps.fechaRadicadoEps, ListaRadicadoEps.fechaFactura, DetalleRadicadoSede.codigoSede,
+                      DetalleRadicadoSede.valorFacturaTotal, DetalleRadicadoSede.valorCopago, DetalleRadicadoSede.valorFacturado
+FROM         DetalleRadicadoSede LEFT OUTER JOIN
+                      eps ON DetalleRadicadoSede.codigoEps = eps.codigoEps LEFT OUTER JOIN
+                      facturacion ON DetalleRadicadoSede.codigoFactura = facturacion.codigoFactura LEFT OUTER JOIN
+                      ListaRadicadoEps ON DetalleRadicadoSede.codigoListadoRadicado = ListaRadicadoEps.consecutivoRacadoEps LEFT OUTER JOIN
+                      sede ON DetalleRadicadoSede.codigoSede = sede.codigoSede LEFT OUTER JOIN
+                      datospersona ON DetalleRadicadoSede.codigoPersona = datospersona.codigoPersona LEFT OUTER JOIN
+                      EpsSede ON eps.codigoEpsSede = EpsSede.codigoEpsSede
+WHERE     (DetalleRadicadoSede.codigoSede = $P{codigoSede}) AND (ListaRadicadoEps.fechaFactura 
+	BETWEEN $P{fechaInicial} and $P{fechaFinal})]]>
+	</queryString>
+	<field name="nombreSede" class="java.lang.String"/>
+	<field name="facturaNumero" class="java.lang.String"/>
+	<field name="codigoFactura" class="java.math.BigDecimal"/>
+	<field name="codigoDocumentoIdentidad" class="java.lang.Integer"/>
+	<field name="numeroDocumentoIdentidad" class="java.lang.String"/>
+	<field name="Apellidos" class="java.lang.String"/>
+	<field name="Nombres" class="java.lang.String"/>
+	<field name="segundoApellido" class="java.lang.String"/>
+	<field name="segundoNombre" class="java.lang.String"/>
+	<field name="genero" class="java.lang.String"/>
+	<field name="valorCanceladoEps" class="java.math.BigDecimal"/>
+	<field name="saldoTotal" class="java.math.BigDecimal"/>
+	<field name="valorGlosa" class="java.math.BigDecimal"/>
+	<field name="valorAceptado" class="java.math.BigDecimal"/>
+	<field name="valorReclamado" class="java.math.BigDecimal"/>
+	<field name="glosa" class="java.lang.String"/>
+	<field name="identificacionEps" class="java.lang.String"/>
+	<field name="codigoAsignado" class="java.lang.String"/>
+	<field name="nombreEps" class="java.lang.String"/>
+	<field name="fechaSistema" class="java.sql.Timestamp"/>
+	<field name="fechaRadicadoEps" class="java.sql.Timestamp"/>
+	<field name="fechaFactura" class="java.sql.Timestamp"/>
+	<field name="codigoSede" class="java.lang.Integer"/>
+	<field name="valorFacturaTotal" class="java.math.BigDecimal"/>
+	<field name="valorCopago" class="java.math.BigDecimal"/>
+	<field name="valorFacturado" class="java.math.BigDecimal"/>
+	<columnHeader>
+		<band height="21" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="1" width="130" height="20" uuid="9cf62a29-2731-47e8-829b-e382023d640b"/>
+				<text><![CDATA[Nombre Sede]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="130" y="1" width="100" height="20" uuid="6499728c-0307-4353-bd1f-a84595dc24ef"/>
+				<text><![CDATA[Identificación Eps]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="230" y="1" width="140" height="20" uuid="e173e7e0-506f-490e-9c22-1bd4233cb06f"/>
+				<text><![CDATA[Nombre Eps]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="994" y="1" width="121" height="20" uuid="50d7c26f-9fa9-401a-8aa1-3c8ff23d4769"/>
+				<text><![CDATA[Factura Numero]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1115" y="1" width="100" height="20" uuid="4636dd91-0e27-4229-82fc-1d0b84eb62f8"/>
+				<text><![CDATA[Codigo Factura]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="370" y="1" width="124" height="20" uuid="6d750d0c-17d9-48ec-8c6d-41b7a834c89c"/>
+				<text><![CDATA[Numero Identificación]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="494" y="1" width="100" height="20" uuid="29e532a6-7e1f-40e9-8373-cbf3697a52bc"/>
+				<text><![CDATA[Primer Nombre]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="594" y="1" width="100" height="20" uuid="de9d6639-2ec3-44e4-93c8-cc210e3a29b4"/>
+				<text><![CDATA[Segundo Nombre]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="694" y="1" width="100" height="20" uuid="8d848112-4106-405e-a383-68e572653349"/>
+				<text><![CDATA[Primer Apellido]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="794" y="1" width="100" height="20" uuid="40ec8e6c-7415-48ab-b894-de2c3685c3a7"/>
+				<text><![CDATA[Segundo Nombre]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="894" y="1" width="100" height="20" uuid="7961255d-5000-469e-a616-a9448b7ff488"/>
+				<text><![CDATA[Genero]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1415" y="1" width="100" height="20" uuid="8db1549e-eea3-4794-b92e-1548a24481af"/>
+				<text><![CDATA[Valor Facturado]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1315" y="1" width="100" height="20" uuid="75ac2131-52d3-44be-97cc-43dc37d047cc"/>
+				<text><![CDATA[Valor Copago]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1215" y="1" width="100" height="20" uuid="4dbe2f76-9960-44e1-81e2-7cd67b03a56c"/>
+				<text><![CDATA[Valor Total]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1515" y="1" width="117" height="20" uuid="5dc93cf3-b294-46bf-afe2-0d7bba27465a"/>
+				<text><![CDATA[Valor Cancelado Eps]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1983" y="1" width="100" height="20" uuid="35f67e3e-e359-445d-a262-406861a66600"/>
+				<text><![CDATA[Saldo Total]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1632" y="1" width="100" height="20" uuid="c2cec287-b95a-4d91-9661-befd066824b5"/>
+				<text><![CDATA[Valor Glosa]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1732" y="1" width="122" height="20" uuid="3d47b8b5-799a-4693-bf92-3ead99411a9a"/>
+				<text><![CDATA[Valor Glosa Aceptado]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1854" y="1" width="129" height="20" uuid="3f6a2185-7a55-48a5-8102-1e2297ff1daa"/>
+				<text><![CDATA[Valor Glosa Reclamado]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="130" height="20" uuid="d52ad936-79fb-4fd0-8332-9a5d90ce179f"/>
+				<textFieldExpression><![CDATA[$F{nombreSede}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="130" y="0" width="100" height="20" uuid="c43b92d9-67f3-40a5-88d4-8cd86227c9cf"/>
+				<textFieldExpression><![CDATA[$F{identificacionEps}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="230" y="0" width="140" height="20" uuid="421e38c6-1fca-461b-a3db-ff3e71584970"/>
+				<textFieldExpression><![CDATA[$F{nombreEps}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="994" y="0" width="121" height="20" uuid="c3c0e838-b35d-43f6-a4ed-3e124967915d"/>
+				<textFieldExpression><![CDATA[$F{facturaNumero}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="1115" y="0" width="100" height="20" uuid="21b94675-d792-4d4e-bac9-89f8ab483744"/>
+				<textFieldExpression><![CDATA[$F{codigoFactura}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="370" y="0" width="124" height="20" uuid="4d5adf9c-e4ee-472b-bb7c-65a8700c71d5"/>
+				<textFieldExpression><![CDATA[$F{numeroDocumentoIdentidad}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="494" y="0" width="100" height="20" uuid="968e7241-3256-4d3a-90c8-51d421677f09"/>
+				<textFieldExpression><![CDATA[$F{Nombres}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="594" y="0" width="100" height="20" uuid="3bd59976-2e3b-4532-a06e-59dd77222e71"/>
+				<textFieldExpression><![CDATA[$F{segundoNombre}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="694" y="0" width="100" height="20" uuid="3dfc81c7-e43c-4eac-926f-9585c9f95985"/>
+				<textFieldExpression><![CDATA[$F{Apellidos}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="794" y="0" width="100" height="20" uuid="e1c0c5ee-9958-493d-bfe9-2afe1d788603"/>
+				<textFieldExpression><![CDATA[$F{segundoNombre}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="894" y="0" width="100" height="20" uuid="a3a1c6ab-9434-4373-9892-19bc996490f0"/>
+				<textFieldExpression><![CDATA[$F{genero}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0;(#,##0)">
+				<reportElement x="1415" y="0" width="100" height="20" uuid="4d468a5d-b145-4ca8-84e0-ee1e4ab58f16"/>
+				<textFieldExpression><![CDATA[$F{valorFacturado}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0;#,##0-">
+				<reportElement x="1315" y="0" width="100" height="20" uuid="fbf91a79-c196-402f-a3b9-6854ad1bbd34"/>
+				<textFieldExpression><![CDATA[$F{valorCopago}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0;(#,##0)">
+				<reportElement x="1215" y="0" width="100" height="20" uuid="b852b37e-78d7-45e5-ac04-b023fca97f3c"/>
+				<textFieldExpression><![CDATA[$F{valorFacturaTotal}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0;-#,##0">
+				<reportElement x="1515" y="0" width="117" height="20" uuid="043d8a5e-aa1d-4a31-bcaa-14fbdd524fee"/>
+				<textFieldExpression><![CDATA[$F{valorCanceladoEps}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0">
+				<reportElement x="1983" y="0" width="100" height="20" uuid="576a21df-5cdb-4602-9ee8-fdcfa49d61f0"/>
+				<textFieldExpression><![CDATA[$F{saldoTotal}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0">
+				<reportElement x="1632" y="0" width="100" height="20" uuid="47cefe42-3e2d-4e90-999a-88b1a0da7b61"/>
+				<textFieldExpression><![CDATA[$F{valorGlosa}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0">
+				<reportElement x="1732" y="0" width="122" height="20" uuid="622b870c-3126-45df-88f9-3c062bce83ce"/>
+				<textFieldExpression><![CDATA[$F{valorAceptado}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0">
+				<reportElement x="1854" y="0" width="129" height="20" uuid="70d8ecca-cb9e-444d-81c9-bcf3eb872d27"/>
+				<textFieldExpression><![CDATA[$F{valorReclamado}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

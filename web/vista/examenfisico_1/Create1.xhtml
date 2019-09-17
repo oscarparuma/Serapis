@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateExamenfisicoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+
+            <h:form>
+                <p:panel>
+                    <div align="center">
+                        <br></br>
+                        <p:panelGrid columns="8" >
+                            <p:commandButton  id="editButton2" icon="ui-icon-plus" process="@all" styleClass="button" ajax="false" action="#{examenfisicoController.prepareCreate2}"  value="#{bundle.ExamenFisico2}" style="min-width: 90px; min-height:10px"/>
+                            <p:commandButton  id="editButton3" icon="ui-icon-plus" process="@all" styleClass="button" ajax="false" action="#{examenfisicoController.prepareCreate3}"  value="#{bundle.ExamenFisico3}" style="min-width: 90px; min-height:10px"/>
+                            <p:commandButton  id="editButton4" icon="ui-icon-plus" process="@all" styleClass="button" ajax="false" action="#{examenfisicoController.prepareCreate4}"  value="#{bundle.ExamenFisico4}" style="min-width: 90px; min-height:10px"/>
+                            <p:commandButton  id="editButton5" icon="ui-icon-plus" process="@all" styleClass="button" ajax="false" action="#{examenfisicoController.prepareCreate5}"  value="#{bundle.ExamenFisico5}" style="min-width: 90px; min-height:10px"/>
+                            <p:commandButton  id="editButton6" icon="ui-icon-plus" process="@all" styleClass="button" ajax="false" action="#{examenfisicoController.prepareCreate6}"  value="#{bundle.ExamenFisico6}" style="min-width: 90px; min-height:10px"/>
+                            <p:commandButton  id="editButton7" icon="ui-icon-plus" process="@all" styleClass="button" ajax="false" action="#{citapersonaController.prepareListConsultamedicaList}"  value="#{bundle.ConsultaMedica}" />
+
+                        </p:panelGrid>
+                    </div>
+                    <br></br>
+                </p:panel>
+                <p:panel header="#{bundle.CreateExamenfisicoTitle} #{examenfisicoController.actAgenCit.codigoPersonaCita}">
+
+                    <p:panel>
+
+                        <div align="center">
+                            <br></br>
+                            <p:panelGrid columns="2">
+                                <h:panelGroup>
+                                    <p:outputLabel value="#{bundle.CreateExamenfisicoLabel_codigoPeso}" for="pesoPersona" />
+                                    <p:spinner size="5" min="0" id="pesoPersona" value="#{examenfisicoController.selected.pesoPersona}" stepFactor="0.50"  />
+                                    <p:outputLabel value="#{bundle.Kg}"/>
+                                </h:panelGroup>
+                                <p:fieldset collapsed="true" toggleable="true" legend="#{bundle.CreateExamenfisicoLabel_descripcionPeso}">
+                                    <p:textEditor id="descripcionPeso" value="#{examenfisicoController.selected.descripcionPeso}" height="300" style="margin-bottom:10px" placeholder="" }>
+                                        <f:facet name="toolbar" >
+                                            <span class="ql-formats">
+                                                <button class="ql-bold">Negrita</button>
+                                                <button class="ql-italic">Italica</button>
+                                                <button class="ql-underline">Subrayado</button>
+                                                <button class="ql-strike">Tachado</button>
+                                            </span>
+                                            <span class="ql-formats">
+                                                <button class="ql-list" value="ordered" aria-label="Lista númerada"></button>
+                                                <button class="ql-list" value="bullet" aria-label="Viñetas"></button>                            
+                                            </span>
+                                            <span class="ql-formats">
+                                                <button class="ql-clean" aria-label="Remover estilos"></button>
+                                            </span> 
+                                        </f:facet>
+                                    </p:textEditor>
+                                </p:fieldset>
+                                <h:panelGroup>
+                                    <p:outputLabel value="#{bundle.CreateExamenfisicoLabel_codigoTalla}" for="tallaPersona" />
+                                    <p:spinner size="5" min="0" id="tallaPersona" value="#{examenfisicoController.selected.tallaPersona}"  />
+                                    <p:outputLabel value="#{bundle.Cm}"/>
+                                </h:panelGroup>
+                                <p:fieldset collapsed="true" toggleable="true" legend="#{bundle.CreateExamenfisicoLabel_descripcionTalla}">
+                                    <p:textEditor id="descripcionTalla" value="#{examenfisicoController.selected.descripcionTalla}" height="300" style="margin-bottom:10px" placeholder="" >
+                                        <f:facet name="toolbar" >
+                                            <span class="ql-formats">
+                                                <button class="ql-bold">Negrita</button>
+                                                <button class="ql-italic">Italica</button>
+                                                <button class="ql-underline">Subrayado</button>
+                                                <button class="ql-strike">Tachado</button>
+                                            </span>
+                                            <span class="ql-formats">
+                                                <button class="ql-list" value="ordered" aria-label="Lista númerada"></button>
+                                                <button class="ql-list" value="bullet" aria-label="Viñetas"></button>                            
+                                            </span>
+                                            <span class="ql-formats">
+                                                <button class="ql-clean" aria-label="Remover estilos"></button>
+                                            </span> 
+                                        </f:facet>
+                                    </p:textEditor>
+                                </p:fieldset>
+                                <h:panelGroup>
+                                    <p:outputLabel value="#{bundle.CreateExamenfisicoLabel_codigoFrecuenciaCardiaca}" for="frecuenciaCardiacaPersona" />
+                                    <p:spinner size="5" min="0" id="frecuenciaCardiacaPersona" value="#{examenfisicoController.selected.frecuenciaCardiacaPersona}"  />
+                                    <p:outputLabel value="#{bundle.PulsM}"/>
+                                </h:panelGroup>
+                                <p:fieldset collapsed="true" toggleable="true" legend="#{bundle.CreateExamenfisicoLabel_descripcionFrecuenciaCardiaca}">
+                                    <p:textEditor id="descripcionFrecuenciaCardiaca" value="#{examenfisicoController.selected.descripcionFrecuenciaCardiaca}" height="300" style="margin-bottom:10px" placeholder="" >
+                                        <f:facet name="toolbar" >
+                                            <span class="ql-formats">
+                                                <button class="ql-bold">Negrita</button>
+                                                <button class="ql-italic">Italica</button>
+                                                <button class="ql-underline">Subrayado</button>
+                                                <button class="ql-strike">Tachado</button>
+                                            </span>
+                                            <span class="ql-formats">
+                                                <button class="ql-list" value="ordered" aria-label="Lista númerada"></button>
+                                                <button class="ql-list" value="bullet" aria-label="Viñetas"></button>                            
+                                            </span>
+                                            <span class="ql-formats">
+                                                <button class="ql-clean" aria-label="Remover estilos"></button>
+                                            </span> 
+                                        </f:facet>
+                                    </p:textEditor>
+                                </p:fieldset>
+                                <h:panelGroup>
+                                    <p:outputLabel value="#{bundle.CreateExamenfisicoLabel_codigoFrecuenciaRespiratoria}" for="frecuenciaRespiratoriaPersona" />
+                                    <p:spinner size="5" min="0" id="frecuenciaRespiratoriaPersona" value="#{examenfisicoController.selected.frecuenciaRespiratoriaPersona}"  />
+                                    <p:outputLabel value="#{bundle.RespM}"/>
+                                </h:panelGroup>
+                                <p:fieldset collapsed="true" toggleable="true" legend="#{bundle.CreateExamenfisicoLabel_detalleFrecuenciaRespiratoria}">
+                                    <p:textEditor id="detalleFrecuenciaRespiratoria" value="#{examenfisicoController.selected.detalleFrecuenciaRespiratoria}" height="300" style="margin-bottom:10px" placeholder="" >
+                                        <f:facet name="toolbar" >
+                                            <span class="ql-formats">
+                                                <button class="ql-bold">Negrita</button>
+                                                <button class="ql-italic">Italica</button>
+                                                <button class="ql-underline">Subrayado</button>
+                                                <button class="ql-strike">Tachado</button>
+                                            </span>
+                                            <span class="ql-formats">
+                                                <button class="ql-list" value="ordered" aria-label="Lista númerada"></button>
+                                                <button class="ql-list" value="bullet" aria-label="Viñetas"></button>                            
+                                            </span>
+                                            <span class="ql-formats">
+                                                <button class="ql-clean" aria-label="Remover estilos"></button>
+                                            </span> 
+                                        </f:facet>
+                                    </p:textEditor>
+                                </p:fieldset>
+                                <h:panelGroup>
+                                    <p:outputLabel value="#{bundle.CreateExamenfisicoLabel_codigoPresionArterialSistomatica}" for="presionArterialSistomaticaPersona" />
+                                    <p:spinner size="5" min="0" id="presionArterialSistomaticaPersona" value="#{examenfisicoController.selected.presionArterialSistomaticaPersona}"  />
+                                </h:panelGroup>
+                                <p:fieldset collapsed="true" toggleable="true" legend="#{bundle.CreateExamenfisicoLabel_descripcionPresionArterialSistomatica}">
+                                    <p:textEditor id="descripcionPresionArterialSistomatica" value="#{examenfisicoController.selected.descripcionPresionArterialSistomatica}" height="300" style="margin-bottom:10px" placeholder="" >
+                                        <f:facet name="toolbar" >
+                                            <span class="ql-formats">
+                                                <button class="ql-bold">Negrita</button>
+                                                <button class="ql-italic">Italica</button>
+                                                <button class="ql-underline">Subrayado</button>
+                                                <button class="ql-strike">Tachado</button>
+                                            </span>
+                                            <span class="ql-formats">
+                                                <button class="ql-list" value="ordered" aria-label="Lista númerada"></button>
+                                                <button class="ql-list" value="bullet" aria-label="Viñetas"></button>                            
+                                            </span>
+                                            <span class="ql-formats">
+                                                <button class="ql-clean" aria-label="Remover estilos"></button>
+                                            </span> 
+                                        </f:facet>
+                                    </p:textEditor>
+                                </p:fieldset>
+                                <h:panelGroup>
+                                    <p:outputLabel value="#{bundle.CreateExamenfisicoLabel_codigoPresionArterialDiastolica}" for="presionArterialDiastolicaPersona" />
+                                    <p:spinner size="5" min="0" id="presionArterialDiastolicaPersona" value="#{examenfisicoController.selected.presionArterialDiastolicaPersona}"  />
+                                </h:panelGroup>
+                                <p:fieldset collapsed="true" toggleable="true" legend="#{bundle.CreateExamenfisicoLabel_descripcionPresionArterialDiastolica}">
+                                    <p:textEditor id="descripcionPresionArterialDiastolica" value="#{examenfisicoController.selected.descripcionPresionArterialDiastolica}" height="300" style="margin-bottom:10px" placeholder="" >
+                                        <f:facet name="toolbar" >
+                                            <span class="ql-formats">
+                                                <button class="ql-bold">Negrita</button>
+                                                <button class="ql-italic">Italica</button>
+                                                <button class="ql-underline">Subrayado</button>
+                                                <button class="ql-strike">Tachado</button>
+                                            </span>
+                                            <span class="ql-formats">
+                                                <button class="ql-list" value="ordered" aria-label="Lista númerada"></button>
+                                                <button class="ql-list" value="bullet" aria-label="Viñetas"></button>                            
+                                            </span>
+                                            <span class="ql-formats">
+                                                <button class="ql-clean" aria-label="Remover estilos"></button>
+                                            </span> 
+                                        </f:facet>
+                                    </p:textEditor>
+                                </p:fieldset>
+                                <h:panelGroup>
+                                    <p:outputLabel value="#{bundle.CreateExamenfisicoLabel_codigoPerimetroCraneal}" for="perimetroCranealPersona" />
+                                    <p:spinner size="5" min="0" id="perimetroCranealPersona" value="#{examenfisicoController.selected.perimetroCranealPersona}" />
+                                    <p:outputLabel value="#{bundle.Cm}"/>
+                                </h:panelGroup>
+                                <p:fieldset collapsed="true" toggleable="true" legend="#{bundle.CreateExamenfisicoLabel_descripcionPerimetroCraneal}">
+                                    <p:textEditor id="descripcionPerimetroCraneal" value="#{examenfisicoController.selected.descripcionPerimetroCraneal}" height="300" style="margin-bottom:10px" placeholder="" >
+                                        <f:facet name="toolbar" >
+                                            <span class="ql-formats">
+                                                <button class="ql-bold">Negrita</button>
+                                                <button class="ql-italic">Italica</button>
+                                                <button class="ql-underline">Subrayado</button>
+                                                <button class="ql-strike">Tachado</button>
+                                            </span>
+                                            <span class="ql-formats">
+                                                <button class="ql-list" value="ordered" aria-label="Lista númerada"></button>
+                                                <button class="ql-list" value="bullet" aria-label="Viñetas"></button>                            
+                                            </span>
+                                            <span class="ql-formats">
+                                                <button class="ql-clean" aria-label="Remover estilos"></button>
+                                            </span> 
+                                        </f:facet>
+                                    </p:textEditor>
+                                </p:fieldset>
+                                <h:panelGroup>
+                                    <p:outputLabel value="#{bundle.CreateExamenfisicoLabel_codigoPerimetroTorax}" for="perimetroToraxPersona" />
+                                    <p:spinner size="5" min="0" id="perimetroToraxPersona" value="#{examenfisicoController.selected.perimetroToraxPersona}"/>
+                                    <p:outputLabel value="#{bundle.Cm}"/>
+                                </h:panelGroup>
+                                <p:fieldset collapsed="true" toggleable="true" legend="#{bundle.CreateExamenfisicoLabel_descripcionPerimetroTorax}">
+                                    <p:textEditor id="descripcionPerimetroTorax" value="#{examenfisicoController.selected.descripcionPerimetroTorax}" height="300" style="margin-bottom:10px" placeholder="" >
+                                        <f:facet name="toolbar" >
+                                            <span class="ql-formats">
+                                                <button class="ql-bold">Negrita</button>
+                                                <button class="ql-italic">Italica</button>
+                                                <button class="ql-underline">Subrayado</button>
+                                                <button class="ql-strike">Tachado</button>
+                                            </span>
+                                            <span class="ql-formats">
+                                                <button class="ql-list" value="ordered" aria-label="Lista númerada"></button>
+                                                <button class="ql-list" value="bullet" aria-label="Viñetas"></button>                            
+                                            </span>
+                                            <span class="ql-formats">
+                                                <button class="ql-clean" aria-label="Remover estilos"></button>
+                                            </span> 
+                                        </f:facet>
+                                    </p:textEditor>
+                                </p:fieldset>
+                                <h:panelGroup>
+                                    <p:outputLabel value="#{bundle.CreateExamenfisicoLabel_codigoTemperatura}" for="temperaturaPersona" />
+                                    <p:spinner size="5" min="0" id="temperaturaPersona" value="#{examenfisicoController.selected.temperaturaPersona}"/>
+                                    <p:outputLabel value="#{bundle.Grado}"/>
+                                </h:panelGroup>
+                                <p:fieldset collapsed="true" toggleable="true" legend="#{bundle.CreateExamenfisicoLabel_descripcionTemperatura}">
+                                    <p:textEditor id="descripcionTemperatura" value="#{examenfisicoController.selected.descripcionTemperatura}" height="300" style="margin-bottom:10px" placeholder="" >
+                                        <f:facet name="toolbar" >
+                                            <span class="ql-formats">
+                                                <button class="ql-bold">Negrita</button>
+                                                <button class="ql-italic">Italica</button>
+                                                <button class="ql-underline">Subrayado</button>
+                                                <button class="ql-strike">Tachado</button>
+                                            </span>
+                                            <span class="ql-formats">
+                                                <button class="ql-list" value="ordered" aria-label="Lista númerada"></button>
+                                                <button class="ql-list" value="bullet" aria-label="Viñetas"></button>                            
+                                            </span>
+                                            <span class="ql-formats">
+                                                <button class="ql-clean" aria-label="Remover estilos"></button>
+                                            </span> 
+                                        </f:facet>
+                                    </p:textEditor>
+                                </p:fieldset>
+                            </p:panelGrid>
+                            <p:panel>
+                                <p:commandButton style="margin-right: 10px;" id="editButtonD" icon="ui-icon-plus" process="@all" styleClass="button" ajax="false" action="#{examenfisicoController.create1}"  value="#{bundle.CreateExamenfisicoSaveLink}" />
+                                <p:commandButton style="margin-right: 10px;" id="editButtonK" icon="ui-icon-plus" process="@all" styleClass="button" ajax="false" action="#{citapersonaController.prepareListConsultamedicaList}"  value="#{bundle.ConsultaMedica}" />
+                                <p:commandButton id="editButtonE"   icon="ui-icon-circle-arrow-w" process="@all" styleClass="button" ajax="false" action="/vista/examenfisico/List" value="#{bundle.Regresar}" immediate="true"/>
+                            </p:panel>
+                        </div>
+                    </p:panel>
+                </p:panel>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

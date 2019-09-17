@@ -1,0 +1,153 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <f:view contentType="text/html" beforePhase="#{usuarioController.beforePhase}"  >
+        <h:head>
+
+            <f:facet name="first">
+                <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
+                <meta http-equiv="X-UA-Compatible" content="EmulateIE8" />                
+                <meta http-equiv="X-Frame-Options" content="SAMEORIGIN"/>
+                <link rel="shortcut icon" href="#{request.contextPath}/logo.jpg" />
+                <title><ui:insert name="title">#{bundle.AppName}</ui:insert></title>
+
+            </f:facet>  
+
+
+            <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
+            <title><ui:insert name="title">#{bundle.AppName}</ui:insert></title>
+            <meta http-equiv="Expires" content="0"/>
+            <meta http-equiv="cache-control" content="no-cache" />
+            <meta http-equiv="pragma" content="no-cache" />
+            <meta name="Robots" content="nofollow" />
+
+
+
+            <title><ui:insert name="title">#{bundle.AppName}</ui:insert></title>
+
+            <script type="text/javascript">
+                PrimeFaces.locales['es'] = {
+                    closeText: 'Cerrar',
+                    prevText: 'Anterior',
+                    nextText: 'Siguiente',
+                    monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+                    monthNamesShort: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
+                    dayNames: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
+                    dayNamesShort: ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab'],
+                    dayNamesMin: ['D', 'L', 'M', 'X', 'J', 'V', 'S'],
+                    weekHeader: 'Semana',
+                    firstDay: 1,
+                    isRTL: false,
+                    showMonthAfterYear: false,
+                    yearSuffix: '',
+                    timeOnlyTitle: 'Sólo hora',
+                    timeText: 'Tiempo',
+                    hourText: 'Hora',
+                    minuteText: 'Minuto',
+                    secondText: 'Segundo',
+                    currentText: 'Fecha actual',
+                    ampm: false,
+                    month: 'Mes',
+                    week: 'Semana',
+                    day: 'Día',
+                    allDayText: 'Todo el día'
+                };
+            </script>   
+
+
+            <script type = "text/javascript" >
+                function handleMessage(facesmessage) {
+                    facesmessage.severity = 'info';
+                    PF('mensaje').show([facesmessage]);
+                }
+
+                function changeHashOnLoad() {
+                    window.location.href += "#";
+                    setTimeout("changeHashAgain()", "50");
+                }
+
+                function changeHashAgain() {
+                    window.location.href += "0";
+                }
+
+                var storedHash = window.location.hash;
+                window.setInterval(function () {
+                    if (window.location.hash != storedHash) {
+                        window.location.hash = storedHash;
+                    }
+                }, 50);
+            </script>    
+
+
+            <script type = "text/javascript" >
+                function nobackbutton() {
+
+                    window.location.hash = "no-back-button";
+
+                    window.location.hash = "Again-No-back-button" //chrome
+
+                    window.onhashchange = function () {
+                        window.location.hash = "no-back-button";
+                    }
+
+                }
+            </script>  
+
+
+            <script type="text/javascript">
+                {
+                    if (history.forward(1))
+                        location.replace(history.forward(1))
+                }
+            </script>
+            <!--
+                        <script language="JavaScript">
+                            javascript:window.history.forward(1); //Esto es para cuando le pulse al botón de Atrás
+                                    javascript:window.history.back(1); //Esto para cuando le pulse al botón deAdelante
+                        </script> -->
+
+            
+            <link type="text/css" rel="stylesheet" href="serapis-usuario.css" />
+        </h:head>
+
+        <h:body>
+
+            <p:growl id="growl" life="3000" />
+
+
+            <p:layout fullPage="true">
+                <p:layoutUnit position="north" size="50" header="#{bundle.AppName} #{usuarioController.selected.nombreUsuario}">
+
+                </p:layoutUnit>
+
+
+
+                <p:layoutUnit position="center">
+                    <h:form id="menuForm">
+
+                    </h:form>
+                    <ui:insert name="body"/>
+                </p:layoutUnit>
+
+
+            </p:layout>
+            <p:layoutUnit position="south" size="50">
+                <div class="ui-g footer"> 
+                    <div class="ui-g-4">© Serapis Médico 2017 </div>   
+                    <div class="ui-g-4"> 
+                        <p:button outcome="/vista/manualSede/ingreso" value="Manual Serapis Médico">
+                        </p:button>
+                    </div>
+                    <div class="ui-g-4">info@serapismedico.com</div> 
+                </div> 
+
+            </p:layoutUnit>
+
+
+        </h:body>
+    </f:view>
+</html>

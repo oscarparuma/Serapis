@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditRecomendacionesmedicamentosTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditRecomendacionesmedicamentosLabel_consecutivo}" for="consecutivo" />
+                    <h:inputText id="consecutivo" value="#{recomendacionesmedicamentosController.selected.consecutivo}" title="#{bundle.EditRecomendacionesmedicamentosTitle_consecutivo}" required="true" requiredMessage="#{bundle.EditRecomendacionesmedicamentosRequiredMessage_consecutivo}"/>
+                    <h:outputLabel value="#{bundle.EditRecomendacionesmedicamentosLabel_recomendacionesMedicas}" for="recomendacionesMedicas" />
+                    <h:inputTextarea rows="4" cols="30" id="recomendacionesMedicas" value="#{recomendacionesmedicamentosController.selected.recomendacionesMedicas}" title="#{bundle.EditRecomendacionesmedicamentosTitle_recomendacionesMedicas}" />
+                    <h:outputLabel value="#{bundle.EditRecomendacionesmedicamentosLabel_fechaRegistro}" for="fechaRegistro" />
+                    <h:inputText id="fechaRegistro" value="#{recomendacionesmedicamentosController.selected.fechaRegistro}" title="#{bundle.EditRecomendacionesmedicamentosTitle_fechaRegistro}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditRecomendacionesmedicamentosLabel_fechaModificacion}" for="fechaModificacion" />
+                    <h:inputText id="fechaModificacion" value="#{recomendacionesmedicamentosController.selected.fechaModificacion}" title="#{bundle.EditRecomendacionesmedicamentosTitle_fechaModificacion}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditRecomendacionesmedicamentosLabel_botRecoMedicas}" for="botRecoMedicas" />
+                    <h:inputText id="botRecoMedicas" value="#{recomendacionesmedicamentosController.selected.botRecoMedicas}" title="#{bundle.EditRecomendacionesmedicamentosTitle_botRecoMedicas}" />
+                    <h:outputLabel value="#{bundle.EditRecomendacionesmedicamentosLabel_activo}" for="activo" />
+                    <h:inputText id="activo" value="#{recomendacionesmedicamentosController.selected.activo}" title="#{bundle.EditRecomendacionesmedicamentosTitle_activo}" />
+                    <h:outputLabel value="#{bundle.EditRecomendacionesmedicamentosLabel_botFinalizar}" for="botFinalizar" />
+                    <h:inputText id="botFinalizar" value="#{recomendacionesmedicamentosController.selected.botFinalizar}" title="#{bundle.EditRecomendacionesmedicamentosTitle_botFinalizar}" />
+                    <h:outputLabel value="#{bundle.EditRecomendacionesmedicamentosLabel_botRecMediConsul}" for="botRecMediConsul" />
+                    <h:inputText id="botRecMediConsul" value="#{recomendacionesmedicamentosController.selected.botRecMediConsul}" title="#{bundle.EditRecomendacionesmedicamentosTitle_botRecMediConsul}" />
+                    <h:outputLabel value="#{bundle.EditRecomendacionesmedicamentosLabel_botRecMediProced}" for="botRecMediProced" />
+                    <h:inputText id="botRecMediProced" value="#{recomendacionesmedicamentosController.selected.botRecMediProced}" title="#{bundle.EditRecomendacionesmedicamentosTitle_botRecMediProced}" />
+                    <h:outputLabel value="#{bundle.EditRecomendacionesmedicamentosLabel_botRecSalOcup}" for="botRecSalOcup" />
+                    <h:inputText id="botRecSalOcup" value="#{recomendacionesmedicamentosController.selected.botRecSalOcup}" title="#{bundle.EditRecomendacionesmedicamentosTitle_botRecSalOcup}" />
+                    <h:outputLabel value="#{bundle.EditRecomendacionesmedicamentosLabel_codigoCita}" for="codigoCita" />
+                    <h:selectOneMenu id="codigoCita" value="#{recomendacionesmedicamentosController.selected.codigoCita}" title="#{bundle.EditRecomendacionesmedicamentosTitle_codigoCita}" >
+                        <f:selectItems value="#{citapersonaController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditRecomendacionesmedicamentosLabel_codigoClasificacionIndicacionesMedicas}" for="codigoClasificacionIndicacionesMedicas" />
+                    <h:selectOneMenu id="codigoClasificacionIndicacionesMedicas" value="#{recomendacionesmedicamentosController.selected.codigoClasificacionIndicacionesMedicas}" title="#{bundle.EditRecomendacionesmedicamentosTitle_codigoClasificacionIndicacionesMedicas}" >
+                        <f:selectItems value="#{clasificacionindicacionmedicaController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditRecomendacionesmedicamentosLabel_codigoPersonaCita}" for="codigoPersonaCita" />
+                    <h:selectOneMenu id="codigoPersonaCita" value="#{recomendacionesmedicamentosController.selected.codigoPersonaCita}" title="#{bundle.EditRecomendacionesmedicamentosTitle_codigoPersonaCita}" >
+                        <f:selectItems value="#{datospersonaController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditRecomendacionesmedicamentosLabel_codigoIndicacionesMedicas}" for="codigoIndicacionesMedicas" />
+                    <h:selectOneMenu id="codigoIndicacionesMedicas" value="#{recomendacionesmedicamentosController.selected.codigoIndicacionesMedicas}" title="#{bundle.EditRecomendacionesmedicamentosTitle_codigoIndicacionesMedicas}" >
+                        <f:selectItems value="#{indicacionmedicaController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditRecomendacionesmedicamentosLabel_codigoUsuario}" for="codigoUsuario" />
+                    <h:selectOneMenu id="codigoUsuario" value="#{recomendacionesmedicamentosController.selected.codigoUsuario}" title="#{bundle.EditRecomendacionesmedicamentosTitle_codigoUsuario}" >
+                        <f:selectItems value="#{usuarioController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditRecomendacionesmedicamentosLabel_modificadoPor}" for="modificadoPor" />
+                    <h:selectOneMenu id="modificadoPor" value="#{recomendacionesmedicamentosController.selected.modificadoPor}" title="#{bundle.EditRecomendacionesmedicamentosTitle_modificadoPor}" >
+                        <f:selectItems value="#{usuarioController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{recomendacionesmedicamentosController.update}" value="#{bundle.EditRecomendacionesmedicamentosSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditRecomendacionesmedicamentosViewLink}"/>
+                <br />
+                <h:commandLink action="#{recomendacionesmedicamentosController.prepareList}" value="#{bundle.EditRecomendacionesmedicamentosShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditRecomendacionesmedicamentosIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+
+
+        <ui:define name="title">
+            <h:outputText value="#{bundle.AppName}"></h:outputText>
+        </ui:define>
+
+        <ui:define name="body">
+            <h:form id="FacturaRadicacionListForm">
+                <p:panel header="#{bundle.ListRadicacionFacturasTitle} #{radicacionFacturasController.selected.totalRadicado}" style="border: solid 1px;" >
+                    <p:dataTable reflow="true" id="datalist" value="#{radicacionFacturasController.items1}" var="item" emptyMessage=" "
+                                 selectionMode="single" 
+                                 paginator="true"
+                                 rowKey="#{item.codigoRadicacion}"
+                                 rows="10"
+                                 rowsPerPageTemplate="10,20,30,40,50" lazy="true"  >
+
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.Delete}"/>
+                            </f:facet>
+                            <p:commandButton id="deleteButton" icon="ui-icon-trash" process="@all" styleClass="button" ajax="false" action="#{radicacionFacturasController.destroy}" value="#{bundle.ListRadicacionFacturasDestroyLink}"/>
+                        </p:column>
+
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListRadicacionFacturasTitle_codigoEps}"/>
+                            </f:facet>
+                            <h:outputText value=" #{item.codigoEps}"/>
+                        </p:column>
+
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListRadicacionFacturasTitle_codigoFactura}"/>
+                            </f:facet>
+                            <h:outputText value=" #{item.codigoFactura}"/>
+                        </p:column>
+
+
+
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListRadicacionFacturasTitle_valorUnitario}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.valorUnitario}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListRadicacionFacturasTitle_valorCopago}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.valorCopago}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListRadicacionFacturasTitle_valorFacturado}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.valorFacturado}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListRadicacionFacturasTitle_totalRadicado}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.totalRadicado}"/>
+                        </p:column>
+
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListRadicacionFacturasTitle_fechaRegistro}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.fechaRegistro}">
+                                <f:convertDateTime pattern="yyyy-MM-dd" />
+                            </h:outputText>
+                        </p:column>
+
+
+
+
+
+
+
+
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListRadicacionFacturasTitle_codigoSede}"/>
+                            </f:facet>
+                            <h:outputText value=" #{item.codigoSede}"/>
+                        </p:column>
+
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListRadicacionFacturasTitle_codigoUsuario}"/>
+                            </f:facet>
+                            <h:outputText value=" #{item.codigoUsuario}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{radicacionFacturasController.prepareView}" value="#{bundle.ListRadicacionFacturasViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{radicacionFacturasController.prepareEdit}" value="#{bundle.ListRadicacionFacturasEditLink}"/>
+                            <h:outputText value=" "/>
+                           
+                        </p:column>
+                        <f:facet name="footer">
+                            <p:panel>
+                                <p:commandButton  id="createButton" icon="ui-icon-plus" process="@all" styleClass="button" ajax="false" action="#{radicacionFacturasController.prepareCreate}" value="#{bundle.ListRadicacionFacturasCreateLink}"/>
+                            </p:panel>
+                        </f:facet>
+                    </p:dataTable>
+                </p:panel>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.AppName}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <p:panel header="#{bundle.examenSolicitados} #{examenesApoyoDiagnosticoController.actAgenCit.codigoCitaPersona}">
+                 <p:dataTable value="#{examenesApoyoDiagnosticoController.items}" var="item" emptyMessage="#{bundle.nohayregitros}" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListExamenesApoyoDiagnosticoTitle_consecutivo}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.consecutivo}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListExamenesApoyoDiagnosticoTitle_fechaRegistro}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.fechaRegistro}">
+                                <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListExamenesApoyoDiagnosticoTitle_cantidad}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.cantidad}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListExamenesApoyoDiagnosticoTitle_justificacionMedica}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.justificacionMedica}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListExamenesApoyoDiagnosticoTitle_interpretacionMedica}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.interpretacionMedica}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListExamenesApoyoDiagnosticoTitle_fechaModificacion}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.fechaModificacion}">
+                                <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListExamenesApoyoDiagnosticoTitle_fechaInterpretacion}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.fechaInterpretacion}">
+                                <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListExamenesApoyoDiagnosticoTitle_codigoCita}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.codigoCita}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListExamenesApoyoDiagnosticoTitle_codigoPersona}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.codigoPersona}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListExamenesApoyoDiagnosticoTitle_codigoCups}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.codigoCups}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListExamenesApoyoDiagnosticoTitle_modificadoPor}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.modificadoPor}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListExamenesApoyoDiagnosticoTitle_codigoUsuario}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.codigoUsuario}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListExamenesApoyoDiagnosticoTitle_codigoInterpretacion}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.codigoInterpretacion}"/>
+                        </h:column>
+                       
+                      <f:facet name="footer">
+                          <p:commandButton style="margin-right: 10px;" id="viewButtonp" icon="ui-icon-search" process="@all" styleClass="button" ajax="false" action="#{citapersonaController.prepareListExamenfisico}" value="&nbsp;#{bundle.ConsultaMedica}&nbsp;&nbsp;"/>
+                          <p:commandButton id="editButtonH" icon="ui-icon-search" process="@all" styleClass="button" ajax="false" action="/vista/citapersona/List" value="#{bundle.Regresar}"/>
+
+                        </f:facet>
+                    </p:dataTable>
+                    </p:panel>
+              
+               
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

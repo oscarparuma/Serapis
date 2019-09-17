@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/templateIngreso.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.AppName}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+
+            <h:form>
+                <p:panel>
+                    <div align="center">
+                        <div class="container text-center">   
+                            <div class="row">
+                                <div class="col-sm-3 well">
+                                    <p:panel header="#{bundle.epsContrato}" >
+                                        <div align="center">
+                                            <p:panel >
+                                                <h:panelGrid columns="2">
+                                                    <p:outputLabel value="#{bundle.CreateProcedimientosedeLabel_codigoEps}" for="codigoEps" />
+                                                    <p:selectOneMenu style="min-width: 280px;" filter="true" filterMatchMode="contains" id="codigoEps" value="#{procedimientosedeController.selected.codigoEps}" title="#{bundle.CreateProcedimientosedeTitle_codigoEps}" required="true" requiredMessage="#{bundle.CreateProcedimientosedeRequiredMessage_codigoEps}">
+                                                        <f:selectItem noSelectionOption="true" itemLabel="-Seleccione- " />
+                                                        <f:selectItems value="#{epsController.getEpsXSede(usuarioController.selected.codigoSede)}"/>
+                                                    </p:selectOneMenu>
+                                                    <p:outputLabel value="#{bundle.CreateProcedimientosedeLabel_codigoManualTarifario}" for="codigoManualTarifario" />
+                                                    <p:selectOneMenu style="min-width: 280px;" filter="true" filterMatchMode="contains" id="codigoManualTarifario" value="#{procedimientosedeController.selected.codigoManualTarifario}" title="#{bundle.CreateProcedimientosedeTitle_codigoManualTarifario}" required="true" requiredMessage="#{bundle.CreateProcedimientosedeRequiredMessage_codigoManualTarifario}">
+                                                        <f:selectItem noSelectionOption="true" itemLabel="-Seleccione- " />
+                                                        <f:selectItems value="#{tipoManualController.itemsAvailableSelectOne}"/>
+                                                        <p:ajax process="codigoManualTarifario"  update="codigoCups" event="change" />
+                                                    </p:selectOneMenu>
+                                                    <p:outputLabel value="#{bundle.CreateProcedimientosedeLabel_codigoCups}" for="codigoCups" />
+                                                    <p:selectOneMenu style="min-width: 280px;" filter="true" filterMatchMode="contains" id="codigoCups"  value="#{procedimientosedeController.selected.codigoCups}" required="true" requiredMessage="#{bundle.CreateProcedimientosedeRequiredMessage_codigoCups}" title="#{bundle.CreateProcedimientosedeTitle_codigoCups}" styleClass="input">
+                                                        <f:selectItem noSelectionOption="true" itemLabel="-Seleccione- " />
+                                                        <f:selectItems value="#{procedimientosedeController.referenciaXManualTarifas}"/>
+                                                        <p:ajax process="codigoCups" event="change" />
+                                                    </p:selectOneMenu>
+
+                                                    <p:outputLabel value="#{bundle.CreateProcedimientosedeLabel_valorExamen}" for="valorExamen"  />
+                                                    <p:inputNumber size="30" id="valorExamen" value="#{procedimientosedeController.selected.valorExamen}" title="#{bundle.CreateProcedimientosedeTitle_valorExamen}" required="true" requiredMessage="#{bundle.CreateProcedimientosedeRequiredMessage_valorExamen}"  />
+
+                                                    <p:outputLabel value="#{bundle.CreateProcedimientosedeLabel_codigoRips}" for="codigoRips" />
+                                                    <p:inputText size="30"  id="codigoRips" value="#{procedimientosedeController.selected.codigoRips}" title="#{bundle.CreateProcedimientosedeTitle_codigoRips}" required="true" requiredMessage="#{bundle.CreateProcedimientosedeRequiredMessage_codigoRips}"/>
+                                                    <p:outputLabel value="#{bundle.CreateProcedimientosedeLabel_codigoArchivoRips}" for="codigoArchivoRips" />
+                                                    <p:selectOneMenu id="codigoArchivoRips" value="#{procedimientosedeController.selected.codigoArchivoRips}" required="true" requiredMessage="#{bundle.CreateProcedimientosedeMessage_codigoArchivoRips}" >
+                                                        <f:selectItems value="#{tipoArchivoRipsController.itemsAvailableSelectOne}"/>
+                                                    </p:selectOneMenu>
+                                                </h:panelGrid>
+                                                <f:facet name="footer">
+                                                    <p:panel>
+                                                        <div align="center">
+                                                            <p:commandButton style="margin-right: 10px;" id="editButton"   icon="ui-icon-plus" process="@all" styleClass="button" ajax="false" action="#{procedimientosedeController.create}" value="#{bundle.CreateProcedimientosedeSaveLink}"/>
+                                                            <p:commandButton id="editButtonE"  icon="ui-icon-circle-arrow-w" process="@all" styleClass="button" ajax="false" action="#{procedimientosedeController.prepareList}" value="#{bundle.Regresar}" immediate="true"/>
+                                                        </div>
+                                                    </p:panel>
+                                                </f:facet>
+
+                                            </p:panel>
+                                        </div>
+                                    </p:panel>
+                                </div>
+                            </div>
+                        </div>
+                        <br></br>
+                        <h:panelGroup>
+                            <p:graphicImage value="/imagenes/ImagSisitema/l-serapis.png" />
+                        </h:panelGroup>
+                    </div>
+                </p:panel>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

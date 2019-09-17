@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewTipoprofesionTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewTipoprofesionLabel_codigoProfesion}"/>
+                    <h:outputText value="#{tipoprofesionController.selected.codigoProfesion}" title="#{bundle.ViewTipoprofesionTitle_codigoProfesion}"/>
+                    <h:outputText value="#{bundle.ViewTipoprofesionLabel_nombreProfesional}"/>
+                    <h:outputText value="#{tipoprofesionController.selected.nombreProfesional}" title="#{bundle.ViewTipoprofesionTitle_nombreProfesional}"/>
+                    <h:outputText value="#{bundle.ViewTipoprofesionLabel_activo}"/>
+                    <h:outputText value="#{tipoprofesionController.selected.activo}" title="#{bundle.ViewTipoprofesionTitle_activo}"/>
+                    <h:outputText value="#{bundle.ViewTipoprofesionLabel_fechaRegistro}"/>
+                    <h:outputText value="#{tipoprofesionController.selected.fechaRegistro}" title="#{bundle.ViewTipoprofesionTitle_fechaRegistro}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewTipoprofesionLabel_fechaModificacion}"/>
+                    <h:outputText value="#{tipoprofesionController.selected.fechaModificacion}" title="#{bundle.ViewTipoprofesionTitle_fechaModificacion}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewTipoprofesionLabel_codigoUsuario}"/>
+                    <h:outputText value="#{tipoprofesionController.selected.codigoUsuario}" title="#{bundle.ViewTipoprofesionTitle_codigoUsuario}"/>
+                    <h:outputText value="#{bundle.ViewTipoprofesionLabel_codigoUsuarioModifico}"/>
+                    <h:outputText value="#{tipoprofesionController.selected.codigoUsuarioModifico}" title="#{bundle.ViewTipoprofesionTitle_codigoUsuarioModifico}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{tipoprofesionController.destroyAndView}" value="#{bundle.ViewTipoprofesionDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewTipoprofesionEditLink}"/>
+                <br />
+                <h:commandLink action="#{tipoprofesionController.prepareCreate}" value="#{bundle.ViewTipoprofesionCreateLink}" />
+                <br />
+                <h:commandLink action="#{tipoprofesionController.prepareList}" value="#{bundle.ViewTipoprofesionShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewTipoprofesionIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

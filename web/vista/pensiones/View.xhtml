@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewPensionesTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewPensionesLabel_codigoPensiones}"/>
+                    <h:outputText value="#{pensionesController.selected.codigoPensiones}" title="#{bundle.ViewPensionesTitle_codigoPensiones}"/>
+                    <h:outputText value="#{bundle.ViewPensionesLabel_identificacionPensiones}"/>
+                    <h:outputText value="#{pensionesController.selected.identificacionPensiones}" title="#{bundle.ViewPensionesTitle_identificacionPensiones}"/>
+                    <h:outputText value="#{bundle.ViewPensionesLabel_nombrePensiones}"/>
+                    <h:outputText value="#{pensionesController.selected.nombrePensiones}" title="#{bundle.ViewPensionesTitle_nombrePensiones}"/>
+                    <h:outputText value="#{bundle.ViewPensionesLabel_direccion}"/>
+                    <h:outputText value="#{pensionesController.selected.direccion}" title="#{bundle.ViewPensionesTitle_direccion}"/>
+                    <h:outputText value="#{bundle.ViewPensionesLabel_telefono}"/>
+                    <h:outputText value="#{pensionesController.selected.telefono}" title="#{bundle.ViewPensionesTitle_telefono}"/>
+                    <h:outputText value="#{bundle.ViewPensionesLabel_fechaRegistro}"/>
+                    <h:outputText value="#{pensionesController.selected.fechaRegistro}" title="#{bundle.ViewPensionesTitle_fechaRegistro}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewPensionesLabel_fechaModificacion}"/>
+                    <h:outputText value="#{pensionesController.selected.fechaModificacion}" title="#{bundle.ViewPensionesTitle_fechaModificacion}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewPensionesLabel_clasificacionPensiones}"/>
+                    <h:outputText value="#{pensionesController.selected.clasificacionPensiones}" title="#{bundle.ViewPensionesTitle_clasificacionPensiones}"/>
+                    <h:outputText value="#{bundle.ViewPensionesLabel_codigoAsignado}"/>
+                    <h:outputText value="#{pensionesController.selected.codigoAsignado}" title="#{bundle.ViewPensionesTitle_codigoAsignado}"/>
+                    <h:outputText value="#{bundle.ViewPensionesLabel_activo}"/>
+                    <h:outputText value="#{pensionesController.selected.activo}" title="#{bundle.ViewPensionesTitle_activo}"/>
+                    <h:outputText value="#{bundle.ViewPensionesLabel_tipoAdministradora}"/>
+                    <h:outputText value="#{pensionesController.selected.tipoAdministradora}" title="#{bundle.ViewPensionesTitle_tipoAdministradora}"/>
+                    <h:outputText value="#{bundle.ViewPensionesLabel_contacto}"/>
+                    <h:outputText value="#{pensionesController.selected.contacto}" title="#{bundle.ViewPensionesTitle_contacto}"/>
+                    <h:outputText value="#{bundle.ViewPensionesLabel_codigoClasificacion}"/>
+                    <h:outputText value="#{pensionesController.selected.codigoClasificacion}" title="#{bundle.ViewPensionesTitle_codigoClasificacion}"/>
+                    <h:outputText value="#{bundle.ViewPensionesLabel_codigoDepartamento}"/>
+                    <h:outputText value="#{pensionesController.selected.codigoDepartamento}" title="#{bundle.ViewPensionesTitle_codigoDepartamento}"/>
+                    <h:outputText value="#{bundle.ViewPensionesLabel_codigoMunicipio}"/>
+                    <h:outputText value="#{pensionesController.selected.codigoMunicipio}" title="#{bundle.ViewPensionesTitle_codigoMunicipio}"/>
+                    <h:outputText value="#{bundle.ViewPensionesLabel_codigoUsuario}"/>
+                    <h:outputText value="#{pensionesController.selected.codigoUsuario}" title="#{bundle.ViewPensionesTitle_codigoUsuario}"/>
+                    <h:outputText value="#{bundle.ViewPensionesLabel_usuarioModifico}"/>
+                    <h:outputText value="#{pensionesController.selected.usuarioModifico}" title="#{bundle.ViewPensionesTitle_usuarioModifico}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{pensionesController.destroyAndView}" value="#{bundle.ViewPensionesDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewPensionesEditLink}"/>
+                <br />
+                <h:commandLink action="#{pensionesController.prepareCreate}" value="#{bundle.ViewPensionesCreateLink}" />
+                <br />
+                <h:commandLink action="#{pensionesController.prepareList}" value="#{bundle.ViewPensionesShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewPensionesIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

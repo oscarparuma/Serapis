@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewSolicitudingresoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewSolicitudingresoLabel_codigoSolicitud}"/>
+                    <h:outputText value="#{solicitudingresoController.selected.codigoSolicitud}" title="#{bundle.ViewSolicitudingresoTitle_codigoSolicitud}"/>
+                    <h:outputText value="#{bundle.ViewSolicitudingresoLabel_identificacionNit}"/>
+                    <h:outputText value="#{solicitudingresoController.selected.identificacionNit}" title="#{bundle.ViewSolicitudingresoTitle_identificacionNit}"/>
+                    <h:outputText value="#{bundle.ViewSolicitudingresoLabel_nombreSede}"/>
+                    <h:outputText value="#{solicitudingresoController.selected.nombreSede}" title="#{bundle.ViewSolicitudingresoTitle_nombreSede}"/>
+                    <h:outputText value="#{bundle.ViewSolicitudingresoLabel_paginaWeb}"/>
+                    <h:outputText value="#{solicitudingresoController.selected.paginaWeb}" title="#{bundle.ViewSolicitudingresoTitle_paginaWeb}"/>
+                    <h:outputText value="#{bundle.ViewSolicitudingresoLabel_siglasSede}"/>
+                    <h:outputText value="#{solicitudingresoController.selected.siglasSede}" title="#{bundle.ViewSolicitudingresoTitle_siglasSede}"/>
+                    <h:outputText value="#{bundle.ViewSolicitudingresoLabel_direccion}"/>
+                    <h:outputText value="#{solicitudingresoController.selected.direccion}" title="#{bundle.ViewSolicitudingresoTitle_direccion}"/>
+                    <h:outputText value="#{bundle.ViewSolicitudingresoLabel_telefono}"/>
+                    <h:outputText value="#{solicitudingresoController.selected.telefono}" title="#{bundle.ViewSolicitudingresoTitle_telefono}"/>
+                    <h:outputText value="#{bundle.ViewSolicitudingresoLabel_email}"/>
+                    <h:outputText value="#{solicitudingresoController.selected.email}" title="#{bundle.ViewSolicitudingresoTitle_email}"/>
+                    <h:outputText value="#{bundle.ViewSolicitudingresoLabel_logo}"/>
+                    <h:outputText value="#{solicitudingresoController.selected.logo}" title="#{bundle.ViewSolicitudingresoTitle_logo}"/>
+                    <h:outputText value="#{bundle.ViewSolicitudingresoLabel_numeroIdentificacion}"/>
+                    <h:outputText value="#{solicitudingresoController.selected.numeroIdentificacion}" title="#{bundle.ViewSolicitudingresoTitle_numeroIdentificacion}"/>
+                    <h:outputText value="#{bundle.ViewSolicitudingresoLabel_nombreUsuario}"/>
+                    <h:outputText value="#{solicitudingresoController.selected.nombreUsuario}" title="#{bundle.ViewSolicitudingresoTitle_nombreUsuario}"/>
+                    <h:outputText value="#{bundle.ViewSolicitudingresoLabel_registroMedico}"/>
+                    <h:outputText value="#{solicitudingresoController.selected.registroMedico}" title="#{bundle.ViewSolicitudingresoTitle_registroMedico}"/>
+                    <h:outputText value="#{bundle.ViewSolicitudingresoLabel_otroCargo}"/>
+                    <h:outputText value="#{solicitudingresoController.selected.otroCargo}" title="#{bundle.ViewSolicitudingresoTitle_otroCargo}"/>
+                    <h:outputText value="#{bundle.ViewSolicitudingresoLabel_otraEspecialidad}"/>
+                    <h:outputText value="#{solicitudingresoController.selected.otraEspecialidad}" title="#{bundle.ViewSolicitudingresoTitle_otraEspecialidad}"/>
+                    <h:outputText value="#{bundle.ViewSolicitudingresoLabel_numeroIdentificacionA}"/>
+                    <h:outputText value="#{solicitudingresoController.selected.numeroIdentificacionA}" title="#{bundle.ViewSolicitudingresoTitle_numeroIdentificacionA}"/>
+                    <h:outputText value="#{bundle.ViewSolicitudingresoLabel_nombreUsuarioA}"/>
+                    <h:outputText value="#{solicitudingresoController.selected.nombreUsuarioA}" title="#{bundle.ViewSolicitudingresoTitle_nombreUsuarioA}"/>
+                    <h:outputText value="#{bundle.ViewSolicitudingresoLabel_registroMedicoA}"/>
+                    <h:outputText value="#{solicitudingresoController.selected.registroMedicoA}" title="#{bundle.ViewSolicitudingresoTitle_registroMedicoA}"/>
+                    <h:outputText value="#{bundle.ViewSolicitudingresoLabel_otroCargoA}"/>
+                    <h:outputText value="#{solicitudingresoController.selected.otroCargoA}" title="#{bundle.ViewSolicitudingresoTitle_otroCargoA}"/>
+                    <h:outputText value="#{bundle.ViewSolicitudingresoLabel_otraEspecialidadA}"/>
+                    <h:outputText value="#{solicitudingresoController.selected.otraEspecialidadA}" title="#{bundle.ViewSolicitudingresoTitle_otraEspecialidadA}"/>
+                    <h:outputText value="#{bundle.ViewSolicitudingresoLabel_numeroIdentificacionB}"/>
+                    <h:outputText value="#{solicitudingresoController.selected.numeroIdentificacionB}" title="#{bundle.ViewSolicitudingresoTitle_numeroIdentificacionB}"/>
+                    <h:outputText value="#{bundle.ViewSolicitudingresoLabel_nombreUsuarioB}"/>
+                    <h:outputText value="#{solicitudingresoController.selected.nombreUsuarioB}" title="#{bundle.ViewSolicitudingresoTitle_nombreUsuarioB}"/>
+                    <h:outputText value="#{bundle.ViewSolicitudingresoLabel_registroMedicoB}"/>
+                    <h:outputText value="#{solicitudingresoController.selected.registroMedicoB}" title="#{bundle.ViewSolicitudingresoTitle_registroMedicoB}"/>
+                    <h:outputText value="#{bundle.ViewSolicitudingresoLabel_otroCargoB}"/>
+                    <h:outputText value="#{solicitudingresoController.selected.otroCargoB}" title="#{bundle.ViewSolicitudingresoTitle_otroCargoB}"/>
+                    <h:outputText value="#{bundle.ViewSolicitudingresoLabel_otraEspecialidadB}"/>
+                    <h:outputText value="#{solicitudingresoController.selected.otraEspecialidadB}" title="#{bundle.ViewSolicitudingresoTitle_otraEspecialidadB}"/>
+                    <h:outputText value="#{bundle.ViewSolicitudingresoLabel_numeroIdentificacionC}"/>
+                    <h:outputText value="#{solicitudingresoController.selected.numeroIdentificacionC}" title="#{bundle.ViewSolicitudingresoTitle_numeroIdentificacionC}"/>
+                    <h:outputText value="#{bundle.ViewSolicitudingresoLabel_nombreUsuarioC}"/>
+                    <h:outputText value="#{solicitudingresoController.selected.nombreUsuarioC}" title="#{bundle.ViewSolicitudingresoTitle_nombreUsuarioC}"/>
+                    <h:outputText value="#{bundle.ViewSolicitudingresoLabel_registroMedicoC}"/>
+                    <h:outputText value="#{solicitudingresoController.selected.registroMedicoC}" title="#{bundle.ViewSolicitudingresoTitle_registroMedicoC}"/>
+                    <h:outputText value="#{bundle.ViewSolicitudingresoLabel_otroCargoC}"/>
+                    <h:outputText value="#{solicitudingresoController.selected.otroCargoC}" title="#{bundle.ViewSolicitudingresoTitle_otroCargoC}"/>
+                    <h:outputText value="#{bundle.ViewSolicitudingresoLabel_otraEspecialidadC}"/>
+                    <h:outputText value="#{solicitudingresoController.selected.otraEspecialidadC}" title="#{bundle.ViewSolicitudingresoTitle_otraEspecialidadC}"/>
+                    <h:outputText value="#{bundle.ViewSolicitudingresoLabel_numeroIdentificacionD}"/>
+                    <h:outputText value="#{solicitudingresoController.selected.numeroIdentificacionD}" title="#{bundle.ViewSolicitudingresoTitle_numeroIdentificacionD}"/>
+                    <h:outputText value="#{bundle.ViewSolicitudingresoLabel_nombreUsuarioD}"/>
+                    <h:outputText value="#{solicitudingresoController.selected.nombreUsuarioD}" title="#{bundle.ViewSolicitudingresoTitle_nombreUsuarioD}"/>
+                    <h:outputText value="#{bundle.ViewSolicitudingresoLabel_registroMedicoD}"/>
+                    <h:outputText value="#{solicitudingresoController.selected.registroMedicoD}" title="#{bundle.ViewSolicitudingresoTitle_registroMedicoD}"/>
+                    <h:outputText value="#{bundle.ViewSolicitudingresoLabel_otroCargoD}"/>
+                    <h:outputText value="#{solicitudingresoController.selected.otroCargoD}" title="#{bundle.ViewSolicitudingresoTitle_otroCargoD}"/>
+                    <h:outputText value="#{bundle.ViewSolicitudingresoLabel_otraEspecialidadD}"/>
+                    <h:outputText value="#{solicitudingresoController.selected.otraEspecialidadD}" title="#{bundle.ViewSolicitudingresoTitle_otraEspecialidadD}"/>
+                    <h:outputText value="#{bundle.ViewSolicitudingresoLabel_fechaSolicitud}"/>
+                    <h:outputText value="#{solicitudingresoController.selected.fechaSolicitud}" title="#{bundle.ViewSolicitudingresoTitle_fechaSolicitud}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewSolicitudingresoLabel_fechaModificacion}"/>
+                    <h:outputText value="#{solicitudingresoController.selected.fechaModificacion}" title="#{bundle.ViewSolicitudingresoTitle_fechaModificacion}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewSolicitudingresoLabel_fechaRespuesta}"/>
+                    <h:outputText value="#{solicitudingresoController.selected.fechaRespuesta}" title="#{bundle.ViewSolicitudingresoTitle_fechaRespuesta}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewSolicitudingresoLabel_respuesta}"/>
+                    <h:outputText value="#{solicitudingresoController.selected.respuesta}" title="#{bundle.ViewSolicitudingresoTitle_respuesta}"/>
+                    <h:outputText value="#{bundle.ViewSolicitudingresoLabel_codigoEspecialidad}"/>
+                    <h:outputText value="#{solicitudingresoController.selected.codigoEspecialidad}" title="#{bundle.ViewSolicitudingresoTitle_codigoEspecialidad}"/>
+                    <h:outputText value="#{bundle.ViewSolicitudingresoLabel_codigoCargo}"/>
+                    <h:outputText value="#{solicitudingresoController.selected.codigoCargo}" title="#{bundle.ViewSolicitudingresoTitle_codigoCargo}"/>
+                    <h:outputText value="#{bundle.ViewSolicitudingresoLabel_codigoCargoA}"/>
+                    <h:outputText value="#{solicitudingresoController.selected.codigoCargoA}" title="#{bundle.ViewSolicitudingresoTitle_codigoCargoA}"/>
+                    <h:outputText value="#{bundle.ViewSolicitudingresoLabel_codigoCargoB}"/>
+                    <h:outputText value="#{solicitudingresoController.selected.codigoCargoB}" title="#{bundle.ViewSolicitudingresoTitle_codigoCargoB}"/>
+                    <h:outputText value="#{bundle.ViewSolicitudingresoLabel_codigoCargoC}"/>
+                    <h:outputText value="#{solicitudingresoController.selected.codigoCargoC}" title="#{bundle.ViewSolicitudingresoTitle_codigoCargoC}"/>
+                    <h:outputText value="#{bundle.ViewSolicitudingresoLabel_codigoCargoD}"/>
+                    <h:outputText value="#{solicitudingresoController.selected.codigoCargoD}" title="#{bundle.ViewSolicitudingresoTitle_codigoCargoD}"/>
+                    <h:outputText value="#{bundle.ViewSolicitudingresoLabel_codigoEspecialidadA}"/>
+                    <h:outputText value="#{solicitudingresoController.selected.codigoEspecialidadA}" title="#{bundle.ViewSolicitudingresoTitle_codigoEspecialidadA}"/>
+                    <h:outputText value="#{bundle.ViewSolicitudingresoLabel_codigoEspecialidadB}"/>
+                    <h:outputText value="#{solicitudingresoController.selected.codigoEspecialidadB}" title="#{bundle.ViewSolicitudingresoTitle_codigoEspecialidadB}"/>
+                    <h:outputText value="#{bundle.ViewSolicitudingresoLabel_codigoEspecialidadC}"/>
+                    <h:outputText value="#{solicitudingresoController.selected.codigoEspecialidadC}" title="#{bundle.ViewSolicitudingresoTitle_codigoEspecialidadC}"/>
+                    <h:outputText value="#{bundle.ViewSolicitudingresoLabel_codigoEspecialidadD}"/>
+                    <h:outputText value="#{solicitudingresoController.selected.codigoEspecialidadD}" title="#{bundle.ViewSolicitudingresoTitle_codigoEspecialidadD}"/>
+                    <h:outputText value="#{bundle.ViewSolicitudingresoLabel_codigoUsuario}"/>
+                    <h:outputText value="#{solicitudingresoController.selected.codigoUsuario}" title="#{bundle.ViewSolicitudingresoTitle_codigoUsuario}"/>
+                    <h:outputText value="#{bundle.ViewSolicitudingresoLabel_modificadoPor}"/>
+                    <h:outputText value="#{solicitudingresoController.selected.modificadoPor}" title="#{bundle.ViewSolicitudingresoTitle_modificadoPor}"/>
+                    <h:outputText value="#{bundle.ViewSolicitudingresoLabel_codigoMunicipio}"/>
+                    <h:outputText value="#{solicitudingresoController.selected.codigoMunicipio}" title="#{bundle.ViewSolicitudingresoTitle_codigoMunicipio}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{solicitudingresoController.destroyAndView}" value="#{bundle.ViewSolicitudingresoDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewSolicitudingresoEditLink}"/>
+                <br />
+                <h:commandLink action="#{solicitudingresoController.prepareCreate}" value="#{bundle.ViewSolicitudingresoCreateLink}" />
+                <br />
+                <h:commandLink action="#{solicitudingresoController.prepareList}" value="#{bundle.ViewSolicitudingresoShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewSolicitudingresoIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

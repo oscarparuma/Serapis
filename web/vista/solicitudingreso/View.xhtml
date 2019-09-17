@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.AppName}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+
+            <h:form>
+                <h:panelGrid columns="1">
+                    <p:panel header="#{bundle.DatEnvi}">
+                        <p:panelGrid columns="4">
+                            <h:outputText value="#{bundle.ViewSolicitudingresoLabel_identificacionNit}"/>
+                            <h:outputText value="#{solicitudingresoController.selected.identificacionNit}" />
+                            <h:outputText value="#{bundle.ViewSolicitudingresoLabel_nombreSede}"/>
+                            <h:outputText value="#{solicitudingresoController.selected.nombreSede}" />
+                            <h:outputText value="#{bundle.ViewSolicitudingresoLabel_siglasSede}"/>
+                            <h:outputText value="#{solicitudingresoController.selected.siglasSede}"/>
+                            <h:outputText value="#{bundle.ViewSolicitudingresoLabel_direccion}"/>
+                            <h:outputText value="#{solicitudingresoController.selected.direccion}" />
+                            <h:outputText value="#{bundle.ViewSolicitudingresoLabel_telefono}"/>
+                            <h:outputText value="#{solicitudingresoController.selected.telefono}" />
+                            <h:outputText value="#{bundle.ViewSolicitudingresoLabel_email}"/>
+                            <h:outputText value="#{solicitudingresoController.selected.email}" />
+                            <h:outputText value="#{bundle.ViewSolicitudingresoLabel_paginaWeb}"/>
+                            <h:outputText value="#{solicitudingresoController.selected.paginaWeb}" />  
+                            <h:outputText value="#{bundle.ViewSolicitudingresoLabel_consultorios}"/>
+                            <h:outputText value="#{solicitudingresoController.selected.consultorios}" />
+                            <h:outputText value="#{bundle.ViewSolicitudingresoLabel_codigoMunicipio}"/>
+                            <h:outputText value=" #{solicitudingresoController.selected.codigoMunicipio}"/>
+                        </p:panelGrid>
+                    </p:panel>
+                    <p:panel header="#{bundle.regUsuariosSede}">
+                        <p:panelGrid columns="7">
+                            <h:outputText value="#{bundle.ViewSolicitudingresoLabel_numeroIdentificacion}"/>
+                            <h:outputText value="#{bundle.ViewSolicitudingresoLabel_nombreUsuario}"/>
+                            <h:outputText value="#{bundle.ViewSolicitudingresoLabel_registroMedico}"/>
+                            <h:outputText value=" #{bundle.ViewSolicitudingresoLabel_codigoCargo}"/>
+                            <h:outputText value="#{bundle.ViewSolicitudingresoLabel_otroCargo}"/>
+                            <h:outputText value=" #{bundle.ViewSolicitudingresoLabel_codigoEspecialidad}"/>
+                            <h:outputText value="#{bundle.ViewSolicitudingresoLabel_otraEspecialidad}"/>
+
+                            <h:outputText value="#{solicitudingresoController.selected.numeroIdentificacion}" />                    
+                            <h:outputText value="#{solicitudingresoController.selected.nombreUsuario}" />                    
+                            <h:outputText value="#{solicitudingresoController.selected.registroMedico}" /> 
+                            <h:outputText value=" #{solicitudingresoController.selected.codigoCargo}" />
+                            <h:outputText value="#{solicitudingresoController.selected.otroCargo}" /> 
+                            <h:outputText value=" #{solicitudingresoController.selected.codigoEspecialidad}" />
+                            <h:outputText value="#{solicitudingresoController.selected.otraEspecialidad}" />
+
+                            <h:outputText value="#{solicitudingresoController.selected.numeroIdentificacionA}" />
+                            <h:outputText value="#{solicitudingresoController.selected.nombreUsuarioA}" />
+                            <h:outputText value="#{solicitudingresoController.selected.registroMedicoA}" />
+                            <h:outputText value=" #{solicitudingresoController.selected.codigoCargoA}" />
+                            <h:outputText value="#{solicitudingresoController.selected.otroCargoA}" />
+                            <h:outputText value=" #{solicitudingresoController.selected.codigoEspecialidadA}" />
+                            <h:outputText value="#{solicitudingresoController.selected.otraEspecialidadA}" />
+
+                            <h:outputText value="#{solicitudingresoController.selected.numeroIdentificacionB}" />
+                            <h:outputText value="#{solicitudingresoController.selected.nombreUsuarioB}" />
+                            <h:outputText value="#{solicitudingresoController.selected.registroMedicoB}" />
+                            <h:outputText value=" #{solicitudingresoController.selected.codigoCargoB}" />
+                            <h:outputText value="#{solicitudingresoController.selected.otroCargoB}" />
+                            <h:outputText value=" #{solicitudingresoController.selected.codigoEspecialidadB}" />
+                            <h:outputText value="#{solicitudingresoController.selected.otraEspecialidadB}" />
+
+
+
+                            <h:outputText value="#{solicitudingresoController.selected.numeroIdentificacionC}" />                    
+                            <h:outputText value="#{solicitudingresoController.selected.nombreUsuarioC}" />                   
+                            <h:outputText value="#{solicitudingresoController.selected.registroMedicoC}" />  
+                            <h:outputText value=" #{solicitudingresoController.selected.codigoCargoC}" />
+                            <h:outputText value="#{solicitudingresoController.selected.otroCargoC}" />
+                            <h:outputText value=" #{solicitudingresoController.selected.codigoEspecialidadC}" />
+                            <h:outputText value="#{solicitudingresoController.selected.otraEspecialidadC}" />
+
+
+                            <h:outputText value="#{solicitudingresoController.selected.numeroIdentificacionD}" />                    
+                            <h:outputText value="#{solicitudingresoController.selected.nombreUsuarioD}" />                    
+                            <h:outputText value="#{solicitudingresoController.selected.registroMedicoD}" />  
+                            <h:outputText value=" #{solicitudingresoController.selected.codigoCargoD}" />
+                            <h:outputText value="#{solicitudingresoController.selected.otroCargoD}" /> 
+                            <h:outputText value=" #{solicitudingresoController.selected.codigoEspecialidadD}" />
+                            <h:outputText value="#{solicitudingresoController.selected.otraEspecialidadD}" />
+                        </p:panelGrid>
+                        
+                        <p:fieldset >
+                            <h:outputText value="#{bundle.info7}" />  
+                            <br/> <br/>
+                            <h:outputText value="#{bundle.info8}" />
+                            
+                            <br/>
+                            <h:outputText style="font-size: 16px;" value="#{bundle.info9}" />
+                            <br/>
+                            <h:outputText style="font-size: 16px;" value="#{bundle.info6}" />
+                            <br/>  <br/>                           
+                            <h:outputText style="font-size: 16px;" value="#{bundle.contacto} #{bundle.telCont}" />
+                                                       
+                        </p:fieldset>
+
+                    </p:panel>
+
+                </h:panelGrid>
+
+                
+
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

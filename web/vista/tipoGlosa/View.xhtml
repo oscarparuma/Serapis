@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewTipoGlosaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewTipoGlosaLabel_codigoGlosa}"/>
+                    <h:outputText value="#{tipoGlosaController.selected.codigoGlosa}" title="#{bundle.ViewTipoGlosaTitle_codigoGlosa}"/>
+                    <h:outputText value="#{bundle.ViewTipoGlosaLabel_codigoGlosaEps}"/>
+                    <h:outputText value="#{tipoGlosaController.selected.codigoGlosaEps}" title="#{bundle.ViewTipoGlosaTitle_codigoGlosaEps}"/>
+                    <h:outputText value="#{bundle.ViewTipoGlosaLabel_codigoEps}"/>
+                    <h:outputText value="#{tipoGlosaController.selected.codigoEps}" title="#{bundle.ViewTipoGlosaTitle_codigoEps}"/>
+                    <h:outputText value="#{bundle.ViewTipoGlosaLabel_codigoEpsSede}"/>
+                    <h:outputText value="#{tipoGlosaController.selected.codigoEpsSede}" title="#{bundle.ViewTipoGlosaTitle_codigoEpsSede}"/>
+                    <h:outputText value="#{bundle.ViewTipoGlosaLabel_descripciónGlosa}"/>
+                    <h:outputText value="#{tipoGlosaController.selected.descripcionGlosa}" title="#{bundle.ViewTipoGlosaTitle_descripciónGlosa}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{tipoGlosaController.destroyAndView}" value="#{bundle.ViewTipoGlosaDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewTipoGlosaEditLink}"/>
+                <br />
+                <h:commandLink action="#{tipoGlosaController.prepareCreate}" value="#{bundle.ViewTipoGlosaCreateLink}" />
+                <br />
+                <h:commandLink action="#{tipoGlosaController.prepareList}" value="#{bundle.ViewTipoGlosaShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewTipoGlosaIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

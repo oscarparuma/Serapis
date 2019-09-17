@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/templateIngreso.xhtml">
+
+
+        <ui:define name="title">
+            <h:outputText value="#{bundle.AppName}"></h:outputText>
+        </ui:define>
+
+        <ui:define name="body">
+            <h:form id="CitaPersonaListForm">
+                <p:panel>
+                    <div align="center">                        
+                        <div class="container text-center">   
+                            <div class="row">
+                                <div class="col-sm-3 well">
+                                    <h:panelGrid columns="1">
+                                        <div align="center">
+                                            <p:panel header="#{bundle.factPendientes}" >
+                                                <p:dataTable id="lalmeida"  reflow="true" value="#{facturacionController.listFacturacion}" var="item" emptyMessage=" " selectionMode="single"  paginator="true"  rowKey="#{item.codigoFactura}" rows="20"  rowsPerPageTemplate="20,50,100">
+                                                    <p:column>
+                                                        <f:facet name="header">
+                                                            <h:outputText value="#{bundle.Seleccione}" style="font-size: 14px;"/>
+                                                        </f:facet>
+                                                        <p:commandButton id="editButton" process="@all" styleClass="button" ajax="false" action="#{facturacionController.prepareListP(item)}" value="#{bundle.botRegPago}" immediate="true"/>
+                                                    </p:column>
+                                                    <p:column>
+                                                        <f:facet name="header">
+                                                            <h:outputText value="#{bundle.NumeroDocumento}" style="font-size: 14px;"/>
+                                                        </f:facet>
+                                                        <h:outputText value="#{item.numeroDocumento}"/>
+                                                    </p:column>
+                                                    <p:column>
+                                                        <f:facet name="header">
+                                                            <h:outputText value="#{bundle.Nombres}" style="font-size: 14px;"/>
+                                                        </f:facet>
+                                                        <h:outputText value=" #{item.codigoPersona}"/>
+                                                    </p:column>
+                                                    <p:column>
+                                                        <f:facet name="header">
+                                                            <h:outputText value="#{bundle.ListFacturacionTitle_facturaSede}" style="font-size: 14px;"/>
+                                                        </f:facet>
+                                                        <h:outputText value="#{item.facturaSede}"/>
+                                                    </p:column>
+
+                                                    <p:column>
+                                                        <f:facet name="header">
+                                                            <h:outputText value="#{bundle.consult}" style="font-size: 14px;"/>
+                                                        </f:facet>
+                                                        <h:outputText value=" #{item.codigoEps}"/>
+                                                    </p:column>
+                                                    <p:column>
+                                                        <f:facet name="header">
+                                                            <h:outputText value="#{bundle.ListFacturacionTitle_codigoNivelCopago}" style="font-size: 14px; width:20px; "/>
+                                                        </f:facet>
+                                                        <h:outputText  value="#{item.codigoNivelCopago}"/>
+                                                    </p:column>
+                                                    <p:column>
+                                                        <f:facet  name="header">
+                                                            <h:outputText value="#{bundle.ListFacturacionTitle_codigoProcedimientoSede}" style="font-size: 14px;"/>
+                                                        </f:facet>
+                                                        <h:outputText value=" #{item.codigoProcedimientoSede}"/>
+                                                    </p:column>
+                                                    <h:column>
+                                                        <f:facet name="header">
+                                                            <h:outputText value="#{bundle.ListFacturacionTitle_cantidad}" style="font-size: 14px;"/>
+                                                        </f:facet>
+                                                        <h:outputText value="#{item.cantidad}"/>
+                                                    </h:column>
+
+                                                    <p:column>
+                                                        <f:facet name="header">
+                                                            <h:outputText value="#{bundle.ListFacturacionTitle_valorUnitario}" style="font-size: 14px;"/>
+                                                        </f:facet>
+                                                        <h:outputText value="#{item.valorUnitario}">
+                                                            <f:convertNumber pattern="$ #,###.00" />
+                                                        </h:outputText>
+                                                    </p:column>
+                                                    <p:column>
+                                                        <f:facet name="header">
+                                                            <h:outputText value="#{bundle.ListFacturacionTitle_valorCopago}" style="font-size: 14px;"/>
+                                                        </f:facet>
+                                                        <h:outputText value="#{item.valorCopago}">
+                                                            <f:convertNumber pattern="$ #,###.00" />
+                                                        </h:outputText>
+                                                    </p:column>
+                                                    <p:column>
+                                                        <f:facet name="header">
+                                                            <h:outputText value="#{bundle.ListFacturacionTitle_valorTotalFactura}" style="font-size: 14px;"/>
+                                                        </f:facet>
+                                                        <h:outputText value="#{item.valorTotalFactura}">
+                                                            <f:convertNumber pattern="$ #,###.00" />
+                                                        </h:outputText>
+                                                    </p:column>
+                                                    <p:column>
+                                                        <f:facet name="header">
+                                                            <h:outputText value="#{bundle.ListFacturacionTitle_fechaRegistro}" style="font-size: 14px;"/>
+                                                        </f:facet>
+                                                        <h:outputText value="#{item.fechaRegistro}">
+                                                            <f:convertDateTime pattern="yyyy-MM-dd" />
+                                                        </h:outputText>
+                                                    </p:column>
+                                                    <p:column>
+                                                        <f:facet name="header">
+                                                            <h:outputText value="#{bundle.ListFacturacionTitle_codigoUsuario}" style="font-size: 14px;"/>
+                                                        </f:facet>
+                                                        <h:outputText value=" #{item.codigoUsuario}"/>
+                                                    </p:column>
+                                                    <h:column>
+                                                        <f:facet name="header">
+                                                            <h:outputText value="#{bundle.ListFacturacionTitle_codigoSede}" style="font-size: 14px;"/>
+                                                        </f:facet>
+                                                        <h:outputText value="#{item.codigoSede}"/>
+                                                    </h:column>
+                                                    <h:column>
+                                                        <f:facet name="header">
+                                                            <h:outputText value="#{bundle.ListFacturacionTitle_usuarioAutoriza}" style="width:10px;"/>
+                                                        </f:facet>
+                                                        <h:outputText value="#{item.usuarioAutoriza}"/>
+                                                    </h:column>
+                                                    <f:facet name="footer">
+                                                        <p:panel>
+                                                            <div align="center"  >
+                                                                <p:commandLink   title="#{bundle.Regresar}"  update="@all" action="/vista/menuSistema/MenuConsultas.xhtml"   immediate="true">
+                                                                    <h:graphicImage id="menuConsultas" alt="#{m.ingles}"  url="/imagenes/ImagSisitema/regresar.jpg" class="img-responsive" />
+                                                                </p:commandLink>
+                                                                <p:commandLink  rendered="#{usuarioController.selected.codigoPerfil.codigoPerfil ==1 || usuarioController.selected.codigoPerfil.codigoPerfil ==2}" title="#{bundle.salir}"  update="@all" action="/index.xhtml"  immediate="true">
+                                                                    <h:graphicImage id="Salir" alt="#{m.ingles}"  url="/imagenes/ImagSisitema/salirSistema.jpg" class="img-responsive" />
+                                                                </p:commandLink>
+                                                            </div>  
+                                                        </p:panel>
+                                                    </f:facet>
+                                                </p:dataTable>
+
+                                            </p:panel>
+
+                                        </div>
+
+                                    </h:panelGrid>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </p:panel>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

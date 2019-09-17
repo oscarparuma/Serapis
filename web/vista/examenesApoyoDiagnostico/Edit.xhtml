@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:pe="http://primefaces.org/ui/extensions"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.AppName}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+
+            <h:form>
+                <p:panel header="#{bundle.CreateExamenesApoyoDiagnosticoTitle} #{examenesApoyoDiagnosticoController.actAgenCit.codigoPersonaCita}" style=" width: 1450px; border: 1px;">
+                    <p:panelGrid columns="1" rendered="#{examenesApoyoDiagnosticoController.selected != null}">
+                        <p:panel>
+                            <h:panelGrid columns="1">
+                                <p:panelGrid columns="2" >
+                                    <p:outputLabel value="#{bundle.CreateExamenesApoyoDiagnosticoLabel_codigoCups}" for="codigoCups" />
+                                    <p:selectOneMenu filter="true" filterMatchMode="contains" style="min-width: 1200px;"  id="codigoCups" value="#{examenesApoyoDiagnosticoController.selected.codigoCups}" required="true" requiredMessage="#{bundle.CreateExamenesApoyoDiagnosticoRequiredMessage_codigoCups}">
+                                        <f:selectItems value="#{manualtarifasController.itemsAvailableSelectOne}"
+                                                       var="codigoCupsItem"
+                                                       itemValue="#{codigoCupsItem}"/>
+                                    </p:selectOneMenu>
+                                </p:panelGrid>
+                                <p:panelGrid columns="4">
+                                    <p:outputLabel value="#{bundle.CreateExamenesApoyoDiagnosticoLabel_cantidad}" for="cantidad" />
+                                    <p:inputText size="2" id="cantidad" value="#{examenesApoyoDiagnosticoController.selected.cantidad}" required="true" requiredMessage="#{bundle.CreateExamenesApoyoDiagnosticoRequiredMessage_cantidad}"/>
+                                    
+                                                                       
+                                    <p:outputLabel value="#{bundle.CreateExamenesApoyoDiagnosticoLabel_resultados}" for="resultados" />
+                                    <p:selectOneMenu id="resultados" value="#{examenesApoyoDiagnosticoController.selected.resultados}" 
+                                                     title="#{bundle.CreateExamenesApoyoDiagnosticoTitle_resultados}" 
+                                                     required="true" requiredMessage="#{bundle.CreateExamenesApoyoDiagnosticoRequiredMessage_resultados}" styleClass="input"  >
+                                        <f:selectItem noSelectionOption="true" itemLabel=" ---- "/>
+                                        <f:selectItem itemValue="#{bundle.itemValueN}" itemLabel="#{bundle.itemLabelN}"/>
+                                        <f:selectItem itemValue="#{bundle.itemValueS}" itemLabel="#{bundle.itemLabelS}"/>
+                                    
+                                    </p:selectOneMenu>
+
+                                </p:panelGrid>
+                            </h:panelGrid>
+                            <p:panelGrid columns="1">
+                                <p:panel header="#{bundle.CreateExamenesApoyoDiagnosticoLabel_justificacionMedica}">
+                                    <pe:ckEditor height="150" width="975" customConfig="#{request.contextPath}/resources/ckeditor.js" id="justificacionMedica" required="true" requiredMessage="#{bundle.CreateExamenesApoyoDiagnosticoRequiredMessage_justificacionMedica}" value="#{examenesApoyoDiagnosticoController.selected.justificacionMedica}" 
+                                                 toolbar="[['Source', 'Cut','Copy','Paste','PasteText','PasteFromWord','-', 'SpellChecker', 'Bold', 'Italic', 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock',  'NumberedList', 'BulletedList', 'Scayt'], 
+                                                 { name: 'styles', items: [ 'FontSize' ] },]" >                            
+                                    </pe:ckEditor>
+                                </p:panel>
+                                <p:panel>
+                                    <p:commandButton style="margin-right: 10px;" id="createButton" process="@all" styleClass="button" ajax="false" action="#{examenesApoyoDiagnosticoController.update}" value="#{bundle.CreateExamenesApoyoDiagnosticoSaveLink}" immediate="false"/>
+                                    <p:commandButton id="editButton" process="@all" styleClass="button" ajax="false" action="#{examenesApoyoDiagnosticoController.prepareList}" value="#{bundle.CreateExamenesApoyoDiagnosticoShowAllLink}" immediate="true"/>
+                                </p:panel>
+
+                            </p:panelGrid>
+                        </p:panel>
+                    </p:panelGrid>
+
+
+                
+
+                </p:panel>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

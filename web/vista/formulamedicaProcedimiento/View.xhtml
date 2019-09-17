@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewFormulamedicaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewFormulamedicaLabel_consecutivo}"/>
+                    <h:outputText value="#{formulamedicaController.selected.consecutivo}" title="#{bundle.ViewFormulamedicaTitle_consecutivo}"/>
+                    <h:outputText value="#{bundle.ViewFormulamedicaLabel_fechaRegistro}"/>
+                    <h:outputText value="#{formulamedicaController.selected.fechaRegistro}" title="#{bundle.ViewFormulamedicaTitle_fechaRegistro}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewFormulamedicaLabel_cantidad}"/>
+                    <h:outputText value="#{formulamedicaController.selected.cantidad}" title="#{bundle.ViewFormulamedicaTitle_cantidad}"/>
+                    <h:outputText value="#{bundle.ViewFormulamedicaLabel_recomendacionesMedicas}"/>
+                    <h:outputText value="#{formulamedicaController.selected.recomendacionesMedicas}" title="#{bundle.ViewFormulamedicaTitle_recomendacionesMedicas}"/>
+                    <h:outputText value="#{bundle.ViewFormulamedicaLabel_fechaModificacion}"/>
+                    <h:outputText value="#{formulamedicaController.selected.fechaModificacion}" title="#{bundle.ViewFormulamedicaTitle_fechaModificacion}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewFormulamedicaLabel_dosificacionMedicamento}"/>
+                    <h:outputText value="#{formulamedicaController.selected.dosificacionMedicamento}" title="#{bundle.ViewFormulamedicaTitle_dosificacionMedicamento}"/>
+                    <h:outputText value="#{bundle.ViewFormulamedicaLabel_codigoCita}"/>
+                    <h:outputText value="#{formulamedicaController.selected.codigoCita}" title="#{bundle.ViewFormulamedicaTitle_codigoCita}"/>
+                    <h:outputText value="#{bundle.ViewFormulamedicaLabel_codigoClasificacionMedicamento}"/>
+                    <h:outputText value="#{formulamedicaController.selected.codigoClasificacionMedicamento}" title="#{bundle.ViewFormulamedicaTitle_codigoClasificacionMedicamento}"/>
+                    <h:outputText value="#{bundle.ViewFormulamedicaLabel_codigoPersona}"/>
+                    <h:outputText value="#{formulamedicaController.selected.codigoPersona}" title="#{bundle.ViewFormulamedicaTitle_codigoPersona}"/>
+                    <h:outputText value="#{bundle.ViewFormulamedicaLabel_codigoMedicamento}"/>
+                    <h:outputText value="#{formulamedicaController.selected.codigoMedicamento}" title="#{bundle.ViewFormulamedicaTitle_codigoMedicamento}"/>
+                    <h:outputText value="#{bundle.ViewFormulamedicaLabel_modificadoPor}"/>
+                    <h:outputText value="#{formulamedicaController.selected.modificadoPor}" title="#{bundle.ViewFormulamedicaTitle_modificadoPor}"/>
+                    <h:outputText value="#{bundle.ViewFormulamedicaLabel_codigoUsuario}"/>
+                    <h:outputText value="#{formulamedicaController.selected.codigoUsuario}" title="#{bundle.ViewFormulamedicaTitle_codigoUsuario}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{formulamedicaController.destroyAndView}" value="#{bundle.ViewFormulamedicaDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewFormulamedicaEditLink}"/>
+                <br />
+                <h:commandLink action="#{formulamedicaController.prepareCreate}" value="#{bundle.ViewFormulamedicaCreateLink}" />
+                <br />
+                <h:commandLink action="#{formulamedicaController.prepareList}" value="#{bundle.ViewFormulamedicaShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewFormulamedicaIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

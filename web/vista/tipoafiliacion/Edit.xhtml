@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditTipoafiliacionTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditTipoafiliacionLabel_codigoAfiliacion}" for="codigoAfiliacion" />
+                    <h:inputText id="codigoAfiliacion" value="#{tipoafiliacionController.selected.codigoAfiliacion}" title="#{bundle.EditTipoafiliacionTitle_codigoAfiliacion}" required="true" requiredMessage="#{bundle.EditTipoafiliacionRequiredMessage_codigoAfiliacion}"/>
+                    <h:outputLabel value="#{bundle.EditTipoafiliacionLabel_nombreAfiliacion}" for="nombreAfiliacion" />
+                    <h:inputText id="nombreAfiliacion" value="#{tipoafiliacionController.selected.nombreAfiliacion}" title="#{bundle.EditTipoafiliacionTitle_nombreAfiliacion}" />
+                    <h:outputLabel value="#{bundle.EditTipoafiliacionLabel_activo}" for="activo" />
+                    <h:inputText id="activo" value="#{tipoafiliacionController.selected.activo}" title="#{bundle.EditTipoafiliacionTitle_activo}" />
+                    <h:outputLabel value="#{bundle.EditTipoafiliacionLabel_fechaRegistro}" for="fechaRegistro" />
+                    <h:inputText id="fechaRegistro" value="#{tipoafiliacionController.selected.fechaRegistro}" title="#{bundle.EditTipoafiliacionTitle_fechaRegistro}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditTipoafiliacionLabel_fechaModificacion}" for="fechaModificacion" />
+                    <h:inputText id="fechaModificacion" value="#{tipoafiliacionController.selected.fechaModificacion}" title="#{bundle.EditTipoafiliacionTitle_fechaModificacion}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditTipoafiliacionLabel_codigoUsuario}" for="codigoUsuario" />
+                    <h:selectOneMenu id="codigoUsuario" value="#{tipoafiliacionController.selected.codigoUsuario}" title="#{bundle.EditTipoafiliacionTitle_codigoUsuario}" >
+                        <f:selectItems value="#{usuarioController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditTipoafiliacionLabel_modificadoPor}" for="modificadoPor" />
+                    <h:selectOneMenu id="modificadoPor" value="#{tipoafiliacionController.selected.modificadoPor}" title="#{bundle.EditTipoafiliacionTitle_modificadoPor}" >
+                        <f:selectItems value="#{usuarioController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{tipoafiliacionController.update}" value="#{bundle.EditTipoafiliacionSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditTipoafiliacionViewLink}"/>
+                <br />
+                <h:commandLink action="#{tipoafiliacionController.prepareList}" value="#{bundle.EditTipoafiliacionShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditTipoafiliacionIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

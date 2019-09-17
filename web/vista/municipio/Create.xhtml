@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateMunicipioTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateMunicipioLabel_codigoMunicipio}" for="codigoMunicipio" />
+                    <h:inputText id="codigoMunicipio" value="#{municipioController.selected.codigoMunicipio}" title="#{bundle.CreateMunicipioTitle_codigoMunicipio}" required="true" requiredMessage="#{bundle.CreateMunicipioRequiredMessage_codigoMunicipio}"/>
+                    <h:outputLabel value="#{bundle.CreateMunicipioLabel_nombreMunicipio}" for="nombreMunicipio" />
+                    <h:inputText id="nombreMunicipio" value="#{municipioController.selected.nombreMunicipio}" title="#{bundle.CreateMunicipioTitle_nombreMunicipio}" />
+                    <h:outputLabel value="#{bundle.CreateMunicipioLabel_activo}" for="activo" />
+                    <h:inputText id="activo" value="#{municipioController.selected.activo}" title="#{bundle.CreateMunicipioTitle_activo}" />
+                    <h:outputLabel value="#{bundle.CreateMunicipioLabel_fechaRegistro}" for="fechaRegistro" />
+                    <h:inputText id="fechaRegistro" value="#{municipioController.selected.fechaRegistro}" title="#{bundle.CreateMunicipioTitle_fechaRegistro}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreateMunicipioLabel_fechaModificacion}" for="fechaModificacion" />
+                    <h:inputText id="fechaModificacion" value="#{municipioController.selected.fechaModificacion}" title="#{bundle.CreateMunicipioTitle_fechaModificacion}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreateMunicipioLabel_codigoDepartamento}" for="codigoDepartamento" />
+                    <h:selectOneMenu id="codigoDepartamento" value="#{municipioController.selected.codigoDepartamento}" title="#{bundle.CreateMunicipioTitle_codigoDepartamento}" >
+                        <f:selectItems value="#{departamentoController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateMunicipioLabel_codigoUsuario}" for="codigoUsuario" />
+                    <h:selectOneMenu id="codigoUsuario" value="#{municipioController.selected.codigoUsuario}" title="#{bundle.CreateMunicipioTitle_codigoUsuario}" >
+                        <f:selectItems value="#{usuarioController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateMunicipioLabel_codigoUsuarioModifico}" for="codigoUsuarioModifico" />
+                    <h:selectOneMenu id="codigoUsuarioModifico" value="#{municipioController.selected.codigoUsuarioModifico}" title="#{bundle.CreateMunicipioTitle_codigoUsuarioModifico}" >
+                        <f:selectItems value="#{usuarioController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{municipioController.create}" value="#{bundle.CreateMunicipioSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{municipioController.prepareList}" value="#{bundle.CreateMunicipioShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateMunicipioIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

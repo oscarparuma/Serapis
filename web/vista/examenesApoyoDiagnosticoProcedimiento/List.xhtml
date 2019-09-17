@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:pe="http://primefaces.org/ui/extensions"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+
+
+        <ui:define name="title">
+            <h:outputText value="#{bundle.AppName}"></h:outputText>
+        </ui:define>
+
+        <ui:define name="body">
+            <h:form id="ExamenesApoyoDiagnosticoListForm">
+                <p:panel header="#{bundle.examApoyDiag} #{examenesApoyoDiagnosticoController.actAgenCit.codigoPersonaCita}" style=" width: 1500px; border: solid 1px;">
+                    <p:dataTable id="datalist" value="#{examenesApoyoDiagnosticoController.items}" var="item"
+                                 selectionMode="single" paginator="true"  emptyMessage=" "
+                                     rowKey="#{item.consecutivo}" rows="10" rowsPerPageTemplate="10,20,30,40,50"  lazy="true" style=" width: 1475px; border: solid 1px;" > 
+                                
+
+
+                       
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListExamenesApoyoDiagnosticoTitle_codigoCups}"/>
+                            </f:facet>
+                            <h:outputText value=" #{item.codigoCups}"/>
+                        </p:column>
+
+                        <p:column width="600">
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListExamenesApoyoDiagnosticoTitle_justificacionMedica}"/>
+                            </f:facet>
+                            <pe:ckEditor height="100" width="599" customConfig="#{request.contextPath}/resources/ckeditor.js" value="#{item.justificacionMedica}" toolbar="[['Source', 'Cut','Copy','Paste','PasteText','PasteFromWord','-', 'SpellChecker', 'Bold', 'Italic', 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock',  'NumberedList', 'BulletedList', 'Scayt'], 
+                                            { name: 'styles', items: [ 'FontSize' ] }]"/>
+                        </p:column>
+                        <p:column width="60">
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListExamenesApoyoDiagnosticoTitle_cantidad}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.cantidad}"/>
+                        </p:column>
+                        <p:column width="110">
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListExamenesApoyoDiagnosticoTitle_fechaRegistro}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.fechaRegistro}">
+                                <f:convertDateTime pattern="yyyy-MM-dd" />
+                            </h:outputText>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListExamenesApoyoDiagnosticoTitle_codigoUsuario}"/>
+                            </f:facet>
+                            <h:outputText style="text-transform: uppercase" value=" #{item.codigoUsuario}"/>
+                        </p:column>
+                         <p:column width="120" rendered="#{citapersonaController.selected.botExamApoyDiagnostico=='N'}">
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.Seleccione}"/>
+                            </f:facet>
+                             <p:commandButton id="editButton"   icon="ui-icon-pencil" process="@all" styleClass="button" ajax="false" action="#{examenesApoyoDiagnosticoController.prepareEdit}" value="#{bundle.ListExamenesApoyoDiagnosticoEditLink}" immediate="false"/>
+                       
+                        </p:column>
+
+
+                        <f:facet name="footer">
+                            <p:commandButton style="margin-right: 10px;" rendered="#{citapersonaController.selected.finalizada=='N'}" id="createButton" icon="ui-icon-plus" process="@all" styleClass="button" ajax="false" action="#{examenesApoyoDiagnosticoController.prepareCreate}"  value="#{bundle.ExamApoyDiag}" immediate="false" />
+                            <p:commandButton  style="margin-right: 10px;" id="editButton10" icon="ui-icon-plus" process="@all" styleClass="button" ajax="false" action="#{citapersonaController.prepareListFormulamedicaProcedimientoList}"  value="#{bundle.FormMedica}" />
+                            <p:commandButton id="editButtonE"   icon="ui-icon-circle-arrow-w" process="@all" styleClass="button" ajax="false" action="/vista/diagnosticoIngresoprocedimiento/List" value="#{bundle.Regresar}" immediate="true"/>
+                        </f:facet>
+                    </p:dataTable>
+                </p:panel>
+            </h:form>
+
+           
+
+
+        </ui:define>
+    </ui:composition>
+
+</html>

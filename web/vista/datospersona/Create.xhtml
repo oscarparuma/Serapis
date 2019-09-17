@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+   
+        <ui:composition>
+
+            <p:dialog id="DatospersonaCreateDlg" widgetVar="DatospersonaCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateDatospersonaTitle}">
+                <h:form id="DatospersonaCreateForm">
+                      <br></br><br></br>
+                    <h:panelGroup id="display">
+                        <p:panelGrid columns="2">
+                          
+                            <p:outputLabel value="#{bundle.CreateDatospersonaLabel_numeroDocumentoIdentidad}" for="numeroDocumentoIdentidad" />
+                            <p:inputText onchange="validarSiNumero(this.value);" size="21" maxlength="20" id="numeroDocumentoIdentidad" required="true" requiredMessage="#{bundle.CreateDatospersonaRequiredMessage_numeroDocumentoIdentidad}"
+                                         value="#{datospersonaController.selected.numeroDocumentoIdentidad}" />                        
+                            <h:panelGroup>
+                                <p:outputLabel value="#{bundle.CreateDatospersonaLabel_nombres}" for="nombres" /> 
+                                <br/>
+                                <p:inputText size="30"  id="nombres" style="text-transform: uppercase" onkeyup="javascript:this.value = this.value.toUpperCase();" required="true" requiredMessage="#{bundle.CreateDatospersonaRequiredMessage_nombres}"
+                                             value="#{datospersonaController.selected.nombres}"  />  
+                            </h:panelGroup>
+                            <h:panelGroup>
+                                <p:outputLabel value="#{bundle.CreateDatospersonaLabel_segundoNombre}" for="segundoNombre" />
+                                <br/>
+                                <p:inputText size="30" id="segundoNombre" style="text-transform: uppercase" onkeyup="javascript:this.value = this.value.toUpperCase();" value="#{datospersonaController.selected.segundoNombre}" title="#{bundle.CreateDatospersonaTitle_segundoNombre}" />
+                            </h:panelGroup>
+                            <h:panelGroup>
+                                <p:outputLabel value="#{bundle.CreateDatospersonaLabel_apellidos}" for="apellidos" />
+                                <br/>
+                                <p:inputText size="30" id="apellidos" style="text-transform: uppercase" onkeyup="javascript:this.value = this.value.toUpperCase();" required="true" requiredMessage="#{bundle.CreateDatospersonaRequiredMessage_apellidos}"
+                                             value="#{datospersonaController.selected.apellidos}"  />                       
+                            </h:panelGroup>
+                            <h:panelGroup>
+                                <p:outputLabel value="#{bundle.CreateDatospersonaLabel_segundoApellido}" for="segundoApellido" />
+                                <br/>
+                                <p:inputText size="30" id="segundoApellido" style="text-transform: uppercase" onkeyup="javascript:this.value = this.value.toUpperCase();" value="#{datospersonaController.selected.segundoApellido}" title="#{bundle.CreateDatospersonaTitle_segundoApellido}" />
+                            </h:panelGroup>
+                            <h:panelGroup>
+                                <p:outputLabel value="#{bundle.CreateDatospersonaLabel_genero}" for="genero" />
+                                <br/>
+                                <h:selectOneRadio id="genero" value="#{datospersonaController.selected.genero}" required="true" requiredMessage="#{bundle.CreateDatospersonaRequiredMessage_genero}" >
+                                    <f:selectItems value="#{tipogeneroController.itemsAvailableSelectMany}"/>
+                                </h:selectOneRadio>
+                            </h:panelGroup>
+                            <h:panelGroup>
+                                <p:outputLabel value="#{bundle.CreateDatospersonaLabel_telefono}" for="telefono" />
+                                <br/>
+                                <p:inputText size="30" id="telefono" value="#{datospersonaController.selected.telefono}" /> 
+                            </h:panelGroup>
+                        </p:panelGrid>
+                        <p:commandButton style="margin-right: 10px;" actionListener="#{datospersonaController.create}" onclick="DatospersonaCreateDialog.hide()" value="#{bundle.Save}" update="display,:DatospersonaListForm:datalist,:growl" oncomplete="handleSubmit(args,'DatospersonaCreateDialog');"/>
+                        <p:commandButton value="#{bundle.Cancel}" onclick="DatospersonaCreateDialog.hide()"/>
+                    </h:panelGroup>
+                </h:form>
+            </p:dialog>
+
+        </ui:composition>
+        <br></br><br></br>
+</html>

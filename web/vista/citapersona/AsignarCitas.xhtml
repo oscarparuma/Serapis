@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.AppName}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <p:panelGrid columns="1">
+                
+                
+                 <p:panel header="#{bundle.AsignarCitas} #{citaPersonaController.actDatPern.nombres} #{citaPersonaController.actDatPern.apellidos}">
+                   
+                    <p:outputPanel id="lucho" >
+                        <p:dataTable id="lalmeida" value="#{citapersonaController.citasAsignadasSede}" var="item">
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="#{bundle.ListCitapersonaTitle_codigoCitaPersona}"/>
+                                </f:facet>
+                                <h:outputText value="#{item.codigoCitaPersona}"/>
+                            </p:column>
+
+
+
+
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="#{bundle.ListCitapersonaTitle_edadPersona}"/>
+                                </f:facet>
+                                <h:outputText value="#{item.edadPersona}"/>
+                            </p:column>
+
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="#{bundle.ListCitapersonaTitle_cscIngreso}"/>
+                                </f:facet>
+                                <h:outputText value="#{item.cscIngreso}"/>
+                            </p:column>
+
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="#{bundle.ListCitapersonaTitle_fechaCita}"/>
+                                </f:facet>
+                                <h:outputText value="#{item.fechaCita}">
+                                    <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                                </h:outputText>
+                            </p:column>
+
+
+
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="#{bundle.ListCitapersonaTitle_codigoSede}"/>
+                                </f:facet>
+                                <h:outputText value="#{item.codigoSede}"/>
+                            </p:column>
+
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="#{bundle.ListCitapersonaTitle_codigoExamenRealizar}"/>
+                                </f:facet>
+                                <h:outputText value="#{item.codigoExamenRealizar}"/>
+                            </p:column>
+
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="#{bundle.ListCitapersonaTitle_genero}"/>
+                                </f:facet>
+                                <h:outputText value="#{item.genero}"/>
+                            </p:column>
+
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="#{bundle.ListCitapersonaTitle_codigoProfesional}"/>
+                                </f:facet>
+                                <h:outputText value="#{item.codigoProfesional}"/>
+                            </p:column>
+
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="#{bundle.ListCitapersonaTitle_codigoExamen}"/>
+                                </f:facet>
+                                <h:outputText value="#{item.codigoExamen}"/>
+                            </p:column>
+
+
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="#{bundle.ListCitapersonaTitle_codigoEps}"/>
+                                </f:facet>
+                                <h:outputText value="#{item.codigoEps}"/>
+                            </p:column>
+
+                        </p:dataTable>
+                    </p:outputPanel>
+                </p:panel>
+
+                <br />
+                <h:commandLink action="#{citapersonaController.prepareCreate}" value="#{bundle.ListCitapersonaCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListCitapersonaIndexLink}"/>
+                </p:panelGrid>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

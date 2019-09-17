@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditRadicacionFacturasTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditRadicacionFacturasLabel_codigoRadicacion}" for="codigoRadicacion" />
+                    <h:inputText id="codigoRadicacion" value="#{radicacionFacturasController.selected.codigoRadicacion}" title="#{bundle.EditRadicacionFacturasTitle_codigoRadicacion}" required="true" requiredMessage="#{bundle.EditRadicacionFacturasRequiredMessage_codigoRadicacion}"/>
+                    <h:outputLabel value="#{bundle.EditRadicacionFacturasLabel_valorUnitario}" for="valorUnitario" />
+                    <h:inputText id="valorUnitario" value="#{radicacionFacturasController.selected.valorUnitario}" title="#{bundle.EditRadicacionFacturasTitle_valorUnitario}" />
+                    <h:outputLabel value="#{bundle.EditRadicacionFacturasLabel_valorCopago}" for="valorCopago" />
+                    <h:inputText id="valorCopago" value="#{radicacionFacturasController.selected.valorCopago}" title="#{bundle.EditRadicacionFacturasTitle_valorCopago}" />
+                    <h:outputLabel value="#{bundle.EditRadicacionFacturasLabel_valorFacturado}" for="valorFacturado" />
+                    <h:inputText id="valorFacturado" value="#{radicacionFacturasController.selected.valorFacturado}" title="#{bundle.EditRadicacionFacturasTitle_valorFacturado}" />
+                    <h:outputLabel value="#{bundle.EditRadicacionFacturasLabel_totalRadicado}" for="totalRadicado" />
+                    <h:inputText id="totalRadicado" value="#{radicacionFacturasController.selected.totalRadicado}" title="#{bundle.EditRadicacionFacturasTitle_totalRadicado}" />
+                    <h:outputLabel value="#{bundle.EditRadicacionFacturasLabel_estadoRadicacion}" for="estadoRadicacion" />
+                    <h:inputText id="estadoRadicacion" value="#{radicacionFacturasController.selected.estadoRadicacion}" title="#{bundle.EditRadicacionFacturasTitle_estadoRadicacion}" />
+                    <h:outputLabel value="#{bundle.EditRadicacionFacturasLabel_fechaRegistro}" for="fechaRegistro" />
+                    <h:inputText id="fechaRegistro" value="#{radicacionFacturasController.selected.fechaRegistro}" title="#{bundle.EditRadicacionFacturasTitle_fechaRegistro}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditRadicacionFacturasLabel_fechaRadicacion}" for="fechaRadicacion" />
+                    <h:inputText id="fechaRadicacion" value="#{radicacionFacturasController.selected.fechaRadicacion}" title="#{bundle.EditRadicacionFacturasTitle_fechaRadicacion}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditRadicacionFacturasLabel_ccsRadicacion}" for="ccsRadicacion" />
+                    <h:inputText id="ccsRadicacion" value="#{radicacionFacturasController.selected.ccsRadicacion}" title="#{bundle.EditRadicacionFacturasTitle_ccsRadicacion}" />
+                    <h:outputLabel value="#{bundle.EditRadicacionFacturasLabel_radicacionSede}" for="radicacionSede" />
+                    <h:inputText id="radicacionSede" value="#{radicacionFacturasController.selected.radicacionSede}" title="#{bundle.EditRadicacionFacturasTitle_radicacionSede}" />
+                    <h:outputLabel value="#{bundle.EditRadicacionFacturasLabel_facturaSede}" for="facturaSede" />
+                    <h:inputText id="facturaSede" value="#{radicacionFacturasController.selected.facturaSede}" title="#{bundle.EditRadicacionFacturasTitle_facturaSede}" />
+                    <h:outputLabel value="#{bundle.EditRadicacionFacturasLabel_codigoCitaPersona}" for="codigoCitaPersona" />
+                    <h:selectOneMenu id="codigoCitaPersona" value="#{radicacionFacturasController.selected.codigoCitaPersona}" title="#{bundle.EditRadicacionFacturasTitle_codigoCitaPersona}" >
+                        <f:selectItems value="#{citapersonaController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditRadicacionFacturasLabel_codigoEps}" for="codigoEps" />
+                    <h:selectOneMenu id="codigoEps" value="#{radicacionFacturasController.selected.codigoEps}" title="#{bundle.EditRadicacionFacturasTitle_codigoEps}" >
+                        <f:selectItems value="#{epsController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditRadicacionFacturasLabel_codigoFactura}" for="codigoFactura" />
+                    <h:selectOneMenu id="codigoFactura" value="#{radicacionFacturasController.selected.codigoFactura}" title="#{bundle.EditRadicacionFacturasTitle_codigoFactura}" >
+                        <f:selectItems value="#{facturacionController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditRadicacionFacturasLabel_codigoRadicacionFactura}" for="codigoRadicacionFactura" />
+                    <h:selectOneMenu id="codigoRadicacionFactura" value="#{radicacionFacturasController.selected.codigoRadicacionFactura}" title="#{bundle.EditRadicacionFacturasTitle_codigoRadicacionFactura}" >
+                        <f:selectItems value="#{facturaRadicacionController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditRadicacionFacturasLabel_codigoSede}" for="codigoSede" />
+                    <h:selectOneMenu id="codigoSede" value="#{radicacionFacturasController.selected.codigoSede}" title="#{bundle.EditRadicacionFacturasTitle_codigoSede}" >
+                        <f:selectItems value="#{sedeController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditRadicacionFacturasLabel_usuarioModifico}" for="usuarioModifico" />
+                    <h:selectOneMenu id="usuarioModifico" value="#{radicacionFacturasController.selected.usuarioModifico}" title="#{bundle.EditRadicacionFacturasTitle_usuarioModifico}" >
+                        <f:selectItems value="#{usuarioController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditRadicacionFacturasLabel_codigoUsuario}" for="codigoUsuario" />
+                    <h:selectOneMenu id="codigoUsuario" value="#{radicacionFacturasController.selected.codigoUsuario}" title="#{bundle.EditRadicacionFacturasTitle_codigoUsuario}" >
+                        <f:selectItems value="#{usuarioController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{radicacionFacturasController.update}" value="#{bundle.EditRadicacionFacturasSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditRadicacionFacturasViewLink}"/>
+                <br />
+                <h:commandLink action="#{radicacionFacturasController.prepareList}" value="#{bundle.EditRadicacionFacturasShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditRadicacionFacturasIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

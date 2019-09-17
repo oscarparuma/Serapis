@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditCargopersonaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditCargopersonaLabel_codigoCargoPersona}" for="codigoCargoPersona" />
+                    <h:inputText id="codigoCargoPersona" value="#{cargopersonaController.selected.codigoCargoPersona}" title="#{bundle.EditCargopersonaTitle_codigoCargoPersona}" required="true" requiredMessage="#{bundle.EditCargopersonaRequiredMessage_codigoCargoPersona}"/>
+                    <h:outputLabel value="#{bundle.EditCargopersonaLabel_nombreCargo}" for="nombreCargo" />
+                    <h:inputText id="nombreCargo" value="#{cargopersonaController.selected.nombreCargo}" title="#{bundle.EditCargopersonaTitle_nombreCargo}" />
+                    <h:outputLabel value="#{bundle.EditCargopersonaLabel_fechaRegistro}" for="fechaRegistro" />
+                    <h:inputText id="fechaRegistro" value="#{cargopersonaController.selected.fechaRegistro}" title="#{bundle.EditCargopersonaTitle_fechaRegistro}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditCargopersonaLabel_fechaModificacion}" for="fechaModificacion" />
+                    <h:inputText id="fechaModificacion" value="#{cargopersonaController.selected.fechaModificacion}" title="#{bundle.EditCargopersonaTitle_fechaModificacion}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditCargopersonaLabel_activo}" for="activo" />
+                    <h:inputText id="activo" value="#{cargopersonaController.selected.activo}" title="#{bundle.EditCargopersonaTitle_activo}" />
+                    <h:outputLabel value="#{bundle.EditCargopersonaLabel_codigoUsuario}" for="codigoUsuario" />
+                    <h:selectOneMenu id="codigoUsuario" value="#{cargopersonaController.selected.codigoUsuario}" title="#{bundle.EditCargopersonaTitle_codigoUsuario}" >
+                        <f:selectItems value="#{usuarioController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditCargopersonaLabel_usuarioModifico}" for="usuarioModifico" />
+                    <h:selectOneMenu id="usuarioModifico" value="#{cargopersonaController.selected.usuarioModifico}" title="#{bundle.EditCargopersonaTitle_usuarioModifico}" >
+                        <f:selectItems value="#{usuarioController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{cargopersonaController.update}" value="#{bundle.EditCargopersonaSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditCargopersonaViewLink}"/>
+                <br />
+                <h:commandLink action="#{cargopersonaController.prepareList}" value="#{bundle.EditCargopersonaShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditCargopersonaIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

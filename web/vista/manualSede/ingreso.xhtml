@@ -1,0 +1,332 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+
+      xmlns:c="http://java.sun.com/jsp/jstl/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="body">
+            <h:form prependId="false">
+                <p:panel>
+                    <p:growl showDetail="true" showSummary="true" />
+                    <p:tabView>  
+                        <p:tab title="#{bundle.IngSistema}">
+                            <div align="center">
+                            <h:panelGrid columns="1">
+                                <h:panelGroup>
+                                    <fieldset>
+                                        <legend>
+                                            <h:outputLabel value="#{bundle.IngSistema}" style="font-size: 22px; font-weight: bold; color: #265a99;"/>
+                                        </legend>
+                                        <h:outputText value="#{bundle.datIngSistema}"/>                                       
+                                    </fieldset>
+                                </h:panelGroup>
+                            </h:panelGrid>
+                                
+                            <h:panelGrid columns="1" cellpadding="10">  
+                                <p:graphicImage value="/imagenes/MenuSede/2.jpg" />  
+                            </h:panelGrid> 
+                                </div>
+                        </p:tab>  
+
+                        <p:tab title="#{bundle.ConfSede}">
+                            <div align="center">
+                            <h:panelGrid columns="1">
+                                <h:panelGroup>
+                                    <fieldset>
+                                        <legend>
+                                            <h:outputLabel value="#{bundle.ConfSede}" style="font-size: 22px; font-weight: bold; color: #265a99;"/>
+                                        </legend>
+                                        <h:outputText value="#{bundle.ConfSede1}"/>
+                                        <br/>
+                                        <h:outputText value="#{bundle.ConfSede2}"/> 
+                                    </fieldset>
+                                </h:panelGroup>
+                            </h:panelGrid>
+                            <h:panelGrid columns="1" cellpadding="10">  
+                                <p:graphicImage value="/imagenes/MenuSede/4.jpg" />   
+                            </h:panelGrid> 
+                            <h:panelGrid columns="1">
+                                <h:panelGroup>
+                                    <fieldset>                                        
+                                        <h:outputText value="#{bundle.ConfSede3}"/>
+                                    </fieldset>
+                                </h:panelGroup>
+                            </h:panelGrid>
+                            <h:panelGrid columns="1" cellpadding="10">  
+                                <p:graphicImage value="/imagenes/MenuSede/5.jpg" /> 
+                            </h:panelGrid> 
+                            <h:panelGrid columns="1">
+                                <h:panelGroup>
+                                    <fieldset>
+                                        <h:outputText value="#{bundle.ConfSede4}"/>
+                                        <br/>
+                                        <h:outputText value="#{bundle.ConfSede4_1}"/>
+                                        <br/>
+                                        <h:outputText value="#{bundle.ConfSede4_2}"/>
+                                        <br/>
+                                        <h:outputText value="#{bundle.ConfSede4_3}"/>
+                                        <br/>
+                                        <h:outputText value="#{bundle.ConfSede4_4}"/>
+                                        <br/>
+                                    </fieldset>
+                                </h:panelGroup>
+                            </h:panelGrid>
+
+                            <h:panelGrid columns="1" cellpadding="10">  
+                                <p:graphicImage value="/imagenes/MenuSede/6.jpg" />   
+                            </h:panelGrid> 
+                            </div>
+                        </p:tab> 
+
+                        <p:tab title="#{bundle.ConSede}">
+                            <div align="center">
+                            <h:panelGrid columns="1">
+                                <h:panelGroup>
+                                    <fieldset>
+                                        <legend>
+                                            <h:outputLabel value="#{bundle.IngDatConsultorio}" style="font-size: 22px; font-weight: bold; color: #265a99;"/>
+                                        </legend>
+                                        <h:outputText value="#{bundle.datConsultorio}"/>
+                                    </fieldset>
+                                </h:panelGroup>
+                            </h:panelGrid>
+                            <h:panelGrid columns="1" cellpadding="10">  
+                                <p:graphicImage value="/imagenes/MenuSede/6.jpg" />   
+                            </h:panelGrid> 
+                            <h:panelGrid columns="1">
+                                <h:panelGroup>
+                                    <fieldset>                                        
+                                        <h:outputText value="#{bundle.ConfSede5}"/>
+                                    </fieldset>
+                                </h:panelGroup>
+                            </h:panelGrid>
+                            <h:panelGrid columns="1" cellpadding="10">  
+                                <p:graphicImage value="/imagenes/MenuSede/6_1.jpg" /> 
+                            </h:panelGrid> 
+                            <h:panelGrid columns="1">
+                                <h:panelGroup>
+                                    <fieldset>
+                                        <legend>
+                                            <h:outputLabel style="font-size: 22px; font-weight: bold; color: #265a99;" value="#{bundle.ConfSede6}"/>
+                                        </legend>
+                                        <h:outputText value="#{bundle.ConfSede7} #{bundle.ConfSede8}"/>
+                                        <br/> 
+                                        <h:outputText value="#{bundle.ConfSede9} #{bundle.ConfSede10}"/>
+                                        <br/>
+                                        <h:outputText value="#{bundle.ConfSede11}"/>
+                                    </fieldset>
+                                </h:panelGroup>
+                            </h:panelGrid>
+                            <h:panelGrid columns="1" cellpadding="10">  
+                                <p:graphicImage value="/imagenes/MenuSede/6_2.jpg" />   
+                            </h:panelGrid> 
+                            <h:panelGrid columns="1">
+                                <h:panelGroup>
+                                    <fieldset>
+                                        <legend>
+                                            <h:outputLabel style="font-size: 22px; font-weight: bold; color: #265a99;" value="#{bundle.ConfSede6}"/>
+                                        </legend>
+                                        <h:outputText value="#{bundle.ConfSede7} #{bundle.ConfSede8}"/>
+                                        <br/> 
+                                        <h:outputText value="#{bundle.ConfSede9} #{bundle.ConfSede10}"/>
+                                        <br/>
+                                        <h:outputText value="#{bundle.ConfSede11}"/>
+                                    </fieldset>
+                                </h:panelGroup>
+                            </h:panelGrid>
+                            <h:panelGrid columns="1">
+                                <h:panelGroup>
+                                    <fieldset>
+                                        <legend>
+                                            <h:outputLabel style="font-size: 22px; font-weight: bold; color: #265a99;" value="#{bundle.ConfSede12}"/>
+                                        </legend>
+                                        <h:outputText value="#{bundle.ConfSede13}"/>
+                                    </fieldset>
+                                </h:panelGroup>
+                            </h:panelGrid>
+                            <h:panelGrid columns="1" cellpadding="10">  
+                                <p:graphicImage value="/imagenes/MenuSede/6_3.jpg" />   
+                            </h:panelGrid>
+
+                            <h:panelGrid columns="1">
+                                <h:panelGroup>
+                                    <fieldset>
+                                        <legend>
+                                            <h:outputLabel style="font-size: 22px; font-weight: bold; color: #265a99;" value="#{bundle.ConfSede14}"/>
+                                        </legend>
+                                        <h:outputText value="#{bundle.ConfSede15}"/>
+                                        <br/>
+                                        <h:outputText value="#{bundle.ConfSede16}"/>
+                                        <br/>
+                                        <h:outputText value="#{bundle.ConfSede17}"/>
+                                    </fieldset>
+                                </h:panelGroup>
+                            </h:panelGrid>
+
+                            <h:panelGrid columns="1" cellpadding="10">  
+                                <p:graphicImage value="/imagenes/MenuSede/6_4.jpg" />   
+                            </h:panelGrid> 
+                            </div>
+                        </p:tab> 
+
+
+                        <p:tab title="#{bundle.EpsSede}" >
+                            <div align="center">
+                            <h:panelGrid columns="1">
+                                <h:panelGroup>
+                                    <fieldset>
+                                        <legend>
+                                            <h:outputLabel style="font-size: 22px; font-weight: bold; color: #265a99;" value="#{bundle.eps}"/>
+                                        </legend>
+                                        <h:outputText value="#{bundle.eps01}"/>
+                                    </fieldset>
+                                </h:panelGroup>
+                            </h:panelGrid>
+                            <h:panelGrid columns="1" cellpadding="10">  
+                                <p:graphicImage value="/imagenes/MenuSede/7.jpg" />  
+                            </h:panelGrid> 
+                            <h:panelGrid columns="1">
+                                <h:panelGroup>
+                                    <fieldset>
+                                        <legend>
+                                            <h:outputLabel style="font-size: 22px; font-weight: bold; color: #265a99;" value="#{bundle.eps02}"/>
+                                        </legend>
+                                        <h:outputText value="#{bundle.eps03}"/>
+                                        <br/>
+                                        <h:outputText value="#{bundle.eps04}"/>
+                                        <br/>
+                                        <h:outputText value="#{bundle.eps05}"/>
+                                        <br/>
+                                        <h:outputText value="#{bundle.eps06}"/>
+                                        <br/>
+                                        <h:outputText value="#{bundle.eps07}"/>
+                                        <br/>
+                                        <h:outputText value="#{bundle.eps08}"/>
+                                        <br/>
+                                        <h:outputText value="#{bundle.eps09}"/>
+                                        <br/>
+                                        <h:outputText value="#{bundle.eps10}"/>
+                                        <br/>
+                                        <h:outputText value="#{bundle.eps11}"/>
+                                    </fieldset>
+                                </h:panelGroup>
+                            </h:panelGrid>
+                            <h:panelGrid columns="1" cellpadding="10">  
+                                <p:graphicImage value="/imagenes/MenuSede/8.jpg" />  
+                            </h:panelGrid> 
+                            <h:panelGrid columns="1">
+                                <h:panelGroup>
+                                    <fieldset>
+                                        <legend>
+                                            <h:outputLabel style="font-size: 22px; font-weight: bold; color: #265a99;" value="#{bundle.proce}"/>
+                                        </legend>
+                                        <h:outputText value="#{bundle.proce1}"/>
+                                        <br/>
+                                        <h:outputText value="#{bundle.proce2}"/>
+                                        <br/>
+                                        <h:outputText value="#{bundle.proce3}"/>
+                                        <br/>
+                                        <h:outputText value="#{bundle.proce4}"/>
+
+                                    </fieldset>
+                                </h:panelGroup>
+                            </h:panelGrid>
+                            </div>
+                        </p:tab>
+                        <p:tab title="#{bundle.proce}" > 
+                            <div align="center">
+                            <h:panelGrid columns="1">
+                                <h:panelGroup>
+                                    <fieldset>
+                                        <legend>
+                                            <h:outputLabel style="font-size: 22px; font-weight: bold; color: #265a99;" value="#{bundle.proce}"/>
+                                        </legend>
+                                        <h:outputText value="#{bundle.proce1}"/>
+                                    </fieldset>
+                                </h:panelGroup>
+                            </h:panelGrid>
+                            <h:panelGrid columns="1" cellpadding="10">  
+                                <p:graphicImage value="/imagenes/MenuSede/8.jpg" />  
+                            </h:panelGrid> 
+                            <h:panelGrid columns="1">
+                                <h:panelGroup>
+                                    <fieldset>
+                                        <legend>
+                                            <h:outputLabel style="font-weight: bold" value="#{bundle.proce}"/>
+                                        </legend>
+                                        <h:outputText value="#{bundle.proce2}"/>
+                                        <br/>
+                                        <h:outputText value="#{bundle.proce3}"/>
+                                        <br/>
+                                        <h:outputText value="#{bundle.proce4}"/>
+
+                                    </fieldset>
+                                </h:panelGroup>
+                            </h:panelGrid>
+                            </div>
+                        </p:tab>
+                        <p:tab title="#{bundle.indMed}" >
+                            <div align="center">
+                            <h:panelGrid columns="1">
+                                <h:panelGroup>
+                                    <fieldset>
+                                        <legend>
+                                            <h:outputLabel style="font-size: 22px; font-weight: bold; color: #265a99;" value="#{bundle.indMed}"/>
+                                        </legend>
+                                        <h:outputText value="#{bundle.indMedic}"/>
+                                    </fieldset>
+                                </h:panelGroup>
+                            </h:panelGrid>
+                            <h:panelGrid columns="1" cellpadding="10">  
+                                <p:graphicImage value="/imagenes/MenuSede/9.jpg" />  
+                            </h:panelGrid> 
+                            <h:panelGrid columns="1">
+                                <h:panelGroup>
+                                    <fieldset>
+                                        <legend>
+                                            <h:outputLabel style="font-size: 22px; font-weight: bold; color: #265a99;" value="#{bundle.indMed}"/>
+                                        </legend>
+                                        <h:outputText value="#{bundle.indMed1}"/>
+                                        <br/>
+                                        <h:outputText value="#{bundle.indMed2}"/>
+                                    </fieldset>
+                                </h:panelGroup>
+                                 <h:panelGrid columns="1">
+                                <h:panelGroup>
+                                    <fieldset>
+                                        <legend>
+                                            <h:outputLabel style="font-weight: bold" value="#{bundle.clasindMed}"/>
+                                        </legend>
+                                        <h:outputText value="#{bundle.clasindMed0}"/>
+                                    </fieldset>
+                                </h:panelGroup>
+                            </h:panelGrid>
+                                  <h:panelGrid columns="1" cellpadding="10">  
+                                <p:graphicImage value="/imagenes/MenuSede/10.jpg" />  
+                            </h:panelGrid> 
+                                <h:panelGroup>
+                                    <fieldset>
+                                        <legend>
+                                            <h:outputLabel style="font-size: 22px; font-weight: bold; color: #265a99;" value="#{bundle.clasindMed}"/>
+                                        </legend>
+                                        <h:outputText value="#{bundle.clasindMed1}"/>
+                                        <br/>
+                                        <h:outputText value="#{bundle.clasindMed2}"/>
+                                    </fieldset>
+                                </h:panelGroup>
+                            </h:panelGrid>
+                                </div>
+                        </p:tab>
+
+                    </p:tabView>  
+
+                </p:panel>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

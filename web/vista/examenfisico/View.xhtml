@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/templateIngreso.xhtml">
+
+
+        <ui:define name="title">
+            <h:outputText value="#{bundle.AppName}"></h:outputText>
+        </ui:define>
+
+        <ui:define name="body">
+            <br></br>
+            <h:form id="menuConfiguracionForm">
+
+                <div class="col-lg-8">
+                    <br></br>
+                    <p:panel>
+                        <div align="center">
+                            <p:panel header="#{bundle.ListExamenfisicoTitle} #{examenfisicoController.actAgenCit.codigoPersonaCita}"> 
+                                <div class="panel-body">
+
+                                    <div class="col-lg-4">
+                                        <br></br><br></br>
+                                        <p:dataTable reflow="true" var="estado" value="" emptyMessage=" ">
+                                            <p:column rendered="#{citapersonaController.selected.botExFisico=='S'}">
+                                               
+                                                <div align="center">
+                                                    <p:commandLink title="#{bundle.ExamenFisico}" process="@all"  ajax="false" action="#{examenfisicoController.prepareCreate1}" immediate="true">
+                                                        <h:graphicImage id="examenFis" alt="#{m.ingles}"  url="/imagenes/imagenesConsulta/examenFisico.png" class="img-responsive" />
+                                                    </p:commandLink>
+                                                </div>
+                                            </p:column>
+                                            <p:column rendered="#{citapersonaController.selected.botExFisico=='N'}">
+                                               
+                                                <div align="center">
+                                                    <p:commandLink title="#{bundle.ExamenFisico}" process="@all" ajax="false" action="#{examenfisicoController.prepareEdit1()}" immediate="true">
+                                                        <h:graphicImage id="examenFis2" alt="#{m.ingles}"  url="/imagenes/imagenesConsulta/examenFisico.png" class="img-responsive" />
+                                                    </p:commandLink>
+                                                </div>
+                                            </p:column>                                            
+                                            <p:column rendered="#{citapersonaController.selected.botExFisico=='S'}">
+                                               
+                                                <div align="center">
+                                                    <p:commandLink title="#{bundle.ConsultaMedica}" process="@all"  ajax="false" action="#{citapersonaController.prepareListConsultamedicaList}" immediate="true">
+                                                        <h:graphicImage id="ConsultaMedica" alt="#{m.ingles}"  url="/imagenes/imagenesConsulta/consultaMedica.png" class="img-responsive" />
+                                                    </p:commandLink>
+                                                </div>
+                                            </p:column>
+                                            <p:column rendered="#{citapersonaController.selected.botExFisico=='N'}">
+                                                
+                                                <div align="center">
+                                                    <p:commandLink title="#{bundle.ConsultaMedica}" process="@all" ajax="false" action="#{citapersonaController.prepareListConsultamedicaList}" immediate="true">
+                                                        <h:graphicImage id="ConsultaMedica1" alt="#{m.ingles}"  url="/imagenes/imagenesConsulta/consultaMedica.png" class="img-responsive" />
+                                                    </p:commandLink>
+                                                </div>
+                                            </p:column>
+                                            <p:column rendered="#{citapersonaController.selected.botExFisico=='S'}">
+                                               
+                                                <div align="center">
+                                                    <p:commandLink title="#{bundle.DiagnosticoIngreso}" process="@all"  ajax="false" action="#{citapersonaController.prepareListDigIngresoList}" immediate="true">
+                                                        <h:graphicImage id="DiagnosticoIngreso" alt="#{m.ingles}"  url="/imagenes/imagenesConsulta/diagnostico.png" class="img-responsive" />
+                                                    </p:commandLink>
+                                                </div>
+                                            </p:column>
+                                            <p:column rendered="#{citapersonaController.selected.botExFisico=='N'}">
+                                                
+                                                <div align="center">
+                                                    <p:commandLink title="#{bundle.DiagnosticoIngreso}" process="@all" ajax="false" action="#{citapersonaController.prepareListDigIngresoList}" immediate="true">
+                                                        <h:graphicImage id="DiagnosticoIngreso1" alt="#{m.ingles}"  url="/imagenes/imagenesConsulta/diagnostico.png" class="img-responsive" />
+                                                    </p:commandLink>
+                                                </div>
+                                            </p:column>
+                                        </p:dataTable>
+                                        <br/>
+                                        <p:dataTable reflow="true" var="estado" value="" emptyMessage=" ">
+                                            <p:column rendered="#{citapersonaController.selected.botExFisico=='S'}">
+                                              
+                                                <div align="center">
+                                                    <p:commandLink title="#{bundle.ExamApoyDiag}" process="@all"  ajax="false" action="#{citapersonaController.prepareListExamenesApoyoDiagnosticoList}" immediate="true">
+                                                        <h:graphicImage id="ExamApoyDiag" alt="#{m.ingles}"  url="/imagenes/imagenesConsulta/apoyoDiagnostico.png" class="img-responsive" />
+                                                    </p:commandLink>
+                                                </div>
+                                            </p:column>
+                                            <p:column rendered="#{citapersonaController.selected.botExFisico=='N'}">
+                                                
+                                                <div align="center">
+                                                    <p:commandLink title="#{bundle.ExamApoyDiag}" process="@all" ajax="false" action="#{citapersonaController.prepareListExamenesApoyoDiagnosticoList}" immediate="true">
+                                                        <h:graphicImage id="ExamApoyDiag1" alt="#{m.ingles}"  url="/imagenes/imagenesConsulta/apoyoDiagnostico.png" class="img-responsive"/>
+                                                    </p:commandLink>
+                                                </div>
+                                            </p:column>                                            
+                                            <p:column rendered="#{citapersonaController.selected.botExFisico=='S'}">
+                                               
+                                                <div align="center">
+                                                    <p:commandLink title="#{bundle.FormMedica}" process="@all"  ajax="false" action="#{citapersonaController.prepareListFormulamedicaList}" immediate="true">
+                                                        <h:graphicImage id="FormMedica" alt="#{m.ingles}"  url="/imagenes/imagenesConsulta/formulaMedica.png" class="img-responsive"/>
+                                                    </p:commandLink>
+                                                </div>
+                                            </p:column>
+                                            <p:column rendered="#{citapersonaController.selected.botExFisico=='N'}">
+                                                
+                                                <div align="center">
+                                                    <p:commandLink title="#{bundle.FormMedica}" process="@all" ajax="false" action="#{citapersonaController.prepareListFormulamedicaList}" immediate="true">
+                                                        <h:graphicImage id="FormMedica1" alt="#{m.ingles}"  url="/imagenes/imagenesConsulta/formulaMedica.png" class="img-responsive" />
+                                                    </p:commandLink>
+                                                </div>
+                                            </p:column> 
+                                            
+                                            <p:column rendered="#{citapersonaController.selected.botExFisico=='S'}">
+                                                
+                                                <div align="center">
+                                                    <p:commandLink title="#{bundle.RecoMedic}" process="@all"  ajax="false" action="#{citapersonaController.prepareListRecomendacionesMedicamentosList}" immediate="true">
+                                                        <h:graphicImage id="RecoMedic" alt="#{m.ingles}"  url="/imagenes/imagenesConsulta/recomendacionesMedicas.png" class="img-responsive" />
+                                                    </p:commandLink>
+                                                </div>
+                                            </p:column>
+                                            <p:column rendered="#{citapersonaController.selected.botExFisico=='N'}">
+                                                
+                                                <div align="center">
+                                                    <p:commandLink title="#{bundle.RecoMedic}" process="@all" ajax="false" action="#{citapersonaController.prepareListRecomendacionesMedicamentosList}" immediate="true">
+                                                        <h:graphicImage id="RecoMedic1" alt="#{m.ingles}"  url="/imagenes/imagenesConsulta/recomendacionesMedicas.png" class="img-responsive" />
+                                                    </p:commandLink>
+                                                </div>
+                                            </p:column>                                             
+                                        </p:dataTable>
+                                    </div>
+                                </div>
+                                <h:panelGrid columns="1" >
+                                    <br></br><br></br>
+                                    <div align="center"  >
+                                        <h:panelGrid columns="2">
+                                            <p:commandLink  title="#{bundle.Regresar}"  update="@all" action="#{citapersonaController.prepareListaCitaAsignadasXUsuario(usuarioController.selected)}"   immediate="true">
+                                                <h:graphicImage id="menuConsultas" alt="#{m.ingles}"  url="/imagenes/ImagSisitema/regresar.jpg" class="img-responsive" />
+                                            </p:commandLink>
+                                            <p:commandLink  title="#{bundle.salir}"  update="@all" action="/index.xhtml"  immediate="true">
+                                                <h:graphicImage id="Salir" alt="#{m.ingles}"  url="/imagenes/ImagSisitema/salirSistema.jpg" class="img-responsive" />
+                                            </p:commandLink>
+                                        </h:panelGrid>
+                                    </div>
+                                </h:panelGrid>
+
+                            </p:panel>
+                        </div>
+                    </p:panel>
+                </div>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

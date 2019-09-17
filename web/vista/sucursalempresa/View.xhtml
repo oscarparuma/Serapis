@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewSucursalempresaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewSucursalempresaLabel_consecutivoSucursalEmpresa}"/>
+                    <h:outputText value="#{sucursalempresaController.selected.consecutivoSucursalEmpresa}" title="#{bundle.ViewSucursalempresaTitle_consecutivoSucursalEmpresa}"/>
+                    <h:outputText value="#{bundle.ViewSucursalempresaLabel_identificacionEmpresa}"/>
+                    <h:outputText value="#{sucursalempresaController.selected.identificacionEmpresa}" title="#{bundle.ViewSucursalempresaTitle_identificacionEmpresa}"/>
+                    <h:outputText value="#{bundle.ViewSucursalempresaLabel_nombreEmpresa}"/>
+                    <h:outputText value="#{sucursalempresaController.selected.nombreEmpresa}" title="#{bundle.ViewSucursalempresaTitle_nombreEmpresa}"/>
+                    <h:outputText value="#{bundle.ViewSucursalempresaLabel_direccio}"/>
+                    <h:outputText value="#{sucursalempresaController.selected.direccio}" title="#{bundle.ViewSucursalempresaTitle_direccio}"/>
+                    <h:outputText value="#{bundle.ViewSucursalempresaLabel_telefono}"/>
+                    <h:outputText value="#{sucursalempresaController.selected.telefono}" title="#{bundle.ViewSucursalempresaTitle_telefono}"/>
+                    <h:outputText value="#{bundle.ViewSucursalempresaLabel_fechaRegistro}"/>
+                    <h:outputText value="#{sucursalempresaController.selected.fechaRegistro}" title="#{bundle.ViewSucursalempresaTitle_fechaRegistro}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewSucursalempresaLabel_fechaModificacion}"/>
+                    <h:outputText value="#{sucursalempresaController.selected.fechaModificacion}" title="#{bundle.ViewSucursalempresaTitle_fechaModificacion}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewSucursalempresaLabel_nombreContacto}"/>
+                    <h:outputText value="#{sucursalempresaController.selected.nombreContacto}" title="#{bundle.ViewSucursalempresaTitle_nombreContacto}"/>
+                    <h:outputText value="#{bundle.ViewSucursalempresaLabel_activo}"/>
+                    <h:outputText value="#{sucursalempresaController.selected.activo}" title="#{bundle.ViewSucursalempresaTitle_activo}"/>
+                    <h:outputText value="#{bundle.ViewSucursalempresaLabel_codigoDepartamento}"/>
+                    <h:outputText value="#{sucursalempresaController.selected.codigoDepartamento}" title="#{bundle.ViewSucursalempresaTitle_codigoDepartamento}"/>
+                    <h:outputText value="#{bundle.ViewSucursalempresaLabel_codigoEmpresa}"/>
+                    <h:outputText value="#{sucursalempresaController.selected.codigoEmpresa}" title="#{bundle.ViewSucursalempresaTitle_codigoEmpresa}"/>
+                    <h:outputText value="#{bundle.ViewSucursalempresaLabel_codigoMunicipio}"/>
+                    <h:outputText value="#{sucursalempresaController.selected.codigoMunicipio}" title="#{bundle.ViewSucursalempresaTitle_codigoMunicipio}"/>
+                    <h:outputText value="#{bundle.ViewSucursalempresaLabel_codigoUsuario}"/>
+                    <h:outputText value="#{sucursalempresaController.selected.codigoUsuario}" title="#{bundle.ViewSucursalempresaTitle_codigoUsuario}"/>
+                    <h:outputText value="#{bundle.ViewSucursalempresaLabel_usuarioModifico}"/>
+                    <h:outputText value="#{sucursalempresaController.selected.usuarioModifico}" title="#{bundle.ViewSucursalempresaTitle_usuarioModifico}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{sucursalempresaController.destroyAndView}" value="#{bundle.ViewSucursalempresaDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewSucursalempresaEditLink}"/>
+                <br />
+                <h:commandLink action="#{sucursalempresaController.prepareCreate}" value="#{bundle.ViewSucursalempresaCreateLink}" />
+                <br />
+                <h:commandLink action="#{sucursalempresaController.prepareList}" value="#{bundle.ViewSucursalempresaShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewSucursalempresaIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

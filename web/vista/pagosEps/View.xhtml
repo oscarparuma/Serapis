@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewPagosEpsTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewPagosEpsLabel_codigoPago}"/>
+                    <h:outputText value="#{pagosEpsController.selected.codigoPago}" title="#{bundle.ViewPagosEpsTitle_codigoPago}"/>
+                    <h:outputText value="#{bundle.ViewPagosEpsLabel_valorSaldo}"/>
+                    <h:outputText value="#{pagosEpsController.selected.valorSaldo}" title="#{bundle.ViewPagosEpsTitle_valorSaldo}"/>
+                    <h:outputText value="#{bundle.ViewPagosEpsLabel_valorCancelado}"/>
+                    <h:outputText value="#{pagosEpsController.selected.valorCancelado}" title="#{bundle.ViewPagosEpsTitle_valorCancelado}"/>
+                    <h:outputText value="#{bundle.ViewPagosEpsLabel_saldoActual}"/>
+                    <h:outputText value="#{pagosEpsController.selected.saldoActual}" title="#{bundle.ViewPagosEpsTitle_saldoActual}"/>
+                    <h:outputText value="#{bundle.ViewPagosEpsLabel_codigoEps}"/>
+                    <h:outputText value="#{pagosEpsController.selected.codigoEps}" title="#{bundle.ViewPagosEpsTitle_codigoEps}"/>
+                    <h:outputText value="#{bundle.ViewPagosEpsLabel_numeroSoportePago}"/>
+                    <h:outputText value="#{pagosEpsController.selected.numeroSoportePago}" title="#{bundle.ViewPagosEpsTitle_numeroSoportePago}"/>
+                    <h:outputText value="#{bundle.ViewPagosEpsLabel_fechaRegistro}"/>
+                    <h:outputText value="#{pagosEpsController.selected.fechaRegistro}" title="#{bundle.ViewPagosEpsTitle_fechaRegistro}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewPagosEpsLabel_fechaSoportePago}"/>
+                    <h:outputText value="#{pagosEpsController.selected.fechaSoportePago}" title="#{bundle.ViewPagosEpsTitle_fechaSoportePago}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewPagosEpsLabel_codigoFactura}"/>
+                    <h:outputText value="#{pagosEpsController.selected.codigoFactura}" title="#{bundle.ViewPagosEpsTitle_codigoFactura}"/>
+                    <h:outputText value="#{bundle.ViewPagosEpsLabel_codigoUsuario}"/>
+                    <h:outputText value="#{pagosEpsController.selected.codigoUsuario}" title="#{bundle.ViewPagosEpsTitle_codigoUsuario}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{pagosEpsController.destroyAndView}" value="#{bundle.ViewPagosEpsDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewPagosEpsEditLink}"/>
+                <br />
+                <h:commandLink action="#{pagosEpsController.prepareCreate}" value="#{bundle.ViewPagosEpsCreateLink}" />
+                <br />
+                <h:commandLink action="#{pagosEpsController.prepareList}" value="#{bundle.ViewPagosEpsShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewPagosEpsIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

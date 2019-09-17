@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.AppName}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <p:panel header="#{bundle.DiagnosticoIngreso} #{diagnosticoIngresoController.actAgenCit.codigoPersonaCita}" style=" width: 1500px; border: solid 1px;">
+                <h:form id="DiagnosticoIngresoListForm">
+                   
+
+                        <p:dataTable id="datalist" value="#{diagnosticoIngresoController.items}" var="item" selectionMode="single" paginator="true"  emptyMessage=" "
+                                     rowKey="#{item.codigoDianosticoIngreso}" rows="10" rowsPerPageTemplate="10,20,30,40,50"  lazy="true" style=" width: 1475px; border: solid 1px;" > 
+
+
+                            <p:column width="120" rendered="#{citapersonaController.selected.finalizada=='N'}" style="font-size: 14px;">
+                                <f:facet name="header">
+                                    <h:outputText value="#{bundle.Seleccione}"/>
+                                </f:facet>
+                                <p:commandButton  id="deleteButton" icon="ui-icon-trash" process="@all" styleClass="button" ajax="false" action="#{diagnosticoIngresoController.destroy}" value="#{bundle.ListDiagnosticoIngresoDestroyLink}"/>
+                            </p:column>
+
+
+
+
+
+
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="#{bundle.ListDiagnosticoIngresoTitle_codigoCie10}" style="font-size: 14px;"/>
+                                </f:facet>
+                                <h:outputText value=" #{item.codigoCie10}"/>
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="#{bundle.ListDiagnosticoIngresoTitle_clasificacionCie10}" style="font-size: 14px;"/>
+                                </f:facet>
+                                <h:outputText value=" #{item.clasificacionCie10}"/>
+                            </p:column>
+
+                            <p:column width="110">
+                                <f:facet name="header">
+                                    <h:outputText value="#{bundle.ListDiagnosticoIngresoTitle_fechaRegistro}" style="font-size: 14px;"/>
+                                </f:facet>
+                                <h:outputText value="#{item.fechaRegistro}">
+                                    <f:convertDateTime pattern="yyyy-MM-dd" />
+                                </h:outputText>
+                            </p:column>
+
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="#{bundle.ListDiagnosticoIngresoTitle_codigoUsuario}" style="font-size: 14px;"/>
+                                </f:facet>
+                                <h:outputText style="text-transform: uppercase" value=" #{item.codigoUsuario}"/>
+                            </p:column>
+                            <f:facet name="footer">
+                                <p:commandButton style="margin-right: 10px;" rendered="#{citapersonaController.selected.botDiag=='S'}" id="createButtonC" icon="ui-icon-plus" process="@all"  ajax="false" action="#{diagnosticoIngresoController.prepareCreate}" value="#{bundle.RegistrarDiagnostico}" style="font-size: 14px;"/>
+                                <p:commandButton style="margin-right: 10px;" id="editButton9" icon="ui-icon-plus" process="@all" styleClass="button" ajax="false" action="#{citapersonaController.prepareListExamenesApoyoDiagnosticoList}"  value="#{bundle.ExamApoyDiag}" style="font-size: 14px;"/>
+                                <p:commandButton style="margin-right: 10px;" id="editButtonE"   icon="ui-icon-pencil" process="@all" styleClass="button" ajax="false" action="/vista/examenfisico/List" value="#{bundle.Regresar}" immediate="true" style="font-size: 14px;"/>
+
+                            </f:facet>
+
+
+                        </p:dataTable>
+                   
+               
+                </h:form>
+            </p:panel>
+
+        </ui:define>
+    </ui:composition>
+
+</html>

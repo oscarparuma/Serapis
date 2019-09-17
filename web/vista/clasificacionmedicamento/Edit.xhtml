@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditClasificacionmedicamentoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditClasificacionmedicamentoLabel_codigoClasificacionmedicamento}" for="codigoClasificacionmedicamento" />
+                    <h:inputText id="codigoClasificacionmedicamento" value="#{clasificacionmedicamentoController.selected.codigoClasificacionmedicamento}" title="#{bundle.EditClasificacionmedicamentoTitle_codigoClasificacionmedicamento}" required="true" requiredMessage="#{bundle.EditClasificacionmedicamentoRequiredMessage_codigoClasificacionmedicamento}"/>
+                    <h:outputLabel value="#{bundle.EditClasificacionmedicamentoLabel_nombre}" for="nombre" />
+                    <h:inputText id="nombre" value="#{clasificacionmedicamentoController.selected.nombre}" title="#{bundle.EditClasificacionmedicamentoTitle_nombre}" />
+                    <h:outputLabel value="#{bundle.EditClasificacionmedicamentoLabel_activo}" for="activo" />
+                    <h:inputText id="activo" value="#{clasificacionmedicamentoController.selected.activo}" title="#{bundle.EditClasificacionmedicamentoTitle_activo}" />
+                    <h:outputLabel value="#{bundle.EditClasificacionmedicamentoLabel_fechaRegistro}" for="fechaRegistro" />
+                    <h:inputText id="fechaRegistro" value="#{clasificacionmedicamentoController.selected.fechaRegistro}" title="#{bundle.EditClasificacionmedicamentoTitle_fechaRegistro}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditClasificacionmedicamentoLabel_fechaModificacion}" for="fechaModificacion" />
+                    <h:inputText id="fechaModificacion" value="#{clasificacionmedicamentoController.selected.fechaModificacion}" title="#{bundle.EditClasificacionmedicamentoTitle_fechaModificacion}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditClasificacionmedicamentoLabel_codigoUsuario}" for="codigoUsuario" />
+                    <h:selectOneMenu id="codigoUsuario" value="#{clasificacionmedicamentoController.selected.codigoUsuario}" title="#{bundle.EditClasificacionmedicamentoTitle_codigoUsuario}" >
+                        <f:selectItems value="#{usuarioController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditClasificacionmedicamentoLabel_modificadoPor}" for="modificadoPor" />
+                    <h:selectOneMenu id="modificadoPor" value="#{clasificacionmedicamentoController.selected.modificadoPor}" title="#{bundle.EditClasificacionmedicamentoTitle_modificadoPor}" >
+                        <f:selectItems value="#{usuarioController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{clasificacionmedicamentoController.update}" value="#{bundle.EditClasificacionmedicamentoSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditClasificacionmedicamentoViewLink}"/>
+                <br />
+                <h:commandLink action="#{clasificacionmedicamentoController.prepareList}" value="#{bundle.EditClasificacionmedicamentoShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditClasificacionmedicamentoIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

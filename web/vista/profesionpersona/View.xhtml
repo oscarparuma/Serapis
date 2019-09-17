@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewProfesionpersonaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewProfesionpersonaLabel_codigoProfesionPersona}"/>
+                    <h:outputText value="#{profesionpersonaController.selected.codigoProfesionPersona}" title="#{bundle.ViewProfesionpersonaTitle_codigoProfesionPersona}"/>
+                    <h:outputText value="#{bundle.ViewProfesionpersonaLabel_identificacionProfesion}"/>
+                    <h:outputText value="#{profesionpersonaController.selected.identificacionProfesion}" title="#{bundle.ViewProfesionpersonaTitle_identificacionProfesion}"/>
+                    <h:outputText value="#{bundle.ViewProfesionpersonaLabel_nombreProfesionPersona}"/>
+                    <h:outputText value="#{profesionpersonaController.selected.nombreProfesionPersona}" title="#{bundle.ViewProfesionpersonaTitle_nombreProfesionPersona}"/>
+                    <h:outputText value="#{bundle.ViewProfesionpersonaLabel_activo}"/>
+                    <h:outputText value="#{profesionpersonaController.selected.activo}" title="#{bundle.ViewProfesionpersonaTitle_activo}"/>
+                    <h:outputText value="#{bundle.ViewProfesionpersonaLabel_fechaRegistro}"/>
+                    <h:outputText value="#{profesionpersonaController.selected.fechaRegistro}" title="#{bundle.ViewProfesionpersonaTitle_fechaRegistro}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewProfesionpersonaLabel_fechaModificacion}"/>
+                    <h:outputText value="#{profesionpersonaController.selected.fechaModificacion}" title="#{bundle.ViewProfesionpersonaTitle_fechaModificacion}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewProfesionpersonaLabel_codigoCargoPersona}"/>
+                    <h:outputText value="#{profesionpersonaController.selected.codigoCargoPersona}" title="#{bundle.ViewProfesionpersonaTitle_codigoCargoPersona}"/>
+                    <h:outputText value="#{bundle.ViewProfesionpersonaLabel_codigoUsuario}"/>
+                    <h:outputText value="#{profesionpersonaController.selected.codigoUsuario}" title="#{bundle.ViewProfesionpersonaTitle_codigoUsuario}"/>
+                    <h:outputText value="#{bundle.ViewProfesionpersonaLabel_usuarioModifico}"/>
+                    <h:outputText value="#{profesionpersonaController.selected.usuarioModifico}" title="#{bundle.ViewProfesionpersonaTitle_usuarioModifico}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{profesionpersonaController.destroyAndView}" value="#{bundle.ViewProfesionpersonaDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewProfesionpersonaEditLink}"/>
+                <br />
+                <h:commandLink action="#{profesionpersonaController.prepareCreate}" value="#{bundle.ViewProfesionpersonaCreateLink}" />
+                <br />
+                <h:commandLink action="#{profesionpersonaController.prepareList}" value="#{bundle.ViewProfesionpersonaShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewProfesionpersonaIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

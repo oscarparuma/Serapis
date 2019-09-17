@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateProfesionpersonaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateProfesionpersonaLabel_codigoProfesionPersona}" for="codigoProfesionPersona" />
+                    <h:inputText id="codigoProfesionPersona" value="#{profesionpersonaController.selected.codigoProfesionPersona}" title="#{bundle.CreateProfesionpersonaTitle_codigoProfesionPersona}" required="true" requiredMessage="#{bundle.CreateProfesionpersonaRequiredMessage_codigoProfesionPersona}"/>
+                    <h:outputLabel value="#{bundle.CreateProfesionpersonaLabel_identificacionProfesion}" for="identificacionProfesion" />
+                    <h:inputText id="identificacionProfesion" value="#{profesionpersonaController.selected.identificacionProfesion}" title="#{bundle.CreateProfesionpersonaTitle_identificacionProfesion}" />
+                    <h:outputLabel value="#{bundle.CreateProfesionpersonaLabel_nombreProfesionPersona}" for="nombreProfesionPersona" />
+                    <h:inputText id="nombreProfesionPersona" value="#{profesionpersonaController.selected.nombreProfesionPersona}" title="#{bundle.CreateProfesionpersonaTitle_nombreProfesionPersona}" />
+                    <h:outputLabel value="#{bundle.CreateProfesionpersonaLabel_activo}" for="activo" />
+                    <h:inputText id="activo" value="#{profesionpersonaController.selected.activo}" title="#{bundle.CreateProfesionpersonaTitle_activo}" />
+                    <h:outputLabel value="#{bundle.CreateProfesionpersonaLabel_fechaRegistro}" for="fechaRegistro" />
+                    <h:inputText id="fechaRegistro" value="#{profesionpersonaController.selected.fechaRegistro}" title="#{bundle.CreateProfesionpersonaTitle_fechaRegistro}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreateProfesionpersonaLabel_fechaModificacion}" for="fechaModificacion" />
+                    <h:inputText id="fechaModificacion" value="#{profesionpersonaController.selected.fechaModificacion}" title="#{bundle.CreateProfesionpersonaTitle_fechaModificacion}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreateProfesionpersonaLabel_codigoCargoPersona}" for="codigoCargoPersona" />
+                    <h:inputText id="codigoCargoPersona" value="#{profesionpersonaController.selected.codigoCargoPersona}" title="#{bundle.CreateProfesionpersonaTitle_codigoCargoPersona}" />
+                    <h:outputLabel value="#{bundle.CreateProfesionpersonaLabel_codigoUsuario}" for="codigoUsuario" />
+                    <h:selectOneMenu id="codigoUsuario" value="#{profesionpersonaController.selected.codigoUsuario}" title="#{bundle.CreateProfesionpersonaTitle_codigoUsuario}" >
+                        <f:selectItems value="#{usuarioController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateProfesionpersonaLabel_usuarioModifico}" for="usuarioModifico" />
+                    <h:selectOneMenu id="usuarioModifico" value="#{profesionpersonaController.selected.usuarioModifico}" title="#{bundle.CreateProfesionpersonaTitle_usuarioModifico}" >
+                        <f:selectItems value="#{usuarioController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{profesionpersonaController.create}" value="#{bundle.CreateProfesionpersonaSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{profesionpersonaController.prepareList}" value="#{bundle.CreateProfesionpersonaShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateProfesionpersonaIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

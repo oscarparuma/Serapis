@@ -1,0 +1,349 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListSolicitudingresoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+               
+                 <h:dataTable value="#{solicitudingresoController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSolicitudingresoTitle_codigoSolicitud}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.codigoSolicitud}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSolicitudingresoTitle_identificacionNit}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.identificacionNit}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSolicitudingresoTitle_nombreSede}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.nombreSede}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSolicitudingresoTitle_paginaWeb}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.paginaWeb}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSolicitudingresoTitle_siglasSede}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.siglasSede}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSolicitudingresoTitle_direccion}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.direccion}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSolicitudingresoTitle_telefono}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.telefono}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSolicitudingresoTitle_email}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.email}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSolicitudingresoTitle_logo}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.logo}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSolicitudingresoTitle_numeroIdentificacion}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.numeroIdentificacion}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSolicitudingresoTitle_nombreUsuario}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.nombreUsuario}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSolicitudingresoTitle_registroMedico}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.registroMedico}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSolicitudingresoTitle_otroCargo}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.otroCargo}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSolicitudingresoTitle_otraEspecialidad}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.otraEspecialidad}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSolicitudingresoTitle_numeroIdentificacionA}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.numeroIdentificacionA}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSolicitudingresoTitle_nombreUsuarioA}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.nombreUsuarioA}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSolicitudingresoTitle_registroMedicoA}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.registroMedicoA}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSolicitudingresoTitle_otroCargoA}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.otroCargoA}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSolicitudingresoTitle_otraEspecialidadA}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.otraEspecialidadA}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSolicitudingresoTitle_numeroIdentificacionB}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.numeroIdentificacionB}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSolicitudingresoTitle_nombreUsuarioB}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.nombreUsuarioB}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSolicitudingresoTitle_registroMedicoB}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.registroMedicoB}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSolicitudingresoTitle_otroCargoB}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.otroCargoB}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSolicitudingresoTitle_otraEspecialidadB}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.otraEspecialidadB}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSolicitudingresoTitle_numeroIdentificacionC}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.numeroIdentificacionC}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSolicitudingresoTitle_nombreUsuarioC}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.nombreUsuarioC}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSolicitudingresoTitle_registroMedicoC}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.registroMedicoC}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSolicitudingresoTitle_otroCargoC}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.otroCargoC}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSolicitudingresoTitle_otraEspecialidadC}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.otraEspecialidadC}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSolicitudingresoTitle_numeroIdentificacionD}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.numeroIdentificacionD}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSolicitudingresoTitle_nombreUsuarioD}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.nombreUsuarioD}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSolicitudingresoTitle_registroMedicoD}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.registroMedicoD}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSolicitudingresoTitle_otroCargoD}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.otroCargoD}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSolicitudingresoTitle_otraEspecialidadD}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.otraEspecialidadD}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSolicitudingresoTitle_fechaSolicitud}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.fechaSolicitud}">
+                                <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSolicitudingresoTitle_fechaModificacion}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.fechaModificacion}">
+                                <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSolicitudingresoTitle_fechaRespuesta}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.fechaRespuesta}">
+                                <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSolicitudingresoTitle_respuesta}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.respuesta}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSolicitudingresoTitle_codigoEspecialidad}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.codigoEspecialidad}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSolicitudingresoTitle_codigoCargo}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.codigoCargo}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSolicitudingresoTitle_codigoCargoA}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.codigoCargoA}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSolicitudingresoTitle_codigoCargoB}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.codigoCargoB}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSolicitudingresoTitle_codigoCargoC}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.codigoCargoC}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSolicitudingresoTitle_codigoCargoD}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.codigoCargoD}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSolicitudingresoTitle_codigoEspecialidadA}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.codigoEspecialidadA}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSolicitudingresoTitle_codigoEspecialidadB}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.codigoEspecialidadB}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSolicitudingresoTitle_codigoEspecialidadC}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.codigoEspecialidadC}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSolicitudingresoTitle_codigoEspecialidadD}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.codigoEspecialidadD}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSolicitudingresoTitle_codigoUsuario}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.codigoUsuario}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSolicitudingresoTitle_modificadoPor}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.modificadoPor}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSolicitudingresoTitle_codigoMunicipio}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.codigoMunicipio}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{solicitudingresoController.prepareView}" value="#{bundle.ListSolicitudingresoViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{solicitudingresoController.prepareEdit}" value="#{bundle.ListSolicitudingresoEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{solicitudingresoController.destroy}" value="#{bundle.ListSolicitudingresoDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+               
+                <br />
+                <h:commandLink action="#{solicitudingresoController.prepareCreate}" value="#{bundle.ListSolicitudingresoCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListSolicitudingresoIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateSolicitudingresoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateSolicitudingresoLabel_codigoSolicitud}" for="codigoSolicitud" />
+                    <h:inputText id="codigoSolicitud" value="#{solicitudingresoController.selected.codigoSolicitud}" title="#{bundle.CreateSolicitudingresoTitle_codigoSolicitud}" required="true" requiredMessage="#{bundle.CreateSolicitudingresoRequiredMessage_codigoSolicitud}"/>
+                    <h:outputLabel value="#{bundle.CreateSolicitudingresoLabel_identificacionNit}" for="identificacionNit" />
+                    <h:inputText id="identificacionNit" value="#{solicitudingresoController.selected.identificacionNit}" title="#{bundle.CreateSolicitudingresoTitle_identificacionNit}" />
+                    <h:outputLabel value="#{bundle.CreateSolicitudingresoLabel_nombreSede}" for="nombreSede" />
+                    <h:inputText id="nombreSede" value="#{solicitudingresoController.selected.nombreSede}" title="#{bundle.CreateSolicitudingresoTitle_nombreSede}" />
+                    <h:outputLabel value="#{bundle.CreateSolicitudingresoLabel_paginaWeb}" for="paginaWeb" />
+                    <h:inputText id="paginaWeb" value="#{solicitudingresoController.selected.paginaWeb}" title="#{bundle.CreateSolicitudingresoTitle_paginaWeb}" />
+                    <h:outputLabel value="#{bundle.CreateSolicitudingresoLabel_siglasSede}" for="siglasSede" />
+                    <h:inputText id="siglasSede" value="#{solicitudingresoController.selected.siglasSede}" title="#{bundle.CreateSolicitudingresoTitle_siglasSede}" />
+                    <h:outputLabel value="#{bundle.CreateSolicitudingresoLabel_direccion}" for="direccion" />
+                    <h:inputText id="direccion" value="#{solicitudingresoController.selected.direccion}" title="#{bundle.CreateSolicitudingresoTitle_direccion}" />
+                    <h:outputLabel value="#{bundle.CreateSolicitudingresoLabel_telefono}" for="telefono" />
+                    <h:inputText id="telefono" value="#{solicitudingresoController.selected.telefono}" title="#{bundle.CreateSolicitudingresoTitle_telefono}" />
+                    <h:outputLabel value="#{bundle.CreateSolicitudingresoLabel_email}" for="email" />
+                    <h:inputText id="email" value="#{solicitudingresoController.selected.email}" title="#{bundle.CreateSolicitudingresoTitle_email}" />
+                    <h:outputLabel value="#{bundle.CreateSolicitudingresoLabel_logo}" for="logo" />
+                    <h:inputTextarea rows="4" cols="30" id="logo" value="#{solicitudingresoController.selected.logo}" title="#{bundle.CreateSolicitudingresoTitle_logo}" />
+                    <h:outputLabel value="#{bundle.CreateSolicitudingresoLabel_numeroIdentificacion}" for="numeroIdentificacion" />
+                    <h:inputText id="numeroIdentificacion" value="#{solicitudingresoController.selected.numeroIdentificacion}" title="#{bundle.CreateSolicitudingresoTitle_numeroIdentificacion}" />
+                    <h:outputLabel value="#{bundle.CreateSolicitudingresoLabel_nombreUsuario}" for="nombreUsuario" />
+                    <h:inputText id="nombreUsuario" value="#{solicitudingresoController.selected.nombreUsuario}" title="#{bundle.CreateSolicitudingresoTitle_nombreUsuario}" />
+                    <h:outputLabel value="#{bundle.CreateSolicitudingresoLabel_registroMedico}" for="registroMedico" />
+                    <h:inputText id="registroMedico" value="#{solicitudingresoController.selected.registroMedico}" title="#{bundle.CreateSolicitudingresoTitle_registroMedico}" />
+                    <h:outputLabel value="#{bundle.CreateSolicitudingresoLabel_otroCargo}" for="otroCargo" />
+                    <h:inputTextarea rows="4" cols="30" id="otroCargo" value="#{solicitudingresoController.selected.otroCargo}" title="#{bundle.CreateSolicitudingresoTitle_otroCargo}" />
+                    <h:outputLabel value="#{bundle.CreateSolicitudingresoLabel_otraEspecialidad}" for="otraEspecialidad" />
+                    <h:inputTextarea rows="4" cols="30" id="otraEspecialidad" value="#{solicitudingresoController.selected.otraEspecialidad}" title="#{bundle.CreateSolicitudingresoTitle_otraEspecialidad}" />
+                    <h:outputLabel value="#{bundle.CreateSolicitudingresoLabel_numeroIdentificacionA}" for="numeroIdentificacionA" />
+                    <h:inputText id="numeroIdentificacionA" value="#{solicitudingresoController.selected.numeroIdentificacionA}" title="#{bundle.CreateSolicitudingresoTitle_numeroIdentificacionA}" />
+                    <h:outputLabel value="#{bundle.CreateSolicitudingresoLabel_nombreUsuarioA}" for="nombreUsuarioA" />
+                    <h:inputText id="nombreUsuarioA" value="#{solicitudingresoController.selected.nombreUsuarioA}" title="#{bundle.CreateSolicitudingresoTitle_nombreUsuarioA}" />
+                    <h:outputLabel value="#{bundle.CreateSolicitudingresoLabel_registroMedicoA}" for="registroMedicoA" />
+                    <h:inputText id="registroMedicoA" value="#{solicitudingresoController.selected.registroMedicoA}" title="#{bundle.CreateSolicitudingresoTitle_registroMedicoA}" />
+                    <h:outputLabel value="#{bundle.CreateSolicitudingresoLabel_otroCargoA}" for="otroCargoA" />
+                    <h:inputTextarea rows="4" cols="30" id="otroCargoA" value="#{solicitudingresoController.selected.otroCargoA}" title="#{bundle.CreateSolicitudingresoTitle_otroCargoA}" />
+                    <h:outputLabel value="#{bundle.CreateSolicitudingresoLabel_otraEspecialidadA}" for="otraEspecialidadA" />
+                    <h:inputTextarea rows="4" cols="30" id="otraEspecialidadA" value="#{solicitudingresoController.selected.otraEspecialidadA}" title="#{bundle.CreateSolicitudingresoTitle_otraEspecialidadA}" />
+                    <h:outputLabel value="#{bundle.CreateSolicitudingresoLabel_numeroIdentificacionB}" for="numeroIdentificacionB" />
+                    <h:inputText id="numeroIdentificacionB" value="#{solicitudingresoController.selected.numeroIdentificacionB}" title="#{bundle.CreateSolicitudingresoTitle_numeroIdentificacionB}" />
+                    <h:outputLabel value="#{bundle.CreateSolicitudingresoLabel_nombreUsuarioB}" for="nombreUsuarioB" />
+                    <h:inputText id="nombreUsuarioB" value="#{solicitudingresoController.selected.nombreUsuarioB}" title="#{bundle.CreateSolicitudingresoTitle_nombreUsuarioB}" />
+                    <h:outputLabel value="#{bundle.CreateSolicitudingresoLabel_registroMedicoB}" for="registroMedicoB" />
+                    <h:inputText id="registroMedicoB" value="#{solicitudingresoController.selected.registroMedicoB}" title="#{bundle.CreateSolicitudingresoTitle_registroMedicoB}" />
+                    <h:outputLabel value="#{bundle.CreateSolicitudingresoLabel_otroCargoB}" for="otroCargoB" />
+                    <h:inputTextarea rows="4" cols="30" id="otroCargoB" value="#{solicitudingresoController.selected.otroCargoB}" title="#{bundle.CreateSolicitudingresoTitle_otroCargoB}" />
+                    <h:outputLabel value="#{bundle.CreateSolicitudingresoLabel_otraEspecialidadB}" for="otraEspecialidadB" />
+                    <h:inputTextarea rows="4" cols="30" id="otraEspecialidadB" value="#{solicitudingresoController.selected.otraEspecialidadB}" title="#{bundle.CreateSolicitudingresoTitle_otraEspecialidadB}" />
+                    <h:outputLabel value="#{bundle.CreateSolicitudingresoLabel_numeroIdentificacionC}" for="numeroIdentificacionC" />
+                    <h:inputText id="numeroIdentificacionC" value="#{solicitudingresoController.selected.numeroIdentificacionC}" title="#{bundle.CreateSolicitudingresoTitle_numeroIdentificacionC}" />
+                    <h:outputLabel value="#{bundle.CreateSolicitudingresoLabel_nombreUsuarioC}" for="nombreUsuarioC" />
+                    <h:inputText id="nombreUsuarioC" value="#{solicitudingresoController.selected.nombreUsuarioC}" title="#{bundle.CreateSolicitudingresoTitle_nombreUsuarioC}" />
+                    <h:outputLabel value="#{bundle.CreateSolicitudingresoLabel_registroMedicoC}" for="registroMedicoC" />
+                    <h:inputText id="registroMedicoC" value="#{solicitudingresoController.selected.registroMedicoC}" title="#{bundle.CreateSolicitudingresoTitle_registroMedicoC}" />
+                    <h:outputLabel value="#{bundle.CreateSolicitudingresoLabel_otroCargoC}" for="otroCargoC" />
+                    <h:inputTextarea rows="4" cols="30" id="otroCargoC" value="#{solicitudingresoController.selected.otroCargoC}" title="#{bundle.CreateSolicitudingresoTitle_otroCargoC}" />
+                    <h:outputLabel value="#{bundle.CreateSolicitudingresoLabel_otraEspecialidadC}" for="otraEspecialidadC" />
+                    <h:inputTextarea rows="4" cols="30" id="otraEspecialidadC" value="#{solicitudingresoController.selected.otraEspecialidadC}" title="#{bundle.CreateSolicitudingresoTitle_otraEspecialidadC}" />
+                    <h:outputLabel value="#{bundle.CreateSolicitudingresoLabel_numeroIdentificacionD}" for="numeroIdentificacionD" />
+                    <h:inputText id="numeroIdentificacionD" value="#{solicitudingresoController.selected.numeroIdentificacionD}" title="#{bundle.CreateSolicitudingresoTitle_numeroIdentificacionD}" />
+                    <h:outputLabel value="#{bundle.CreateSolicitudingresoLabel_nombreUsuarioD}" for="nombreUsuarioD" />
+                    <h:inputText id="nombreUsuarioD" value="#{solicitudingresoController.selected.nombreUsuarioD}" title="#{bundle.CreateSolicitudingresoTitle_nombreUsuarioD}" />
+                    <h:outputLabel value="#{bundle.CreateSolicitudingresoLabel_registroMedicoD}" for="registroMedicoD" />
+                    <h:inputText id="registroMedicoD" value="#{solicitudingresoController.selected.registroMedicoD}" title="#{bundle.CreateSolicitudingresoTitle_registroMedicoD}" />
+                    <h:outputLabel value="#{bundle.CreateSolicitudingresoLabel_otroCargoD}" for="otroCargoD" />
+                    <h:inputTextarea rows="4" cols="30" id="otroCargoD" value="#{solicitudingresoController.selected.otroCargoD}" title="#{bundle.CreateSolicitudingresoTitle_otroCargoD}" />
+                    <h:outputLabel value="#{bundle.CreateSolicitudingresoLabel_otraEspecialidadD}" for="otraEspecialidadD" />
+                    <h:inputTextarea rows="4" cols="30" id="otraEspecialidadD" value="#{solicitudingresoController.selected.otraEspecialidadD}" title="#{bundle.CreateSolicitudingresoTitle_otraEspecialidadD}" />
+                    <h:outputLabel value="#{bundle.CreateSolicitudingresoLabel_fechaSolicitud}" for="fechaSolicitud" />
+                    <h:inputText id="fechaSolicitud" value="#{solicitudingresoController.selected.fechaSolicitud}" title="#{bundle.CreateSolicitudingresoTitle_fechaSolicitud}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreateSolicitudingresoLabel_fechaModificacion}" for="fechaModificacion" />
+                    <h:inputText id="fechaModificacion" value="#{solicitudingresoController.selected.fechaModificacion}" title="#{bundle.CreateSolicitudingresoTitle_fechaModificacion}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreateSolicitudingresoLabel_fechaRespuesta}" for="fechaRespuesta" />
+                    <h:inputText id="fechaRespuesta" value="#{solicitudingresoController.selected.fechaRespuesta}" title="#{bundle.CreateSolicitudingresoTitle_fechaRespuesta}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreateSolicitudingresoLabel_respuesta}" for="respuesta" />
+                    <h:inputTextarea rows="4" cols="30" id="respuesta" value="#{solicitudingresoController.selected.respuesta}" title="#{bundle.CreateSolicitudingresoTitle_respuesta}" />
+                    <h:outputLabel value="#{bundle.CreateSolicitudingresoLabel_codigoEspecialidad}" for="codigoEspecialidad" />
+                    <h:selectOneMenu id="codigoEspecialidad" value="#{solicitudingresoController.selected.codigoEspecialidad}" title="#{bundle.CreateSolicitudingresoTitle_codigoEspecialidad}" >
+                        <f:selectItems value="#{especialidadsedeController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateSolicitudingresoLabel_codigoCargo}" for="codigoCargo" />
+                    <h:selectOneMenu id="codigoCargo" value="#{solicitudingresoController.selected.codigoCargo}" title="#{bundle.CreateSolicitudingresoTitle_codigoCargo}" >
+                        <f:selectItems value="#{cargosedeController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateSolicitudingresoLabel_codigoCargoA}" for="codigoCargoA" />
+                    <h:selectOneMenu id="codigoCargoA" value="#{solicitudingresoController.selected.codigoCargoA}" title="#{bundle.CreateSolicitudingresoTitle_codigoCargoA}" >
+                        <f:selectItems value="#{cargosedeController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateSolicitudingresoLabel_codigoCargoB}" for="codigoCargoB" />
+                    <h:selectOneMenu id="codigoCargoB" value="#{solicitudingresoController.selected.codigoCargoB}" title="#{bundle.CreateSolicitudingresoTitle_codigoCargoB}" >
+                        <f:selectItems value="#{cargosedeController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateSolicitudingresoLabel_codigoCargoC}" for="codigoCargoC" />
+                    <h:selectOneMenu id="codigoCargoC" value="#{solicitudingresoController.selected.codigoCargoC}" title="#{bundle.CreateSolicitudingresoTitle_codigoCargoC}" >
+                        <f:selectItems value="#{cargosedeController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateSolicitudingresoLabel_codigoCargoD}" for="codigoCargoD" />
+                    <h:selectOneMenu id="codigoCargoD" value="#{solicitudingresoController.selected.codigoCargoD}" title="#{bundle.CreateSolicitudingresoTitle_codigoCargoD}" >
+                        <f:selectItems value="#{cargosedeController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateSolicitudingresoLabel_codigoEspecialidadA}" for="codigoEspecialidadA" />
+                    <h:selectOneMenu id="codigoEspecialidadA" value="#{solicitudingresoController.selected.codigoEspecialidadA}" title="#{bundle.CreateSolicitudingresoTitle_codigoEspecialidadA}" >
+                        <f:selectItems value="#{especialidadsedeController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateSolicitudingresoLabel_codigoEspecialidadB}" for="codigoEspecialidadB" />
+                    <h:selectOneMenu id="codigoEspecialidadB" value="#{solicitudingresoController.selected.codigoEspecialidadB}" title="#{bundle.CreateSolicitudingresoTitle_codigoEspecialidadB}" >
+                        <f:selectItems value="#{especialidadsedeController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateSolicitudingresoLabel_codigoEspecialidadC}" for="codigoEspecialidadC" />
+                    <h:selectOneMenu id="codigoEspecialidadC" value="#{solicitudingresoController.selected.codigoEspecialidadC}" title="#{bundle.CreateSolicitudingresoTitle_codigoEspecialidadC}" >
+                        <f:selectItems value="#{especialidadsedeController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateSolicitudingresoLabel_codigoEspecialidadD}" for="codigoEspecialidadD" />
+                    <h:selectOneMenu id="codigoEspecialidadD" value="#{solicitudingresoController.selected.codigoEspecialidadD}" title="#{bundle.CreateSolicitudingresoTitle_codigoEspecialidadD}" >
+                        <f:selectItems value="#{especialidadsedeController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateSolicitudingresoLabel_codigoUsuario}" for="codigoUsuario" />
+                    <h:selectOneMenu id="codigoUsuario" value="#{solicitudingresoController.selected.codigoUsuario}" title="#{bundle.CreateSolicitudingresoTitle_codigoUsuario}" >
+                        <f:selectItems value="#{usuarioController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateSolicitudingresoLabel_modificadoPor}" for="modificadoPor" />
+                    <h:selectOneMenu id="modificadoPor" value="#{solicitudingresoController.selected.modificadoPor}" title="#{bundle.CreateSolicitudingresoTitle_modificadoPor}" >
+                        <f:selectItems value="#{usuarioController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateSolicitudingresoLabel_codigoMunicipio}" for="codigoMunicipio" />
+                    <h:selectOneMenu id="codigoMunicipio" value="#{solicitudingresoController.selected.codigoMunicipio}" title="#{bundle.CreateSolicitudingresoTitle_codigoMunicipio}" >
+                        <f:selectItems value="#{municipioController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{solicitudingresoController.create}" value="#{bundle.CreateSolicitudingresoSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{solicitudingresoController.prepareList}" value="#{bundle.CreateSolicitudingresoShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateSolicitudingresoIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

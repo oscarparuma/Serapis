@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListArlTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListArlEmpty}" rendered="#{arlController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{arlController.items.rowCount > 0}">
+                    <h:outputText value="#{arlController.pagination.pageFirstItem + 1}..#{arlController.pagination.pageLastItem + 1}/#{arlController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{arlController.previous}" value="#{bundle.Previous} #{arlController.pagination.pageSize}" rendered="#{arlController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{arlController.next}" value="#{bundle.Next} #{arlController.pagination.pageSize}" rendered="#{arlController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{arlController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListArlTitle_codigoArl}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.codigoArl}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListArlTitle_identificacionArl}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.identificacionArl}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListArlTitle_nombreArl}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.nombreArl}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListArlTitle_direccion}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.direccion}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListArlTitle_telefono}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.telefono}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListArlTitle_fechaRegistro}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.fechaRegistro}">
+                                <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListArlTitle_fechaModificacion}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.fechaModificacion}">
+                                <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListArlTitle_clasificacionArl}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.clasificacionArl}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListArlTitle_codigoAsignado}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.codigoAsignado}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListArlTitle_activo}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.activo}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListArlTitle_tipoAdministradora}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.tipoAdministradora}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListArlTitle_contacto}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.contacto}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListArlTitle_codigoClasificacion}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.codigoClasificacion}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListArlTitle_codigoDepartamento}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.codigoDepartamento}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListArlTitle_codigoMunicipio}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.codigoMunicipio}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListArlTitle_codigoUsuario}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.codigoUsuario}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListArlTitle_usuarioModifico}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.usuarioModifico}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{arlController.prepareView}" value="#{bundle.ListArlViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{arlController.prepareEdit}" value="#{bundle.ListArlEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{arlController.destroy}" value="#{bundle.ListArlDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{arlController.prepareCreate}" value="#{bundle.ListArlCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListArlIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

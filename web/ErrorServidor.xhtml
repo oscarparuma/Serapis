@@ -1,0 +1,65 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"      
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+   
+        <h:head>
+            <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+            <meta http-equiv="Cache-Control" content="no-cache"/>
+            <meta http-equiv="Cache-Control" content="no-store"/>
+            <meta http-equiv="Expires" content="0"/>
+            <meta http-equiv="Pragma" content="no-cache"/>
+            <meta name="Robots" content="nofollow" />
+            <title><ui:insert name="title">SerapiS</ui:insert></title>
+            <link type="text/css" rel="stylesheet" href="#{request.contextPath}/themes/start/skin.css" />
+
+            <style type="text/css">
+                label, td { font-family: Arial,Verdana,sans-serif; font-size: 11px;}
+                select { font-family: Arial,Verdana,sans-serif; font-size: 11px; }
+                th{font-size: 11px}
+            </style>
+        </h:head>
+        <h:body>
+
+            <p:growl  showDetail="true" showSummary="true"/>
+
+            <p:layout fullPage="true">
+
+                <p:layoutUnit  styleClass="ui-layout-north ui-layout-unit-content ui-widget ui-widget-header ui-corner-all"  
+                               position="north" size="95"
+                               closable="false" collapsible="false"  resizable="false" >
+                    <p:layout style="min-width: 600px; min-height:90px">
+                        <p:layoutUnit position="center">
+                            <div align="center" >
+                                <p:graphicImage value="/imagenes/logo.jpg" height="65px" />                                                     
+                            </div>                            
+                        </p:layoutUnit>                                
+                        <p:layoutUnit position="west" size="400" >
+                            <p:graphicImage value="/imagenes/logo.jpg"  height="60px" />                        
+                        </p:layoutUnit>    
+                        <p:layoutUnit position="east" size="70" >
+                            <p:graphicImage value="/imagenes/logo.jpg"  height="60px" />                         
+                        </p:layoutUnit>    
+                    </p:layout>
+                </p:layoutUnit>
+                <p:layoutUnit position="south" >
+                    <div class="ui-g-12 footer" >
+                        <p>Serapis Médico - 2017</p>                                                
+                            </div> 
+                </p:layoutUnit>
+                <p:layoutUnit  position="center"  resizable="true" size="10" >
+                    <ui:insert name="mantenimiento"/>
+                    <p:panel>
+                    <h:outputLabel title="Error al ingreso " style="font-family: Arial ; font-size: 20px ; font-weight: bold"  value="ERROR AL INGRESAR AL SISTEMA"/> 
+                   </p:panel>
+                    <ui:insert name="body"/>
+                </p:layoutUnit>
+            </p:layout>
+
+        </h:body>
+   
+</html>

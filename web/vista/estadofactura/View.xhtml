@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewEstadofacturaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewEstadofacturaLabel_codigoEstadoFactura}"/>
+                    <h:outputText value="#{estadofacturaController.selected.codigoEstadoFactura}" title="#{bundle.ViewEstadofacturaTitle_codigoEstadoFactura}"/>
+                    <h:outputText value="#{bundle.ViewEstadofacturaLabel_nombre}"/>
+                    <h:outputText value="#{estadofacturaController.selected.nombre}" title="#{bundle.ViewEstadofacturaTitle_nombre}"/>
+                    <h:outputText value="#{bundle.ViewEstadofacturaLabel_fechaRegistro}"/>
+                    <h:outputText value="#{estadofacturaController.selected.fechaRegistro}" title="#{bundle.ViewEstadofacturaTitle_fechaRegistro}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewEstadofacturaLabel_fechaModificacion}"/>
+                    <h:outputText value="#{estadofacturaController.selected.fechaModificacion}" title="#{bundle.ViewEstadofacturaTitle_fechaModificacion}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewEstadofacturaLabel_activo}"/>
+                    <h:outputText value="#{estadofacturaController.selected.activo}" title="#{bundle.ViewEstadofacturaTitle_activo}"/>
+                    <h:outputText value="#{bundle.ViewEstadofacturaLabel_codigoUsuario}"/>
+                    <h:outputText value="#{estadofacturaController.selected.codigoUsuario}" title="#{bundle.ViewEstadofacturaTitle_codigoUsuario}"/>
+                    <h:outputText value="#{bundle.ViewEstadofacturaLabel_modificadoPor}"/>
+                    <h:outputText value="#{estadofacturaController.selected.modificadoPor}" title="#{bundle.ViewEstadofacturaTitle_modificadoPor}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{estadofacturaController.destroyAndView}" value="#{bundle.ViewEstadofacturaDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewEstadofacturaEditLink}"/>
+                <br />
+                <h:commandLink action="#{estadofacturaController.prepareCreate}" value="#{bundle.ViewEstadofacturaCreateLink}" />
+                <br />
+                <h:commandLink action="#{estadofacturaController.prepareList}" value="#{bundle.ViewEstadofacturaShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewEstadofacturaIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

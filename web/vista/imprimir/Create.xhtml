@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateImprimirTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateImprimirLabel_codigoImprimir}" for="codigoImprimir" />
+                    <h:inputText id="codigoImprimir" value="#{imprimirController.selected.codigoImprimir}" title="#{bundle.CreateImprimirTitle_codigoImprimir}" required="true" requiredMessage="#{bundle.CreateImprimirRequiredMessage_codigoImprimir}"/>
+                    <h:outputLabel value="#{bundle.CreateImprimirLabel_codigoCita}" for="codigoCita" />
+                    <h:selectOneMenu id="codigoCita" value="#{imprimirController.selected.codigoCita}" title="#{bundle.CreateImprimirTitle_codigoCita}" >
+                        <f:selectItems value="#{citapersonaController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateImprimirLabel_codigoPersona}" for="codigoPersona" />
+                    <h:selectOneMenu id="codigoPersona" value="#{imprimirController.selected.codigoPersona}" title="#{bundle.CreateImprimirTitle_codigoPersona}" >
+                        <f:selectItems value="#{datospersonaController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{imprimirController.create}" value="#{bundle.CreateImprimirSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{imprimirController.prepareList}" value="#{bundle.CreateImprimirShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateImprimirIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

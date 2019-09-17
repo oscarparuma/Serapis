@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/templateIngreso.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.AppName}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <p:panel>
+                    <div align="center">                        
+                        <div class="container text-center">   
+                            <div class="row">
+                                <div class="col-sm-3 well">
+                                    <h:panelGrid columns="1">
+                                        <div align="center">
+                                            <p:panel header="#{bundle.pendFacturar}" style="min-width: 200px; max-width: 1600px;">
+                                                <p:dataTable id="lalmeida"  reflow="true" value="#{citapersonaController.listaCitaAsignadas}" var="item" emptyMessage=" " selectionMode="single"  paginator="true"  rowKey="#{item.codigoCitaPersona}" rows="20"  rowsPerPageTemplate="20,50,100"
+                                                             widgetVar="lucho"  filteredValue="#{citapersonaController.filteredCitapersona}" >
+                                                    <p:column filterBy="#{item.numeroDocumentoIdentidad}" headerText="numeroDocumentoIdentidad" footerText="" filterMatchMode="">
+                                                        <f:facet name="header">
+                                                            <h:outputText value="#{bundle.nIdentif}" style="font-size: 16px;"/>
+                                                        </f:facet>
+                                                        <h:outputText value="#{item.numeroDocumentoIdentidad}"/>
+                                                    </p:column>                        
+                                                    <p:column filterBy="#{item.codigoPersonaCita}" headerText="codigoPersonaCita" footerText="" filterMatchMode="">
+                                                        <f:facet name="header">
+                                                            <h:outputText value="#{bundle.datPersona}" style="font-size: 16px;"/>
+                                                        </f:facet>
+                                                        <h:outputText value=" #{item.codigoPersonaCita}"/>
+                                                    </p:column>
+                                                    <p:column width="100">
+                                                        <f:facet name="header">
+                                                            <h:outputText value="#{bundle.fechaCitaPersona}" style="font-size: 16px;"/>
+                                                        </f:facet>
+                                                        <h:outputText value="#{item.fechaCita}">
+                                                            <f:convertDateTime pattern="yyyy-MM-dd" timeZone="America/Bogota" />
+                                                        </h:outputText>
+                                                    </p:column>
+                                                    <p:column width="50">
+                                                        <f:facet name="header">
+                                                            <h:outputText value="#{bundle.horaCita}" style="font-size: 16px;"/>
+                                                        </f:facet>
+                                                        <h:outputText value="#{item.fechaCita}">
+                                                            <f:convertDateTime pattern="HH:mm" timeZone="America/Bogota"/>
+                                                        </h:outputText>
+                                                    </p:column>
+                                                    <p:column>
+                                                        <f:facet name="header">
+                                                            <h:outputText value="#{bundle.consult}" style="font-size: 16px;"/>
+                                                        </f:facet>
+                                                        <h:outputText value=" #{item.codigoEps}"/>
+                                                    </p:column>
+                                                    <p:column>
+                                                        <f:facet name="header">
+                                                            <h:outputText value="#{bundle.TipoExamen}" style="font-size: 16px;"/>
+                                                        </f:facet>
+                                                        <h:outputText value=" #{item.codigoExamenRealizar}"/>
+                                                    </p:column>
+                                                    <p:column>
+                                                        <f:facet name="header">
+                                                            <h:outputText value="#{bundle.ListCitapersonaTitle_codigoExamen}" style="font-size: 16px;"/>
+                                                        </f:facet>
+                                                        <h:outputText value=" #{item.codigoExamen}"/>
+                                                    </p:column>
+                                                    <p:column>
+                                                        <f:facet name="header">
+                                                            <h:outputText value="#{bundle.ListCitapersonaTitle_codigoProfesional}" style="font-size: 16px;"/>
+                                                        </f:facet>
+                                                        <h:outputText value=" #{item.codigoProfesional}"/>
+                                                    </p:column>
+                                                    <f:facet name="footer">
+                                                        <p:panel>
+                                                            <div align="center"  >
+                                                                <p:commandLink title="#{bundle.Regresar}"  update="@all" action="/vista/menuSistema/MenuConsultas.xhtml"   immediate="true">
+                                                                    <h:graphicImage id="menuConsultas" alt="#{m.ingles}"  url="/imagenes/ImagSisitema/regresar.jpg" class="img-responsive" />
+                                                                </p:commandLink>
+                                                                <p:commandLink  rendered="#{usuarioController.selected.codigoPerfil.codigoPerfil ==1 || usuarioController.selected.codigoPerfil.codigoPerfil ==2}" title="#{bundle.salir}"  update="@all" action="/index.xhtml"  immediate="true">
+                                                                    <h:graphicImage id="Salir" alt="#{m.ingles}"  url="/imagenes/ImagSisitema/salirSistema.jpg" class="img-responsive"/>
+                                                                </p:commandLink>
+                                                            </div>  
+                                                        </p:panel>
+                                                    </f:facet>
+                                                </p:dataTable>
+                                            </p:panel>
+                                        </div>
+                                    </h:panelGrid>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </p:panel>  
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

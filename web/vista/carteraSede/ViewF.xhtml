@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <f:view contentType="text/html" beforePhase="#{usuarioController.beforePhase}"  >
+        <ui:composition template="/template.xhtml">
+            <ui:define name="title">
+                <h:outputText value="#{bundle.ViewCarteraSedeTitle}"></h:outputText>
+            </ui:define>
+            <ui:define name="body">
+
+                <h:form>
+                    <p:panel header="#{bundle.RecibPago} #{carteraSedeController.selected.reciboPago}">
+                        <p:panelGrid columns="2">
+                             <h:outputText value="#{bundle.ViewCarteraSedeLabel_valorCancelado}"/>
+                        <h:outputText value="#{carteraSedeController.selected.valorCancelado}" title="#{bundle.ViewCarteraSedeTitle_valorCancelado}"/>
+                       
+                            </p:panelGrid>
+                    </p:panel>
+                    <h:panelGrid columns="2">
+                        <h:outputText value="#{bundle.ViewCarteraSedeLabel_codigoCartera}"/>
+                        <h:outputText value="#{carteraSedeController.selected.codigoCartera}" title="#{bundle.ViewCarteraSedeTitle_codigoCartera}"/>
+                        <h:outputText value="#{bundle.ViewCarteraSedeLabel_valorTotalfactura}"/>
+                        <h:outputText value="#{carteraSedeController.selected.valorTotalfactura}" title="#{bundle.ViewCarteraSedeTitle_valorTotalfactura}"/>
+                        <h:outputText value="#{bundle.ViewCarteraSedeLabel_saldoFactura}"/>
+                        <h:outputText value="#{carteraSedeController.selected.saldoFactura}" title="#{bundle.ViewCarteraSedeTitle_saldoFactura}"/>
+                        <h:outputText value="#{bundle.ViewCarteraSedeLabel_fechaRegistro}"/>
+                        <h:outputText value="#{carteraSedeController.selected.fechaRegistro}" title="#{bundle.ViewCarteraSedeTitle_fechaRegistro}">
+                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewCarteraSedeLabel_observacion}"/>
+                        <h:outputText value="#{carteraSedeController.selected.observacion}" title="#{bundle.ViewCarteraSedeTitle_observacion}"/>
+                        <h:outputText value="#{bundle.ViewCarteraSedeLabel_reciboPago}"/>
+                        <h:outputText value="#{carteraSedeController.selected.reciboPago}" title="#{bundle.ViewCarteraSedeTitle_reciboPago}"/>
+                        <h:outputText value="#{bundle.ViewCarteraSedeLabel_ccsRecibo}"/>
+                        <h:outputText value="#{carteraSedeController.selected.ccsRecibo}" title="#{bundle.ViewCarteraSedeTitle_ccsRecibo}"/>
+                        <h:outputText value="#{bundle.ViewCarteraSedeLabel_registroPagoEps}"/>
+                        <h:outputText value="#{carteraSedeController.selected.registroPagoEps}" title="#{bundle.ViewCarteraSedeTitle_registroPagoEps}"/>
+                        <h:outputText value="#{bundle.ViewCarteraSedeLabel_fechaReciboPagoEps}"/>
+                        <h:outputText value="#{carteraSedeController.selected.fechaReciboPagoEps}" title="#{bundle.ViewCarteraSedeTitle_fechaReciboPagoEps}">
+                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewCarteraSedeLabel_codigoCitaPersona}"/>
+                        <h:outputText value="#{carteraSedeController.selected.codigoCitaPersona}" title="#{bundle.ViewCarteraSedeTitle_codigoCitaPersona}"/>
+                        <h:outputText value="#{bundle.ViewCarteraSedeLabel_codigoFacturacion}"/>
+                        <h:outputText value="#{carteraSedeController.selected.codigoFacturacion}" title="#{bundle.ViewCarteraSedeTitle_codigoFacturacion}"/>
+                        <h:outputText value="#{bundle.ViewCarteraSedeLabel_codigoSede}"/>
+                        <h:outputText value="#{carteraSedeController.selected.codigoSede}" title="#{bundle.ViewCarteraSedeTitle_codigoSede}"/>
+                        <h:outputText value="#{bundle.ViewCarteraSedeLabel_codigoUsuario}"/>
+                        <h:outputText value="#{carteraSedeController.selected.codigoUsuario}" title="#{bundle.ViewCarteraSedeTitle_codigoUsuario}"/>
+                    </h:panelGrid>
+                    <br />
+                    <h:commandLink action="#{carteraSedeController.destroyAndView}" value="#{bundle.ViewCarteraSedeDestroyLink}"/>
+                    <br />
+                    <br />
+                    <h:link outcome="Edit" value="#{bundle.ViewCarteraSedeEditLink}"/>
+                    <br />
+                    <h:commandLink action="#{carteraSedeController.prepareCreate}" value="#{bundle.ViewCarteraSedeCreateLink}" />
+                    <br />
+                    <h:commandLink action="#{carteraSedeController.prepareList}" value="#{bundle.ViewCarteraSedeShowAllLink}"/>
+                    <p:commandButton style="margin-right: 10px;" id="editButtonI" icon="ui-icon-link" process="@all" styleClass="button" ajax="false" action="#{carteraSedeController.reportReciboPago}" value="#{bundle.botImprimirIngr}"/>
+
+
+                </h:form>
+            </ui:define>
+        </ui:composition>
+    </f:view>
+</html>

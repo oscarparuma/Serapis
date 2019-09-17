@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewTipoafiliacionTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewTipoafiliacionLabel_codigoAfiliacion}"/>
+                    <h:outputText value="#{tipoafiliacionController.selected.codigoAfiliacion}" title="#{bundle.ViewTipoafiliacionTitle_codigoAfiliacion}"/>
+                    <h:outputText value="#{bundle.ViewTipoafiliacionLabel_nombreAfiliacion}"/>
+                    <h:outputText value="#{tipoafiliacionController.selected.nombreAfiliacion}" title="#{bundle.ViewTipoafiliacionTitle_nombreAfiliacion}"/>
+                    <h:outputText value="#{bundle.ViewTipoafiliacionLabel_activo}"/>
+                    <h:outputText value="#{tipoafiliacionController.selected.activo}" title="#{bundle.ViewTipoafiliacionTitle_activo}"/>
+                    <h:outputText value="#{bundle.ViewTipoafiliacionLabel_fechaRegistro}"/>
+                    <h:outputText value="#{tipoafiliacionController.selected.fechaRegistro}" title="#{bundle.ViewTipoafiliacionTitle_fechaRegistro}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewTipoafiliacionLabel_fechaModificacion}"/>
+                    <h:outputText value="#{tipoafiliacionController.selected.fechaModificacion}" title="#{bundle.ViewTipoafiliacionTitle_fechaModificacion}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewTipoafiliacionLabel_codigoUsuario}"/>
+                    <h:outputText value="#{tipoafiliacionController.selected.codigoUsuario}" title="#{bundle.ViewTipoafiliacionTitle_codigoUsuario}"/>
+                    <h:outputText value="#{bundle.ViewTipoafiliacionLabel_modificadoPor}"/>
+                    <h:outputText value="#{tipoafiliacionController.selected.modificadoPor}" title="#{bundle.ViewTipoafiliacionTitle_modificadoPor}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{tipoafiliacionController.destroyAndView}" value="#{bundle.ViewTipoafiliacionDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewTipoafiliacionEditLink}"/>
+                <br />
+                <h:commandLink action="#{tipoafiliacionController.prepareCreate}" value="#{bundle.ViewTipoafiliacionCreateLink}" />
+                <br />
+                <h:commandLink action="#{tipoafiliacionController.prepareList}" value="#{bundle.ViewTipoafiliacionShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewTipoafiliacionIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

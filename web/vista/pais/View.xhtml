@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewPaisTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewPaisLabel_codigoPais}"/>
+                    <h:outputText value="#{paisController.selected.codigoPais}" title="#{bundle.ViewPaisTitle_codigoPais}"/>
+                    <h:outputText value="#{bundle.ViewPaisLabel_nombrePais}"/>
+                    <h:outputText value="#{paisController.selected.nombrePais}" title="#{bundle.ViewPaisTitle_nombrePais}"/>
+                    <h:outputText value="#{bundle.ViewPaisLabel_activo}"/>
+                    <h:outputText value="#{paisController.selected.activo}" title="#{bundle.ViewPaisTitle_activo}"/>
+                    <h:outputText value="#{bundle.ViewPaisLabel_fechaRegistro}"/>
+                    <h:outputText value="#{paisController.selected.fechaRegistro}" title="#{bundle.ViewPaisTitle_fechaRegistro}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewPaisLabel_fechaModificacion}"/>
+                    <h:outputText value="#{paisController.selected.fechaModificacion}" title="#{bundle.ViewPaisTitle_fechaModificacion}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewPaisLabel_codigoUsuario}"/>
+                    <h:outputText value="#{paisController.selected.codigoUsuario}" title="#{bundle.ViewPaisTitle_codigoUsuario}"/>
+                    <h:outputText value="#{bundle.ViewPaisLabel_codigoUsuarioModifico}"/>
+                    <h:outputText value="#{paisController.selected.codigoUsuarioModifico}" title="#{bundle.ViewPaisTitle_codigoUsuarioModifico}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{paisController.destroyAndView}" value="#{bundle.ViewPaisDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewPaisEditLink}"/>
+                <br />
+                <h:commandLink action="#{paisController.prepareCreate}" value="#{bundle.ViewPaisCreateLink}" />
+                <br />
+                <h:commandLink action="#{paisController.prepareList}" value="#{bundle.ViewPaisShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewPaisIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

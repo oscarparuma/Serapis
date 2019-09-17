@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListPlmTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListPlmEmpty}" rendered="#{plmController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{plmController.items.rowCount > 0}">
+                    <h:outputText value="#{plmController.pagination.pageFirstItem + 1}..#{plmController.pagination.pageLastItem + 1}/#{plmController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{plmController.previous}" value="#{bundle.Previous} #{plmController.pagination.pageSize}" rendered="#{plmController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{plmController.next}" value="#{bundle.Next} #{plmController.pagination.pageSize}" rendered="#{plmController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{plmController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPlmTitle_consecutivo}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.consecutivo}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPlmTitle_codigoClasificacion}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.codigoClasificacion}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPlmTitle_nombreMedicamento}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.nombreMedicamento}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPlmTitle_concentracion}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.concentracion}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPlmTitle_formulaMedica}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.formulaMedica}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPlmTitle_unidadMedida}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.unidadMedida}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPlmTitle_viaAdministracion}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.viaAdministracion}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPlmTitle_nivelUso}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.nivelUso}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPlmTitle_observaciones}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.observaciones}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPlmTitle_fechaRegistro}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.fechaRegistro}">
+                                <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPlmTitle_fechaModificacion}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.fechaModificacion}">
+                                <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPlmTitle_activo}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.activo}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPlmTitle_codigoTipoMedicamento}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.codigoTipoMedicamento}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPlmTitle_codigoUsuario}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.codigoUsuario}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPlmTitle_modificadoPor}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.modificadoPor}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{plmController.prepareView}" value="#{bundle.ListPlmViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{plmController.prepareEdit}" value="#{bundle.ListPlmEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{plmController.destroy}" value="#{bundle.ListPlmDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{plmController.prepareCreate}" value="#{bundle.ListPlmCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListPlmIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

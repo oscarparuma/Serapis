@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml" >
+        <ui:define name="title">
+            <h:outputText value="#{bundle.AppName}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+
+            <h:form>
+                <div align="center">
+                    <div class="container text-center">   
+                        <div class="row">
+                            <div class="col-sm-3 well">
+                                <p:panel header="#{bundle.CreateDiagnosticoIngresoTitle} #{diagnosticoIngresoController.actAgenCit.codigoPersonaCita}" >
+                                    <br></br>
+                                    <p:panelGrid columns="1" rendered="#{diagnosticoIngresoController.selected != null}">
+
+                                        <p:panel>
+                                            <p:panelGrid columns="2">
+                                                <p:outputLabel value="#{bundle.CreateDiagnosticoIngresoLabel_codigoTipoDiagnostico}" for="codigoTipoDiagnostico" />
+                                                <p:selectOneMenu id="codigoTipoDiagnostico" value="#{diagnosticoIngresoController.selected.codigoTipoDiagnostico}" required="true" requiredMessage="#{bundle.CreateDiagnosticoIngresoRequiredMessage_codigoTipoDiagnostico}">
+                                                    <f:selectItems value="#{tipoDiagnosticoController.itemsAvailableSelectOne}"/>
+                                                </p:selectOneMenu>
+                                                <p:outputLabel value="#{bundle.CreateDiagnosticoIngresoLabel_codigoCie10}" for="codigoCie10" />
+                                                <p:selectOneMenu style="min-width: 280px; max-width: 800px;" filter="true" filterMatchMode="contains"  id="codigoCie10" required="true" requiredMessage="#{bundle.CreateDiagnosticoIngresoRequiredMessage_codigoCie10}" value="#{diagnosticoIngresoController.selected.codigoCie10}" styleClass="input"  >
+                                                    <f:selectItem noSelectionOption="true" itemLabel="-Seleccione- " />
+                                                    <f:selectItems value="#{cie10Controller.itemsAvailableSelectOne}"/>
+                                                    <p:ajax process="codigoCie10"  update="clasificacionCie10" event="change" />
+                                                </p:selectOneMenu>
+                                                <p:outputLabel value="#{bundle.CreateDiagnosticoIngresoLabel_clasificacionCie10}" for="clasificacionCie10" />
+                                                <p:selectOneMenu style="min-width: 280px;" filter="true" filterMatchMode="contains"  id="clasificacionCie10" required="true" requiredMessage="#{bundle.CreateDiagnosticoIngresoRequiredMessage_clasificacionCie10}" value="#{diagnosticoIngresoController.selected.clasificacionCie10}" styleClass="input" >
+                                                    <f:selectItem noSelectionOption="true" itemLabel="-Seleccione- " />
+                                                    <f:selectItems value="#{diagnosticoIngresoController.selected.codigoCie10.descripcioncie10List}"/>
+                                                    <p:ajax process="clasificacionCie10" event="change" />
+                                                </p:selectOneMenu>
+                                                <p:outputLabel value="#{bundle.CreateDiagnosticoIngresoLabel_codigoCie10A}" for="codigoCie10A" />
+                                                <p:selectOneMenu style="min-width: 280px; max-width: 800px;" filter="true" filterMatchMode="contains"  id="codigoCie10A" value="#{diagnosticoIngresoController.selected.codigoCie10A}" title="#{bundle.CreateDiagnosticoIngresoTitle_codigoCie10A}" >
+                                                    <f:selectItem noSelectionOption="true" itemLabel="-Seleccione- " />
+                                                    <f:selectItems value="#{cie10Controller.itemsAvailableSelectOne}"/>
+                                                    <p:ajax process="codigoCie10A"  update="clasificacionCie10A" event="change" />
+                                                </p:selectOneMenu>
+                                                <p:outputLabel value="#{bundle.CreateDiagnosticoIngresoLabel_clasificacionCie10A}" for="clasificacionCie10A" />
+                                                <p:selectOneMenu style="min-width: 280px;" filter="true" filterMatchMode="contains"  id="clasificacionCie10A" value="#{diagnosticoIngresoController.selected.clasificacionCie10A}" title="#{bundle.CreateDiagnosticoIngresoTitle_clasificacionCie10A}" >
+                                                    <f:selectItem noSelectionOption="true" itemLabel="-Seleccione- " />
+                                                    <f:selectItems value="#{diagnosticoIngresoController.selected.codigoCie10A.descripcioncie10List}"/>
+                                                    <p:ajax process="clasificacionCie10A" event="change" />
+                                                </p:selectOneMenu>
+                                                <p:outputLabel value="#{bundle.CreateDiagnosticoIngresoLabel_codigoCie10B}" for="codigoCie10B" />
+                                                <p:selectOneMenu style="min-width: 280px; max-width: 800px;" filter="true" filterMatchMode="contains"  id="codigoCie10B" value="#{diagnosticoIngresoController.selected.codigoCie10B}" title="#{bundle.CreateDiagnosticoIngresoTitle_codigoCie10B}" >
+                                                    <f:selectItem noSelectionOption="true" itemLabel="-Seleccione- " />
+                                                    <f:selectItems value="#{cie10Controller.itemsAvailableSelectOne}"/>
+                                                    <p:ajax process="codigoCie10B"  update="clasificacionCie10B" event="change" />
+                                                </p:selectOneMenu>
+                                                <p:outputLabel value="#{bundle.CreateDiagnosticoIngresoLabel_clasificacionCie10B}" for="clasificacionCie10B" />
+                                                <p:selectOneMenu style="min-width: 280px;" filter="true" filterMatchMode="contains"  id="clasificacionCie10B" value="#{diagnosticoIngresoController.selected.clasificacionCie10B}" title="#{bundle.CreateDiagnosticoIngresoTitle_clasificacionCie10B}" >
+                                                    <f:selectItem noSelectionOption="true" itemLabel="-Seleccione- " />
+                                                    <f:selectItems value="#{diagnosticoIngresoController.selected.codigoCie10B.descripcioncie10List}"/>
+                                                    <p:ajax process="clasificacionCie10B" event="change" />
+                                                </p:selectOneMenu>
+                                                <p:outputLabel value="#{bundle.CreateDiagnosticoIngresoLabel_codigoCie10C}" for="codigoCie10C" />
+                                                <p:selectOneMenu style="min-width: 280px; max-width: 800px;" filter="true" filterMatchMode="contains"  id="codigoCie10C" value="#{diagnosticoIngresoController.selected.codigoCie10C}" title="#{bundle.CreateDiagnosticoIngresoTitle_codigoCie10C}" >
+                                                    <f:selectItem noSelectionOption="true" itemLabel="-Seleccione- " />
+                                                    <f:selectItems value="#{cie10Controller.itemsAvailableSelectOne}"/>
+                                                    <p:ajax process="codigoCie10C"  update="clasificacionCie10C" event="change" />
+                                                </p:selectOneMenu>
+                                                <p:outputLabel value="#{bundle.CreateDiagnosticoIngresoLabel_clasificacionCie10C}" for="clasificacionCie10C" />
+                                                <p:selectOneMenu style="min-width: 280px;" filter="true" filterMatchMode="contains" id="clasificacionCie10C" value="#{diagnosticoIngresoController.selected.clasificacionCie10C}" title="#{bundle.CreateDiagnosticoIngresoTitle_clasificacionCie10C}" >
+                                                    <f:selectItem noSelectionOption="true" itemLabel="-Seleccione- " />
+                                                    <f:selectItems value="#{diagnosticoIngresoController.selected.codigoCie10B.descripcioncie10List}"/>
+                                                    <p:ajax process="clasificacionCie10C" event="change" />
+                                                </p:selectOneMenu>
+                                            </p:panelGrid>
+                                        </p:panel>
+                                        <p:fieldset collapsed="true" toggleable="true" legend="#{bundle.otrosDiaggSecund}">
+                                            <p:panelGrid columns="2">
+                                                <p:outputLabel value="#{bundle.CreateDiagnosticoIngresoLabel_codigoCie10D}" for="codigoCie10D" />
+                                                <p:selectOneMenu style="min-width: 280px; max-width: 800px;" filter="true" filterMatchMode="contains"  id="codigoCie10D" value="#{diagnosticoIngresoController.selected.codigoCie10D}" title="#{bundle.CreateDiagnosticoIngresoTitle_codigoCie10D}" >
+                                                    <f:selectItem noSelectionOption="true" itemLabel="-Seleccione- " />
+                                                    <f:selectItems value="#{cie10Controller.itemsAvailableSelectOne}"/>
+                                                    <p:ajax process="codigoCie10D"  update="clasificacionCie10D" event="change" />
+                                                </p:selectOneMenu>
+                                                <p:outputLabel value="#{bundle.CreateDiagnosticoIngresoLabel_clasificacionCie10D}" for="clasificacionCie10D" />
+                                                <p:selectOneMenu style="min-width: 280px;" filter="true" filterMatchMode="contains" id="clasificacionCie10D" value="#{diagnosticoIngresoController.selected.clasificacionCie10D}" title="#{bundle.CreateDiagnosticoIngresoTitle_clasificacionCie10D}" >
+                                                    <f:selectItem noSelectionOption="true" itemLabel="-Seleccione- " />
+                                                    <f:selectItems value="#{diagnosticoIngresoController.selected.codigoCie10D.descripcioncie10List}"/>
+                                                    <p:ajax process="clasificacionCie10D" event="change" />
+                                                </p:selectOneMenu>
+                                                <p:outputLabel value="#{bundle.CreateDiagnosticoIngresoLabel_codigoCie10E}" for="codigoCie10E" />
+                                                <p:selectOneMenu style="min-width: 280px; max-width: 800px;" filter="true" filterMatchMode="contains" id="codigoCie10E" value="#{diagnosticoIngresoController.selected.codigoCie10E}" title="#{bundle.CreateDiagnosticoIngresoTitle_codigoCie10E}" >
+                                                    <f:selectItem noSelectionOption="true" itemLabel="-Seleccione- " />
+                                                    <f:selectItems value="#{cie10Controller.itemsAvailableSelectOne}"/>
+                                                    <p:ajax process="codigoCie10E"  update="clasificacionCie10E" event="change" />
+                                                </p:selectOneMenu>
+                                                <p:outputLabel value="#{bundle.CreateDiagnosticoIngresoLabel_clasificacionCie10E}" for="clasificacionCie10E" />
+                                                <p:selectOneMenu style="min-width: 280px;" filter="true" filterMatchMode="contains"  id="clasificacionCie10E" value="#{diagnosticoIngresoController.selected.clasificacionCie10E}" title="#{bundle.CreateDiagnosticoIngresoTitle_clasificacionCie10E}" >
+                                                    <f:selectItem noSelectionOption="true" itemLabel="-Seleccione- " />
+                                                    <f:selectItems value="#{diagnosticoIngresoController.selected.codigoCie10E.descripcioncie10List}"/>
+                                                    <p:ajax process="clasificacionCie10E" event="change" />
+                                                </p:selectOneMenu>
+                                                <p:outputLabel value="#{bundle.CreateDiagnosticoIngresoLabel_codigoCie10F}" for="codigoCie10F" />
+                                                <p:selectOneMenu style="min-width: 280px; max-width: 800px;" filter="true" filterMatchMode="contains"  id="codigoCie10F" value="#{diagnosticoIngresoController.selected.codigoCie10F}" title="#{bundle.CreateDiagnosticoIngresoTitle_codigoCie10F}" >
+                                                    <f:selectItem noSelectionOption="true" itemLabel="-Seleccione- " />
+                                                    <f:selectItems value="#{cie10Controller.itemsAvailableSelectOne}"/>
+                                                    <p:ajax process="codigoCie10F"  update="clasificacionCie10F" event="change" />
+                                                </p:selectOneMenu> 
+                                                <p:outputLabel value="#{bundle.CreateDiagnosticoIngresoLabel_clasificacionCie10F}" for="clasificacionCie10F" />
+                                                <p:selectOneMenu style="min-width: 280px;" filter="true" filterMatchMode="contains" id="clasificacionCie10F" value="#{diagnosticoIngresoController.selected.clasificacionCie10F}" title="#{bundle.CreateDiagnosticoIngresoTitle_clasificacionCie10F}" >
+                                                    <f:selectItem noSelectionOption="true" itemLabel="-Seleccione- " />
+                                                    <f:selectItems value="#{diagnosticoIngresoController.selected.codigoCie10F.descripcioncie10List}"/>
+                                                    <p:ajax process="clasificacionCie10F" event="change" />
+                                                </p:selectOneMenu>
+                                                <p:outputLabel value="#{bundle.CreateDiagnosticoIngresoLabel_codigoCie10G}" for="codigoCie10G" />
+                                                <p:selectOneMenu style="min-width: 280px; max-width: 800px;" filter="true" filterMatchMode="contains"  id="codigoCie10G" value="#{diagnosticoIngresoController.selected.codigoCie10G}" title="#{bundle.CreateDiagnosticoIngresoTitle_codigoCie10G}" >
+                                                    <f:selectItem noSelectionOption="true" itemLabel="-Seleccione- " />
+                                                    <f:selectItems value="#{cie10Controller.itemsAvailableSelectOne}"/>
+                                                    <p:ajax process="codigoCie10G"  update="clasificacionCie10G" event="change" />
+                                                </p:selectOneMenu>
+                                                <p:outputLabel value="#{bundle.CreateDiagnosticoIngresoLabel_clasificacionCie10G}" for="clasificacionCie10G" />
+                                                <p:selectOneMenu style="min-width: 280px;" filter="true" filterMatchMode="contains"  id="clasificacionCie10G" value="#{diagnosticoIngresoController.selected.clasificacionCie10G}" title="#{bundle.CreateDiagnosticoIngresoTitle_clasificacionCie10G}" >
+                                                    <f:selectItem noSelectionOption="true" itemLabel="-Seleccione- " />
+                                                    <f:selectItems value="#{diagnosticoIngresoController.selected.codigoCie10G.descripcioncie10List}"/>
+                                                    <p:ajax process="clasificacionCie10G" event="change" />
+                                                </p:selectOneMenu>
+                                            </p:panelGrid>
+                                        </p:fieldset>
+                                    </p:panelGrid>
+                                    <p:panel>
+                                        <p:commandButton style="margin-right: 10px; margin-left: 10px;" icon="ui-icon-pencil" id="createButton" process="@all" styleClass="button" ajax="false" action="#{diagnosticoIngresoController.create}" value="#{bundle.CreateDiagnosticoIngresoSaveLink}" />
+                                        <p:commandButton icon="ui-icon-circle-arrow-w" id="editButton" process="@all" styleClass="button" ajax="false" action="#{diagnosticoIngresoController.prepareList}" value="#{bundle.CreateDiagnosticoIngresoShowAllLink}" immediate="true"/>
+                                    </p:panel>
+                                </p:panel>
+                            </div>
+                        </div> 
+                    </div> 
+                </div> 
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

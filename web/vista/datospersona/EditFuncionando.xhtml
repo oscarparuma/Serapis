@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    
+
+        <ui:composition template="/template.xhtml">
+            <ui:define name="title">
+                <h:outputText value="#{bundle.AppName}"></h:outputText>
+            </ui:define>
+            <ui:define name="body">
+
+                <h:form>
+                    <h:panelGrid columns="1">
+                        <p:panel header="#{bundle.datosPersona}">
+                            <p:panel>
+                                <h:panelGrid columns="2">
+                                    <p:panel>
+                                        <p:panelGrid columns="2">
+                                            <p:outputLabel  value="#{bundle.CreateDatospersonaLabel_codigoDocumentoIdentidad}" for="codigoDocumentoIdentidad" />
+                                            <p:selectOneMenu id="codigoDocumentoIdentidad" value="#{datospersonaController.selected.codigoDocumentoIdentidad}" required="true" requiredMessage="#{bundle.CreateDatospersonaRequiredMessage_codigoDocumentoIdentidad}" >
+                                                <f:selectItems value="#{tipoidentificacionController.itemsAvailableSelectOne}"/>
+                                            </p:selectOneMenu>
+                                            <p:outputLabel value="#{bundle.CreateDatospersonaLabel_numeroDocumentoIdentidad}" for="numeroDocumentoIdentidad" />
+                                            <p:inputText size="21" id="numeroDocumentoIdentidad" value="#{datospersonaController.selected.numeroDocumentoIdentidad}" required="true" requiredMessage="#{bundle.CreateDatospersonaRequiredMessage_numeroDocumentoIdentidad}"  />
+                                            <p:outputLabel value="#{bundle.CreateDatospersonaLabel_fechaNacimiento}" for="fechaNacimiento" />
+                                            <p:calendar locale="es" lang="es" size="15" id="fechaNacimiento" pattern="yyyy-MM-dd" maxdate="true" value="#{datospersonaController.selected.fechaNacimiento}" locale="de" navigator="true" required="true" requiredMessage="#{bundle.CreateDatospersonaRequiredMessage_fechaNacimiento}">
+                                            </p:calendar>
+
+                                            <p:outputLabel value="#{bundle.CreateDatospersonaLabel_genero}" for="genero" />
+                                            <h:selectOneRadio id="genero" value="#{datospersonaController.selected.genero}" >
+                                                <f:selectItems value="#{tipogeneroController.itemsAvailableSelectMany}"/>
+                                            </h:selectOneRadio>
+                                            <p:outputLabel value="#{bundle.CreateDatospersonaLabel_codigoEstadoCivil}" for="codigoEstadoCivil" />
+                                            <p:selectOneMenu id="codigoEstadoCivil" value="#{datospersonaController.selected.codigoEstadoCivil}" required="true" requiredMessage="#{bundle.CreateDatospersonaRequiredMessage_codigoEstadoCivil}" >
+                                                <f:selectItems value="#{estadocivilController.itemsAvailableSelectOne}"
+                                                               var="codigoEstadoCivilItem"
+                                                               itemValue="#{codigoEstadoCivilItem}"/>
+                                            </p:selectOneMenu>
+                                        </p:panelGrid>
+                                    </p:panel>
+
+                                    <p:panel>
+                                        <p:panelGrid columns="2">
+                                            <p:outputLabel  value="#{bundle.CreateDatospersonaLabel_nombres}" for="nombres" />
+                                            <p:inputText size="35" style="text-transform: uppercase" onkeyup="javascript:this.value = this.value.toUpperCase();" 
+                                                         id="nombres" value="#{datospersonaController.selected.nombres}" required="true" requiredMessage="#{bundle.CreateDatospersonaRequiredMessage_nombres}" />
+                                            <p:outputLabel value="#{bundle.CreateDatospersonaLabel_apellidos}" for="apellidos" />
+                                            <p:inputText size="35" style="text-transform: uppercase" onkeyup="javascript:this.value = this.value.toUpperCase();" 
+                                                         id="apellidos" value="#{datospersonaController.selected.apellidos}" required="true" requiredMessage="#{bundle.CreateDatospersonaRequiredMessage_apellidos}" />
+                                            <p:outputLabel value="#{bundle.CreateDatospersonaLabel_email}" for="email" />
+                                            <p:inputText size="35" id="email" value="#{datospersonaController.selected.email}"  />
+
+                                            <p:outputLabel value="#{bundle.CreateDatospersonaLabel_codigoEmpresa}" for="codigoEmpresa" />
+                                            <p:selectOneMenu id="codigoEmpresa" value="#{datospersonaController.selected.codigoEmpresa}" styleClass="input"  >
+                                                <f:selectItems value="#{empresaController.itemsAvailableSelectOne}" />
+                                                <p:ajax process="@this" update="sucursalEmpresa"/>
+                                            </p:selectOneMenu>
+                                            <p:outputLabel value="#{bundle.CreateDatospersonaLabel_sucursalEmpresa}" for="sucursalEmpresa" />
+                                            <p:selectOneMenu id="sucursalEmpresa" value="#{datospersonaController.selected.sucursalEmpresa}" styleClass="input" >
+                                                <f:selectItem  itemLabel="-Seleccione- " />
+                                                <f:selectItems value="#{datospersonaController.selected.codigoEmpresa.sucursalempresaList}"/>
+                                                <p:ajax process="@this" update="sucursalEmpresa"/>
+                                            </p:selectOneMenu>
+                                        </p:panelGrid>
+                                    </p:panel>
+                                    <p:panel>
+                                        <h:panelGrid columns="2">
+                                            <p:panel>
+                                                <p:panelGrid columns="1">
+                                                    <p:panel header="#{bundle.MunicipioNac}">
+                                                        <p:panelGrid columns="2">                                        
+                                                            <h:outputLabel value="#{bundle.CreateDepartamentoLabel_codigoPais}" for="codigoPais" />
+                                                            <p:selectOneMenu filter="true" filterMatchMode="contains" id="codigoPais" value="#{datospersonaController.paisSelected}"
+                                                                             styleClass="input" >
+                                                                <f:selectItem  itemLabel="-Seleccione- " />
+                                                                <f:selectItems value="#{paisController.itemsAvailableSelectOne}"/>
+                                                                <p:ajax process="codigoPais" update="codigoDepartamento, codigoMunicipioNacimiento" event="change"  />
+                                                            </p:selectOneMenu>
+                                                            <h:outputLabel value="#{bundle.CreateMunicipioLabel_codigoDepartamento}" for="codigoDepartamento" />
+                                                            <p:selectOneMenu filter="true" filterMatchMode="contains" id="codigoDepartamento" value="#{datospersonaController.departamentoSelected}"
+                                                                             styleClass="input"  >
+                                                                <f:selectItem  itemLabel="-Seleccione- " />
+                                                                <f:selectItems value="#{datospersonaController.paisSelected.departamentoList}"/>
+                                                                <p:ajax process="codigoDepartamento"  update="codigoMunicipioNacimiento" event="change" />
+                                                            </p:selectOneMenu>
+
+                                                            <p:outputLabel value="#{bundle.CreateDatosPersonaLabel_codigoMunicipioNacimiento}" for="codigoMunicipioNacimiento" />
+                                                            <p:selectOneMenu filter="true" filterMatchMode="contains" id="codigoMunicipioNacimiento" required="true" requiredMessage="#{bundle.CreateDatospersonaRequiredMessage_codigoMunicipioNacimiento}"
+                                                                             value="#{datospersonaController.selected.codigoMunicipioNacimiento}"
+                                                                             styleClass="input"  >
+                                                                <f:selectItem  itemLabel="-Seleccione- " />
+                                                                <f:selectItems value="#{datospersonaController.departamentoSelected.municipioList}"/>
+                                                                <p:ajax process="codigoMunicipioNacimiento" event="change" />
+                                                            </p:selectOneMenu> 
+                                                            <p:outputLabel value="#{bundle.CreateDatospersonaLabel_personasACargo}" for="personasACargo" />
+                                                            <p:inputText id="personasACargo" value="#{datospersonaController.selected.personasACargo}" />
+                                                        </p:panelGrid>   
+                                                    </p:panel>
+                                                    <p:panel header="#{bundle.DatosResidencia}">
+                                                        <p:panelGrid columns="2">
+                                                            <p:outputLabel value="#{bundle.CreateDatospersonaLabel_direccion}" for="direccion" />
+                                                            <p:inputText size="30" id="direccion" value="#{datospersonaController.selected.direccion}" required="true" requiredMessage="#{bundle.CreateDatospersonaRequiredMessage_direccion}" />
+                                                            <p:outputLabel value="#{bundle.CreateDatospersonaLabel_telefono}" for="telefono" />
+                                                            <p:inputText size="30" id="telefono" value="#{datospersonaController.selected.telefono}" />                                           
+                                                        </p:panelGrid>
+                                                    </p:panel>
+                                                </p:panelGrid>
+                                            </p:panel>
+                                        </h:panelGrid>
+                                    </p:panel>
+                                    <p:panel header="#{bundle.MunicipioRes}">
+                                        <p:panelGrid columns="2">                                        
+                                            <h:outputLabel value="#{bundle.CreateDepartamentoLabel_codigoPais}" for="codigoPais" />
+                                            <p:selectOneMenu filter="true" filterMatchMode="contains" id="codigoPais1" value="#{datospersonaController.paisSelected}"
+                                                             styleClass="input" >
+                                                <f:selectItem  itemLabel="-Seleccione- " />
+                                                <f:selectItems value="#{paisController.itemsAvailableSelectOne}"/>
+                                                <p:ajax process="codigoPais1" update="codigoDepartamento1, codigoMunicipioResidencia" event="change"  />
+                                            </p:selectOneMenu>
+                                            <h:outputLabel value="#{bundle.CreateMunicipioLabel_codigoDepartamento}" for="codigoDepartamento" />
+                                            <p:selectOneMenu filter="true" filterMatchMode="contains" id="codigoDepartamento1" value="#{datospersonaController.departamentoRSelected}"
+                                                             styleClass="input"  >
+                                                <f:selectItem  itemLabel="-Seleccione- " />
+                                                <f:selectItems value="#{datospersonaController.paisSelected.departamentoList}"/>
+                                                <p:ajax process="codigoDepartamento1"  update="codigoMunicipioResidencia" event="change" />
+                                            </p:selectOneMenu>
+
+                                            <p:outputLabel value="#{bundle.CreateDatosPersonaLabel_codigoMunicipioResidencia}" for="codigoMunicipioResidencia" />
+                                            <p:selectOneMenu filter="true" filterMatchMode="contains" id="codigoMunicipioResidencia" required="true" requiredMessage="#{bundle.CreateDatospersonaRequiredMessage_codigoMunicipioResidencia}"
+                                                             value="#{datospersonaController.selected.codigoMunicipioResidencia}"
+                                                             styleClass="input"  >
+                                                <f:selectItem  itemLabel="-Seleccione- " />
+                                                <f:selectItems value="#{datospersonaController.departamentoRSelected.municipioList}"/>
+                                                <p:ajax process="@this" update="codigoLocalidad"/>
+                                            </p:selectOneMenu> 
+
+
+                                            <h:outputLabel value="#{bundle.CreateDatospersonaLabel_codigoLocalidad}" for="codigoLocalidad" />
+                                            <p:selectOneMenu filter="true" filterMatchMode="contains" id="codigoLocalidad" required="true" requiredMessage="#{bundle.CreateDatospersonaRequiredMessage_codigoLocalidad}"
+                                                             value="#{datospersonaController.selected.codigoLocalidad}" styleClass="input" >
+                                                <f:selectItem  itemLabel="-Seleccione- " />
+                                                <f:selectItems value="#{datospersonaController.selected.codigoMunicipioResidencia.localidadList}"/>
+                                                <p:ajax process="@this" update="upz"/>
+                                            </p:selectOneMenu>
+
+                                            <h:outputLabel value="#{bundle.CreateDatospersonaLabel_upz}" for="upz" />
+                                            <p:selectOneMenu filter="true" filterMatchMode="contains" id="upz" required="true" requiredMessage="#{bundle.CreateDatospersonaRequiredMessage_upz}"
+                                                             value="#{datospersonaController.selected.upz}" styleClass="input" >
+                                                <f:selectItem  itemLabel="-Seleccione- " />
+                                                <f:selectItems value="#{datospersonaController.selected.codigoLocalidad.upzList}"/>
+                                                <p:ajax process="@this" update="codigoBarrio"/>
+                                            </p:selectOneMenu>                                       
+
+                                            <h:outputLabel value="#{bundle.CreateDatospersonaLabel_codigoBarrio}" for="codigoBarrio" />
+                                            <p:selectOneMenu filter="true" filterMatchMode="contains" id="codigoBarrio" 
+                                                             value="#{datospersonaController.selected.codigoBarrio}" styleClass="input" >
+                                                <f:selectItem  itemLabel="-Seleccione- " />
+                                                <f:selectItems value="#{datospersonaController.selected.upz.barrioList}"/>
+                                                <p:ajax process="@this" update="codigoBarrio"/>
+                                            </p:selectOneMenu>
+                                        </p:panelGrid>   
+                                    </p:panel>
+
+                                </h:panelGrid>
+                            </p:panel>
+                            <p:panel>
+                                <p:panelGrid columns="2">    
+
+
+                                    <p:panel header="#{bundle.NivelEducativo}">
+                                        <p:panelGrid columns="2">
+                                            <p:outputLabel value="#{bundle.CreateDatospersonaLabel_primaria}" for="primaria" />
+                                            <h:selectOneRadio id="primaria" value="#{datospersonaController.selected.primaria}" >
+                                                <f:selectItems value="#{nivelEducativoController.itemsAvailableSelectMany}"/>
+                                            </h:selectOneRadio>
+                                            <p:outputLabel value="#{bundle.CreateDatospersonaLabel_secundaria}" for="secundaria" />
+                                            <h:selectOneRadio id="secundaria" value="#{datospersonaController.selected.secundaria}" >
+                                                <f:selectItems value="#{nivelEducativoController.itemsAvailableSelectMany}"/>
+                                            </h:selectOneRadio>
+                                            <h:panelGroup>
+                                                <p:panelGrid columns="2">
+                                                    <h:outputLabel value="#{bundle.CreateDatospersonaLabel_tecnico}" for="tecnico" />
+                                                    <h:selectOneRadio id="tecnico" value="#{datospersonaController.selected.tecnico}" >
+                                                        <f:selectItem itemValue="#{bundle.ItValueT}" />
+                                                    </h:selectOneRadio>
+
+                                                    <p:outputLabel value="#{bundle.CreateDatospersonaLabel_tecnologo}" for="tecnologo" />
+                                                    <h:selectOneRadio id="tecnologo" value="#{datospersonaController.selected.tecnologo}" >
+                                                        <f:selectItem itemValue="#{bundle.ItValueL}" />
+                                                    </h:selectOneRadio>
+                                                    <p:outputLabel value="#{bundle.CreateDatospersonaLabel_profesional}" for="profesional" />
+                                                    <h:selectOneRadio id="profesional" value="#{datospersonaController.selected.profesional}" >
+                                                        <f:selectItem itemValue="#{bundle.ItValueP}" />
+                                                    </h:selectOneRadio>
+                                                </p:panelGrid>
+                                            </h:panelGroup>
+                                            <h:panelGroup>
+                                                <p:panelGrid columns="2">
+                                                    <p:outputLabel value="#{bundle.CreateDatospersonaLabel_codigProfesion}" for="codigProfesion" />
+                                                    <p:selectOneMenu id="codigProfesion" value="#{datospersonaController.selected.codigProfesion}" >
+                                                        <f:selectItems value="#{profesionalController.itemsAvailableSelectOne}"/>
+                                                    </p:selectOneMenu>
+                                                </p:panelGrid>
+                                                <p:panelGrid columns="1">
+                                                    <p:outputLabel value="#{bundle.CreateDatospersonaLabel_otrosEstudios}" for="otrosEstudios" />
+                                                    <p:inputTextarea rows="2" cols="30" id="otrosEstudios" value="#{datospersonaController.selected.otrosEstudios}" />
+                                                </p:panelGrid>
+                                            </h:panelGroup>
+                                        </p:panelGrid>
+                                    </p:panel>
+
+
+                                    <p:panel header="#{bundle.SeguridadSocial}">
+                                        <p:panelGrid columns="2">
+                                            <p:outputLabel value="#{bundle.CreateDatospersonaLabel_codigoPensiones}" for="codigoPensiones" />
+                                            <p:selectOneMenu id="codigoPensiones" value="#{datospersonaController.selected.codigoPensiones}" >
+                                                <f:selectItems value="#{pensionesController.itemsAvailableSelectOne}"
+                                                               var="codigoPensionesItem"
+                                                               itemValue="#{codigoPensionesItem}"/>
+                                            </p:selectOneMenu>
+                                            <p:outputLabel value="#{bundle.CreateDatospersonaLabel_codigoArl}" for="codigoArl" />
+                                            <p:selectOneMenu id="codigoArl" value="#{datospersonaController.selected.codigoArl}" >
+                                                <f:selectItems value="#{arlController.itemsAvailableSelectOne}"
+                                                               var="codigoArlItem"
+                                                               itemValue="#{codigoArlItem}"/>
+                                            </p:selectOneMenu>
+                                            <p:outputLabel value="#{bundle.CreateCitaPersonaLabel_codigoAfiliacion}" for="codigoAfiliacion" />
+                                            <p:selectOneMenu id="codigoAfiliacion" value="#{citaPersonaController.selected.codigoAfiliacion}">
+                                                <f:selectItems value="#{tipoafiliacionController.itemsAvailableSelectOne}"/>
+                                            </p:selectOneMenu>
+                                            <p:outputLabel value="#{bundle.CreateCitaPersonaLabel_codigoNivelAfiliacion}" for="codigoNivelAfiliacion" />
+                                            <p:inputText id="codigoNivelAfiliacion" value="#{citaPersonaController.selected.codigoNivelAfiliacion}"/>
+
+                                        </p:panelGrid>
+                                    </p:panel>
+                                </p:panelGrid>
+                            </p:panel>                          
+                            <p:panel>
+                                <p:commandButton style="margin-right: 10px;" id="createButton" icon="ui-icon-plus"  process="@all" styleClass="button" ajax="false" action="#{datospersonaController.update}" value="#{bundle.CreateDatospersonaSaveLink}" />
+                                <p:commandButton id="editButtonE"   icon="ui-icon-pencil" process="@all" styleClass="button" ajax="false" action="#{datospersonaController.prepareList}" value="#{bundle.CreateDatospersonaShowAllLink}" immediate="true"/>
+                            </p:panel>
+                        </p:panel>
+                    </h:panelGrid>
+                </h:form>
+            </ui:define>
+        </ui:composition>
+    
+
+</html>

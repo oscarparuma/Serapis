@@ -1,0 +1,320 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditCitapersonaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditCitapersonaLabel_codigoCitaPersona}" for="codigoCitaPersona" />
+                    <h:inputText id="codigoCitaPersona" value="#{citapersonaController.selected.codigoCitaPersona}" title="#{bundle.EditCitapersonaTitle_codigoCitaPersona}" required="true" requiredMessage="#{bundle.EditCitapersonaRequiredMessage_codigoCitaPersona}"/>
+                    <h:outputLabel value="#{bundle.EditCitapersonaLabel_primerApellido}" for="primerApellido" />
+                    <h:inputText id="primerApellido" value="#{citapersonaController.selected.primerApellido}" title="#{bundle.EditCitapersonaTitle_primerApellido}" />
+                    <h:outputLabel value="#{bundle.EditCitapersonaLabel_segundoApellido}" for="segundoApellido" />
+                    <h:inputText id="segundoApellido" value="#{citapersonaController.selected.segundoApellido}" title="#{bundle.EditCitapersonaTitle_segundoApellido}" />
+                    <h:outputLabel value="#{bundle.EditCitapersonaLabel_primerNombre}" for="primerNombre" />
+                    <h:inputText id="primerNombre" value="#{citapersonaController.selected.primerNombre}" title="#{bundle.EditCitapersonaTitle_primerNombre}" />
+                    <h:outputLabel value="#{bundle.EditCitapersonaLabel_segundoNombre}" for="segundoNombre" />
+                    <h:inputText id="segundoNombre" value="#{citapersonaController.selected.segundoNombre}" title="#{bundle.EditCitapersonaTitle_segundoNombre}" />
+                    <h:outputLabel value="#{bundle.EditCitapersonaLabel_direccion}" for="direccion" />
+                    <h:inputText id="direccion" value="#{citapersonaController.selected.direccion}" title="#{bundle.EditCitapersonaTitle_direccion}" />
+                    <h:outputLabel value="#{bundle.EditCitapersonaLabel_telefono}" for="telefono" />
+                    <h:inputText id="telefono" value="#{citapersonaController.selected.telefono}" title="#{bundle.EditCitapersonaTitle_telefono}" />
+                    <h:outputLabel value="#{bundle.EditCitapersonaLabel_email}" for="email" />
+                    <h:inputText id="email" value="#{citapersonaController.selected.email}" title="#{bundle.EditCitapersonaTitle_email}" />
+                    <h:outputLabel value="#{bundle.EditCitapersonaLabel_edad}" for="edad" />
+                    <h:inputText id="edad" value="#{citapersonaController.selected.edad}" title="#{bundle.EditCitapersonaTitle_edad}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditCitapersonaLabel_edadMeses}" for="edadMeses" />
+                    <h:inputText id="edadMeses" value="#{citapersonaController.selected.edadMeses}" title="#{bundle.EditCitapersonaTitle_edadMeses}" />
+                    <h:outputLabel value="#{bundle.EditCitapersonaLabel_edadAnos}" for="edadAnos" />
+                    <h:inputText id="edadAnos" value="#{citapersonaController.selected.edadAnos}" title="#{bundle.EditCitapersonaTitle_edadAnos}" />
+                    <h:outputLabel value="#{bundle.EditCitapersonaLabel_edadPersona}" for="edadPersona" />
+                    <h:inputText id="edadPersona" value="#{citapersonaController.selected.edadPersona}" title="#{bundle.EditCitapersonaTitle_edadPersona}" />
+                    <h:outputLabel value="#{bundle.EditCitapersonaLabel_personasACargo}" for="personasACargo" />
+                    <h:inputText id="personasACargo" value="#{citapersonaController.selected.personasACargo}" title="#{bundle.EditCitapersonaTitle_personasACargo}" />
+                    <h:outputLabel value="#{bundle.EditCitapersonaLabel_nivelAfiliacion}" for="nivelAfiliacion" />
+                    <h:inputText id="nivelAfiliacion" value="#{citapersonaController.selected.nivelAfiliacion}" title="#{bundle.EditCitapersonaTitle_nivelAfiliacion}" />
+                    <h:outputLabel value="#{bundle.EditCitapersonaLabel_fotoPersona}" for="fotoPersona" />
+                    <h:inputTextarea rows="4" cols="30" id="fotoPersona" value="#{citapersonaController.selected.fotoPersona}" title="#{bundle.EditCitapersonaTitle_fotoPersona}" />
+                    <h:outputLabel value="#{bundle.EditCitapersonaLabel_tecnico}" for="tecnico" />
+                    <h:inputText id="tecnico" value="#{citapersonaController.selected.tecnico}" title="#{bundle.EditCitapersonaTitle_tecnico}" />
+                    <h:outputLabel value="#{bundle.EditCitapersonaLabel_tecnologo}" for="tecnologo" />
+                    <h:inputText id="tecnologo" value="#{citapersonaController.selected.tecnologo}" title="#{bundle.EditCitapersonaTitle_tecnologo}" />
+                    <h:outputLabel value="#{bundle.EditCitapersonaLabel_profesional}" for="profesional" />
+                    <h:inputText id="profesional" value="#{citapersonaController.selected.profesional}" title="#{bundle.EditCitapersonaTitle_profesional}" />
+                    <h:outputLabel value="#{bundle.EditCitapersonaLabel_otrosEstudios}" for="otrosEstudios" />
+                    <h:inputTextarea rows="4" cols="30" id="otrosEstudios" value="#{citapersonaController.selected.otrosEstudios}" title="#{bundle.EditCitapersonaTitle_otrosEstudios}" />
+                    <h:outputLabel value="#{bundle.EditCitapersonaLabel_estadoActual}" for="estadoActual" />
+                    <h:inputText id="estadoActual" value="#{citapersonaController.selected.estadoActual}" title="#{bundle.EditCitapersonaTitle_estadoActual}" />
+                    <h:outputLabel value="#{bundle.EditCitapersonaLabel_bttonActivo}" for="bttonActivo" />
+                    <h:inputText id="bttonActivo" value="#{citapersonaController.selected.bttonActivo}" title="#{bundle.EditCitapersonaTitle_bttonActivo}" />
+                    <h:outputLabel value="#{bundle.EditCitapersonaLabel_cscIngreso}" for="cscIngreso" />
+                    <h:inputText id="cscIngreso" value="#{citapersonaController.selected.cscIngreso}" title="#{bundle.EditCitapersonaTitle_cscIngreso}" />
+                    <h:outputLabel value="#{bundle.EditCitapersonaLabel_fechaSolicitud}" for="fechaSolicitud" />
+                    <h:inputText id="fechaSolicitud" value="#{citapersonaController.selected.fechaSolicitud}" title="#{bundle.EditCitapersonaTitle_fechaSolicitud}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditCitapersonaLabel_fechaCita}" for="fechaCita" />
+                    <h:inputText id="fechaCita" value="#{citapersonaController.selected.fechaCita}" title="#{bundle.EditCitapersonaTitle_fechaCita}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditCitapersonaLabel_fechaModificacion}" for="fechaModificacion" />
+                    <h:inputText id="fechaModificacion" value="#{citapersonaController.selected.fechaModificacion}" title="#{bundle.EditCitapersonaTitle_fechaModificacion}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditCitapersonaLabel_fechaNacimiento}" for="fechaNacimiento" />
+                    <h:inputText id="fechaNacimiento" value="#{citapersonaController.selected.fechaNacimiento}" title="#{bundle.EditCitapersonaTitle_fechaNacimiento}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditCitapersonaLabel_fechaExpedicionDocumento}" for="fechaExpedicionDocumento" />
+                    <h:inputText id="fechaExpedicionDocumento" value="#{citapersonaController.selected.fechaExpedicionDocumento}" title="#{bundle.EditCitapersonaTitle_fechaExpedicionDocumento}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditCitapersonaLabel_finalizada}" for="finalizada" />
+                    <h:inputText id="finalizada" value="#{citapersonaController.selected.finalizada}" title="#{bundle.EditCitapersonaTitle_finalizada}" />
+                    <h:outputLabel value="#{bundle.EditCitapersonaLabel_botDiag}" for="botDiag" />
+                    <h:inputText id="botDiag" value="#{citapersonaController.selected.botDiag}" title="#{bundle.EditCitapersonaTitle_botDiag}" />
+                    <h:outputLabel value="#{bundle.EditCitapersonaLabel_botAnteFami}" for="botAnteFami" />
+                    <h:inputText id="botAnteFami" value="#{citapersonaController.selected.botAnteFami}" title="#{bundle.EditCitapersonaTitle_botAnteFami}" />
+                    <h:outputLabel value="#{bundle.EditCitapersonaLabel_botCitaFinalizada}" for="botCitaFinalizada" />
+                    <h:inputText id="botCitaFinalizada" value="#{citapersonaController.selected.botCitaFinalizada}" title="#{bundle.EditCitapersonaTitle_botCitaFinalizada}" />
+                    <h:outputLabel value="#{bundle.EditCitapersonaLabel_botAntcGenerales}" for="botAntcGenerales" />
+                    <h:inputText id="botAntcGenerales" value="#{citapersonaController.selected.botAntcGenerales}" title="#{bundle.EditCitapersonaTitle_botAntcGenerales}" />
+                    <h:outputLabel value="#{bundle.EditCitapersonaLabel_botDatCargo}" for="botDatCargo" />
+                    <h:inputText id="botDatCargo" value="#{citapersonaController.selected.botDatCargo}" title="#{bundle.EditCitapersonaTitle_botDatCargo}" />
+                    <h:outputLabel value="#{bundle.EditCitapersonaLabel_botAntGineco}" for="botAntGineco" />
+                    <h:inputText id="botAntGineco" value="#{citapersonaController.selected.botAntGineco}" title="#{bundle.EditCitapersonaTitle_botAntGineco}" />
+                    <h:outputLabel value="#{bundle.EditCitapersonaLabel_botGenero}" for="botGenero" />
+                    <h:inputText id="botGenero" value="#{citapersonaController.selected.botGenero}" title="#{bundle.EditCitapersonaTitle_botGenero}" />
+                    <h:outputLabel value="#{bundle.EditCitapersonaLabel_botnGenero}" for="botnGenero" />
+                    <h:inputText id="botnGenero" value="#{citapersonaController.selected.botnGenero}" title="#{bundle.EditCitapersonaTitle_botnGenero}" />
+                    <h:outputLabel value="#{bundle.EditCitapersonaLabel_botToxAlerg}" for="botToxAlerg" />
+                    <h:inputText id="botToxAlerg" value="#{citapersonaController.selected.botToxAlerg}" title="#{bundle.EditCitapersonaTitle_botToxAlerg}" />
+                    <h:outputLabel value="#{bundle.EditCitapersonaLabel_botExFisico}" for="botExFisico" />
+                    <h:inputText id="botExFisico" value="#{citapersonaController.selected.botExFisico}" title="#{bundle.EditCitapersonaTitle_botExFisico}" />
+                    <h:outputLabel value="#{bundle.EditCitapersonaLabel_botExFisico1}" for="botExFisico1" />
+                    <h:inputText id="botExFisico1" value="#{citapersonaController.selected.botExFisico1}" title="#{bundle.EditCitapersonaTitle_botExFisico1}" />
+                    <h:outputLabel value="#{bundle.EditCitapersonaLabel_botExFisico2}" for="botExFisico2" />
+                    <h:inputText id="botExFisico2" value="#{citapersonaController.selected.botExFisico2}" title="#{bundle.EditCitapersonaTitle_botExFisico2}" />
+                    <h:outputLabel value="#{bundle.EditCitapersonaLabel_botExFisico3}" for="botExFisico3" />
+                    <h:inputText id="botExFisico3" value="#{citapersonaController.selected.botExFisico3}" title="#{bundle.EditCitapersonaTitle_botExFisico3}" />
+                    <h:outputLabel value="#{bundle.EditCitapersonaLabel_botExFisico4}" for="botExFisico4" />
+                    <h:inputText id="botExFisico4" value="#{citapersonaController.selected.botExFisico4}" title="#{bundle.EditCitapersonaTitle_botExFisico4}" />
+                    <h:outputLabel value="#{bundle.EditCitapersonaLabel_botExFisico5}" for="botExFisico5" />
+                    <h:inputText id="botExFisico5" value="#{citapersonaController.selected.botExFisico5}" title="#{bundle.EditCitapersonaTitle_botExFisico5}" />
+                    <h:outputLabel value="#{bundle.EditCitapersonaLabel_botInmunizacion}" for="botInmunizacion" />
+                    <h:inputText id="botInmunizacion" value="#{citapersonaController.selected.botInmunizacion}" title="#{bundle.EditCitapersonaTitle_botInmunizacion}" />
+                    <h:outputLabel value="#{bundle.EditCitapersonaLabel_botAntecOcupacionales}" for="botAntecOcupacionales" />
+                    <h:inputText id="botAntecOcupacionales" value="#{citapersonaController.selected.botAntecOcupacionales}" title="#{bundle.EditCitapersonaTitle_botAntecOcupacionales}" />
+                    <h:outputLabel value="#{bundle.EditCitapersonaLabel_botTrabajoActual}" for="botTrabajoActual" />
+                    <h:inputText id="botTrabajoActual" value="#{citapersonaController.selected.botTrabajoActual}" title="#{bundle.EditCitapersonaTitle_botTrabajoActual}" />
+                    <h:outputLabel value="#{bundle.EditCitapersonaLabel_botExamenIngreso}" for="botExamenIngreso" />
+                    <h:inputText id="botExamenIngreso" value="#{citapersonaController.selected.botExamenIngreso}" title="#{bundle.EditCitapersonaTitle_botExamenIngreso}" />
+                    <h:outputLabel value="#{bundle.EditCitapersonaLabel_botElementosProteccion}" for="botElementosProteccion" />
+                    <h:inputText id="botElementosProteccion" value="#{citapersonaController.selected.botElementosProteccion}" title="#{bundle.EditCitapersonaTitle_botElementosProteccion}" />
+                    <h:outputLabel value="#{bundle.EditCitapersonaLabel_botIncapacidades}" for="botIncapacidades" />
+                    <h:inputText id="botIncapacidades" value="#{citapersonaController.selected.botIncapacidades}" title="#{bundle.EditCitapersonaTitle_botIncapacidades}" />
+                    <h:outputLabel value="#{bundle.EditCitapersonaLabel_botConsultaMedica}" for="botConsultaMedica" />
+                    <h:inputText id="botConsultaMedica" value="#{citapersonaController.selected.botConsultaMedica}" title="#{bundle.EditCitapersonaTitle_botConsultaMedica}" />
+                    <h:outputLabel value="#{bundle.EditCitapersonaLabel_botProcedimiento}" for="botProcedimiento" />
+                    <h:inputText id="botProcedimiento" value="#{citapersonaController.selected.botProcedimiento}" title="#{bundle.EditCitapersonaTitle_botProcedimiento}" />
+                    <h:outputLabel value="#{bundle.EditCitapersonaLabel_botRecomMedicas}" for="botRecomMedicas" />
+                    <h:inputText id="botRecomMedicas" value="#{citapersonaController.selected.botRecomMedicas}" title="#{bundle.EditCitapersonaTitle_botRecomMedicas}" />
+                    <h:outputLabel value="#{bundle.EditCitapersonaLabel_botExamApoyDiagnostico}" for="botExamApoyDiagnostico" />
+                    <h:inputText id="botExamApoyDiagnostico" value="#{citapersonaController.selected.botExamApoyDiagnostico}" title="#{bundle.EditCitapersonaTitle_botExamApoyDiagnostico}" />
+                    <h:outputLabel value="#{bundle.EditCitapersonaLabel_botRecomMedicaOtros}" for="botRecomMedicaOtros" />
+                    <h:inputText id="botRecomMedicaOtros" value="#{citapersonaController.selected.botRecomMedicaOtros}" title="#{bundle.EditCitapersonaTitle_botRecomMedicaOtros}" />
+                    <h:outputLabel value="#{bundle.EditCitapersonaLabel_botFinalizar}" for="botFinalizar" />
+                    <h:inputText id="botFinalizar" value="#{citapersonaController.selected.botFinalizar}" title="#{bundle.EditCitapersonaTitle_botFinalizar}" />
+                    <h:outputLabel value="#{bundle.EditCitapersonaLabel_botRevisionSistem}" for="botRevisionSistem" />
+                    <h:inputText id="botRevisionSistem" value="#{citapersonaController.selected.botRevisionSistem}" title="#{bundle.EditCitapersonaTitle_botRevisionSistem}" />
+                    <h:outputLabel value="#{bundle.EditCitapersonaLabel_botTalla}" for="botTalla" />
+                    <h:inputText id="botTalla" value="#{citapersonaController.selected.botTalla}" title="#{bundle.EditCitapersonaTitle_botTalla}" />
+                    <h:outputLabel value="#{bundle.EditCitapersonaLabel_botVista}" for="botVista" />
+                    <h:inputText id="botVista" value="#{citapersonaController.selected.botVista}" title="#{bundle.EditCitapersonaTitle_botVista}" />
+                    <h:outputLabel value="#{bundle.EditCitapersonaLabel_botOrl}" for="botOrl" />
+                    <h:inputText id="botOrl" value="#{citapersonaController.selected.botOrl}" title="#{bundle.EditCitapersonaTitle_botOrl}" />
+                    <h:outputLabel value="#{bundle.EditCitapersonaLabel_botCuello}" for="botCuello" />
+                    <h:inputText id="botCuello" value="#{citapersonaController.selected.botCuello}" title="#{bundle.EditCitapersonaTitle_botCuello}" />
+                    <h:outputLabel value="#{bundle.EditCitapersonaLabel_botTorax}" for="botTorax" />
+                    <h:inputText id="botTorax" value="#{citapersonaController.selected.botTorax}" title="#{bundle.EditCitapersonaTitle_botTorax}" />
+                    <h:outputLabel value="#{bundle.EditCitapersonaLabel_botAparRespiratorio}" for="botAparRespiratorio" />
+                    <h:inputText id="botAparRespiratorio" value="#{citapersonaController.selected.botAparRespiratorio}" title="#{bundle.EditCitapersonaTitle_botAparRespiratorio}" />
+                    <h:outputLabel value="#{bundle.EditCitapersonaLabel_botApatCardioVascular}" for="botApatCardioVascular" />
+                    <h:inputText id="botApatCardioVascular" value="#{citapersonaController.selected.botApatCardioVascular}" title="#{bundle.EditCitapersonaTitle_botApatCardioVascular}" />
+                    <h:outputLabel value="#{bundle.EditCitapersonaLabel_botAparDigestivo}" for="botAparDigestivo" />
+                    <h:inputText id="botAparDigestivo" value="#{citapersonaController.selected.botAparDigestivo}" title="#{bundle.EditCitapersonaTitle_botAparDigestivo}" />
+                    <h:outputLabel value="#{bundle.EditCitapersonaLabel_botGenitoUrinario}" for="botGenitoUrinario" />
+                    <h:inputText id="botGenitoUrinario" value="#{citapersonaController.selected.botGenitoUrinario}" title="#{bundle.EditCitapersonaTitle_botGenitoUrinario}" />
+                    <h:outputLabel value="#{bundle.EditCitapersonaLabel_botMusculoEsqueletico}" for="botMusculoEsqueletico" />
+                    <h:inputText id="botMusculoEsqueletico" value="#{citapersonaController.selected.botMusculoEsqueletico}" title="#{bundle.EditCitapersonaTitle_botMusculoEsqueletico}" />
+                    <h:outputLabel value="#{bundle.EditCitapersonaLabel_botSistemaNervioso}" for="botSistemaNervioso" />
+                    <h:inputText id="botSistemaNervioso" value="#{citapersonaController.selected.botSistemaNervioso}" title="#{bundle.EditCitapersonaTitle_botSistemaNervioso}" />
+                    <h:outputLabel value="#{bundle.EditCitapersonaLabel_botPieAnexos}" for="botPieAnexos" />
+                    <h:inputText id="botPieAnexos" value="#{citapersonaController.selected.botPieAnexos}" title="#{bundle.EditCitapersonaTitle_botPieAnexos}" />
+                    <h:outputLabel value="#{bundle.EditCitapersonaLabel_botSistLinfatico}" for="botSistLinfatico" />
+                    <h:inputText id="botSistLinfatico" value="#{citapersonaController.selected.botSistLinfatico}" title="#{bundle.EditCitapersonaTitle_botSistLinfatico}" />
+                    <h:outputLabel value="#{bundle.EditCitapersonaLabel_botSisEndocrino}" for="botSisEndocrino" />
+                    <h:inputText id="botSisEndocrino" value="#{citapersonaController.selected.botSisEndocrino}" title="#{bundle.EditCitapersonaTitle_botSisEndocrino}" />
+                    <h:outputLabel value="#{bundle.EditCitapersonaLabel_botEstadoMental}" for="botEstadoMental" />
+                    <h:inputText id="botEstadoMental" value="#{citapersonaController.selected.botEstadoMental}" title="#{bundle.EditCitapersonaTitle_botEstadoMental}" />
+                    <h:outputLabel value="#{bundle.EditCitapersonaLabel_botObservacionesRecomendaciones}" for="botObservacionesRecomendaciones" />
+                    <h:inputText id="botObservacionesRecomendaciones" value="#{citapersonaController.selected.botObservacionesRecomendaciones}" title="#{bundle.EditCitapersonaTitle_botObservacionesRecomendaciones}" />
+                    <h:outputLabel value="#{bundle.EditCitapersonaLabel_botConcOcupacional}" for="botConcOcupacional" />
+                    <h:inputText id="botConcOcupacional" value="#{citapersonaController.selected.botConcOcupacional}" title="#{bundle.EditCitapersonaTitle_botConcOcupacional}" />
+                    <h:outputLabel value="#{bundle.EditCitapersonaLabel_facturada}" for="facturada" />
+                    <h:inputText id="facturada" value="#{citapersonaController.selected.facturada}" title="#{bundle.EditCitapersonaTitle_facturada}" />
+                    <h:outputLabel value="#{bundle.EditCitapersonaLabel_ingresoPerson}" for="ingresoPerson" />
+                    <h:inputText id="ingresoPerson" value="#{citapersonaController.selected.ingresoPerson}" title="#{bundle.EditCitapersonaTitle_ingresoPerson}" />
+                    <h:outputLabel value="#{bundle.EditCitapersonaLabel_numeroDocumentoIdentidad}" for="numeroDocumentoIdentidad" />
+                    <h:inputText id="numeroDocumentoIdentidad" value="#{citapersonaController.selected.numeroDocumentoIdentidad}" title="#{bundle.EditCitapersonaTitle_numeroDocumentoIdentidad}" />
+                    <h:outputLabel value="#{bundle.EditCitapersonaLabel_codigoArl}" for="codigoArl" />
+                    <h:selectOneMenu id="codigoArl" value="#{citapersonaController.selected.codigoArl}" title="#{bundle.EditCitapersonaTitle_codigoArl}" >
+                        <f:selectItems value="#{arlController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditCitapersonaLabel_codigoArea}" for="codigoArea" />
+                    <h:selectOneMenu id="codigoArea" value="#{citapersonaController.selected.codigoArea}" title="#{bundle.EditCitapersonaTitle_codigoArea}" >
+                        <f:selectItems value="#{areaController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditCitapersonaLabel_codigoBarrio}" for="codigoBarrio" />
+                    <h:selectOneMenu id="codigoBarrio" value="#{citapersonaController.selected.codigoBarrio}" title="#{bundle.EditCitapersonaTitle_codigoBarrio}" >
+                        <f:selectItems value="#{barrioController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditCitapersonaLabel_sucursalEmpresa}" for="sucursalEmpresa" />
+                    <h:selectOneMenu id="sucursalEmpresa" value="#{citapersonaController.selected.sucursalEmpresa}" title="#{bundle.EditCitapersonaTitle_sucursalEmpresa}" >
+                        <f:selectItems value="#{sucursalempresaController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditCitapersonaLabel_codigoReligion}" for="codigoReligion" />
+                    <h:selectOneMenu id="codigoReligion" value="#{citapersonaController.selected.codigoReligion}" title="#{bundle.EditCitapersonaTitle_codigoReligion}" >
+                        <f:selectItems value="#{religionController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditCitapersonaLabel_codigoSede}" for="codigoSede" />
+                    <h:selectOneMenu id="codigoSede" value="#{citapersonaController.selected.codigoSede}" title="#{bundle.EditCitapersonaTitle_codigoSede}" >
+                        <f:selectItems value="#{sedeController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditCitapersonaLabel_codigoAfiliacion}" for="codigoAfiliacion" />
+                    <h:selectOneMenu id="codigoAfiliacion" value="#{citapersonaController.selected.codigoAfiliacion}" title="#{bundle.EditCitapersonaTitle_codigoAfiliacion}" >
+                        <f:selectItems value="#{tipoafiliacionController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditCitapersonaLabel_codigoCargo}" for="codigoCargo" />
+                    <h:selectOneMenu id="codigoCargo" value="#{citapersonaController.selected.codigoCargo}" title="#{bundle.EditCitapersonaTitle_codigoCargo}" >
+                        <f:selectItems value="#{cargopersonaController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditCitapersonaLabel_codigoExamenRealizar}" for="codigoExamenRealizar" />
+                    <h:selectOneMenu id="codigoExamenRealizar" value="#{citapersonaController.selected.codigoExamenRealizar}" title="#{bundle.EditCitapersonaTitle_codigoExamenRealizar}" >
+                        <f:selectItems value="#{tipoexamenController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditCitapersonaLabel_clasificacionEps}" for="clasificacionEps" />
+                    <h:selectOneMenu id="clasificacionEps" value="#{citapersonaController.selected.clasificacionEps}" title="#{bundle.EditCitapersonaTitle_clasificacionEps}" >
+                        <f:selectItems value="#{clasificacionEpsController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditCitapersonaLabel_codigoClasificacionProfesionPersona}" for="codigoClasificacionProfesionPersona" />
+                    <h:selectOneMenu id="codigoClasificacionProfesionPersona" value="#{citapersonaController.selected.codigoClasificacionProfesionPersona}" title="#{bundle.EditCitapersonaTitle_codigoClasificacionProfesionPersona}" >
+                        <f:selectItems value="#{clasificacionProfesionPersonaController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditCitapersonaLabel_codigoLocalidad}" for="codigoLocalidad" />
+                    <h:selectOneMenu id="codigoLocalidad" value="#{citapersonaController.selected.codigoLocalidad}" title="#{bundle.EditCitapersonaTitle_codigoLocalidad}" >
+                        <f:selectItems value="#{localidadController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditCitapersonaLabel_codigoMunicipioResidencia}" for="codigoMunicipioResidencia" />
+                    <h:selectOneMenu id="codigoMunicipioResidencia" value="#{citapersonaController.selected.codigoMunicipioResidencia}" title="#{bundle.EditCitapersonaTitle_codigoMunicipioResidencia}" >
+                        <f:selectItems value="#{municipioController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditCitapersonaLabel_codigoPensiones}" for="codigoPensiones" />
+                    <h:selectOneMenu id="codigoPensiones" value="#{citapersonaController.selected.codigoPensiones}" title="#{bundle.EditCitapersonaTitle_codigoPensiones}" >
+                        <f:selectItems value="#{pensionesController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditCitapersonaLabel_genero}" for="genero" />
+                    <h:selectOneMenu id="genero" value="#{citapersonaController.selected.genero}" title="#{bundle.EditCitapersonaTitle_genero}" >
+                        <f:selectItems value="#{tipogeneroController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditCitapersonaLabel_codigoMunicipioExpedicion}" for="codigoMunicipioExpedicion" />
+                    <h:selectOneMenu id="codigoMunicipioExpedicion" value="#{citapersonaController.selected.codigoMunicipioExpedicion}" title="#{bundle.EditCitapersonaTitle_codigoMunicipioExpedicion}" >
+                        <f:selectItems value="#{municipioController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditCitapersonaLabel_radicadoPor}" for="radicadoPor" />
+                    <h:selectOneMenu id="radicadoPor" value="#{citapersonaController.selected.radicadoPor}" title="#{bundle.EditCitapersonaTitle_radicadoPor}" >
+                        <f:selectItems value="#{usuarioController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditCitapersonaLabel_upz}" for="upz" />
+                    <h:selectOneMenu id="upz" value="#{citapersonaController.selected.upz}" title="#{bundle.EditCitapersonaTitle_upz}" >
+                        <f:selectItems value="#{upzController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditCitapersonaLabel_codigoestadoFactura}" for="codigoestadoFactura" />
+                    <h:selectOneMenu id="codigoestadoFactura" value="#{citapersonaController.selected.codigoestadoFactura}" title="#{bundle.EditCitapersonaTitle_codigoestadoFactura}" >
+                        <f:selectItems value="#{estadofacturaController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditCitapersonaLabel_secundaria}" for="secundaria" />
+                    <h:selectOneMenu id="secundaria" value="#{citapersonaController.selected.secundaria}" title="#{bundle.EditCitapersonaTitle_secundaria}" >
+                        <f:selectItems value="#{nivelEducativoController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditCitapersonaLabel_codigoConsultorio}" for="codigoConsultorio" />
+                    <h:selectOneMenu id="codigoConsultorio" value="#{citapersonaController.selected.codigoConsultorio}" title="#{bundle.EditCitapersonaTitle_codigoConsultorio}" >
+                        <f:selectItems value="#{consultorioController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditCitapersonaLabel_codigoPersonaCita}" for="codigoPersonaCita" />
+                    <h:selectOneMenu id="codigoPersonaCita" value="#{citapersonaController.selected.codigoPersonaCita}" title="#{bundle.EditCitapersonaTitle_codigoPersonaCita}" >
+                        <f:selectItems value="#{datospersonaController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditCitapersonaLabel_codigoEstadoCivil}" for="codigoEstadoCivil" />
+                    <h:selectOneMenu id="codigoEstadoCivil" value="#{citapersonaController.selected.codigoEstadoCivil}" title="#{bundle.EditCitapersonaTitle_codigoEstadoCivil}" >
+                        <f:selectItems value="#{estadocivilController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditCitapersonaLabel_codigoProfesional}" for="codigoProfesional" />
+                    <h:selectOneMenu id="codigoProfesional" value="#{citapersonaController.selected.codigoProfesional}" title="#{bundle.EditCitapersonaTitle_codigoProfesional}" >
+                        <f:selectItems value="#{usuarioController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditCitapersonaLabel_codigoMunicipioNacimiento}" for="codigoMunicipioNacimiento" />
+                    <h:selectOneMenu id="codigoMunicipioNacimiento" value="#{citapersonaController.selected.codigoMunicipioNacimiento}" title="#{bundle.EditCitapersonaTitle_codigoMunicipioNacimiento}" >
+                        <f:selectItems value="#{municipioController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditCitapersonaLabel_codigoDependencia}" for="codigoDependencia" />
+                    <h:selectOneMenu id="codigoDependencia" value="#{citapersonaController.selected.codigoDependencia}" title="#{bundle.EditCitapersonaTitle_codigoDependencia}" >
+                        <f:selectItems value="#{dependenciaController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditCitapersonaLabel_codigoProfesionPersona}" for="codigoProfesionPersona" />
+                    <h:selectOneMenu id="codigoProfesionPersona" value="#{citapersonaController.selected.codigoProfesionPersona}" title="#{bundle.EditCitapersonaTitle_codigoProfesionPersona}" >
+                        <f:selectItems value="#{profesionpersonaController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditCitapersonaLabel_codigoExamen}" for="codigoExamen" />
+                    <h:selectOneMenu id="codigoExamen" value="#{citapersonaController.selected.codigoExamen}" title="#{bundle.EditCitapersonaTitle_codigoExamen}" >
+                        <f:selectItems value="#{procedimientosedeController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditCitapersonaLabel_codigoEmpresa}" for="codigoEmpresa" />
+                    <h:selectOneMenu id="codigoEmpresa" value="#{citapersonaController.selected.codigoEmpresa}" title="#{bundle.EditCitapersonaTitle_codigoEmpresa}" >
+                        <f:selectItems value="#{empresaController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditCitapersonaLabel_primaria}" for="primaria" />
+                    <h:selectOneMenu id="primaria" value="#{citapersonaController.selected.primaria}" title="#{bundle.EditCitapersonaTitle_primaria}" >
+                        <f:selectItems value="#{nivelEducativoController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditCitapersonaLabel_codigoEps}" for="codigoEps" />
+                    <h:selectOneMenu id="codigoEps" value="#{citapersonaController.selected.codigoEps}" title="#{bundle.EditCitapersonaTitle_codigoEps}" >
+                        <f:selectItems value="#{epsController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{citapersonaController.update}" value="#{bundle.EditCitapersonaSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditCitapersonaViewLink}"/>
+                <br />
+                <h:commandLink action="#{citapersonaController.prepareList}" value="#{bundle.EditCitapersonaShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditCitapersonaIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

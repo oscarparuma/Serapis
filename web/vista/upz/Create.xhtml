@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateUpzTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateUpzLabel_codigoUpz}" for="codigoUpz" />
+                    <h:inputText id="codigoUpz" value="#{upzController.selected.codigoUpz}" title="#{bundle.CreateUpzTitle_codigoUpz}" required="true" requiredMessage="#{bundle.CreateUpzRequiredMessage_codigoUpz}"/>
+                    <h:outputLabel value="#{bundle.CreateUpzLabel_nombreUpz}" for="nombreUpz" />
+                    <h:inputText id="nombreUpz" value="#{upzController.selected.nombreUpz}" title="#{bundle.CreateUpzTitle_nombreUpz}" />
+                    <h:outputLabel value="#{bundle.CreateUpzLabel_activo}" for="activo" />
+                    <h:inputText id="activo" value="#{upzController.selected.activo}" title="#{bundle.CreateUpzTitle_activo}" />
+                    <h:outputLabel value="#{bundle.CreateUpzLabel_fechaRegistro}" for="fechaRegistro" />
+                    <h:inputText id="fechaRegistro" value="#{upzController.selected.fechaRegistro}" title="#{bundle.CreateUpzTitle_fechaRegistro}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreateUpzLabel_fechaModificacion}" for="fechaModificacion" />
+                    <h:inputText id="fechaModificacion" value="#{upzController.selected.fechaModificacion}" title="#{bundle.CreateUpzTitle_fechaModificacion}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreateUpzLabel_codigoLocalidad}" for="codigoLocalidad" />
+                    <h:selectOneMenu id="codigoLocalidad" value="#{upzController.selected.codigoLocalidad}" title="#{bundle.CreateUpzTitle_codigoLocalidad}" >
+                        <f:selectItems value="#{localidadController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateUpzLabel_codigoUsuario}" for="codigoUsuario" />
+                    <h:selectOneMenu id="codigoUsuario" value="#{upzController.selected.codigoUsuario}" title="#{bundle.CreateUpzTitle_codigoUsuario}" >
+                        <f:selectItems value="#{usuarioController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateUpzLabel_codigoUsuarioModifico}" for="codigoUsuarioModifico" />
+                    <h:selectOneMenu id="codigoUsuarioModifico" value="#{upzController.selected.codigoUsuarioModifico}" title="#{bundle.CreateUpzTitle_codigoUsuarioModifico}" >
+                        <f:selectItems value="#{usuarioController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{upzController.create}" value="#{bundle.CreateUpzSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{upzController.prepareList}" value="#{bundle.CreateUpzShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateUpzIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

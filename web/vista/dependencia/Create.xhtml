@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <f:view contentType="text/html" beforePhase="#{usuarioController.beforePhase}"  >
+
+        <ui:composition template="/templateAdministracion.xhtml">
+
+            <ui:define name="title">
+                <h:outputText value="#{bundle.AppName}"></h:outputText>
+            </ui:define>
+            <ui:define name="body">
+                <br></br>
+                <h:form>
+                    <p:panel header="#{bundle.datosDependencia}">
+                        <div align="center">
+                            <br></br>
+                        <h:panelGrid columns="1">
+                            <p:panelGrid columns="2">
+                                <p:outputLabel  value="#{bundle.CreateSedeLabel_codigoSede}" for="codigoSede" />                        
+                                <p:selectOneMenu style="min-width: 230px;" filter="true" filterMatchMode="contains"  id="codigoSede" value="#{dependenciaController.selected.codigoSede}"
+                                                 styleClass="input"  >
+                                    <f:selectItems value="#{sedeController.itemsAvailableSelectOne}"/>
+                                    <p:ajax process="codigoSede" update="codigoArea" event="change"/>
+                                </p:selectOneMenu>
+
+                                <p:outputLabel   value="#{bundle.CreateAreaLabel_codigoArea}" for="codigoArea" />  
+                                <p:selectOneMenu style="min-width: 230px;" filter="true" filterMatchMode="contains" id="codigoArea" value="#{dependenciaController.selected.codigoArea}"
+                                                 styleClass="input"  >
+                                    <f:selectItem itemValue="" itemLabel="--"/>
+                                    <f:selectItems value="#{dependenciaController.referenciaXDependencia}"/>
+                                    <p:ajax process="codigoArea"  event="change"/>
+                                </p:selectOneMenu>      
+
+                                <p:outputLabel value="#{bundle.CreateDependenciaLabel_nombreDependencia}" for="nombreDependencia" />
+                                <p:inputText size="30" id="nombreDependencia" style="text-transform: uppercase" onkeyup="javascript:this.value = this.value.toUpperCase();" value="#{dependenciaController.selected.nombreDependencia}" />
+                                <p:outputLabel value="#{bundle.CreateDependenciaLabel_siglasDependencia}" for="siglasDependencia" />
+                                <p:inputText size="30" id="siglasDependencia" style="text-transform: uppercase" onkeyup="javascript:this.value = this.value.toUpperCase();" value="#{dependenciaController.selected.siglasDependencia}" />
+                                <p:outputLabel value="#{bundle.CreateDependenciaLabel_direccion}" for="direccion" />
+                                <p:inputText size="30" id="direccion" style="text-transform: uppercase" onkeyup="javascript:this.value = this.value.toUpperCase();" value="#{dependenciaController.selected.direccion}"/>
+                                <p:outputLabel value="#{bundle.CreateDependenciaLabel_telefono}" for="telefono" />
+                                <p:inputText size="30" id="telefono" value="#{dependenciaController.selected.telefono}" />
+                                <p:outputLabel value="#{bundle.CreateDependenciaLabel_email}" for="email" />
+                                <p:inputText size="30" id="email" value="#{dependenciaController.selected.email}" />
+
+
+                                <p:outputLabel  value="#{bundle.CreateDepartamentoLabel_codigoPais}" for="codigoPais" />
+                                <p:selectOneMenu style="min-width: 230px;" filter="true" filterMatchMode="contains" id="codigoPais" value="#{dependenciaController.paisSelected}"
+                                                 styleClass="input" >
+                                    <f:selectItem noSelectionOption="true" itemLabel="-Seleccione- " />
+                                    <f:selectItems value="#{paisController.itemsAvailableSelectMany}"/>
+                                    <p:ajax process="codigoPais" update="codigoDepartamento, codigoMunicipio" event="change"  />
+                                </p:selectOneMenu>
+                                <p:outputLabel  value="#{bundle.CreateDependenciaLabel_codigoDepartamento}" for="codigoDepartamento" />
+                                <p:selectOneMenu style="min-width: 230px;" filter="true" filterMatchMode="contains" id="codigoDepartamento" value="#{dependenciaController.departamentoSelected}"
+                                                 styleClass="input"  >
+                                    <f:selectItem noSelectionOption="true" itemLabel="-Seleccione- " />
+                                    <f:selectItems value="#{dependenciaController.paisSelected.departamentoList}"/>
+                                    <p:ajax process="codigoDepartamento"  update="codigoMunicipio" event="change" />
+                                </p:selectOneMenu>
+                                <p:outputLabel  value="#{bundle.CreateSedeLabel_codigoMunicipio}" for="codigoMunicipio" />
+                                <p:selectOneMenu style="min-width: 230px;" filter="true" filterMatchMode="contains"  id="codigoMunicipio" required="true" requiredMessage="#{bundle.CreateSedeRequiredMessage_codigoMunicipio}" 
+                                                 value="#{dependenciaController.selected.codigoMunicipio}"
+                                                 styleClass="input"  >
+                                    <f:selectItem noSelectionOption="true" itemLabel="-Seleccione- " />
+                                    <f:selectItems value="#{dependenciaController.departamentoSelected.municipioList}"/>
+                                    <p:ajax process="codigoMunicipio" event="change" />
+                                </p:selectOneMenu> 
+
+                            </p:panelGrid>
+                            <f:facet name="footer">
+                                <p:commandButton style="margin-right: 10px;" id="createButton" icon="ui-icon-plus" process="@all" styleClass="button" ajax="false" action="#{dependenciaController.create}" value="#{bundle.CreateUsuarioSaveLink}" />
+                                <p:commandButton id="editButton" icon="fa-angle-left" process="@all" styleClass="button" ajax="false" action="#{dependenciaController.prepareList}" value="#{bundle.CreateSedeShowAllLink}" immediate="true"/>
+
+                            </f:facet>
+                        </h:panelGrid>
+                            </div>
+                    </p:panel>
+
+
+                </h:form>
+            </ui:define>
+        </ui:composition>
+    </f:view>
+</html>

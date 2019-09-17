@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewCausaexternaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewCausaexternaLabel_codigo}"/>
+                    <h:outputText value="#{causaexternaController.selected.codigo}" title="#{bundle.ViewCausaexternaTitle_codigo}"/>
+                    <h:outputText value="#{bundle.ViewCausaexternaLabel_nombre}"/>
+                    <h:outputText value="#{causaexternaController.selected.nombre}" title="#{bundle.ViewCausaexternaTitle_nombre}"/>
+                    <h:outputText value="#{bundle.ViewCausaexternaLabel_activo}"/>
+                    <h:outputText value="#{causaexternaController.selected.activo}" title="#{bundle.ViewCausaexternaTitle_activo}"/>
+                    <h:outputText value="#{bundle.ViewCausaexternaLabel_fechaRegistro}"/>
+                    <h:outputText value="#{causaexternaController.selected.fechaRegistro}" title="#{bundle.ViewCausaexternaTitle_fechaRegistro}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewCausaexternaLabel_fechaModificacion}"/>
+                    <h:outputText value="#{causaexternaController.selected.fechaModificacion}" title="#{bundle.ViewCausaexternaTitle_fechaModificacion}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewCausaexternaLabel_codigoUsuario}"/>
+                    <h:outputText value="#{causaexternaController.selected.codigoUsuario}" title="#{bundle.ViewCausaexternaTitle_codigoUsuario}"/>
+                    <h:outputText value="#{bundle.ViewCausaexternaLabel_modificadoPor}"/>
+                    <h:outputText value="#{causaexternaController.selected.modificadoPor}" title="#{bundle.ViewCausaexternaTitle_modificadoPor}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{causaexternaController.destroyAndView}" value="#{bundle.ViewCausaexternaDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewCausaexternaEditLink}"/>
+                <br />
+                <h:commandLink action="#{causaexternaController.prepareCreate}" value="#{bundle.ViewCausaexternaCreateLink}" />
+                <br />
+                <h:commandLink action="#{causaexternaController.prepareList}" value="#{bundle.ViewCausaexternaShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewCausaexternaIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

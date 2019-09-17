@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateEstadocivilTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateEstadocivilLabel_codigoEstadoCivil}" for="codigoEstadoCivil" />
+                    <h:inputText id="codigoEstadoCivil" value="#{estadocivilController.selected.codigoEstadoCivil}" title="#{bundle.CreateEstadocivilTitle_codigoEstadoCivil}" required="true" requiredMessage="#{bundle.CreateEstadocivilRequiredMessage_codigoEstadoCivil}"/>
+                    <h:outputLabel value="#{bundle.CreateEstadocivilLabel_nombre}" for="nombre" />
+                    <h:inputText id="nombre" value="#{estadocivilController.selected.nombre}" title="#{bundle.CreateEstadocivilTitle_nombre}" />
+                    <h:outputLabel value="#{bundle.CreateEstadocivilLabel_activo}" for="activo" />
+                    <h:inputText id="activo" value="#{estadocivilController.selected.activo}" title="#{bundle.CreateEstadocivilTitle_activo}" />
+                    <h:outputLabel value="#{bundle.CreateEstadocivilLabel_fechaRegistro}" for="fechaRegistro" />
+                    <h:inputText id="fechaRegistro" value="#{estadocivilController.selected.fechaRegistro}" title="#{bundle.CreateEstadocivilTitle_fechaRegistro}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreateEstadocivilLabel_fechaModificacion}" for="fechaModificacion" />
+                    <h:inputText id="fechaModificacion" value="#{estadocivilController.selected.fechaModificacion}" title="#{bundle.CreateEstadocivilTitle_fechaModificacion}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreateEstadocivilLabel_siNo}" for="siNo" />
+                    <h:inputText id="siNo" value="#{estadocivilController.selected.siNo}" title="#{bundle.CreateEstadocivilTitle_siNo}" />
+                    <h:outputLabel value="#{bundle.CreateEstadocivilLabel_codigoUsuario}" for="codigoUsuario" />
+                    <h:selectOneMenu id="codigoUsuario" value="#{estadocivilController.selected.codigoUsuario}" title="#{bundle.CreateEstadocivilTitle_codigoUsuario}" >
+                        <f:selectItems value="#{usuarioController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateEstadocivilLabel_codigoUsuarioModifico}" for="codigoUsuarioModifico" />
+                    <h:selectOneMenu id="codigoUsuarioModifico" value="#{estadocivilController.selected.codigoUsuarioModifico}" title="#{bundle.CreateEstadocivilTitle_codigoUsuarioModifico}" >
+                        <f:selectItems value="#{usuarioController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{estadocivilController.create}" value="#{bundle.CreateEstadocivilSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{estadocivilController.prepareList}" value="#{bundle.CreateEstadocivilShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateEstadocivilIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

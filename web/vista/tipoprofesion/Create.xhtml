@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateTipoprofesionTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateTipoprofesionLabel_codigoProfesion}" for="codigoProfesion" />
+                    <h:inputText id="codigoProfesion" value="#{tipoprofesionController.selected.codigoProfesion}" title="#{bundle.CreateTipoprofesionTitle_codigoProfesion}" required="true" requiredMessage="#{bundle.CreateTipoprofesionRequiredMessage_codigoProfesion}"/>
+                    <h:outputLabel value="#{bundle.CreateTipoprofesionLabel_nombreProfesional}" for="nombreProfesional" />
+                    <h:inputText id="nombreProfesional" value="#{tipoprofesionController.selected.nombreProfesional}" title="#{bundle.CreateTipoprofesionTitle_nombreProfesional}" />
+                    <h:outputLabel value="#{bundle.CreateTipoprofesionLabel_activo}" for="activo" />
+                    <h:inputText id="activo" value="#{tipoprofesionController.selected.activo}" title="#{bundle.CreateTipoprofesionTitle_activo}" />
+                    <h:outputLabel value="#{bundle.CreateTipoprofesionLabel_fechaRegistro}" for="fechaRegistro" />
+                    <h:inputText id="fechaRegistro" value="#{tipoprofesionController.selected.fechaRegistro}" title="#{bundle.CreateTipoprofesionTitle_fechaRegistro}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreateTipoprofesionLabel_fechaModificacion}" for="fechaModificacion" />
+                    <h:inputText id="fechaModificacion" value="#{tipoprofesionController.selected.fechaModificacion}" title="#{bundle.CreateTipoprofesionTitle_fechaModificacion}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreateTipoprofesionLabel_codigoUsuario}" for="codigoUsuario" />
+                    <h:selectOneMenu id="codigoUsuario" value="#{tipoprofesionController.selected.codigoUsuario}" title="#{bundle.CreateTipoprofesionTitle_codigoUsuario}" >
+                        <f:selectItems value="#{usuarioController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateTipoprofesionLabel_codigoUsuarioModifico}" for="codigoUsuarioModifico" />
+                    <h:selectOneMenu id="codigoUsuarioModifico" value="#{tipoprofesionController.selected.codigoUsuarioModifico}" title="#{bundle.CreateTipoprofesionTitle_codigoUsuarioModifico}" >
+                        <f:selectItems value="#{usuarioController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{tipoprofesionController.create}" value="#{bundle.CreateTipoprofesionSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{tipoprofesionController.prepareList}" value="#{bundle.CreateTipoprofesionShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateTipoprofesionIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

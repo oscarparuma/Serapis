@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditTipoidentificacionTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditTipoidentificacionLabel_codigoIdentificacion}" for="codigoIdentificacion" />
+                    <h:inputText id="codigoIdentificacion" value="#{tipoidentificacionController.selected.codigoIdentificacion}" title="#{bundle.EditTipoidentificacionTitle_codigoIdentificacion}" required="true" requiredMessage="#{bundle.EditTipoidentificacionRequiredMessage_codigoIdentificacion}"/>
+                    <h:outputLabel value="#{bundle.EditTipoidentificacionLabel_nombreIdentificacion}" for="nombreIdentificacion" />
+                    <h:inputText id="nombreIdentificacion" value="#{tipoidentificacionController.selected.nombreIdentificacion}" title="#{bundle.EditTipoidentificacionTitle_nombreIdentificacion}" />
+                    <h:outputLabel value="#{bundle.EditTipoidentificacionLabel_activo}" for="activo" />
+                    <h:inputText id="activo" value="#{tipoidentificacionController.selected.activo}" title="#{bundle.EditTipoidentificacionTitle_activo}" />
+                    <h:outputLabel value="#{bundle.EditTipoidentificacionLabel_fechaRegistro}" for="fechaRegistro" />
+                    <h:inputText id="fechaRegistro" value="#{tipoidentificacionController.selected.fechaRegistro}" title="#{bundle.EditTipoidentificacionTitle_fechaRegistro}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditTipoidentificacionLabel_fechaModificacion}" for="fechaModificacion" />
+                    <h:inputText id="fechaModificacion" value="#{tipoidentificacionController.selected.fechaModificacion}" title="#{bundle.EditTipoidentificacionTitle_fechaModificacion}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditTipoidentificacionLabel_clasificacionIdentificacion}" for="clasificacionIdentificacion" />
+                    <h:inputText id="clasificacionIdentificacion" value="#{tipoidentificacionController.selected.clasificacionIdentificacion}" title="#{bundle.EditTipoidentificacionTitle_clasificacionIdentificacion}" />
+                    <h:outputLabel value="#{bundle.EditTipoidentificacionLabel_codigoUsuario}" for="codigoUsuario" />
+                    <h:selectOneMenu id="codigoUsuario" value="#{tipoidentificacionController.selected.codigoUsuario}" title="#{bundle.EditTipoidentificacionTitle_codigoUsuario}" >
+                        <f:selectItems value="#{usuarioController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditTipoidentificacionLabel_codigoUsuarioModifico}" for="codigoUsuarioModifico" />
+                    <h:selectOneMenu id="codigoUsuarioModifico" value="#{tipoidentificacionController.selected.codigoUsuarioModifico}" title="#{bundle.EditTipoidentificacionTitle_codigoUsuarioModifico}" >
+                        <f:selectItems value="#{usuarioController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{tipoidentificacionController.update}" value="#{bundle.EditTipoidentificacionSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditTipoidentificacionViewLink}"/>
+                <br />
+                <h:commandLink action="#{tipoidentificacionController.prepareList}" value="#{bundle.EditTipoidentificacionShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditTipoidentificacionIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

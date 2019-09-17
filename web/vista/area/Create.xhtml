@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <f:view contentType="text/html" beforePhase="#{usuarioController.beforePhase}"  >
+
+        <ui:composition template="/templateAdministracion.xhtml">
+
+
+            <ui:define name="title">
+                <h:outputText value="#{bundle.AppName}"></h:outputText>
+            </ui:define>
+            <ui:define name="body">
+                <br></br>
+                <div align="center">
+                <h:form>
+                    <p:panel header="#{bundle.datosArea}">
+                        
+                        <h:panelGrid columns="1" >
+                            <br></br>
+                            <p:panelGrid columns="2">
+                                 <p:outputLabel value="#{bundle.CreateAreaLabel_codigoSede}" for="codigoSede" />
+                                 <p:selectOneMenu  id="codigoSede" value="#{areaController.selected.codigoSede}" required="true" requiredMessage="#{bundle.CreateAreaRequiredMessage_codigoSede}">
+                            <f:selectItems value="#{sedeController.itemsAvailableSelectOne}"
+                                           var="codigoSedeItem"
+                                           itemValue="#{codigoSedeItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel  value="#{bundle.CreateAreaLabel_nombreArea}" for="nombreArea" />
+                        <p:inputText id="nombreArea" style="text-transform: uppercase" onkeyup="javascript:this.value = this.value.toUpperCase();" value="#{areaController.selected.nombreArea}" required="true" requiredMessage="#{bundle.CreateAreaRequiredMessage_nombreArea}" />
+                        <p:outputLabel  value="#{bundle.CreateAreaLabel_siglasArea}" for="siglasArea" />
+                        <p:inputText id="siglasArea" style="text-transform: uppercase" onkeyup="javascript:this.value = this.value.toUpperCase();" value="#{areaController.selected.siglasArea}" />
+                        <p:outputLabel  value="#{bundle.CreateAreaLabel_direccion}" for="direccion" />
+                        <p:inputText size="40" id="direccion" style="text-transform: uppercase" onkeyup="javascript:this.value = this.value.toUpperCase();" value="#{areaController.selected.direccion}"  />
+                        <p:outputLabel  value="#{bundle.CreateAreaLabel_telefono}" for="telefono" />
+                        <p:inputText id="telefono" value="#{areaController.selected.telefono}" />
+                        <p:outputLabel  value="#{bundle.CreateAreaLabel_email}" for="email" />
+                        <p:inputText size="40" id="email" value="#{areaController.selected.email}" />
+
+
+                       <p:outputLabel  value="#{bundle.CreateDepartamentoLabel_codigoPais}" for="codigoPais" />
+                        <p:selectOneMenu filter="true" filterMatchMode="contains" id="codigoPais" value="#{areaController.paisSelected}"
+                                         styleClass="input" >
+                            <f:selectItem noSelectionOption="true" itemLabel="-Seleccione- " />
+                            <f:selectItems value="#{paisController.itemsAvailableSelectMany}"/>
+                            <p:ajax process="codigoPais" update="codigoDepartamento, codigoMunicipio" event="change"  />
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateMunicipioLabel_codigoDepartamento}" for="codigoDepartamento" />
+                        <p:selectOneMenu filter="true" filterMatchMode="contains" id="codigoDepartamento" value="#{areaController.departamentoSelected}"
+                                         styleClass="input"  >
+                            <f:selectItem noSelectionOption="true" itemLabel="-Seleccione- " />
+                            <f:selectItems value="#{areaController.paisSelected.departamentoList}"/>
+                            <p:ajax process="codigoDepartamento"  update="codigoMunicipio" event="change" />
+                        </p:selectOneMenu>
+                        <p:outputLabel  value="#{bundle.CreateAreaLabel_codigoMunicipio}" for="codigoMunicipio" />
+                        <p:selectOneMenu filter="true" filterMatchMode="contains"  id="codigoMunicipio" required="true" requiredMessage="#{bundle.CreateAreaRequiredMessage_codigoMunicipio}"
+                                          value="#{areaController.selected.codigoMunicipio}" 
+                                          styleClass="input"  >
+                            <f:selectItem noSelectionOption="true" itemLabel="-Seleccione- " />
+                            <f:selectItems value="#{areaController.departamentoSelected.municipioList}" />
+                            <p:ajax process="codigoMunicipio" event="change" />
+                        </p:selectOneMenu> 
+                            </p:panelGrid>
+                            <br></br>
+                            <f:facet name="footer">
+                                 <p:commandButton style="margin-right: 10px;" id="createButton" icon="ui-icon-plus" process="@all" styleClass="button" ajax="false" action="#{areaController.create}" value="#{bundle.CreateUsuarioSaveLink}" />
+                            <p:commandButton id="editButton" icon="ui-icon-plus" process="@all" styleClass="button" ajax="false" action="#{areaController.prepareList}" value="#{bundle.CreateSedeShowAllLink}" immediate="true"/>
+                      
+                            </f:facet>
+                        </h:panelGrid>
+                    </p:panel>
+
+                    
+                </h:form>
+                    </div>
+            </ui:define>
+        </ui:composition>
+    </f:view>
+</html>

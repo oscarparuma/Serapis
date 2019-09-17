@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    
+  
+
+    <f:view contentType="text/html" beforePhase="#{usuarioController.beforePhase}"  >
+     <ui:composition template="/templateIngreso.xhtml">
+         
+         
+
+
+        <ui:define name="title">
+            <h:outputText value="#{bundle.AppName}"></h:outputText>
+        </ui:define>
+
+        <ui:define name="body">
+            <h:form id="menuConfiguracionForm">
+
+                <div class="ui-g-12">
+                    <p:panel>
+                        <div align="center">
+                            <p:panel header="#{bundle.menuConfiguracionSede}" style="min-width: 200px; max-width: 100%;"> 
+                                <div class="panel-body">
+                                    
+                                    <div>
+                                         <br></br> <br></br> 
+                                        <p:dataTable reflow="true" var="estado" value="" emptyMessage=" ">
+                                            <p:column rendered="#{usuarioController.selected.codigoPerfil.codigoPerfil ==1 || usuarioController.selected.codigoPerfil.codigoPerfil ==2}">                                               
+                                                <div align="center">                                                   
+                                                    <p:commandLink  process="@all"  ajax="false" action="/vista/menuSistema/MenuConfiguracionSede.xhtml?faces-redirect=true" immediate="true">
+                                                        <h:graphicImage id="usuarios" alt="#{m.ingles}"  url="/imagenes/ImagSisitema/confSede.png" class="img-responsive" />
+                                                    </p:commandLink>
+                                                </div>
+                                            </p:column>
+                                           <p:column rendered="#{usuarioController.selected.codigoPerfil.codigoPerfil ==1 || usuarioController.selected.codigoPerfil.codigoPerfil ==2}">
+                                               
+                                                <div align="center">
+                                                    <p:commandLink action="#{epsSedeController.prepareListXEpsSede(usuarioController.selected)}" immediate="true">
+                                                        <h:graphicImage id="eps" alt="#{m.ingles}"  url="/imagenes/ImagSisitema/SedeEps.png" class="img-responsive" />
+                                                    </p:commandLink>
+                                                </div>
+                                            </p:column>
+                                            <p:column rendered="#{usuarioController.selected.codigoPerfil.codigoPerfil ==1 || usuarioController.selected.codigoPerfil.codigoPerfil ==2}">
+                                               
+                                                <div align="center">
+                                                    <p:commandLink  action="#{epsController.prepareListXEps(usuarioController.selected)}" immediate="true">
+                                                        <h:graphicImage id="imagenIngI" alt="#{m.ingles}"  url="/imagenes/ImagSisitema/EpsContrato.png" class="img-responsive" />
+                                                    </p:commandLink>
+                                                </div>
+                                            </p:column>
+                                            
+                                            
+                                        </p:dataTable>
+                                        <br/>
+                                        <p:dataTable reflow="true" var="estado" value="" emptyMessage=" ">
+                                           <p:column >                                               
+                                                <div align="center">
+                                                    <p:commandLink title="#{bundle.tarifasSede}" id="createButton1"  process="@all" styleClass="button" ajax="false" action="/vista/menuSistema/MenuTarifas" immediate="true">
+                                                        <h:graphicImage id="tarifas" alt="#{m.ingles}"  url="/imagenes/ImagSisitema/TarifaCon.png" class="img-responsive" />
+                                                    </p:commandLink>
+                                                </div>
+                                            </p:column>
+                                            <p:column rendered="#{usuarioController.selected.codigoPerfil.codigoPerfil ==1 || usuarioController.selected.codigoPerfil.codigoPerfil ==2}">
+                                                
+                                                <div align="center">
+                                                    <p:commandLink title="#{bundle.consultoriosSede}" id="createButton2"  process="@all" styleClass="button" ajax="false" action="#{consultorioController.prepareListXConsultorio(usuarioController.selected)}"  immediate="true">
+                                                        <h:graphicImage id="consultorios" alt="#{m.ingles}"  url="/imagenes/ImagSisitema/Consultorios.png" class="img-responsive" />
+                                                    </p:commandLink>
+                                                </div>
+                                            </p:column>
+                                            <p:column rendered="#{usuarioController.selected.codigoPerfil.codigoPerfil ==1 || usuarioController.selected.codigoPerfil.codigoPerfil ==2}">
+                                                
+                                                <div align="center">
+                                                    <p:commandLink title="#{bundle.menuConsultasSede}"  action="/vista/menuSistema/MenuConsultas" immediate="true">
+                                                        <h:graphicImage id="menuConsultas" alt="#{m.ingles}"  url="/imagenes/ImagSisitema/ConsultaMedica.png" class="img-responsive"/>
+                                                    </p:commandLink>
+                                                </div>
+                                            </p:column>                                             
+                                        </p:dataTable>
+                                    </div>
+                                </div>
+                                <br></br>
+                                    <div align="center" >
+                                         <br></br> <br></br> 
+                                        <p:commandLink title="#{bundle.salir}"  ajax="true" update="@all" action="/index.xhtml?faces-redirect=true"  immediate="true">
+                                            <h:graphicImage id="menuConsultas" alt="#{m.ingles}"  url="/imagenes/ImagSisitema/salirSistema.jpg" class="img-responsive" />
+                                        </p:commandLink>
+                                    </div>
+                                
+                            </p:panel>
+                        </div>
+                    </p:panel>
+                </div>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+        </f:view>
+
+</html>

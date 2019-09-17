@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListClasificacionEpsTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListClasificacionEpsEmpty}" rendered="#{clasificacionEpsController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{clasificacionEpsController.items.rowCount > 0}">
+                    <h:outputText value="#{clasificacionEpsController.pagination.pageFirstItem + 1}..#{clasificacionEpsController.pagination.pageLastItem + 1}/#{clasificacionEpsController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{clasificacionEpsController.previous}" value="#{bundle.Previous} #{clasificacionEpsController.pagination.pageSize}" rendered="#{clasificacionEpsController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{clasificacionEpsController.next}" value="#{bundle.Next} #{clasificacionEpsController.pagination.pageSize}" rendered="#{clasificacionEpsController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{clasificacionEpsController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListClasificacionEpsTitle_codigoClasificacionEps}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.codigoClasificacionEps}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListClasificacionEpsTitle_nombre}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.nombre}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListClasificacionEpsTitle_activo}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.activo}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListClasificacionEpsTitle_fechaRegistro}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.fechaRegistro}">
+                                <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListClasificacionEpsTitle_fechaModificacion}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.fechaModificacion}">
+                                <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListClasificacionEpsTitle_codigoUsuario}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.codigoUsuario}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListClasificacionEpsTitle_codigoUsuarioModifico}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.codigoUsuarioModifico}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{clasificacionEpsController.prepareView}" value="#{bundle.ListClasificacionEpsViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{clasificacionEpsController.prepareEdit}" value="#{bundle.ListClasificacionEpsEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{clasificacionEpsController.destroy}" value="#{bundle.ListClasificacionEpsDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{clasificacionEpsController.prepareCreate}" value="#{bundle.ListClasificacionEpsCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListClasificacionEpsIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

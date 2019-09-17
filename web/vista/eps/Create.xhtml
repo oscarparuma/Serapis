@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/templateIngreso.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateEpsTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form>
+                <p:panel>
+                    <div align="center">
+                        <div class="container text-center">   
+                            <div class="row">
+                                <div class="col-sm-3 well">
+                                    <br></br>
+                                    <p:panel header="#{bundle.epsContrato}" >
+                                        <div align="center">
+                                            <p:panel style="min-width: 400px; max-width: 1100px;">
+                                                <br></br>
+                                                <h:panelGrid columns="2">
+                                                    <p:outputLabel value="#{bundle.CreateEpsLabel_clasificacionEps}" for="clasificacionEps" />
+                                                    <p:selectOneMenu id="clasificacionEps" value="#{epsController.selected.clasificacionEps}" title="#{bundle.CreateEpsTitle_clasificacionEps}" required="true" requiredMessage="#{bundle.CreateEpsRequiredMessage_clasificacionEps}" style="min-width: 280px;" >
+                                                        <f:selectItem noSelectionOption="true" itemLabel="-Seleccione- " />
+                                                        <f:selectItems value="#{clasificacionEpsController.getSedeXClasificacionEps(usuarioController.selected.codigoPais)}"/>
+                                                        <p:ajax process="clasificacionEps" update="codigoEpsSede" event="change"  />
+                                                    </p:selectOneMenu>
+                                                    <p:outputLabel value="#{bundle.CreateEpsLabel_codigoEpsSede}" for="codigoEpsSede" />
+                                                    <p:selectOneMenu id="codigoEpsSede" value="#{epsController.selected.codigoEpsSede}" title="#{bundle.CreateEpsTitle_codigoEpsSede}" required="true" requiredMessage="#{bundle.CreateEpsRequiredMessage_codigoEpsSede}" styleClass="input" style="min-width: 280px;">
+                                                        <f:selectItem noSelectionOption="true" itemLabel="-Seleccione- "  />
+                                                        <f:selectItems value="#{epsController.selected.clasificacionEps.epsSedeList}" />
+                                                        <p:ajax process="codigoEpsSede" event="change" />
+                                                    </p:selectOneMenu>
+                                                    <p:outputLabel value="#{bundle.CreateEpsLabel_direccion}" for="direccion" />
+                                                    <p:inputText size="40" id="direccion" style="text-transform: uppercase" onkeyup="javascript:this.value = this.value.toUpperCase();" value="#{epsController.selected.direccion}" title="#{bundle.CreateEpsTitle_direccion}" required="true" requiredMessage="#{bundle.CreateEpsRequiredMessage_direccion}" />
+                                                    <p:outputLabel value="#{bundle.CreateEpsLabel_telefono}" for="telefono" />
+                                                    <p:inputText size="40" id="telefono" value="#{epsController.selected.telefono}" title="#{bundle.CreateEpsTitle_telefono}" required="true" requiredMessage="#{bundle.CreateEpsRequiredMessage_telefono}"/>
+                                                    <p:outputLabel value="#{bundle.CreateEpsLabel_contacto}" for="contacto" />
+                                                    <p:inputText size="40" id="contacto" style="text-transform: uppercase" onkeyup="javascript:this.value = this.value.toUpperCase();" value="#{epsController.selected.contacto}" title="#{bundle.CreateEpsTitle_contacto}" />
+
+                                                    <p:outputLabel  value="#{bundle.CreateDepartamentoLabel_codigoPais}" for="codigoPais" />
+                                                    <p:selectOneMenu style="min-width: 280px;" filter="true" filterMatchMode="contains" id="codigoPais" value="#{epsController.paisSelected}" required="true" requiredMessage="#{bundle.CreateDepartamentoRequiredMessage_codigoPais} "
+                                                                     styleClass="input" >
+                                                        <f:selectItem noSelectionOption="true" itemLabel="-Seleccione- " />
+                                                        <f:selectItems value="#{paisController.itemsAvailableSelectMany}"/>
+                                                        <p:ajax process="codigoPais" update="codigoDepartamento, codigoMunicipio" event="change"  />
+                                                    </p:selectOneMenu>
+                                                    <p:outputLabel  value="#{bundle.CreateMunicipioLabel_codigoDepartamento}" for="codigoDepartamento" />
+                                                    <p:selectOneMenu style="min-width: 280px;" filter="true" filterMatchMode="contains" id="codigoDepartamento" value="#{epsController.departamentoSelected}" 
+                                                                     styleClass="input"  >
+                                                        <f:selectItem noSelectionOption="true" itemLabel="-Seleccione- " />
+                                                        <f:selectItems value="#{epsController.paisSelected.departamentoList}"/>
+                                                        <p:ajax process="codigoDepartamento"  update="codigoMunicipio" event="change" />
+                                                    </p:selectOneMenu>
+                                                    <p:outputLabel  value="#{bundle.CreateDatosRegistroSedeLabel_codigoMunicipio}" for="codigoMunicipio" />
+                                                    <p:selectOneMenu style="min-width: 280px;" filter="true" filterMatchMode="contains"  id="codigoMunicipio"  
+                                                                     value="#{epsController.selected.codigoMunicipio}"
+                                                                     styleClass="input"  >
+                                                        <f:selectItem noSelectionOption="true" itemLabel="-Seleccione- " />
+                                                        <f:selectItems value="#{epsController.departamentoSelected.municipioList}"/>
+                                                        <p:ajax process="codigoMunicipio" event="change" />
+                                                    </p:selectOneMenu> 
+                                                </h:panelGrid>
+                                                <f:facet name="footer">
+                                                    <p:panel>
+                                                        <div align="center">
+                                                            <br></br>
+                                                            <p:commandButton style="margin-right: 10px;" id="editButton"   icon="ui-icon-plus" process="@all" styleClass="button" ajax="false" action="#{epsController.create}" value="#{bundle.CreateEpsSaveLink}"/>
+                                                            <p:commandButton id="editButtonE"  icon="ui-icon-circle-arrow-w" process="@all" styleClass="button" ajax="false" action="#{epsController.prepareList}" value="#{bundle.Regresar}" immediate="true"/>
+                                                        </div>
+                                                    </p:panel>
+                                                </f:facet>
+                                            </p:panel>
+                                            <br></br><br></br>
+                                            <h:panelGroup>
+                                                    <p:graphicImage value="/imagenes/ImagSisitema/l-serapis.png" />
+                                            </h:panelGroup>
+                                        </div>
+                                    </p:panel>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </p:panel>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

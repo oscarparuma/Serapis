@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditProcedimientosedeTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditProcedimientosedeLabel_codigoValorConsulta}" for="codigoValorConsulta" />
+                    <h:inputText id="codigoValorConsulta" value="#{procedimientosedeController.selected.codigoValorConsulta}" title="#{bundle.EditProcedimientosedeTitle_codigoValorConsulta}" required="true" requiredMessage="#{bundle.EditProcedimientosedeRequiredMessage_codigoValorConsulta}"/>
+                    <h:outputLabel value="#{bundle.EditProcedimientosedeLabel_valorExamen}" for="valorExamen" />
+                    <h:inputText id="valorExamen" value="#{procedimientosedeController.selected.valorExamen}" title="#{bundle.EditProcedimientosedeTitle_valorExamen}" />
+                    <h:outputLabel value="#{bundle.EditProcedimientosedeLabel_fechaRegistro}" for="fechaRegistro" />
+                    <h:inputText id="fechaRegistro" value="#{procedimientosedeController.selected.fechaRegistro}" title="#{bundle.EditProcedimientosedeTitle_fechaRegistro}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditProcedimientosedeLabel_fechaModificacion}" for="fechaModificacion" />
+                    <h:inputText id="fechaModificacion" value="#{procedimientosedeController.selected.fechaModificacion}" title="#{bundle.EditProcedimientosedeTitle_fechaModificacion}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditProcedimientosedeLabel_activo}" for="activo" />
+                    <h:inputText id="activo" value="#{procedimientosedeController.selected.activo}" title="#{bundle.EditProcedimientosedeTitle_activo}" />
+                    <h:outputLabel value="#{bundle.EditProcedimientosedeLabel_codigoEps}" for="codigoEps" />
+                    <h:selectOneMenu id="codigoEps" value="#{procedimientosedeController.selected.codigoEps}" title="#{bundle.EditProcedimientosedeTitle_codigoEps}" >
+                        <f:selectItems value="#{epsController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditProcedimientosedeLabel_codigoCups}" for="codigoCups" />
+                    <h:selectOneMenu id="codigoCups" value="#{procedimientosedeController.selected.codigoCups}" title="#{bundle.EditProcedimientosedeTitle_codigoCups}" >
+                        <f:selectItems value="#{manualtarifasController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditProcedimientosedeLabel_codigoSede}" for="codigoSede" />
+                    <h:selectOneMenu id="codigoSede" value="#{procedimientosedeController.selected.codigoSede}" title="#{bundle.EditProcedimientosedeTitle_codigoSede}" >
+                        <f:selectItems value="#{sedeController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditProcedimientosedeLabel_codigoUsuario}" for="codigoUsuario" />
+                    <h:selectOneMenu id="codigoUsuario" value="#{procedimientosedeController.selected.codigoUsuario}" title="#{bundle.EditProcedimientosedeTitle_codigoUsuario}" >
+                        <f:selectItems value="#{usuarioController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditProcedimientosedeLabel_modificadoPor}" for="modificadoPor" />
+                    <h:selectOneMenu id="modificadoPor" value="#{procedimientosedeController.selected.modificadoPor}" title="#{bundle.EditProcedimientosedeTitle_modificadoPor}" >
+                        <f:selectItems value="#{usuarioController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{procedimientosedeController.update}" value="#{bundle.EditProcedimientosedeSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditProcedimientosedeViewLink}"/>
+                <br />
+                <h:commandLink action="#{procedimientosedeController.prepareList}" value="#{bundle.EditProcedimientosedeShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditProcedimientosedeIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

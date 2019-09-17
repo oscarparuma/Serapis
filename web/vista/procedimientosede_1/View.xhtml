@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewProcedimientosedeTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewProcedimientosedeLabel_codigoValorConsulta}"/>
+                    <h:outputText value="#{procedimientosedeController.selected.codigoValorConsulta}" title="#{bundle.ViewProcedimientosedeTitle_codigoValorConsulta}"/>
+                    <h:outputText value="#{bundle.ViewProcedimientosedeLabel_valorExamen}"/>
+                    <h:outputText value="#{procedimientosedeController.selected.valorExamen}" title="#{bundle.ViewProcedimientosedeTitle_valorExamen}"/>
+                    <h:outputText value="#{bundle.ViewProcedimientosedeLabel_fechaRegistro}"/>
+                    <h:outputText value="#{procedimientosedeController.selected.fechaRegistro}" title="#{bundle.ViewProcedimientosedeTitle_fechaRegistro}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewProcedimientosedeLabel_fechaModificacion}"/>
+                    <h:outputText value="#{procedimientosedeController.selected.fechaModificacion}" title="#{bundle.ViewProcedimientosedeTitle_fechaModificacion}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewProcedimientosedeLabel_activo}"/>
+                    <h:outputText value="#{procedimientosedeController.selected.activo}" title="#{bundle.ViewProcedimientosedeTitle_activo}"/>
+                    <h:outputText value="#{bundle.ViewProcedimientosedeLabel_codigoEps}"/>
+                    <h:outputText value="#{procedimientosedeController.selected.codigoEps}" title="#{bundle.ViewProcedimientosedeTitle_codigoEps}"/>
+                    <h:outputText value="#{bundle.ViewProcedimientosedeLabel_codigoCups}"/>
+                    <h:outputText value="#{procedimientosedeController.selected.codigoCups}" title="#{bundle.ViewProcedimientosedeTitle_codigoCups}"/>
+                    <h:outputText value="#{bundle.ViewProcedimientosedeLabel_codigoSede}"/>
+                    <h:outputText value="#{procedimientosedeController.selected.codigoSede}" title="#{bundle.ViewProcedimientosedeTitle_codigoSede}"/>
+                    <h:outputText value="#{bundle.ViewProcedimientosedeLabel_codigoUsuario}"/>
+                    <h:outputText value="#{procedimientosedeController.selected.codigoUsuario}" title="#{bundle.ViewProcedimientosedeTitle_codigoUsuario}"/>
+                    <h:outputText value="#{bundle.ViewProcedimientosedeLabel_modificadoPor}"/>
+                    <h:outputText value="#{procedimientosedeController.selected.modificadoPor}" title="#{bundle.ViewProcedimientosedeTitle_modificadoPor}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{procedimientosedeController.destroyAndView}" value="#{bundle.ViewProcedimientosedeDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewProcedimientosedeEditLink}"/>
+                <br />
+                <h:commandLink action="#{procedimientosedeController.prepareCreate}" value="#{bundle.ViewProcedimientosedeCreateLink}" />
+                <br />
+                <h:commandLink action="#{procedimientosedeController.prepareList}" value="#{bundle.ViewProcedimientosedeShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewProcedimientosedeIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

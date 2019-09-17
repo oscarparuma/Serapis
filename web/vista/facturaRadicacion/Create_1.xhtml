@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateFacturaRadicacionTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+         
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateFacturaRadicacionLabel_codigoFacturaRadicacion}" for="codigoFacturaRadicacion" />
+                    <h:inputText id="codigoFacturaRadicacion" value="#{facturaRadicacionController.selected.codigoFacturaRadicacion}" title="#{bundle.CreateFacturaRadicacionTitle_codigoFacturaRadicacion}" required="true" requiredMessage="#{bundle.CreateFacturaRadicacionRequiredMessage_codigoFacturaRadicacion}"/>
+                    <h:outputLabel value="#{bundle.CreateFacturaRadicacionLabel_valorUnitario}" for="valorUnitario" />
+                    <h:inputText id="valorUnitario" value="#{facturaRadicacionController.selected.valorUnitario}" title="#{bundle.CreateFacturaRadicacionTitle_valorUnitario}" />
+                    <h:outputLabel value="#{bundle.CreateFacturaRadicacionLabel_valorCopago}" for="valorCopago" />
+                    <h:inputText id="valorCopago" value="#{facturaRadicacionController.selected.valorCopago}" title="#{bundle.CreateFacturaRadicacionTitle_valorCopago}" />
+                    <h:outputLabel value="#{bundle.CreateFacturaRadicacionLabel_valorFacturado}" for="valorFacturado" />
+                    <h:inputText id="valorFacturado" value="#{facturaRadicacionController.selected.valorFacturado}" title="#{bundle.CreateFacturaRadicacionTitle_valorFacturado}" />
+                    <h:outputLabel value="#{bundle.CreateFacturaRadicacionLabel_totalRadicado}" for="totalRadicado" />
+                    <h:inputText id="totalRadicado" value="#{facturaRadicacionController.selected.totalRadicado}" title="#{bundle.CreateFacturaRadicacionTitle_totalRadicado}" />
+                    <h:outputLabel value="#{bundle.CreateFacturaRadicacionLabel_estadoRadicacion}" for="estadoRadicacion" />
+                    <h:inputText id="estadoRadicacion" value="#{facturaRadicacionController.selected.estadoRadicacion}" title="#{bundle.CreateFacturaRadicacionTitle_estadoRadicacion}" />
+                    <h:outputLabel value="#{bundle.CreateFacturaRadicacionLabel_fechaRegistro}" for="fechaRegistro" />
+                    <h:inputText id="fechaRegistro" value="#{facturaRadicacionController.selected.fechaRegistro}" title="#{bundle.CreateFacturaRadicacionTitle_fechaRegistro}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreateFacturaRadicacionLabel_fechaRadicacion}" for="fechaRadicacion" />
+                    <h:inputText id="fechaRadicacion" value="#{facturaRadicacionController.selected.fechaRadicacion}" title="#{bundle.CreateFacturaRadicacionTitle_fechaRadicacion}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreateFacturaRadicacionLabel_ccsRadicacion}" for="ccsRadicacion" />
+                    <h:inputText id="ccsRadicacion" value="#{facturaRadicacionController.selected.ccsRadicacion}" title="#{bundle.CreateFacturaRadicacionTitle_ccsRadicacion}" />
+                    <h:outputLabel value="#{bundle.CreateFacturaRadicacionLabel_radicacionSede}" for="radicacionSede" />
+                    <h:inputText id="radicacionSede" value="#{facturaRadicacionController.selected.radicacionSede}" title="#{bundle.CreateFacturaRadicacionTitle_radicacionSede}" />
+                    <h:outputLabel value="#{bundle.CreateFacturaRadicacionLabel_facturaSede}" for="facturaSede" />
+                    <h:inputText id="facturaSede" value="#{facturaRadicacionController.selected.facturaSede}" title="#{bundle.CreateFacturaRadicacionTitle_facturaSede}" />
+                    <h:outputLabel value="#{bundle.CreateFacturaRadicacionLabel_codigoCitaPersona}" for="codigoCitaPersona" />
+                    <h:selectOneMenu id="codigoCitaPersona" value="#{facturaRadicacionController.selected.codigoCitaPersona}" title="#{bundle.CreateFacturaRadicacionTitle_codigoCitaPersona}" >
+                        <f:selectItems value="#{citapersonaController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateFacturaRadicacionLabel_codigoEps}" for="codigoEps" />
+                    <h:selectOneMenu id="codigoEps" value="#{facturaRadicacionController.selected.codigoEps}" title="#{bundle.CreateFacturaRadicacionTitle_codigoEps}" >
+                        <f:selectItems value="#{epsController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateFacturaRadicacionLabel_codigoFactura}" for="codigoFactura" />
+                    <h:selectOneMenu id="codigoFactura" value="#{facturaRadicacionController.selected.codigoFactura}" title="#{bundle.CreateFacturaRadicacionTitle_codigoFactura}" >
+                        <f:selectItems value="#{facturacionController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateFacturaRadicacionLabel_codigoSede}" for="codigoSede" />
+                    <h:selectOneMenu id="codigoSede" value="#{facturaRadicacionController.selected.codigoSede}" title="#{bundle.CreateFacturaRadicacionTitle_codigoSede}" >
+                        <f:selectItems value="#{sedeController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateFacturaRadicacionLabel_codigoUsuario}" for="codigoUsuario" />
+                    <h:selectOneMenu id="codigoUsuario" value="#{facturaRadicacionController.selected.codigoUsuario}" title="#{bundle.CreateFacturaRadicacionTitle_codigoUsuario}" >
+                        <f:selectItems value="#{usuarioController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateFacturaRadicacionLabel_usuarioModifico}" for="usuarioModifico" />
+                    <h:selectOneMenu id="usuarioModifico" value="#{facturaRadicacionController.selected.usuarioModifico}" title="#{bundle.CreateFacturaRadicacionTitle_usuarioModifico}" >
+                        <f:selectItems value="#{usuarioController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{facturaRadicacionController.create}" value="#{bundle.CreateFacturaRadicacionSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{facturaRadicacionController.prepareList}" value="#{bundle.CreateFacturaRadicacionShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateFacturaRadicacionIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditAdministracionTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditAdministracionLabel_codigoAdministracion}" for="codigoAdministracion" />
+                    <h:inputText id="codigoAdministracion" value="#{administracionController.selected.codigoAdministracion}" title="#{bundle.EditAdministracionTitle_codigoAdministracion}" required="true" requiredMessage="#{bundle.EditAdministracionRequiredMessage_codigoAdministracion}"/>
+                    <h:outputLabel value="#{bundle.EditAdministracionLabel_nombreaAdministracion}" for="nombreaAdministracion" />
+                    <h:inputText id="nombreaAdministracion" value="#{administracionController.selected.nombreaAdministracion}" title="#{bundle.EditAdministracionTitle_nombreaAdministracion}" />
+                    <h:outputLabel value="#{bundle.EditAdministracionLabel_activo}" for="activo" />
+                    <h:inputText id="activo" value="#{administracionController.selected.activo}" title="#{bundle.EditAdministracionTitle_activo}" />
+                    <h:outputLabel value="#{bundle.EditAdministracionLabel_fechaRegistro}" for="fechaRegistro" />
+                    <h:inputText id="fechaRegistro" value="#{administracionController.selected.fechaRegistro}" title="#{bundle.EditAdministracionTitle_fechaRegistro}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditAdministracionLabel_fechaModificacion}" for="fechaModificacion" />
+                    <h:inputText id="fechaModificacion" value="#{administracionController.selected.fechaModificacion}" title="#{bundle.EditAdministracionTitle_fechaModificacion}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditAdministracionLabel_codigoUsuarioModifico}" for="codigoUsuarioModifico" />
+                    <h:selectOneMenu id="codigoUsuarioModifico" value="#{administracionController.selected.codigoUsuarioModifico}" title="#{bundle.EditAdministracionTitle_codigoUsuarioModifico}" >
+                        <f:selectItems value="#{usuarioController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditAdministracionLabel_codigoUsuario}" for="codigoUsuario" />
+                    <h:selectOneMenu id="codigoUsuario" value="#{administracionController.selected.codigoUsuario}" title="#{bundle.EditAdministracionTitle_codigoUsuario}" >
+                        <f:selectItems value="#{usuarioController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{administracionController.update}" value="#{bundle.EditAdministracionSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditAdministracionViewLink}"/>
+                <br />
+                <h:commandLink action="#{administracionController.prepareList}" value="#{bundle.EditAdministracionShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditAdministracionIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

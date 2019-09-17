@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateUsuarioTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateUsuarioLabel_codigoUsuario}" for="codigoUsuario" />
+                    <h:inputText id="codigoUsuario" value="#{usuarioController.selected.codigoUsuario}" title="#{bundle.CreateUsuarioTitle_codigoUsuario}" required="true" requiredMessage="#{bundle.CreateUsuarioRequiredMessage_codigoUsuario}"/>
+                    <h:outputLabel value="#{bundle.CreateUsuarioLabel_clave}" for="clave" />
+                    <h:inputText id="clave" value="#{usuarioController.selected.clave}" title="#{bundle.CreateUsuarioTitle_clave}" />
+                    <h:outputLabel value="#{bundle.CreateUsuarioLabel_nombreUsuario}" for="nombreUsuario" />
+                    <h:inputText id="nombreUsuario" value="#{usuarioController.selected.nombreUsuario}" title="#{bundle.CreateUsuarioTitle_nombreUsuario}" />
+                    <h:outputLabel value="#{bundle.CreateUsuarioLabel_registroMedico}" for="registroMedico" />
+                    <h:inputText id="registroMedico" value="#{usuarioController.selected.registroMedico}" title="#{bundle.CreateUsuarioTitle_registroMedico}" />
+                    <h:outputLabel value="#{bundle.CreateUsuarioLabel_activo}" for="activo" />
+                    <h:inputText id="activo" value="#{usuarioController.selected.activo}" title="#{bundle.CreateUsuarioTitle_activo}" />
+                    <h:outputLabel value="#{bundle.CreateUsuarioLabel_fechaRegistro}" for="fechaRegistro" />
+                    <h:inputText id="fechaRegistro" value="#{usuarioController.selected.fechaRegistro}" title="#{bundle.CreateUsuarioTitle_fechaRegistro}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreateUsuarioLabel_fechaModificacion}" for="fechaModificacion" />
+                    <h:inputText id="fechaModificacion" value="#{usuarioController.selected.fechaModificacion}" title="#{bundle.CreateUsuarioTitle_fechaModificacion}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreateUsuarioLabel_identificacionNit}" for="identificacionNit" />
+                    <h:inputText id="identificacionNit" value="#{usuarioController.selected.identificacionNit}" title="#{bundle.CreateUsuarioTitle_identificacionNit}" />
+                    <h:outputLabel value="#{bundle.CreateUsuarioLabel_esMedico}" for="esMedico" />
+                    <h:inputText id="esMedico" value="#{usuarioController.selected.esMedico}" title="#{bundle.CreateUsuarioTitle_esMedico}" />
+                    <h:outputLabel value="#{bundle.CreateUsuarioLabel_codigoCargo}" for="codigoCargo" />
+                    <h:selectOneMenu id="codigoCargo" value="#{usuarioController.selected.codigoCargo}" title="#{bundle.CreateUsuarioTitle_codigoCargo}" >
+                        <f:selectItems value="#{cargosedeController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateUsuarioLabel_codigoArea}" for="codigoArea" />
+                    <h:selectOneMenu id="codigoArea" value="#{usuarioController.selected.codigoArea}" title="#{bundle.CreateUsuarioTitle_codigoArea}" >
+                        <f:selectItems value="#{areaController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateUsuarioLabel_codigoDependencia}" for="codigoDependencia" />
+                    <h:selectOneMenu id="codigoDependencia" value="#{usuarioController.selected.codigoDependencia}" title="#{bundle.CreateUsuarioTitle_codigoDependencia}" >
+                        <f:selectItems value="#{dependenciaController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateUsuarioLabel_codigoEspecialidad}" for="codigoEspecialidad" />
+                    <h:selectOneMenu id="codigoEspecialidad" value="#{usuarioController.selected.codigoEspecialidad}" title="#{bundle.CreateUsuarioTitle_codigoEspecialidad}" >
+                        <f:selectItems value="#{especialidadsedeController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateUsuarioLabel_codigoMunicipio}" for="codigoMunicipio" />
+                    <h:selectOneMenu id="codigoMunicipio" value="#{usuarioController.selected.codigoMunicipio}" title="#{bundle.CreateUsuarioTitle_codigoMunicipio}" >
+                        <f:selectItems value="#{municipioController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateUsuarioLabel_codigoSede}" for="codigoSede" />
+                    <h:selectOneMenu id="codigoSede" value="#{usuarioController.selected.codigoSede}" title="#{bundle.CreateUsuarioTitle_codigoSede}" >
+                        <f:selectItems value="#{sedeController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateUsuarioLabel_codigoClasifcacionCargo}" for="codigoClasifcacionCargo" />
+                    <h:selectOneMenu id="codigoClasifcacionCargo" value="#{usuarioController.selected.codigoClasifcacionCargo}" title="#{bundle.CreateUsuarioTitle_codigoClasifcacionCargo}" >
+                        <f:selectItems value="#{sedeclasificacioncargoController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateUsuarioLabel_codigoTema}" for="codigoTema" />
+                    <h:selectOneMenu id="codigoTema" value="#{usuarioController.selected.codigoTema}" title="#{bundle.CreateUsuarioTitle_codigoTema}" >
+                        <f:selectItems value="#{temaController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateUsuarioLabel_codigoPerfil}" for="codigoPerfil" />
+                    <h:selectOneMenu id="codigoPerfil" value="#{usuarioController.selected.codigoPerfil}" title="#{bundle.CreateUsuarioTitle_codigoPerfil}" >
+                        <f:selectItems value="#{tipoperfilController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateUsuarioLabel_modificadoPor}" for="modificadoPor" />
+                    <h:selectOneMenu id="modificadoPor" value="#{usuarioController.selected.modificadoPor}" title="#{bundle.CreateUsuarioTitle_modificadoPor}" >
+                        <f:selectItems value="#{usuarioController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateUsuarioLabel_codigoUsuarioRegistro}" for="codigoUsuarioRegistro" />
+                    <h:selectOneMenu id="codigoUsuarioRegistro" value="#{usuarioController.selected.codigoUsuarioRegistro}" title="#{bundle.CreateUsuarioTitle_codigoUsuarioRegistro}" >
+                        <f:selectItems value="#{usuarioController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateUsuarioLabel_codigoUsuarioModifico}" for="codigoUsuarioModifico" />
+                    <h:selectOneMenu id="codigoUsuarioModifico" value="#{usuarioController.selected.codigoUsuarioModifico}" title="#{bundle.CreateUsuarioTitle_codigoUsuarioModifico}" >
+                        <f:selectItems value="#{usuarioController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{usuarioController.create}" value="#{bundle.CreateUsuarioSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{usuarioController.prepareList}" value="#{bundle.CreateUsuarioShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateUsuarioIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

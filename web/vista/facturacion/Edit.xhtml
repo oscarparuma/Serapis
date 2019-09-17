@@ -1,0 +1,126 @@
+ <?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditFacturacionTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditFacturacionLabel_codigoFactura}" for="codigoFactura" />
+                    <h:inputText id="codigoFactura" value="#{facturacionController.selected.codigoFactura}" title="#{bundle.EditFacturacionTitle_codigoFactura}" required="true" requiredMessage="#{bundle.EditFacturacionRequiredMessage_codigoFactura}"/>
+                    <h:outputLabel value="#{bundle.EditFacturacionLabel_fechaRegistro}" for="fechaRegistro" />
+                    <h:inputText id="fechaRegistro" value="#{facturacionController.selected.fechaRegistro}" title="#{bundle.EditFacturacionTitle_fechaRegistro}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditFacturacionLabel_fechaModificacion}" for="fechaModificacion" />
+                    <h:inputText id="fechaModificacion" value="#{facturacionController.selected.fechaModificacion}" title="#{bundle.EditFacturacionTitle_fechaModificacion}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditFacturacionLabel_valorUnitario}" for="valorUnitario" />
+                    <h:inputText id="valorUnitario" value="#{facturacionController.selected.valorUnitario}" title="#{bundle.EditFacturacionTitle_valorUnitario}" />
+                    <h:outputLabel value="#{bundle.EditFacturacionLabel_cantidad}" for="cantidad" />
+                    <h:inputText id="cantidad" value="#{facturacionController.selected.cantidad}" title="#{bundle.EditFacturacionTitle_cantidad}" />
+                    <h:outputLabel value="#{bundle.EditFacturacionLabel_valorParcial}" for="valorParcial" />
+                    <h:inputText id="valorParcial" value="#{facturacionController.selected.valorParcial}" title="#{bundle.EditFacturacionTitle_valorParcial}" />
+                    <h:outputLabel value="#{bundle.EditFacturacionLabel_valorCopago}" for="valorCopago" />
+                    <h:inputText id="valorCopago" value="#{facturacionController.selected.valorCopago}" title="#{bundle.EditFacturacionTitle_valorCopago}" />
+                    <h:outputLabel value="#{bundle.EditFacturacionLabel_valorTotalFactura}" for="valorTotalFactura" />
+                    <h:inputText id="valorTotalFactura" value="#{facturacionController.selected.valorTotalFactura}" title="#{bundle.EditFacturacionTitle_valorTotalFactura}" />
+                    <h:outputLabel value="#{bundle.EditFacturacionLabel_observacion}" for="observacion" />
+                    <h:inputTextarea rows="4" cols="30" id="observacion" value="#{facturacionController.selected.observacion}" title="#{bundle.EditFacturacionTitle_observacion}" />
+                    <h:outputLabel value="#{bundle.EditFacturacionLabel_valorCacelado}" for="valorCacelado" />
+                    <h:inputText id="valorCacelado" value="#{facturacionController.selected.valorCacelado}" title="#{bundle.EditFacturacionTitle_valorCacelado}" />
+                    <h:outputLabel value="#{bundle.EditFacturacionLabel_saldoActual}" for="saldoActual" />
+                    <h:inputText id="saldoActual" value="#{facturacionController.selected.saldoActual}" title="#{bundle.EditFacturacionTitle_saldoActual}" />
+                    <h:outputLabel value="#{bundle.EditFacturacionLabel_cdigoNoFacturable}" for="cdigoNoFacturable" />
+                    <h:inputText id="cdigoNoFacturable" value="#{facturacionController.selected.cdigoNoFacturable}" title="#{bundle.EditFacturacionTitle_cdigoNoFacturable}" />
+                    <h:outputLabel value="#{bundle.EditFacturacionLabel_estadoFactura}" for="estadoFactura" />
+                    <h:inputText id="estadoFactura" value="#{facturacionController.selected.estadoFactura}" title="#{bundle.EditFacturacionTitle_estadoFactura}" />
+                    <h:outputLabel value="#{bundle.EditFacturacionLabel_ccsFactura}" for="ccsFactura" />
+                    <h:inputText id="ccsFactura" value="#{facturacionController.selected.ccsFactura}" title="#{bundle.EditFacturacionTitle_ccsFactura}" />
+                    <h:outputLabel value="#{bundle.EditFacturacionLabel_ccsFacturaArea}" for="ccsFacturaArea" />
+                    <h:inputText id="ccsFacturaArea" value="#{facturacionController.selected.ccsFacturaArea}" title="#{bundle.EditFacturacionTitle_ccsFacturaArea}" />
+                    <h:outputLabel value="#{bundle.EditFacturacionLabel_ccsFacturaDependnecia}" for="ccsFacturaDependnecia" />
+                    <h:inputText id="ccsFacturaDependnecia" value="#{facturacionController.selected.ccsFacturaDependnecia}" title="#{bundle.EditFacturacionTitle_ccsFacturaDependnecia}" />
+                    <h:outputLabel value="#{bundle.EditFacturacionLabel_facturaSede}" for="facturaSede" />
+                    <h:inputText id="facturaSede" value="#{facturacionController.selected.facturaSede}" title="#{bundle.EditFacturacionTitle_facturaSede}" />
+                    <h:outputLabel value="#{bundle.EditFacturacionLabel_facturaArea}" for="facturaArea" />
+                    <h:inputText id="facturaArea" value="#{facturacionController.selected.facturaArea}" title="#{bundle.EditFacturacionTitle_facturaArea}" />
+                    <h:outputLabel value="#{bundle.EditFacturacionLabel_facturaDependnecia}" for="facturaDependnecia" />
+                    <h:inputText id="facturaDependnecia" value="#{facturacionController.selected.facturaDependnecia}" title="#{bundle.EditFacturacionTitle_facturaDependnecia}" />
+                    <h:outputLabel value="#{bundle.EditFacturacionLabel_codigoEps}" for="codigoEps" />
+                    <h:selectOneMenu id="codigoEps" value="#{facturacionController.selected.codigoEps}" title="#{bundle.EditFacturacionTitle_codigoEps}" >
+                        <f:selectItems value="#{epsController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditFacturacionLabel_codigoArea}" for="codigoArea" />
+                    <h:selectOneMenu id="codigoArea" value="#{facturacionController.selected.codigoArea}" title="#{bundle.EditFacturacionTitle_codigoArea}" >
+                        <f:selectItems value="#{areaController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditFacturacionLabel_codigoCita}" for="codigoCita" />
+                    <h:selectOneMenu id="codigoCita" value="#{facturacionController.selected.codigoCita}" title="#{bundle.EditFacturacionTitle_codigoCita}" >
+                        <f:selectItems value="#{citaPersonaController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditFacturacionLabel_codigoClasificacionCopago}" for="codigoClasificacionCopago" />
+                    <h:selectOneMenu id="codigoClasificacionCopago" value="#{facturacionController.selected.codigoClasificacionCopago}" title="#{bundle.EditFacturacionTitle_codigoClasificacionCopago}" >
+                        <f:selectItems value="#{clasificacioncopagoController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditFacturacionLabel_codigoDependencia}" for="codigoDependencia" />
+                    <h:selectOneMenu id="codigoDependencia" value="#{facturacionController.selected.codigoDependencia}" title="#{bundle.EditFacturacionTitle_codigoDependencia}" >
+                        <f:selectItems value="#{dependenciaController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditFacturacionLabel_codigoEstadoFactura}" for="codigoEstadoFactura" />
+                    <h:selectOneMenu id="codigoEstadoFactura" value="#{facturacionController.selected.codigoEstadoFactura}" title="#{bundle.EditFacturacionTitle_codigoEstadoFactura}" >
+                        <f:selectItems value="#{estadofacturaController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditFacturacionLabel_codigoNivelCopago}" for="codigoNivelCopago" />
+                    <h:selectOneMenu id="codigoNivelCopago" value="#{facturacionController.selected.codigoNivelCopago}" title="#{bundle.EditFacturacionTitle_codigoNivelCopago}" >
+                        <f:selectItems value="#{nivelCopagoController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditFacturacionLabel_codigoProcedimientoSede}" for="codigoProcedimientoSede" />
+                    <h:selectOneMenu id="codigoProcedimientoSede" value="#{facturacionController.selected.codigoProcedimientoSede}" title="#{bundle.EditFacturacionTitle_codigoProcedimientoSede}" >
+                        <f:selectItems value="#{procedeimientosedeController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditFacturacionLabel_codigoSede}" for="codigoSede" />
+                    <h:selectOneMenu id="codigoSede" value="#{facturacionController.selected.codigoSede}" title="#{bundle.EditFacturacionTitle_codigoSede}" >
+                        <f:selectItems value="#{sedeController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditFacturacionLabel_modificadoPor}" for="modificadoPor" />
+                    <h:selectOneMenu id="modificadoPor" value="#{facturacionController.selected.modificadoPor}" title="#{bundle.EditFacturacionTitle_modificadoPor}" >
+                        <f:selectItems value="#{usuarioController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditFacturacionLabel_facturableSN}" for="facturableSN" />
+                    <h:selectOneMenu id="facturableSN" value="#{facturacionController.selected.facturableSN}" title="#{bundle.EditFacturacionTitle_facturableSN}" >
+                        <f:selectItems value="#{tipoopcionController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditFacturacionLabel_codigoUsuario}" for="codigoUsuario" />
+                    <h:selectOneMenu id="codigoUsuario" value="#{facturacionController.selected.codigoUsuario}" title="#{bundle.EditFacturacionTitle_codigoUsuario}" >
+                        <f:selectItems value="#{usuarioController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditFacturacionLabel_usuarioAutoriza}" for="usuarioAutoriza" />
+                    <h:selectOneMenu id="usuarioAutoriza" value="#{facturacionController.selected.usuarioAutoriza}" title="#{bundle.EditFacturacionTitle_usuarioAutoriza}" >
+                        <f:selectItems value="#{usuarioController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{facturacionController.update}" value="#{bundle.EditFacturacionSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditFacturacionViewLink}"/>
+                <br />
+                <h:commandLink action="#{facturacionController.prepareList}" value="#{bundle.EditFacturacionShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditFacturacionIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

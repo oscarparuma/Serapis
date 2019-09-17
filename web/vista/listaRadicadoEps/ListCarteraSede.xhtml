@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/templateIngreso.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.AppName}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+
+            <h:form styleClass="jsfcrud_list_form">
+                <div class="col-lg-8">
+                    <p:panel>
+                        <div align="center">
+                            <p:panel header="#{bundle.carteraSede}">  
+                                <div class="panel-body">
+                                    <div class="col-lg-4">
+                                        <p:dataTable id="lalmeida"  reflow="true" value="#{listaRadicadoEpsController.listaCarteraEpsSede}" var="item" emptyMessage=" " selectionMode="single"  paginator="true"  rowKey="#{item.consecutivoRacadoEps}" rows="20"  rowsPerPageTemplate="20,50,100">
+                                            <p:column>
+                                                <f:facet name="header">
+                                                    <h:outputText value="#{bundle.Seleccione}" />
+                                                </f:facet>
+                                                <p:commandButton id="editButtonM" icon="ui-icon-pencil" process="@all" styleClass="button" ajax="false" action="#{listaRadicadoEpsController.prepareDetalleCarteraSede(item)}" value="#{bundle.Seleccione}"/>
+                                            </p:column>
+                                            
+                                            <p:column>
+                                                <f:facet name="header">
+                                                    <h:outputText value="#{bundle.ListListaRadicadoEpsTitle_codigoEps}"/>
+                                                </f:facet>
+                                                <h:outputText value=" #{item.codigoEps}"/>
+                                            </p:column>
+                                            <p:column>
+                                                <f:facet name="header">
+                                                    <h:outputText value="#{bundle.ListListaRadicadoEpsTitle_facturaNumero}"/>
+                                                </f:facet>
+                                                <h:outputText value="#{item.facturaNumero}"/>
+                                            </p:column>
+
+                                            <p:column>
+                                                <f:facet name="header">
+                                                    <h:outputText value="#{bundle.ListListaRadicadoEpsTitle_codigoSede}"/>
+                                                </f:facet>
+                                                <h:outputText value=" #{item.codigoSede}"/>
+                                            </p:column>
+                                            <p:column>
+                                                <f:facet name="header">
+                                                    <h:outputText value="#{bundle.ListListaRadicadoEpsTitle_fechaSistema}"/>
+                                                </f:facet>
+                                                <h:outputText value="#{item.fechaSistema}">
+                                                    <f:convertDateTime pattern="yyyy-MM-dd" />
+                                                </h:outputText>
+                                            </p:column>
+
+
+                                            <p:column>
+                                                <f:facet name="header">
+                                                    <h:outputText value="#{bundle.ListListaRadicadoEpsTitle_estado}"/>
+                                                </f:facet>
+                                                <h:outputText value="#{item.estado}"/>
+                                            </p:column>
+                                            <p:column>
+                                                <f:facet name="header">
+                                                    <h:outputText value="#{bundle.ListListaRadicadoEpsTitle_valorLista}"/>
+                                                </f:facet>
+                                                <h:outputText value="#{item.valorLista}">
+                                                    <f:convertNumber pattern="$ #,###.00" />
+                                                </h:outputText>
+                                            </p:column>
+                                            <p:column>
+                                                <f:facet name="header">
+                                                    <h:outputText value="#{bundle.ListListaRadicadoEpsTitle_codigoUsuario}"/>
+                                                </f:facet>
+                                                <h:outputText value=" #{item.codigoUsuario}"/>
+                                            </p:column>
+
+                                            <f:facet name="footer">
+                                                <p:panel>
+                                                    <div align="center"  >                                        
+                                                        <p:panel>
+                                                            <p:commandButton id="editButton"   icon="ui-icon-circle-arrow-w" action="/vista/menuSistema/MenuCartera.xhtml" value="#{bundle.Regresar}"/>
+                                                        </p:panel>                                   
+                                                    </div>
+                                                </p:panel>
+                                            </f:facet>
+
+                                        </p:dataTable>
+                                    </div>
+                                </div>
+                            </p:panel>
+                        </div>
+                    </p:panel>
+                </div>               
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

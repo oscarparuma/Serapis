@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewEpsSedeTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewEpsSedeLabel_codigoEpsSede}"/>
+                    <h:outputText value="#{epsSedeController.selected.codigoEpsSede}" title="#{bundle.ViewEpsSedeTitle_codigoEpsSede}"/>
+                    <h:outputText value="#{bundle.ViewEpsSedeLabel_identificacionEps}"/>
+                    <h:outputText value="#{epsSedeController.selected.identificacionEps}" title="#{bundle.ViewEpsSedeTitle_identificacionEps}"/>
+                    <h:outputText value="#{bundle.ViewEpsSedeLabel_codigoAsignado}"/>
+                    <h:outputText value="#{epsSedeController.selected.codigoAsignado}" title="#{bundle.ViewEpsSedeTitle_codigoAsignado}"/>
+                    <h:outputText value="#{bundle.ViewEpsSedeLabel_codigoMunicipio}"/>
+                    <h:outputText value="#{epsSedeController.selected.codigoMunicipio}" title="#{bundle.ViewEpsSedeTitle_codigoMunicipio}"/>
+                    <h:outputText value="#{bundle.ViewEpsSedeLabel_codigoUsuario}"/>
+                    <h:outputText value="#{epsSedeController.selected.codigoUsuario}" title="#{bundle.ViewEpsSedeTitle_codigoUsuario}"/>
+                    <h:outputText value="#{bundle.ViewEpsSedeLabel_estado}"/>
+                    <h:outputText value="#{epsSedeController.selected.estado}" title="#{bundle.ViewEpsSedeTitle_estado}"/>
+                    <h:outputText value="#{bundle.ViewEpsSedeLabel_fechaRegistro}"/>
+                    <h:outputText value="#{epsSedeController.selected.fechaRegistro}" title="#{bundle.ViewEpsSedeTitle_fechaRegistro}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewEpsSedeLabel_fechaModificacion}"/>
+                    <h:outputText value="#{epsSedeController.selected.fechaModificacion}" title="#{bundle.ViewEpsSedeTitle_fechaModificacion}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewEpsSedeLabel_nombreEps}"/>
+                    <h:outputText value="#{epsSedeController.selected.nombreEps}" title="#{bundle.ViewEpsSedeTitle_nombreEps}"/>
+                    <h:outputText value="#{bundle.ViewEpsSedeLabel_codigoDatosRegistroNit}"/>
+                    <h:outputText value="#{epsSedeController.selected.codigoDatosRegistroNit}" title="#{bundle.ViewEpsSedeTitle_codigoDatosRegistroNit}"/>
+                    <h:outputText value="#{bundle.ViewEpsSedeLabel_estadoRadicado}"/>
+                    <h:outputText value="#{epsSedeController.selected.estadoRadicado}" title="#{bundle.ViewEpsSedeTitle_estadoRadicado}"/>
+                    <h:outputText value="#{bundle.ViewEpsSedeLabel_codigoClasificacionEps}"/>
+                    <h:outputText value="#{epsSedeController.selected.codigoClasificacionEps}" title="#{bundle.ViewEpsSedeTitle_codigoClasificacionEps}"/>
+                    <h:outputText value="#{bundle.ViewEpsSedeLabel_usuarioModifico}"/>
+                    <h:outputText value="#{epsSedeController.selected.usuarioModifico}" title="#{bundle.ViewEpsSedeTitle_usuarioModifico}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{epsSedeController.destroyAndView}" value="#{bundle.ViewEpsSedeDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewEpsSedeEditLink}"/>
+                <br />
+                <h:commandLink action="#{epsSedeController.prepareCreate}" value="#{bundle.ViewEpsSedeCreateLink}" />
+                <br />
+                <h:commandLink action="#{epsSedeController.prepareList}" value="#{bundle.ViewEpsSedeShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewEpsSedeIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

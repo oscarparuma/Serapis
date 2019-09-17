@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:pe="http://primefaces.org/ui/extensions"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.AppName}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+
+            <h:form>
+                <div align="center" >
+                    <p:panel>
+                        <div align="center">
+                            <div class="container text-center">   
+                                <div class="row">
+                                    <div class="col-sm-3 well">
+                                        <p:panel id="ghost" header="#{bundle.OtrRecomMedica} #{recomendacionesMedicasOtrasController.actAgenCit.codigoPersonaCita}" style="max-width: 800px;">
+                                            <h:panelGroup style="font-size: 14px;">                                            
+                                                <p:panel style="border: 0px;">
+                                                    <p:textEditor id="recoMedica" value="#{recomendacionesMedicasOtrasController.selected.recoMedica}" height="300" style="margin-bottom:10px" placeholder="" required="true" requiredMessage="#{bundle.CreateRecomendacionesMedicasOtrasRequiredMessage_recoMedica}">
+                                                        <f:facet name="toolbar" >
+                                                            <span class="ql-formats">
+                                                                <button class="ql-bold">Negrita</button>
+                                                                <button class="ql-italic">Italica</button>
+                                                                <button class="ql-underline">Subrayado</button>
+                                                                <button class="ql-strike">Tachado</button>
+                                                            </span>
+                                                            <span class="ql-formats">
+                                                                <button class="ql-list" value="ordered" aria-label="Lista númerada"></button>
+                                                                <button class="ql-list" value="bullet" aria-label="Viñetas"></button>                            
+                                                            </span>
+                                                            <span class="ql-formats">
+                                                                <button class="ql-clean" aria-label="Remover estilos"></button>
+                                                            </span> 
+                                                        </f:facet>
+                                                    </p:textEditor>
+                                                </p:panel>
+                                            </h:panelGroup>
+                                            <f:facet name="footer">
+                                                <div align="center">
+                                                    <p:commandButton style="margin-right: 10px;" id="createButton" icon="ui-icon-plus"  process="@all" styleClass="button" ajax="false" action="#{recomendacionesMedicasOtrasController.create}" value="#{bundle.CreateRecomendacionesMedicasOtrasSaveLink}" immediate="false" />
+                                                    <p:commandButton id="viewButton"   icon="ui-icon-search" process="@all" styleClass="button" ajax="false" action="/vista/recomendacionesmedicamentos/List.xhtml" value="#{bundle.Regresar}" immediate="true"/>
+                                                </div>
+                                            </f:facet>  
+                                        </p:panel>
+                                        <p:resizable for="ghost" ghost="true"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </p:panel>
+                </div>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

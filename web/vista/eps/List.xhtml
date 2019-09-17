@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/templateIngreso.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListEpsTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <p:panel header="#{bundle.epsContrato}">
+
+                    <p:dataTable id="lalmeida"  reflow="true" value="#{epsController.listaEps}" var="item" emptyMessage=" " selectionMode="single"  paginator="true"  rowKey="#{item.codigoEps}" rows="20"  rowsPerPageTemplate="20,50,100">
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.Seleccione}"/>
+                            </f:facet>
+                            <p:commandButton action="#{epsController.prepareEditEps(item)}" value="#{bundle.Modificar}"/>
+                        </p:column>
+
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEpsTitle_clasificacionEps}"/>
+                            </f:facet>
+                            <h:outputText value=" #{item.clasificacionEps}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEpsTitle_codigoEpsSede}"/>
+                            </f:facet>
+                            <h:outputText value=" #{item.codigoEpsSede}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEpsTitle_direccion}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.direccion}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEpsTitle_telefono}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.telefono}"/>
+                        </p:column>
+
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEpsTitle_codigoMunicipio}"/>
+                            </f:facet>
+                            <h:outputText value=" #{item.codigoMunicipio}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEpsTitle_contacto}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.contacto}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEpsTitle_codigoSede}"/>
+                            </f:facet>
+                            <h:outputText value=" #{item.codigoSede}"/>
+                        </p:column>
+                        <f:facet name="footer">
+                            <p:panel>
+                                <p:commandButton style="margin-right: 10px;" id="editButton"   icon="ui-icon-plus" process="@all" styleClass="button" ajax="false" action="#{epsController.prepareCreate}" value="#{bundle.ListEpsCreateLink}"/>
+                                <p:commandButton icon="ui-icon-circle-arrow-w" process="@all" styleClass="button" ajax="false" action="/vista/menuSistema/MenuIngresos.xhtml" value="#{bundle.Regresar}" immediate="true"/>
+                            </p:panel>
+                        </f:facet>
+                    </p:dataTable>
+                </p:panel>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

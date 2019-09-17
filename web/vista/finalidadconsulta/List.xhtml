@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListFinalidadconsultaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListFinalidadconsultaEmpty}" rendered="#{finalidadconsultaController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{finalidadconsultaController.items.rowCount > 0}">
+                    <h:outputText value="#{finalidadconsultaController.pagination.pageFirstItem + 1}..#{finalidadconsultaController.pagination.pageLastItem + 1}/#{finalidadconsultaController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{finalidadconsultaController.previous}" value="#{bundle.Previous} #{finalidadconsultaController.pagination.pageSize}" rendered="#{finalidadconsultaController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{finalidadconsultaController.next}" value="#{bundle.Next} #{finalidadconsultaController.pagination.pageSize}" rendered="#{finalidadconsultaController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{finalidadconsultaController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListFinalidadconsultaTitle_codigo}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.codigo}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListFinalidadconsultaTitle_nombre}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.nombre}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListFinalidadconsultaTitle_activo}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.activo}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListFinalidadconsultaTitle_fechaRegistro}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.fechaRegistro}">
+                                <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListFinalidadconsultaTitle_fechaModificacion}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.fechaModificacion}">
+                                <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListFinalidadconsultaTitle_codigoUsuario}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.codigoUsuario}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListFinalidadconsultaTitle_modificadoPor}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.modificadoPor}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{finalidadconsultaController.prepareView}" value="#{bundle.ListFinalidadconsultaViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{finalidadconsultaController.prepareEdit}" value="#{bundle.ListFinalidadconsultaEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{finalidadconsultaController.destroy}" value="#{bundle.ListFinalidadconsultaDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{finalidadconsultaController.prepareCreate}" value="#{bundle.ListFinalidadconsultaCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListFinalidadconsultaIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

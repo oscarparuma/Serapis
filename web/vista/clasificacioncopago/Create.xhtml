@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ClasificacioncopagoCreateDlg" widgetVar="ClasificacioncopagoCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ValCuotModer}">
+            <h:form id="ClasificacioncopagoCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{clasificacioncopagoController.selected != null}">
+                        <p:outputLabel value="#{bundle.nivCuota}" for="codigoNivelCopago" />
+                        <p:selectOneMenu id="codigoNivelCopago" value="#{clasificacioncopagoController.selected.codigoNivelCopago}" >
+                            <f:selectItems value="#{nivelCopagoController.itemsAvailableSelectOne}"
+                                           var="codigoNivelCopagoItem"
+                                           itemValue="#{codigoNivelCopagoItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.ValCuotModer}" for="valorCopago" />
+                        <p:inputText id="valorCopago" value="#{clasificacioncopagoController.selected.valorCopago}"  />
+
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{clasificacioncopagoController.create}" onclick="ClasificacioncopagoCreateDialog.hide()" value="#{bundle.Save}" update="display,:ClasificacioncopagoListForm:datalist,:growl" oncomplete="handleSubmit(args,'ClasificacioncopagoCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="ClasificacioncopagoCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

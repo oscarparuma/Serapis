@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+
+      xmlns:p="http://primefaces.org/ui">
+    <f:view contentType="text/html">
+        <f:view contentType="text/html" beforePhase="#{usuarioController.beforePhase}" >
+            <h:head>
+
+
+                <script type="text/javascript">
+                    PrimeFaces.locales['es'] = {
+                        closeText: 'Cerrar',
+                        prevText: 'Anterior',
+                        nextText: 'Siguiente',
+                        monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+                        monthNamesShort: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
+                        dayNames: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
+                        dayNamesShort: ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab'],
+                        dayNamesMin: ['D', 'L', 'M', 'X', 'J', 'V', 'S'],
+                        weekHeader: 'Semana',
+                        firstDay: 1,
+                        isRTL: false,
+                        showMonthAfterYear: false,
+                        yearSuffix: '',
+                        timeOnlyTitle: 'Sólo hora',
+                        timeText: 'Tiempo',
+                        hourText: 'Hora',
+                        minuteText: 'Minuto',
+                        secondText: 'Segundo',
+                        currentText: 'Fecha actual',
+                        ampm: false,
+                        month: 'Mes',
+                        week: 'Semana',
+                        day: 'Día',
+                        allDayText: 'Todo el día'
+                    };
+                </script>   
+
+
+                <script type = "text/javascript" >
+                    function handleMessage(facesmessage) {
+                        facesmessage.severity = 'info';
+                        PF('mensaje').show([facesmessage]);
+                    }
+
+                    function changeHashOnLoad() {
+                        window.location.href += "#";
+                        setTimeout("changeHashAgain()", "50");
+                    }
+
+                    function changeHashAgain() {
+                        window.location.href += "0";
+                    }
+
+                    var storedHash = window.location.hash;
+                    window.setInterval(function () {
+                        if (window.location.hash != storedHash) {
+                            window.location.hash = storedHash;
+                        }
+                    }, 50);
+                </script>    
+
+
+                <script type = "text/javascript" >
+                    function nobackbutton() {
+
+                        window.location.hash = "no-back-button";
+
+                        window.location.hash = "Again-No-back-button" //chrome
+
+                        window.onhashchange = function () {
+                            window.location.hash = "no-back-button";
+                        }
+
+                    }
+                </script>  
+
+
+                <script type="text/javascript">
+                    {
+                        if (history.forward(1))
+                            location.replace(history.forward(1))
+                    }
+                </script>
+                <!--
+                            <script language="JavaScript">
+                                javascript:window.history.forward(1); //Esto es para cuando le pulse al botón de Atrás
+                                        javascript:window.history.back(1); //Esto para cuando le pulse al botón deAdelante
+                            </script> -->
+
+
+                <f:facet name="first">
+                    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+                    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+                    <meta name="viewport" content="width=device-width, initial-scale=1" />
+                    <link rel="shortcut icon" href="#{request.contextPath}/mlegal.ico" />
+                    <link rel="icon" href="#{request.contextPath}/mlegal.ico" />
+                    <meta http-equiv="Expires" content="0"/> 
+                    <title>#{bundle.AppName}"</title>
+
+                </f:facet>
+                <f:facet name="middle">
+                </f:facet>
+                <f:facet name="last">
+                </f:facet>
+                <head>
+
+                    <meta charset="utf-8">
+                        <meta name="viewport" content="width=device-width, initial-scale=1">
+                            <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+                                <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+                                <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+                                <link type="text/css" rel="stylesheet" href="serapis-usuario.css" />
+                            </link>
+                        </meta>
+                    </meta>
+                </head>
+
+
+            </h:head>
+
+            <h:body>
+                <p:panel header="#{bundle.AppName} #{usuarioController.selected.nombreUsuario}">
+                    <nav class="headerEnc">                  
+                    </nav>
+                    <p:panel>
+                        <nav class="header">
+                            <div class="container-fluid">
+                                <div class="navbar-header">
+                                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>                        
+                                    </button>
+                                    <a class="navbar-brand" href="#">#{bundle.Menu}</a>
+                                </div>
+                                <div class="collapse navbar-collapse" id="myNavbar">
+                                    <ul class="nav navbar-nav">
+                                        <p:menubar>
+                                            <p:submenu label="#{bundle.EstadoVehiculo}">
+
+
+                                            </p:submenu>
+
+
+                                            <p:menuitem value="#{bundle.Home}" outcome="/index" icon="ui-icon-home"/>
+                                        </p:menubar>  
+                                    </ul>
+
+                                </div>
+                            </div>
+                        </nav>
+                    </p:panel>
+                </p:panel>
+
+
+               
+
+              
+                <div  >
+                    <div >
+                        <ui:insert name="mantenimiento"/>
+                        <ui:insert name="body"/>
+                        <p:layoutUnit position="south" size="50">
+                <div class="ui-g footer"> 
+                    <div class="ui-g-4">© Serapis Médico 2017 </div>   
+                    <div class="ui-g-4"> 
+                        <p:button outcome="/vista/manualSede/ingreso" value="Manual Serapis Médico">
+                        </p:button>
+                    </div>
+                    <div class="ui-g-4">info@serapismedico.com</div> 
+                </div> 
+                                 
+               </p:layoutUnit>
+                    </div>
+                </div>
+
+
+                <h:outputScript name="./js/bootstrap.js" />
+                <h:outputScript name="./js/sb-admin-2.js" />                        
+                <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>            
+            </h:body>
+        </f:view>
+    </f:view>
+</html>

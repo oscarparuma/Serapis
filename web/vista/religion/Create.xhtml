@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateReligionTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateReligionLabel_codigoReligion}" for="codigoReligion" />
+                    <h:inputText id="codigoReligion" value="#{religionController.selected.codigoReligion}" title="#{bundle.CreateReligionTitle_codigoReligion}" required="true" requiredMessage="#{bundle.CreateReligionRequiredMessage_codigoReligion}"/>
+                    <h:outputLabel value="#{bundle.CreateReligionLabel_nombreReligion}" for="nombreReligion" />
+                    <h:inputText id="nombreReligion" value="#{religionController.selected.nombreReligion}" title="#{bundle.CreateReligionTitle_nombreReligion}" />
+                    <h:outputLabel value="#{bundle.CreateReligionLabel_activa}" for="activa" />
+                    <h:inputText id="activa" value="#{religionController.selected.activa}" title="#{bundle.CreateReligionTitle_activa}" />
+                    <h:outputLabel value="#{bundle.CreateReligionLabel_fechaRegistro}" for="fechaRegistro" />
+                    <h:inputText id="fechaRegistro" value="#{religionController.selected.fechaRegistro}" title="#{bundle.CreateReligionTitle_fechaRegistro}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreateReligionLabel_fechaModificacion}" for="fechaModificacion" />
+                    <h:inputText id="fechaModificacion" value="#{religionController.selected.fechaModificacion}" title="#{bundle.CreateReligionTitle_fechaModificacion}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreateReligionLabel_codigoUsuario}" for="codigoUsuario" />
+                    <h:selectOneMenu id="codigoUsuario" value="#{religionController.selected.codigoUsuario}" title="#{bundle.CreateReligionTitle_codigoUsuario}" >
+                        <f:selectItems value="#{usuarioController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateReligionLabel_codigoUsuarioModifico}" for="codigoUsuarioModifico" />
+                    <h:selectOneMenu id="codigoUsuarioModifico" value="#{religionController.selected.codigoUsuarioModifico}" title="#{bundle.CreateReligionTitle_codigoUsuarioModifico}" >
+                        <f:selectItems value="#{usuarioController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{religionController.create}" value="#{bundle.CreateReligionSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{religionController.prepareList}" value="#{bundle.CreateReligionShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateReligionIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

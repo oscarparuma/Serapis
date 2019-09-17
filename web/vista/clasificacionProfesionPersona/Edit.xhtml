@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditClasificacionProfesionPersonaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditClasificacionProfesionPersonaLabel_codigoClasificacionProfesion}" for="codigoClasificacionProfesion" />
+                    <h:inputText id="codigoClasificacionProfesion" value="#{clasificacionProfesionPersonaController.selected.codigoClasificacionProfesion}" title="#{bundle.EditClasificacionProfesionPersonaTitle_codigoClasificacionProfesion}" required="true" requiredMessage="#{bundle.EditClasificacionProfesionPersonaRequiredMessage_codigoClasificacionProfesion}"/>
+                    <h:outputLabel value="#{bundle.EditClasificacionProfesionPersonaLabel_nombreClasificacionProfesion}" for="nombreClasificacionProfesion" />
+                    <h:inputText id="nombreClasificacionProfesion" value="#{clasificacionProfesionPersonaController.selected.nombreClasificacionProfesion}" title="#{bundle.EditClasificacionProfesionPersonaTitle_nombreClasificacionProfesion}" />
+                    <h:outputLabel value="#{bundle.EditClasificacionProfesionPersonaLabel_activo}" for="activo" />
+                    <h:inputText id="activo" value="#{clasificacionProfesionPersonaController.selected.activo}" title="#{bundle.EditClasificacionProfesionPersonaTitle_activo}" />
+                    <h:outputLabel value="#{bundle.EditClasificacionProfesionPersonaLabel_fecharegistro}" for="fecharegistro" />
+                    <h:inputText id="fecharegistro" value="#{clasificacionProfesionPersonaController.selected.fecharegistro}" title="#{bundle.EditClasificacionProfesionPersonaTitle_fecharegistro}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditClasificacionProfesionPersonaLabel_fechaModificacion}" for="fechaModificacion" />
+                    <h:inputText id="fechaModificacion" value="#{clasificacionProfesionPersonaController.selected.fechaModificacion}" title="#{bundle.EditClasificacionProfesionPersonaTitle_fechaModificacion}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditClasificacionProfesionPersonaLabel_codigoProfesionPersona}" for="codigoProfesionPersona" />
+                    <h:selectOneMenu id="codigoProfesionPersona" value="#{clasificacionProfesionPersonaController.selected.codigoProfesionPersona}" title="#{bundle.EditClasificacionProfesionPersonaTitle_codigoProfesionPersona}" >
+                        <f:selectItems value="#{profesionpersonaController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditClasificacionProfesionPersonaLabel_codigoUsuario}" for="codigoUsuario" />
+                    <h:selectOneMenu id="codigoUsuario" value="#{clasificacionProfesionPersonaController.selected.codigoUsuario}" title="#{bundle.EditClasificacionProfesionPersonaTitle_codigoUsuario}" >
+                        <f:selectItems value="#{usuarioController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditClasificacionProfesionPersonaLabel_modificadoPor}" for="modificadoPor" />
+                    <h:selectOneMenu id="modificadoPor" value="#{clasificacionProfesionPersonaController.selected.modificadoPor}" title="#{bundle.EditClasificacionProfesionPersonaTitle_modificadoPor}" >
+                        <f:selectItems value="#{usuarioController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{clasificacionProfesionPersonaController.update}" value="#{bundle.EditClasificacionProfesionPersonaSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditClasificacionProfesionPersonaViewLink}"/>
+                <br />
+                <h:commandLink action="#{clasificacionProfesionPersonaController.prepareList}" value="#{bundle.EditClasificacionProfesionPersonaShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditClasificacionProfesionPersonaIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

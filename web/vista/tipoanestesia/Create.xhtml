@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateTipoanestesiaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateTipoanestesiaLabel_codigoAnestesia}" for="codigoAnestesia" />
+                    <h:inputText id="codigoAnestesia" value="#{tipoanestesiaController.selected.codigoAnestesia}" title="#{bundle.CreateTipoanestesiaTitle_codigoAnestesia}" required="true" requiredMessage="#{bundle.CreateTipoanestesiaRequiredMessage_codigoAnestesia}"/>
+                    <h:outputLabel value="#{bundle.CreateTipoanestesiaLabel_nombre}" for="nombre" />
+                    <h:inputText id="nombre" value="#{tipoanestesiaController.selected.nombre}" title="#{bundle.CreateTipoanestesiaTitle_nombre}" />
+                    <h:outputLabel value="#{bundle.CreateTipoanestesiaLabel_activo}" for="activo" />
+                    <h:inputText id="activo" value="#{tipoanestesiaController.selected.activo}" title="#{bundle.CreateTipoanestesiaTitle_activo}" />
+                    <h:outputLabel value="#{bundle.CreateTipoanestesiaLabel_fechaRegistro}" for="fechaRegistro" />
+                    <h:inputText id="fechaRegistro" value="#{tipoanestesiaController.selected.fechaRegistro}" title="#{bundle.CreateTipoanestesiaTitle_fechaRegistro}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreateTipoanestesiaLabel_fechaModificacion}" for="fechaModificacion" />
+                    <h:inputText id="fechaModificacion" value="#{tipoanestesiaController.selected.fechaModificacion}" title="#{bundle.CreateTipoanestesiaTitle_fechaModificacion}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreateTipoanestesiaLabel_codigoUsuario}" for="codigoUsuario" />
+                    <h:selectOneMenu id="codigoUsuario" value="#{tipoanestesiaController.selected.codigoUsuario}" title="#{bundle.CreateTipoanestesiaTitle_codigoUsuario}" >
+                        <f:selectItems value="#{usuarioController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateTipoanestesiaLabel_codigoUsuarioModifico}" for="codigoUsuarioModifico" />
+                    <h:selectOneMenu id="codigoUsuarioModifico" value="#{tipoanestesiaController.selected.codigoUsuarioModifico}" title="#{bundle.CreateTipoanestesiaTitle_codigoUsuarioModifico}" >
+                        <f:selectItems value="#{usuarioController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{tipoanestesiaController.create}" value="#{bundle.CreateTipoanestesiaSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{tipoanestesiaController.prepareList}" value="#{bundle.CreateTipoanestesiaShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateTipoanestesiaIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

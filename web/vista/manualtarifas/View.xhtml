@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewManualtarifasTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewManualtarifasLabel_codigoCups}"/>
+                    <h:outputText value="#{manualtarifasController.selected.codigoCups}" title="#{bundle.ViewManualtarifasTitle_codigoCups}"/>
+                    <h:outputText value="#{bundle.ViewManualtarifasLabel_codigoManual}"/>
+                    <h:outputText value="#{manualtarifasController.selected.codigoManual}" title="#{bundle.ViewManualtarifasTitle_codigoManual}"/>
+                    <h:outputText value="#{bundle.ViewManualtarifasLabel_descripcionCups}"/>
+                    <h:outputText value="#{manualtarifasController.selected.descripcionCups}" title="#{bundle.ViewManualtarifasTitle_descripcionCups}"/>
+                    <h:outputText value="#{bundle.ViewManualtarifasLabel_valorUvr}"/>
+                    <h:outputText value="#{manualtarifasController.selected.valorUvr}" title="#{bundle.ViewManualtarifasTitle_valorUvr}"/>
+                    <h:outputText value="#{bundle.ViewManualtarifasLabel_fechaRegistro}"/>
+                    <h:outputText value="#{manualtarifasController.selected.fechaRegistro}" title="#{bundle.ViewManualtarifasTitle_fechaRegistro}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewManualtarifasLabel_fechaModificacion}"/>
+                    <h:outputText value="#{manualtarifasController.selected.fechaModificacion}" title="#{bundle.ViewManualtarifasTitle_fechaModificacion}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewManualtarifasLabel_activo}"/>
+                    <h:outputText value="#{manualtarifasController.selected.activo}" title="#{bundle.ViewManualtarifasTitle_activo}"/>
+                    <h:outputText value="#{bundle.ViewManualtarifasLabel_codigoUsuario}"/>
+                    <h:outputText value="#{manualtarifasController.selected.codigoUsuario}" title="#{bundle.ViewManualtarifasTitle_codigoUsuario}"/>
+                    <h:outputText value="#{bundle.ViewManualtarifasLabel_modificadoPor}"/>
+                    <h:outputText value="#{manualtarifasController.selected.modificadoPor}" title="#{bundle.ViewManualtarifasTitle_modificadoPor}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{manualtarifasController.destroyAndView}" value="#{bundle.ViewManualtarifasDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewManualtarifasEditLink}"/>
+                <br />
+                <h:commandLink action="#{manualtarifasController.prepareCreate}" value="#{bundle.ViewManualtarifasCreateLink}" />
+                <br />
+                <h:commandLink action="#{manualtarifasController.prepareList}" value="#{bundle.ViewManualtarifasShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewManualtarifasIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

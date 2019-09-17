@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateSucursalempresaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateSucursalempresaLabel_consecutivoSucursalEmpresa}" for="consecutivoSucursalEmpresa" />
+                    <h:inputText id="consecutivoSucursalEmpresa" value="#{sucursalempresaController.selected.consecutivoSucursalEmpresa}" title="#{bundle.CreateSucursalempresaTitle_consecutivoSucursalEmpresa}" required="true" requiredMessage="#{bundle.CreateSucursalempresaRequiredMessage_consecutivoSucursalEmpresa}"/>
+                    <h:outputLabel value="#{bundle.CreateSucursalempresaLabel_identificacionEmpresa}" for="identificacionEmpresa" />
+                    <h:inputText id="identificacionEmpresa" value="#{sucursalempresaController.selected.identificacionEmpresa}" title="#{bundle.CreateSucursalempresaTitle_identificacionEmpresa}" />
+                    <h:outputLabel value="#{bundle.CreateSucursalempresaLabel_nombreEmpresa}" for="nombreEmpresa" />
+                    <h:inputText id="nombreEmpresa" value="#{sucursalempresaController.selected.nombreEmpresa}" title="#{bundle.CreateSucursalempresaTitle_nombreEmpresa}" />
+                    <h:outputLabel value="#{bundle.CreateSucursalempresaLabel_direccio}" for="direccio" />
+                    <h:inputText id="direccio" value="#{sucursalempresaController.selected.direccio}" title="#{bundle.CreateSucursalempresaTitle_direccio}" />
+                    <h:outputLabel value="#{bundle.CreateSucursalempresaLabel_telefono}" for="telefono" />
+                    <h:inputText id="telefono" value="#{sucursalempresaController.selected.telefono}" title="#{bundle.CreateSucursalempresaTitle_telefono}" />
+                    <h:outputLabel value="#{bundle.CreateSucursalempresaLabel_fechaRegistro}" for="fechaRegistro" />
+                    <h:inputText id="fechaRegistro" value="#{sucursalempresaController.selected.fechaRegistro}" title="#{bundle.CreateSucursalempresaTitle_fechaRegistro}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreateSucursalempresaLabel_fechaModificacion}" for="fechaModificacion" />
+                    <h:inputText id="fechaModificacion" value="#{sucursalempresaController.selected.fechaModificacion}" title="#{bundle.CreateSucursalempresaTitle_fechaModificacion}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreateSucursalempresaLabel_nombreContacto}" for="nombreContacto" />
+                    <h:inputText id="nombreContacto" value="#{sucursalempresaController.selected.nombreContacto}" title="#{bundle.CreateSucursalempresaTitle_nombreContacto}" />
+                    <h:outputLabel value="#{bundle.CreateSucursalempresaLabel_activo}" for="activo" />
+                    <h:inputText id="activo" value="#{sucursalempresaController.selected.activo}" title="#{bundle.CreateSucursalempresaTitle_activo}" />
+                    <h:outputLabel value="#{bundle.CreateSucursalempresaLabel_codigoDepartamento}" for="codigoDepartamento" />
+                    <h:selectOneMenu id="codigoDepartamento" value="#{sucursalempresaController.selected.codigoDepartamento}" title="#{bundle.CreateSucursalempresaTitle_codigoDepartamento}" >
+                        <f:selectItems value="#{departamentoController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateSucursalempresaLabel_codigoEmpresa}" for="codigoEmpresa" />
+                    <h:selectOneMenu id="codigoEmpresa" value="#{sucursalempresaController.selected.codigoEmpresa}" title="#{bundle.CreateSucursalempresaTitle_codigoEmpresa}" >
+                        <f:selectItems value="#{empresaController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateSucursalempresaLabel_codigoMunicipio}" for="codigoMunicipio" />
+                    <h:selectOneMenu id="codigoMunicipio" value="#{sucursalempresaController.selected.codigoMunicipio}" title="#{bundle.CreateSucursalempresaTitle_codigoMunicipio}" >
+                        <f:selectItems value="#{municipioController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateSucursalempresaLabel_codigoUsuario}" for="codigoUsuario" />
+                    <h:selectOneMenu id="codigoUsuario" value="#{sucursalempresaController.selected.codigoUsuario}" title="#{bundle.CreateSucursalempresaTitle_codigoUsuario}" >
+                        <f:selectItems value="#{usuarioController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateSucursalempresaLabel_usuarioModifico}" for="usuarioModifico" />
+                    <h:selectOneMenu id="usuarioModifico" value="#{sucursalempresaController.selected.usuarioModifico}" title="#{bundle.CreateSucursalempresaTitle_usuarioModifico}" >
+                        <f:selectItems value="#{usuarioController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{sucursalempresaController.create}" value="#{bundle.CreateSucursalempresaSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{sucursalempresaController.prepareList}" value="#{bundle.CreateSucursalempresaShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateSucursalempresaIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

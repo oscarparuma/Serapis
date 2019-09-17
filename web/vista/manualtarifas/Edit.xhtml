@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditManualtarifasTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditManualtarifasLabel_codigoCups}" for="codigoCups" />
+                    <h:inputText id="codigoCups" value="#{manualtarifasController.selected.codigoCups}" title="#{bundle.EditManualtarifasTitle_codigoCups}" required="true" requiredMessage="#{bundle.EditManualtarifasRequiredMessage_codigoCups}"/>
+                    <h:outputLabel value="#{bundle.EditManualtarifasLabel_codigoManual}" for="codigoManual" />
+                    <h:inputText id="codigoManual" value="#{manualtarifasController.selected.codigoManual}" title="#{bundle.EditManualtarifasTitle_codigoManual}" />
+                    <h:outputLabel value="#{bundle.EditManualtarifasLabel_descripcionCups}" for="descripcionCups" />
+                    <h:inputText id="descripcionCups" value="#{manualtarifasController.selected.descripcionCups}" title="#{bundle.EditManualtarifasTitle_descripcionCups}" />
+                    <h:outputLabel value="#{bundle.EditManualtarifasLabel_valorUvr}" for="valorUvr" />
+                    <h:inputText id="valorUvr" value="#{manualtarifasController.selected.valorUvr}" title="#{bundle.EditManualtarifasTitle_valorUvr}" />
+                    <h:outputLabel value="#{bundle.EditManualtarifasLabel_fechaRegistro}" for="fechaRegistro" />
+                    <h:inputText id="fechaRegistro" value="#{manualtarifasController.selected.fechaRegistro}" title="#{bundle.EditManualtarifasTitle_fechaRegistro}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditManualtarifasLabel_fechaModificacion}" for="fechaModificacion" />
+                    <h:inputText id="fechaModificacion" value="#{manualtarifasController.selected.fechaModificacion}" title="#{bundle.EditManualtarifasTitle_fechaModificacion}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditManualtarifasLabel_activo}" for="activo" />
+                    <h:inputText id="activo" value="#{manualtarifasController.selected.activo}" title="#{bundle.EditManualtarifasTitle_activo}" />
+                    <h:outputLabel value="#{bundle.EditManualtarifasLabel_codigoUsuario}" for="codigoUsuario" />
+                    <h:selectOneMenu id="codigoUsuario" value="#{manualtarifasController.selected.codigoUsuario}" title="#{bundle.EditManualtarifasTitle_codigoUsuario}" >
+                        <f:selectItems value="#{usuarioController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditManualtarifasLabel_modificadoPor}" for="modificadoPor" />
+                    <h:selectOneMenu id="modificadoPor" value="#{manualtarifasController.selected.modificadoPor}" title="#{bundle.EditManualtarifasTitle_modificadoPor}" >
+                        <f:selectItems value="#{usuarioController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{manualtarifasController.update}" value="#{bundle.EditManualtarifasSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditManualtarifasViewLink}"/>
+                <br />
+                <h:commandLink action="#{manualtarifasController.prepareList}" value="#{bundle.EditManualtarifasShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditManualtarifasIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

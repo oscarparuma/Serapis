@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateFinalidadconsultaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateFinalidadconsultaLabel_codigo}" for="codigo" />
+                    <h:inputText id="codigo" value="#{finalidadconsultaController.selected.codigo}" title="#{bundle.CreateFinalidadconsultaTitle_codigo}" required="true" requiredMessage="#{bundle.CreateFinalidadconsultaRequiredMessage_codigo}"/>
+                    <h:outputLabel value="#{bundle.CreateFinalidadconsultaLabel_nombre}" for="nombre" />
+                    <h:inputText id="nombre" value="#{finalidadconsultaController.selected.nombre}" title="#{bundle.CreateFinalidadconsultaTitle_nombre}" />
+                    <h:outputLabel value="#{bundle.CreateFinalidadconsultaLabel_activo}" for="activo" />
+                    <h:inputText id="activo" value="#{finalidadconsultaController.selected.activo}" title="#{bundle.CreateFinalidadconsultaTitle_activo}" />
+                    <h:outputLabel value="#{bundle.CreateFinalidadconsultaLabel_fechaRegistro}" for="fechaRegistro" />
+                    <h:inputText id="fechaRegistro" value="#{finalidadconsultaController.selected.fechaRegistro}" title="#{bundle.CreateFinalidadconsultaTitle_fechaRegistro}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreateFinalidadconsultaLabel_fechaModificacion}" for="fechaModificacion" />
+                    <h:inputText id="fechaModificacion" value="#{finalidadconsultaController.selected.fechaModificacion}" title="#{bundle.CreateFinalidadconsultaTitle_fechaModificacion}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreateFinalidadconsultaLabel_codigoUsuario}" for="codigoUsuario" />
+                    <h:selectOneMenu id="codigoUsuario" value="#{finalidadconsultaController.selected.codigoUsuario}" title="#{bundle.CreateFinalidadconsultaTitle_codigoUsuario}" >
+                        <f:selectItems value="#{usuarioController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateFinalidadconsultaLabel_modificadoPor}" for="modificadoPor" />
+                    <h:selectOneMenu id="modificadoPor" value="#{finalidadconsultaController.selected.modificadoPor}" title="#{bundle.CreateFinalidadconsultaTitle_modificadoPor}" >
+                        <f:selectItems value="#{usuarioController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{finalidadconsultaController.create}" value="#{bundle.CreateFinalidadconsultaSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{finalidadconsultaController.prepareList}" value="#{bundle.CreateFinalidadconsultaShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateFinalidadconsultaIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

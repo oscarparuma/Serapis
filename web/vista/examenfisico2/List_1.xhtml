@@ -1,0 +1,348 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListExamenfisicoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListExamenfisicoEmpty}" rendered="#{examenfisicoController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{examenfisicoController.items.rowCount > 0}">
+                    <h:outputText value="#{examenfisicoController.pagination.pageFirstItem + 1}..#{examenfisicoController.pagination.pageLastItem + 1}/#{examenfisicoController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{examenfisicoController.previous}" value="#{bundle.Previous} #{examenfisicoController.pagination.pageSize}" rendered="#{examenfisicoController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{examenfisicoController.next}" value="#{bundle.Next} #{examenfisicoController.pagination.pageSize}" rendered="#{examenfisicoController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{examenfisicoController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListExamenfisicoTitle_consecutivo}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.consecutivo}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListExamenfisicoTitle_cabeza}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.cabeza}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListExamenfisicoTitle_ojos}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.ojos}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListExamenfisicoTitle_oidos}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.oidos}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListExamenfisicoTitle_agudezaAuditiva}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.agudezaAuditiva}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListExamenfisicoTitle_nariz}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.nariz}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListExamenfisicoTitle_faringe}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.faringe}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListExamenfisicoTitle_dental}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.dental}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListExamenfisicoTitle_cuello}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.cuello}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListExamenfisicoTitle_aparatoCirculatorio}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.aparatoCirculatorio}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListExamenfisicoTitle_aparatoRespitatorio}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.aparatoRespitatorio}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListExamenfisicoTitle_abdomen}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.abdomen}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListExamenfisicoTitle_genitales}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.genitales}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListExamenfisicoTitle_tanner}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.tanner}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListExamenfisicoTitle_neurologico}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.neurologico}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListExamenfisicoTitle_desarrolloSicomotor}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.desarrolloSicomotor}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListExamenfisicoTitle_osteomuscular}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.osteomuscular}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListExamenfisicoTitle_pielFanelas}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.pielFanelas}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListExamenfisicoTitle_sistemasGanglionar}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.sistemasGanglionar}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListExamenfisicoTitle_bcg}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.bcg}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListExamenfisicoTitle_otros}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.otros}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListExamenfisicoTitle_fechaRegistro}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.fechaRegistro}">
+                                <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListExamenfisicoTitle_fechaModificacion}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.fechaModificacion}">
+                                <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListExamenfisicoTitle_pesoPersona}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.pesoPersona}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListExamenfisicoTitle_descripcionPeso}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.descripcionPeso}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListExamenfisicoTitle_tallaPersona}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.tallaPersona}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListExamenfisicoTitle_descripcionTalla}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.descripcionTalla}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListExamenfisicoTitle_frecuenciaCardiacaPersona}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.frecuenciaCardiacaPersona}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListExamenfisicoTitle_descripcionFrecuenciaCardiaca}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.descripcionFrecuenciaCardiaca}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListExamenfisicoTitle_frecuenciaRespiratoriaPersona}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.frecuenciaRespiratoriaPersona}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListExamenfisicoTitle_detalleFrecuenciaRespiratoria}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.detalleFrecuenciaRespiratoria}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListExamenfisicoTitle_presionArterialSistomaticaPersona}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.presionArterialSistomaticaPersona}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListExamenfisicoTitle_descripcionPresionArterialSistomatica}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.descripcionPresionArterialSistomatica}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListExamenfisicoTitle_presionArterialDiastolicaPersona}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.presionArterialDiastolicaPersona}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListExamenfisicoTitle_descripcionPresionArterialDiastolica}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.descripcionPresionArterialDiastolica}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListExamenfisicoTitle_perimetroCranealPersona}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.perimetroCranealPersona}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListExamenfisicoTitle_descripcionPerimetroCraneal}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.descripcionPerimetroCraneal}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListExamenfisicoTitle_perimetroToraxPersona}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.perimetroToraxPersona}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListExamenfisicoTitle_descripcionPerimetroTorax}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.descripcionPerimetroTorax}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListExamenfisicoTitle_temperaturaPersona}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.temperaturaPersona}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListExamenfisicoTitle_descripcionTemperatura}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.descripcionTemperatura}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListExamenfisicoTitle_reticulocitos}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.reticulocitos}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListExamenfisicoTitle_descripcionReticulocitos}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.descripcionReticulocitos}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListExamenfisicoTitle_recuentoPlaquetas}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.recuentoPlaquetas}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListExamenfisicoTitle_descripcionRecuentosPlaquetas}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.descripcionRecuentosPlaquetas}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListExamenfisicoTitle_numeroDocumentoIdentidad}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.numeroDocumentoIdentidad}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListExamenfisicoTitle_codigoCita}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.codigoCita}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListExamenfisicoTitle_codigoPersona}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.codigoPersona}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListExamenfisicoTitle_codigoUsuario}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.codigoUsuario}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListExamenfisicoTitle_modificadoPor}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.modificadoPor}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{examenfisicoController.prepareView}" value="#{bundle.ListExamenfisicoViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{examenfisicoController.prepareEdit}" value="#{bundle.ListExamenfisicoEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{examenfisicoController.destroy}" value="#{bundle.ListExamenfisicoDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{examenfisicoController.prepareCreate}" value="#{bundle.ListExamenfisicoCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListExamenfisicoIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

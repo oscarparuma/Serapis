@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateCargosedeTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateCargosedeLabel_codigoCargo}" for="codigoCargo" />
+                    <h:inputText id="codigoCargo" value="#{cargosedeController.selected.codigoCargo}" title="#{bundle.CreateCargosedeTitle_codigoCargo}" required="true" requiredMessage="#{bundle.CreateCargosedeRequiredMessage_codigoCargo}"/>
+                    <h:outputLabel value="#{bundle.CreateCargosedeLabel_nombreCargo}" for="nombreCargo" />
+                    <h:inputText id="nombreCargo" value="#{cargosedeController.selected.nombreCargo}" title="#{bundle.CreateCargosedeTitle_nombreCargo}" />
+                    <h:outputLabel value="#{bundle.CreateCargosedeLabel_activo}" for="activo" />
+                    <h:inputText id="activo" value="#{cargosedeController.selected.activo}" title="#{bundle.CreateCargosedeTitle_activo}" />
+                    <h:outputLabel value="#{bundle.CreateCargosedeLabel_fechaRegistro}" for="fechaRegistro" />
+                    <h:inputText id="fechaRegistro" value="#{cargosedeController.selected.fechaRegistro}" title="#{bundle.CreateCargosedeTitle_fechaRegistro}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreateCargosedeLabel_fechaModificacion}" for="fechaModificacion" />
+                    <h:inputText id="fechaModificacion" value="#{cargosedeController.selected.fechaModificacion}" title="#{bundle.CreateCargosedeTitle_fechaModificacion}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreateCargosedeLabel_codigoSede}" for="codigoSede" />
+                    <h:selectOneMenu id="codigoSede" value="#{cargosedeController.selected.codigoSede}" title="#{bundle.CreateCargosedeTitle_codigoSede}" >
+                        <f:selectItems value="#{sedeController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateCargosedeLabel_codigoUsuario}" for="codigoUsuario" />
+                    <h:selectOneMenu id="codigoUsuario" value="#{cargosedeController.selected.codigoUsuario}" title="#{bundle.CreateCargosedeTitle_codigoUsuario}" >
+                        <f:selectItems value="#{usuarioController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateCargosedeLabel_usuarioModificacion}" for="usuarioModificacion" />
+                    <h:selectOneMenu id="usuarioModificacion" value="#{cargosedeController.selected.usuarioModificacion}" title="#{bundle.CreateCargosedeTitle_usuarioModificacion}" >
+                        <f:selectItems value="#{usuarioController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{cargosedeController.create}" value="#{bundle.CreateCargosedeSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{cargosedeController.prepareList}" value="#{bundle.CreateCargosedeShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateCargosedeIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

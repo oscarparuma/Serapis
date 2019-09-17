@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditTipoexamenTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditTipoexamenLabel_codigo}" for="codigo" />
+                    <h:inputText id="codigo" value="#{tipoexamenController.selected.codigo}" title="#{bundle.EditTipoexamenTitle_codigo}" required="true" requiredMessage="#{bundle.EditTipoexamenRequiredMessage_codigo}"/>
+                    <h:outputLabel value="#{bundle.EditTipoexamenLabel_nombreExamene}" for="nombreExamene" />
+                    <h:inputText id="nombreExamene" value="#{tipoexamenController.selected.nombreExamene}" title="#{bundle.EditTipoexamenTitle_nombreExamene}" />
+                    <h:outputLabel value="#{bundle.EditTipoexamenLabel_activo}" for="activo" />
+                    <h:inputText id="activo" value="#{tipoexamenController.selected.activo}" title="#{bundle.EditTipoexamenTitle_activo}" />
+                    <h:outputLabel value="#{bundle.EditTipoexamenLabel_fechaRegistro}" for="fechaRegistro" />
+                    <h:inputText id="fechaRegistro" value="#{tipoexamenController.selected.fechaRegistro}" title="#{bundle.EditTipoexamenTitle_fechaRegistro}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditTipoexamenLabel_fechaModificacion}" for="fechaModificacion" />
+                    <h:inputText id="fechaModificacion" value="#{tipoexamenController.selected.fechaModificacion}" title="#{bundle.EditTipoexamenTitle_fechaModificacion}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditTipoexamenLabel_codigoArea}" for="codigoArea" />
+                    <h:selectOneMenu id="codigoArea" value="#{tipoexamenController.selected.codigoArea}" title="#{bundle.EditTipoexamenTitle_codigoArea}" >
+                        <f:selectItems value="#{areaController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditTipoexamenLabel_codigoDependencia}" for="codigoDependencia" />
+                    <h:selectOneMenu id="codigoDependencia" value="#{tipoexamenController.selected.codigoDependencia}" title="#{bundle.EditTipoexamenTitle_codigoDependencia}" >
+                        <f:selectItems value="#{dependenciaController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditTipoexamenLabel_codigoSede}" for="codigoSede" />
+                    <h:selectOneMenu id="codigoSede" value="#{tipoexamenController.selected.codigoSede}" title="#{bundle.EditTipoexamenTitle_codigoSede}" >
+                        <f:selectItems value="#{sedeController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditTipoexamenLabel_codigoUsuario}" for="codigoUsuario" />
+                    <h:selectOneMenu id="codigoUsuario" value="#{tipoexamenController.selected.codigoUsuario}" title="#{bundle.EditTipoexamenTitle_codigoUsuario}" >
+                        <f:selectItems value="#{usuarioController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditTipoexamenLabel_modificadoPor}" for="modificadoPor" />
+                    <h:selectOneMenu id="modificadoPor" value="#{tipoexamenController.selected.modificadoPor}" title="#{bundle.EditTipoexamenTitle_modificadoPor}" >
+                        <f:selectItems value="#{usuarioController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{tipoexamenController.update}" value="#{bundle.EditTipoexamenSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditTipoexamenViewLink}"/>
+                <br />
+                <h:commandLink action="#{tipoexamenController.prepareList}" value="#{bundle.EditTipoexamenShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditTipoexamenIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

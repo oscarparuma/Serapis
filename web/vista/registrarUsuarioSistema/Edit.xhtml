@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="UsuarioEditDlg" widgetVar="UsuarioEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditUsuarioTitle}">
+            <h:form id="UsuarioEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{usuarioController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditUsuarioLabel_codigoUsuario}" for="codigoUsuario" />
+                        <p:inputText id="codigoUsuario" value="#{usuarioController.selected.codigoUsuario}" title="#{bundle.EditUsuarioTitle_codigoUsuario}" required="true" requiredMessage="#{bundle.EditUsuarioRequiredMessage_codigoUsuario}"/>
+                        <p:outputLabel value="#{bundle.EditUsuarioLabel_clave}" for="clave" />
+                        <p:inputText id="clave" value="#{usuarioController.selected.clave}" title="#{bundle.EditUsuarioTitle_clave}" />
+                        <p:outputLabel value="#{bundle.EditUsuarioLabel_nombreUsuario}" for="nombreUsuario" />
+                        <p:inputText id="nombreUsuario" value="#{usuarioController.selected.nombreUsuario}" title="#{bundle.EditUsuarioTitle_nombreUsuario}" />
+                        <p:outputLabel value="#{bundle.EditUsuarioLabel_activo}" for="activo" />
+                        <p:inputText id="activo" value="#{usuarioController.selected.activo}" title="#{bundle.EditUsuarioTitle_activo}" />
+                        <p:outputLabel value="#{bundle.EditUsuarioLabel_fechaRegistro}" for="fechaRegistro" />
+                        <p:calendar id="fechaRegistro" pattern="MM/dd/yyyy HH:mm:ss" value="#{usuarioController.selected.fechaRegistro}" title="#{bundle.EditUsuarioTitle_fechaRegistro}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditUsuarioLabel_fechaModificacion}" for="fechaModificacion" />
+                        <p:calendar id="fechaModificacion" pattern="MM/dd/yyyy HH:mm:ss" value="#{usuarioController.selected.fechaModificacion}" title="#{bundle.EditUsuarioTitle_fechaModificacion}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditUsuarioLabel_codigoTema}" for="codigoTema" />
+                        <p:inputText id="codigoTema" value="#{usuarioController.selected.codigoTema}" title="#{bundle.EditUsuarioTitle_codigoTema}" />
+                        <p:outputLabel value="#{bundle.EditUsuarioLabel_codigoUsuarioRegistro}" for="codigoUsuarioRegistro" />
+                        <p:inputText id="codigoUsuarioRegistro" value="#{usuarioController.selected.codigoUsuarioRegistro}" title="#{bundle.EditUsuarioTitle_codigoUsuarioRegistro}" />
+                        <p:outputLabel value="#{bundle.EditUsuarioLabel_modificadoPor}" for="modificadoPor" />
+                        <p:inputText id="modificadoPor" value="#{usuarioController.selected.modificadoPor}" title="#{bundle.EditUsuarioTitle_modificadoPor}" />
+                        <p:outputLabel value="#{bundle.EditUsuarioLabel_codigoArea}" for="codigoArea" />
+                        <p:selectOneMenu id="codigoArea" value="#{usuarioController.selected.codigoArea}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{areaController.itemsAvailableSelectOne}"
+                                           var="codigoAreaItem"
+                                           itemValue="#{codigoAreaItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditUsuarioLabel_codigoDependencia}" for="codigoDependencia" />
+                        <p:selectOneMenu id="codigoDependencia" value="#{usuarioController.selected.codigoDependencia}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{dependenciaController.itemsAvailableSelectOne}"
+                                           var="codigoDependenciaItem"
+                                           itemValue="#{codigoDependenciaItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditUsuarioLabel_codigoImagenInstitucional}" for="codigoImagenInstitucional" />
+                        <p:selectOneMenu id="codigoImagenInstitucional" value="#{usuarioController.selected.codigoImagenInstitucional}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{imagenInstitucionalController.itemsAvailableSelectOne}"
+                                           var="codigoImagenInstitucionalItem"
+                                           itemValue="#{codigoImagenInstitucionalItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditUsuarioLabel_codigoMunicipio}" for="codigoMunicipio" />
+                        <p:selectOneMenu id="codigoMunicipio" value="#{usuarioController.selected.codigoMunicipio}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{municipioController.itemsAvailableSelectOne}"
+                                           var="codigoMunicipioItem"
+                                           itemValue="#{codigoMunicipioItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditUsuarioLabel_codigoSede}" for="codigoSede" />
+                        <p:selectOneMenu id="codigoSede" value="#{usuarioController.selected.codigoSede}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{sedeController.itemsAvailableSelectOne}"
+                                           var="codigoSedeItem"
+                                           itemValue="#{codigoSedeItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditUsuarioLabel_codigoPerfil}" for="codigoPerfil" />
+                        <p:selectOneMenu id="codigoPerfil" value="#{usuarioController.selected.codigoPerfil}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{tipoperfilController.itemsAvailableSelectOne}"
+                                           var="codigoPerfilItem"
+                                           itemValue="#{codigoPerfilItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{usuarioController.update}" value="#{bundle.Save}" update="display,:UsuarioListForm:datalist,:growl" oncomplete="handleSubmit(args, 'UsuarioEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="UsuarioEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

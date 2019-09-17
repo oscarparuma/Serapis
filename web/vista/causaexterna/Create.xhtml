@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateCausaexternaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateCausaexternaLabel_codigo}" for="codigo" />
+                    <h:inputText id="codigo" value="#{causaexternaController.selected.codigo}" title="#{bundle.CreateCausaexternaTitle_codigo}" required="true" requiredMessage="#{bundle.CreateCausaexternaRequiredMessage_codigo}"/>
+                    <h:outputLabel value="#{bundle.CreateCausaexternaLabel_nombre}" for="nombre" />
+                    <h:inputText id="nombre" value="#{causaexternaController.selected.nombre}" title="#{bundle.CreateCausaexternaTitle_nombre}" />
+                    <h:outputLabel value="#{bundle.CreateCausaexternaLabel_activo}" for="activo" />
+                    <h:inputText id="activo" value="#{causaexternaController.selected.activo}" title="#{bundle.CreateCausaexternaTitle_activo}" />
+                    <h:outputLabel value="#{bundle.CreateCausaexternaLabel_fechaRegistro}" for="fechaRegistro" />
+                    <h:inputText id="fechaRegistro" value="#{causaexternaController.selected.fechaRegistro}" title="#{bundle.CreateCausaexternaTitle_fechaRegistro}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreateCausaexternaLabel_fechaModificacion}" for="fechaModificacion" />
+                    <h:inputText id="fechaModificacion" value="#{causaexternaController.selected.fechaModificacion}" title="#{bundle.CreateCausaexternaTitle_fechaModificacion}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreateCausaexternaLabel_codigoUsuario}" for="codigoUsuario" />
+                    <h:selectOneMenu id="codigoUsuario" value="#{causaexternaController.selected.codigoUsuario}" title="#{bundle.CreateCausaexternaTitle_codigoUsuario}" >
+                        <f:selectItems value="#{usuarioController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateCausaexternaLabel_modificadoPor}" for="modificadoPor" />
+                    <h:selectOneMenu id="modificadoPor" value="#{causaexternaController.selected.modificadoPor}" title="#{bundle.CreateCausaexternaTitle_modificadoPor}" >
+                        <f:selectItems value="#{usuarioController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{causaexternaController.create}" value="#{bundle.CreateCausaexternaSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{causaexternaController.prepareList}" value="#{bundle.CreateCausaexternaShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateCausaexternaIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditEpsTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditEpsLabel_codigoEps}" for="codigoEps" />
+                    <h:inputText id="codigoEps" value="#{epsController.selected.codigoEps}" title="#{bundle.EditEpsTitle_codigoEps}" required="true" requiredMessage="#{bundle.EditEpsRequiredMessage_codigoEps}"/>
+                    <h:outputLabel value="#{bundle.EditEpsLabel_identificacionEps}" for="identificacionEps" />
+                    <h:inputText id="identificacionEps" value="#{epsController.selected.identificacionEps}" title="#{bundle.EditEpsTitle_identificacionEps}" />
+                    <h:outputLabel value="#{bundle.EditEpsLabel_nombreEps}" for="nombreEps" />
+                    <h:inputText id="nombreEps" value="#{epsController.selected.nombreEps}" title="#{bundle.EditEpsTitle_nombreEps}" />
+                    <h:outputLabel value="#{bundle.EditEpsLabel_direccion}" for="direccion" />
+                    <h:inputText id="direccion" value="#{epsController.selected.direccion}" title="#{bundle.EditEpsTitle_direccion}" />
+                    <h:outputLabel value="#{bundle.EditEpsLabel_telefono}" for="telefono" />
+                    <h:inputText id="telefono" value="#{epsController.selected.telefono}" title="#{bundle.EditEpsTitle_telefono}" />
+                    <h:outputLabel value="#{bundle.EditEpsLabel_fechaRegistro}" for="fechaRegistro" />
+                    <h:inputText id="fechaRegistro" value="#{epsController.selected.fechaRegistro}" title="#{bundle.EditEpsTitle_fechaRegistro}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditEpsLabel_fechaModificacion}" for="fechaModificacion" />
+                    <h:inputText id="fechaModificacion" value="#{epsController.selected.fechaModificacion}" title="#{bundle.EditEpsTitle_fechaModificacion}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditEpsLabel_codigoAsignado}" for="codigoAsignado" />
+                    <h:inputText id="codigoAsignado" value="#{epsController.selected.codigoAsignado}" title="#{bundle.EditEpsTitle_codigoAsignado}" />
+                    <h:outputLabel value="#{bundle.EditEpsLabel_activo}" for="activo" />
+                    <h:inputText id="activo" value="#{epsController.selected.activo}" title="#{bundle.EditEpsTitle_activo}" />
+                    <h:outputLabel value="#{bundle.EditEpsLabel_contacto}" for="contacto" />
+                    <h:inputText id="contacto" value="#{epsController.selected.contacto}" title="#{bundle.EditEpsTitle_contacto}" />
+                    <h:outputLabel value="#{bundle.EditEpsLabel_clasificacionEps}" for="clasificacionEps" />
+                    <h:selectOneMenu id="clasificacionEps" value="#{epsController.selected.clasificacionEps}" title="#{bundle.EditEpsTitle_clasificacionEps}" >
+                        <f:selectItems value="#{clasificacionEpsController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditEpsLabel_codigoDepartamento}" for="codigoDepartamento" />
+                    <h:selectOneMenu id="codigoDepartamento" value="#{epsController.selected.codigoDepartamento}" title="#{bundle.EditEpsTitle_codigoDepartamento}" >
+                        <f:selectItems value="#{departamentoController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditEpsLabel_codigoEpsSede}" for="codigoEpsSede" />
+                    <h:selectOneMenu id="codigoEpsSede" value="#{epsController.selected.codigoEpsSede}" title="#{bundle.EditEpsTitle_codigoEpsSede}" >
+                        <f:selectItems value="#{epsSedeController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditEpsLabel_codigoMunicipio}" for="codigoMunicipio" />
+                    <h:selectOneMenu id="codigoMunicipio" value="#{epsController.selected.codigoMunicipio}" title="#{bundle.EditEpsTitle_codigoMunicipio}" >
+                        <f:selectItems value="#{municipioController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditEpsLabel_codigoSede}" for="codigoSede" />
+                    <h:selectOneMenu id="codigoSede" value="#{epsController.selected.codigoSede}" title="#{bundle.EditEpsTitle_codigoSede}" >
+                        <f:selectItems value="#{sedeController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditEpsLabel_codigoUsuario}" for="codigoUsuario" />
+                    <h:selectOneMenu id="codigoUsuario" value="#{epsController.selected.codigoUsuario}" title="#{bundle.EditEpsTitle_codigoUsuario}" >
+                        <f:selectItems value="#{usuarioController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditEpsLabel_usuarioModifico}" for="usuarioModifico" />
+                    <h:selectOneMenu id="usuarioModifico" value="#{epsController.selected.usuarioModifico}" title="#{bundle.EditEpsTitle_usuarioModifico}" >
+                        <f:selectItems value="#{usuarioController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{epsController.update}" value="#{bundle.EditEpsSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditEpsViewLink}"/>
+                <br />
+                <h:commandLink action="#{epsController.prepareList}" value="#{bundle.EditEpsShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditEpsIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.AppName}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+
+            <h:form>
+                <p:panel>
+                    <div align="center">
+                        <div class="container text-center">   
+                            <div class="row">
+                                <div class="col-sm-3 well">
+                                    <p:panel>
+                                        <p:panel header="#{bundle.listRadi}">
+                                            <div class="ui-fluid">
+                                                <h:panelGrid columns="1">
+                                                    <p:panelGrid columns="2">
+                                                        <p:outputLabel value="#{bundle.CreateListaRadicadoEpsLabel_facturaNumero}" for="facturaNumero" />
+                                                        <p:inputText style="text-transform: uppercase" onkeyup="javascript:this.value = this.value.toUpperCase();" id="facturaNumero" value="#{listaRadicadoEpsController.selected.facturaNumero}" 
+                                                                     required="true" requiredMessage="#{bundle.CreateListaRadicadoEpsLabel_facturaNumero}" title="#{bundle.CreateListaRadicadoEpsTitle_facturaNumero}" />
+
+                                                        <p:outputLabel value="#{bundle.CreateListaRadicadoEpsLabel_fechaFactura}" for="fechaFactura" />
+                                                        <p:calendar locale="es" lang="es" size="15" id="fechaFactura" pattern="yyyy-MM-dd" value="#{listaRadicadoEpsController.selected.fechaFactura}" showOn="button" 
+                                                                    required="true" requiredMessage="#{bundle.CreateListaRadicadoEpsRequiredMessage_fechaFactura}">
+                                                        </p:calendar>
+                                                        <p:outputLabel value="#{bundle.CreateListaRadicadoEpsLabel_fechaInicialFactura}" for="fechaInicialFactura" />
+                                                        <p:calendar locale="es" lang="es" size="15" id="fechaInicialFactura" pattern="yyyy-MM-dd" value="#{listaRadicadoEpsController.selected.fechaInicialFactura}" showOn="button" 
+                                                                    required="true" requiredMessage="#{bundle.CreateListaRadicadoEpsRequiredMessage_fechaInicialFactura}">
+                                                        </p:calendar>
+                                                        <p:outputLabel value="#{bundle.CreateListaRadicadoEpsLabel_fechaFinalFactura}" for="fechaFinalFactura" />
+                                                          <p:calendar locale="es" lang="es" size="15" id="fechaFinalFactura" pattern="yyyy-MM-dd" value="#{listaRadicadoEpsController.selected.fechaFinalFactura}" showOn="button" 
+                                                                    required="true" requiredMessage="#{bundle.CreateListaRadicadoEpsRequiredMessage_fechaFinalFactura}">
+                                                        </p:calendar>
+                                                    </p:panelGrid>
+                                                     <f:facet name="footer">
+                                                    <p:panel>
+                                                        <br></br>
+                                                        <div align="center">
+                                                            <p:commandButton  style="max-width: 180px; margin-right: 10px;" id="createButton" icon="ui-icon-plus" process="@all" styleClass="button" ajax="false" action="#{listaRadicadoEpsController.update}" value="#{bundle.Finlista}" />
+                                                            <p:commandButton style="max-width: 150px; margin-right: 10px;" id="editButton" icon="ui-icon-circle-arrow-w" process="@all" styleClass="button" ajax="false" action="#{listaRadicadoEpsController.prepareList}" value="#{bundle.Regresar}" immediate="true"/>
+                                                        </div>
+                                                    </p:panel>
+                                                </f:facet>
+                                                </h:panelGrid>
+                                            </div>
+                                        </p:panel>
+                                    </p:panel>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </p:panel>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

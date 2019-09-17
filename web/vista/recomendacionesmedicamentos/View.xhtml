@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewRecomendacionesmedicamentosTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewRecomendacionesmedicamentosLabel_consecutivo}"/>
+                    <h:outputText value="#{recomendacionesmedicamentosController.selected.consecutivo}" title="#{bundle.ViewRecomendacionesmedicamentosTitle_consecutivo}"/>
+                    <h:outputText value="#{bundle.ViewRecomendacionesmedicamentosLabel_recomendacionesMedicas}"/>
+                    <h:outputText value="#{recomendacionesmedicamentosController.selected.recomendacionesMedicas}" title="#{bundle.ViewRecomendacionesmedicamentosTitle_recomendacionesMedicas}"/>
+                    <h:outputText value="#{bundle.ViewRecomendacionesmedicamentosLabel_fechaRegistro}"/>
+                    <h:outputText value="#{recomendacionesmedicamentosController.selected.fechaRegistro}" title="#{bundle.ViewRecomendacionesmedicamentosTitle_fechaRegistro}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewRecomendacionesmedicamentosLabel_fechaModificacion}"/>
+                    <h:outputText value="#{recomendacionesmedicamentosController.selected.fechaModificacion}" title="#{bundle.ViewRecomendacionesmedicamentosTitle_fechaModificacion}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewRecomendacionesmedicamentosLabel_botRecoMedicas}"/>
+                    <h:outputText value="#{recomendacionesmedicamentosController.selected.botRecoMedicas}" title="#{bundle.ViewRecomendacionesmedicamentosTitle_botRecoMedicas}"/>
+                    <h:outputText value="#{bundle.ViewRecomendacionesmedicamentosLabel_activo}"/>
+                    <h:outputText value="#{recomendacionesmedicamentosController.selected.activo}" title="#{bundle.ViewRecomendacionesmedicamentosTitle_activo}"/>
+                    <h:outputText value="#{bundle.ViewRecomendacionesmedicamentosLabel_botFinalizar}"/>
+                    <h:outputText value="#{recomendacionesmedicamentosController.selected.botFinalizar}" title="#{bundle.ViewRecomendacionesmedicamentosTitle_botFinalizar}"/>
+                    <h:outputText value="#{bundle.ViewRecomendacionesmedicamentosLabel_botRecMediConsul}"/>
+                    <h:outputText value="#{recomendacionesmedicamentosController.selected.botRecMediConsul}" title="#{bundle.ViewRecomendacionesmedicamentosTitle_botRecMediConsul}"/>
+                    <h:outputText value="#{bundle.ViewRecomendacionesmedicamentosLabel_botRecMediProced}"/>
+                    <h:outputText value="#{recomendacionesmedicamentosController.selected.botRecMediProced}" title="#{bundle.ViewRecomendacionesmedicamentosTitle_botRecMediProced}"/>
+                    <h:outputText value="#{bundle.ViewRecomendacionesmedicamentosLabel_botRecSalOcup}"/>
+                    <h:outputText value="#{recomendacionesmedicamentosController.selected.botRecSalOcup}" title="#{bundle.ViewRecomendacionesmedicamentosTitle_botRecSalOcup}"/>
+                    <h:outputText value="#{bundle.ViewRecomendacionesmedicamentosLabel_codigoCita}"/>
+                    <h:outputText value="#{recomendacionesmedicamentosController.selected.codigoCita}" title="#{bundle.ViewRecomendacionesmedicamentosTitle_codigoCita}"/>
+                    <h:outputText value="#{bundle.ViewRecomendacionesmedicamentosLabel_codigoClasificacionIndicacionesMedicas}"/>
+                    <h:outputText value="#{recomendacionesmedicamentosController.selected.codigoClasificacionIndicacionesMedicas}" title="#{bundle.ViewRecomendacionesmedicamentosTitle_codigoClasificacionIndicacionesMedicas}"/>
+                    <h:outputText value="#{bundle.ViewRecomendacionesmedicamentosLabel_codigoPersonaCita}"/>
+                    <h:outputText value="#{recomendacionesmedicamentosController.selected.codigoPersonaCita}" title="#{bundle.ViewRecomendacionesmedicamentosTitle_codigoPersonaCita}"/>
+                    <h:outputText value="#{bundle.ViewRecomendacionesmedicamentosLabel_codigoIndicacionesMedicas}"/>
+                    <h:outputText value="#{recomendacionesmedicamentosController.selected.codigoIndicacionesMedicas}" title="#{bundle.ViewRecomendacionesmedicamentosTitle_codigoIndicacionesMedicas}"/>
+                    <h:outputText value="#{bundle.ViewRecomendacionesmedicamentosLabel_codigoUsuario}"/>
+                    <h:outputText value="#{recomendacionesmedicamentosController.selected.codigoUsuario}" title="#{bundle.ViewRecomendacionesmedicamentosTitle_codigoUsuario}"/>
+                    <h:outputText value="#{bundle.ViewRecomendacionesmedicamentosLabel_modificadoPor}"/>
+                    <h:outputText value="#{recomendacionesmedicamentosController.selected.modificadoPor}" title="#{bundle.ViewRecomendacionesmedicamentosTitle_modificadoPor}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{recomendacionesmedicamentosController.destroyAndView}" value="#{bundle.ViewRecomendacionesmedicamentosDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewRecomendacionesmedicamentosEditLink}"/>
+                <br />
+                <h:commandLink action="#{recomendacionesmedicamentosController.prepareCreate}" value="#{bundle.ViewRecomendacionesmedicamentosCreateLink}" />
+                <br />
+                <h:commandLink action="#{recomendacionesmedicamentosController.prepareList}" value="#{bundle.ViewRecomendacionesmedicamentosShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewRecomendacionesmedicamentosIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/templateIngreso.xhtml">
+
+
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListUsuarioTitle}"></h:outputText>
+        </ui:define>
+
+        <ui:define name="body">
+            <h:form id="UsuarioListForm">
+                <p:panel>
+                    <div align="center">                        
+                        <div class="container text-center">   
+                            <div class="row">
+                                <div class="col-sm-3 well">
+                                    <h:panelGrid columns="1">
+                                        <div align="center">
+                                            <p:panel header="#{bundle.UsuSisitemas}">
+                                                <p:dataTable id="lalmeida"  reflow="true" value="#{usuarioController.items}" var="item" emptyMessage=" " selectionMode="single"  paginator="true"  rowKey="#{item.codigoUsuario}" rows="20"  rowsPerPageTemplate="20,50,100">
+                                                    <p:column>
+                                                        <f:facet name="header">
+                                                            <h:outputText value="#{bundle.ListUsuarioTitle_codigoUsuario}"/>
+                                                        </f:facet>
+                                                        <h:outputText value="#{item.codigoUsuario}"/>
+                                                    </p:column>
+                                                    <p:column>
+                                                        <f:facet name="header">
+                                                            <h:outputText value="#{bundle.ListUsuarioTitle_nombreUsuario}"/>
+                                                        </f:facet>
+                                                        <h:outputText value="#{item.nombreUsuario}"/>
+                                                    </p:column>
+                                                    <p:column>
+                                                        <f:facet name="header">
+                                                            <h:outputText value="#{bundle.ListUsuarioTitle_codigoSede}"/>
+                                                        </f:facet>
+                                                        <h:outputText value=" #{item.codigoSede}"/>
+                                                    </p:column>
+                                                    <p:column>
+                                                        <f:facet name="header">
+                                                            <h:outputText value="#{bundle.ListUsuarioTitle_codigoDependencia}"/>
+                                                        </f:facet>
+                                                        <h:outputText value=" #{item.codigoDependencia}"/>
+                                                    </p:column> 
+                                                    <p:column>
+                                                        <f:facet name="header">
+                                                            <h:outputText value="#{bundle.ListUsuarioTitle_codigoArea}"/>
+                                                        </f:facet>
+                                                        <h:outputText value=" #{item.codigoArea}"/>
+                                                    </p:column>
+                                                    <p:column>
+                                                        <f:facet name="header">
+                                                            <h:outputText value="#{bundle.ListUsuarioTitle_codigoPerfil}"/>
+                                                        </f:facet>
+                                                        <h:outputText value=" #{item.codigoPerfil}"/>
+                                                    </p:column>
+                                                    <p:column>
+                                                        <f:facet name="header">
+                                                            <h:outputText value="#{bundle.ListUsuarioTitle_codigoMunicipio}"/>
+                                                        </f:facet>
+                                                        <h:outputText value=" #{item.codigoMunicipio}"/>
+                                                    </p:column>
+                                                    <p:column>
+                                                        <f:facet name="header">
+                                                            <h:outputText value="#{bundle.ListUsuarioTitle_activo}"/>
+                                                        </f:facet>
+                                                        <h:outputText value="#{item.activo}"/>
+                                                    </p:column>
+                                                    <p:column>
+                                                        <f:facet name="header">
+                                                            <h:outputText value="#{bundle.ListUsuarioTitle_fechaRegistro}"/>
+                                                        </f:facet>
+                                                        <h:outputText value="#{item.fechaRegistro}">
+                                                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                                                        </h:outputText>
+                                                    </p:column>
+                                                    <f:facet name="footer">
+                                                        <p:panel>
+                                                            <p:commandButton style="margin-right: 10px;" id="editButton"   icon="ui-icon-plus" process="@all" styleClass="button" ajax="false" action="#{usuarioController.prepareCreate}" value="#{bundle.ListUsuarioCreateLink}"/>
+                                                            <p:commandButton id="editButtonE"  icon="ui-icon-circle-arrow-w" process="@all" styleClass="button" ajax="false" action="/vista/menuSistema/MenuIngresos" value="#{bundle.Regresar}" immediate="true"/>
+                                                        </p:panel>
+                                                    </f:facet>
+                                                </p:dataTable> 
+                                            </p:panel>
+                                        </div>
+                                    </h:panelGrid>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </p:panel>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

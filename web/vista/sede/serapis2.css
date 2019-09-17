@@ -1,0 +1,37 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans|Roboto:400,700');
+
+body
+{
+background: url(4181.jpg) no-repeat center center fixed;
+-webkit-background-size: cover;
+-moz-background-size: cover;
+-o-background-size: cover;
+background-size: cover;
+font-family: 'Roboto';
+color: #265a99;
+}
+
+
+
+h1{
+	font-family: 'Roboto';
+	font-size: 36px;
+	text-shadow: 1px 1px 4px rgba(255, 255, 255, 1);
+        color: #00979d;
+}
+
+.footer{
+font-family: Roboto, times;	
+font-size: 1,05em;
+background-color:#265a99;
+  bottom:0;
+  color:#FFFFFF;
+  left:0;
+  padding:10px 10px 0;
+  position:fixed;
+  text-align:center;
+  width:100%;
+  z-index:100; 
+  margin-right:auto
+
+}

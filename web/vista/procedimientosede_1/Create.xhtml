@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateProcedimientosedeTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+
+            <h:form>
+                <h:panelGrid columns="1" style=" width: 1450px; border: 1px;">
+                    <p:panel header="#{bundle.ProsedSede}">
+                        <p:panelGrid columns="2">
+                            <p:outputLabel value="#{bundle.CreateProcedimientosedeLabel_codigoEps}" for="codigoEps" />
+                            <p:selectOneMenu filter="true" filterMatchMode="contains" id="codigoEps" value="#{procedimientosedeController.selected.codigoEps}" title="#{bundle.CreateProcedimientosedeTitle_codigoEps}" >
+                                <f:selectItem  itemLabel="-Seleccione- " />
+                                <f:selectItems value="#{epsController.getEpsXSede(usuarioController.selected)}"/>
+                                <p:ajax  process="codigoEps"  event="change"  />
+                            </p:selectOneMenu>
+                            <p:outputLabel value="#{bundle.CreateProcedimientosedeLabel_codigoCups}" for="codigoCups" />
+                            <p:selectOneMenu filter="true" filterMatchMode="contains" style="min-width: 1200px;" id="codigoCups" value="#{procedimientosedeController.selected.codigoCups}" title="#{bundle.CreateProcedimientosedeTitle_codigoCups}" >
+                                <f:selectItems value="#{manualtarifasController.itemsAvailableSelectOne}"/>
+                            </p:selectOneMenu>
+
+                            <p:outputLabel value="#{bundle.CreateProcedimientosedeLabel_valorExamen}" for="valorExamen" />
+                            <p:inputText id="valorExamen"  value="#{procedimientosedeController.selected.valorExamen}" title="#{bundle.CreateProcedimientosedeTitle_valorExamen}"/>
+                           
+                        </p:panelGrid>
+                        <p:panel>
+                            <p:panel>
+                                <p:commandButton style="margin-right: 10px;" id="createButton" process="@all" styleClass="button" ajax="false" action="#{procedimientosedeController.create}" value="#{bundle.CreateProcedimientosedeSaveLink}"  immediate="false"/>
+                                <p:commandButton id="editButton" process="@all" styleClass="button" ajax="false" action="#{procedimientosedeController.prepareList}" value="#{bundle.CreateProcedimientosedeShowAllLink}" immediate="true"/>
+                            </p:panel>
+
+                        </p:panel>
+                    </p:panel>
+                </h:panelGrid>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

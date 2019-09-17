@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditArlTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditArlLabel_codigoArl}" for="codigoArl" />
+                    <h:inputText id="codigoArl" value="#{arlController.selected.codigoArl}" title="#{bundle.EditArlTitle_codigoArl}" required="true" requiredMessage="#{bundle.EditArlRequiredMessage_codigoArl}"/>
+                    <h:outputLabel value="#{bundle.EditArlLabel_identificacionArl}" for="identificacionArl" />
+                    <h:inputText id="identificacionArl" value="#{arlController.selected.identificacionArl}" title="#{bundle.EditArlTitle_identificacionArl}" />
+                    <h:outputLabel value="#{bundle.EditArlLabel_nombreArl}" for="nombreArl" />
+                    <h:inputText id="nombreArl" value="#{arlController.selected.nombreArl}" title="#{bundle.EditArlTitle_nombreArl}" />
+                    <h:outputLabel value="#{bundle.EditArlLabel_direccion}" for="direccion" />
+                    <h:inputText id="direccion" value="#{arlController.selected.direccion}" title="#{bundle.EditArlTitle_direccion}" />
+                    <h:outputLabel value="#{bundle.EditArlLabel_telefono}" for="telefono" />
+                    <h:inputText id="telefono" value="#{arlController.selected.telefono}" title="#{bundle.EditArlTitle_telefono}" />
+                    <h:outputLabel value="#{bundle.EditArlLabel_fechaRegistro}" for="fechaRegistro" />
+                    <h:inputText id="fechaRegistro" value="#{arlController.selected.fechaRegistro}" title="#{bundle.EditArlTitle_fechaRegistro}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditArlLabel_fechaModificacion}" for="fechaModificacion" />
+                    <h:inputText id="fechaModificacion" value="#{arlController.selected.fechaModificacion}" title="#{bundle.EditArlTitle_fechaModificacion}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditArlLabel_clasificacionArl}" for="clasificacionArl" />
+                    <h:inputText id="clasificacionArl" value="#{arlController.selected.clasificacionArl}" title="#{bundle.EditArlTitle_clasificacionArl}" />
+                    <h:outputLabel value="#{bundle.EditArlLabel_codigoAsignado}" for="codigoAsignado" />
+                    <h:inputText id="codigoAsignado" value="#{arlController.selected.codigoAsignado}" title="#{bundle.EditArlTitle_codigoAsignado}" />
+                    <h:outputLabel value="#{bundle.EditArlLabel_activo}" for="activo" />
+                    <h:inputText id="activo" value="#{arlController.selected.activo}" title="#{bundle.EditArlTitle_activo}" />
+                    <h:outputLabel value="#{bundle.EditArlLabel_tipoAdministradora}" for="tipoAdministradora" />
+                    <h:inputText id="tipoAdministradora" value="#{arlController.selected.tipoAdministradora}" title="#{bundle.EditArlTitle_tipoAdministradora}" />
+                    <h:outputLabel value="#{bundle.EditArlLabel_contacto}" for="contacto" />
+                    <h:inputText id="contacto" value="#{arlController.selected.contacto}" title="#{bundle.EditArlTitle_contacto}" />
+                    <h:outputLabel value="#{bundle.EditArlLabel_codigoClasificacion}" for="codigoClasificacion" />
+                    <h:inputText id="codigoClasificacion" value="#{arlController.selected.codigoClasificacion}" title="#{bundle.EditArlTitle_codigoClasificacion}" />
+                    <h:outputLabel value="#{bundle.EditArlLabel_codigoDepartamento}" for="codigoDepartamento" />
+                    <h:selectOneMenu id="codigoDepartamento" value="#{arlController.selected.codigoDepartamento}" title="#{bundle.EditArlTitle_codigoDepartamento}" >
+                        <f:selectItems value="#{departamentoController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditArlLabel_codigoMunicipio}" for="codigoMunicipio" />
+                    <h:selectOneMenu id="codigoMunicipio" value="#{arlController.selected.codigoMunicipio}" title="#{bundle.EditArlTitle_codigoMunicipio}" >
+                        <f:selectItems value="#{municipioController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditArlLabel_codigoUsuario}" for="codigoUsuario" />
+                    <h:selectOneMenu id="codigoUsuario" value="#{arlController.selected.codigoUsuario}" title="#{bundle.EditArlTitle_codigoUsuario}" >
+                        <f:selectItems value="#{usuarioController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditArlLabel_usuarioModifico}" for="usuarioModifico" />
+                    <h:selectOneMenu id="usuarioModifico" value="#{arlController.selected.usuarioModifico}" title="#{bundle.EditArlTitle_usuarioModifico}" >
+                        <f:selectItems value="#{usuarioController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{arlController.update}" value="#{bundle.EditArlSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditArlViewLink}"/>
+                <br />
+                <h:commandLink action="#{arlController.prepareList}" value="#{bundle.EditArlShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditArlIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

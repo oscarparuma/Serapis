@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:pe="http://primefaces.org/ui/extensions"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+
+
+        <ui:define name="title">
+            <h:outputText value="#{bundle.AppName}"></h:outputText>
+        </ui:define>
+
+        <ui:define name="body">
+            <h:form id="RecomendacionesmedicamentosListForm">
+                <p:panel header="#{bundle.RecomMedica} #{recomendacionesmedicamentosController.actAgenCit.codigoPersonaCita}" style=" width: 1500px; border: solid 1px;">
+
+
+                    <p:dataTable id="datalist" value="#{recomendacionesmedicamentosController.items}" var="item"
+                                 selectionMode="single" paginator="true" emptyMessage=" " rowKey="#{item.consecutivo}" rows="10" rowsPerPageTemplate="10,20,30,40,50" >                       
+                        <p:column width="110" rendered="#{citapersonaController.selected.finalizada=='N'}">
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.Seleccione}"/>
+                            </f:facet>
+                            <p:commandButton  id="deleteButton" icon="ui-icon-trash" process="@all" styleClass="button" ajax="false" action="#{recomendacionesmedicamentosController.destroy}" value="#{bundle.ListDiagnosticoIngresoDestroyLink}"/>
+
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListRecomendacionesmedicamentosTitle_codigoIndicacionesMedicas}"/>
+                            </f:facet>
+                            <h:outputText value=" #{item.codigoIndicacionesMedicas}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListRecomendacionesmedicamentosTitle_codigoClasificacionIndicacionesMedicas}"/>
+                            </f:facet>
+                            <h:outputText value=" #{item.codigoClasificacionIndicacionesMedicas}"/>
+                        </p:column>
+
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListRecomendacionesmedicamentosTitle_fechaRegistro}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.fechaRegistro}">
+                                <f:convertDateTime pattern="yyyy-MM-ddH" />
+                            </h:outputText>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListRecomendacionesmedicamentosTitle_codigousuario}"/>
+                            </f:facet>
+                            <h:outputText value=" #{item.codigoUsuario}"/>
+                        </p:column>
+                        <f:facet name="footer">                               
+                            <p:commandButton rendered="#{citapersonaController.selected.finalizada=='N'}" id="createButton" icon="ui-icon-plus"   action="#{recomendacionesmedicamentosController.prepareCreate}" value="#{bundle.RecoMedicSel}"/>
+                            <p:commandButton rendered="#{citapersonaController.selected.finalizada=='N'}" id="editButton" icon="ui-icon-plus" process="@all" styleClass="button" ajax="false" action="#{citapersonaController.prepareListRecomendacionesMedicasOtrasProcedList}"  value="#{bundle.RecoMedicOtr}" />
+                             <p:commandButton  id="createButtonI" icon="ui-icon-print"   process="@all" styleClass="button" ajax="false" action="#{citapersonaController.prepareListImprimirList}"  value="#{bundle.botOPcImprimir}" />
+                            <p:commandButton rendered="#{citapersonaController.selected.finalizada=='N'}" id="editButtonE"   icon="ui-icon-pencil" process="@all" styleClass="button" ajax="false" action="/vista/formulamedica/List" value="#{bundle.Regresar}" immediate="true"/>
+
+                        </f:facet>
+
+                    </p:dataTable>
+                </p:panel>
+
+
+
+            </h:form>
+
+
+        </ui:define>
+    </ui:composition>
+
+</html>

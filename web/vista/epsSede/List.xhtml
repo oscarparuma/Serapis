@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/templateIngreso.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListEpsSedeTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <p:panel>
+                    <div align="center">                        
+                        <div class="container text-center">   
+                            <div class="row">
+                                <div class="col-sm-3 well">
+                                    <h:panelGrid columns="1">
+                                        <div align="center">
+                                            <p:panel header="#{bundle.UsuSisitemas}">
+                                                <p:dataTable id="lalmeida"  reflow="true" value="#{epsSedeController.listaEpsSede}" var="item" emptyMessage=" " selectionMode="single"  paginator="true"  rowKey="#{item.codigoEpsSede}" rows="20"  rowsPerPageTemplate="20,50,100">
+
+                                                    <p:column rendered="#{usuarioController.selected.codigoPerfil.codigoPerfil ==1}">
+                                                        <f:facet name="header">
+                                                            <h:outputText  style="min-width: 230px;" value="#{bundle.Seleccione}"/>
+                                                        </f:facet>
+                                                        <p:commandButton action="#{epsSedeController.prepareEditEpsSede(item)}" value="#{bundle.Modificar}"/>
+                                                    </p:column>
+
+                                                    <p:column  filterBy="#{item.codigoClasificacionEps}" headerText="codigoClasificacionEps" footerText="" filterMatchMode="contains">
+                                                        <f:facet name="header">
+                                                            <h:outputText value="#{bundle.ListEpsSedeTitle_codigoClasificacionEps}" />
+                                                        </f:facet>
+                                                        <h:outputText value=" #{item.codigoClasificacionEps}"/>
+                                                    </p:column>
+
+                                                    <p:column filterBy="#{item.nombreEps}" headerText="nombreEps">
+                                                        <f:facet name="header">
+                                                            <h:outputText value="#{bundle.ListEpsSedeTitle_nombreEps}"/>
+                                                        </f:facet>
+                                                        <h:outputText value="#{item.nombreEps}"/>
+                                                    </p:column>
+                                                    <p:column filterBy="#{item.identificacionEps}" headerText="identificacionEps">
+                                                        <f:facet name="header">
+                                                            <h:outputText value="#{bundle.ListEpsSedeTitle_identificacionEps}"/>
+                                                        </f:facet>
+                                                        <h:outputText value="#{item.identificacionEps}"/>
+                                                    </p:column>
+                                                    <p:column filterBy="#{item.codigoAsignado}" headerText="codigoAsignado">
+                                                        <f:facet name="header">
+                                                            <h:outputText value="#{bundle.ListEpsSedeTitle_codigoAsignado}"/>
+                                                        </f:facet>
+                                                        <h:outputText value="#{item.codigoAsignado}"/>
+                                                    </p:column>
+                                                    <f:facet name="footer">
+                                                        <p:panel>
+                                                            <p:commandButton style="margin-right: 10px;" id="editButton"   icon="ui-icon-plus" process="@all" styleClass="button" ajax="false" action="#{epsSedeController.prepareCreate}" value="#{bundle.ListEpsSedeCreateLink}"/>
+                                                            <p:commandButton icon="ui-icon-circle-arrow-w" process="@all" styleClass="button" ajax="false" action="/vista/menuSistema/MenuIngresos.xhtml" value="#{bundle.Regresar}" immediate="true"/>
+                                                        </p:panel>
+                                                    </f:facet>
+
+                                                </p:dataTable>
+                                            </p:panel>
+                                        </div>
+                                    </h:panelGrid>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </p:panel>
+
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

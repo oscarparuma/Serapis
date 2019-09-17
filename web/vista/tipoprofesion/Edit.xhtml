@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditTipoprofesionTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditTipoprofesionLabel_codigoProfesion}" for="codigoProfesion" />
+                    <h:inputText id="codigoProfesion" value="#{tipoprofesionController.selected.codigoProfesion}" title="#{bundle.EditTipoprofesionTitle_codigoProfesion}" required="true" requiredMessage="#{bundle.EditTipoprofesionRequiredMessage_codigoProfesion}"/>
+                    <h:outputLabel value="#{bundle.EditTipoprofesionLabel_nombreProfesional}" for="nombreProfesional" />
+                    <h:inputText id="nombreProfesional" value="#{tipoprofesionController.selected.nombreProfesional}" title="#{bundle.EditTipoprofesionTitle_nombreProfesional}" />
+                    <h:outputLabel value="#{bundle.EditTipoprofesionLabel_activo}" for="activo" />
+                    <h:inputText id="activo" value="#{tipoprofesionController.selected.activo}" title="#{bundle.EditTipoprofesionTitle_activo}" />
+                    <h:outputLabel value="#{bundle.EditTipoprofesionLabel_fechaRegistro}" for="fechaRegistro" />
+                    <h:inputText id="fechaRegistro" value="#{tipoprofesionController.selected.fechaRegistro}" title="#{bundle.EditTipoprofesionTitle_fechaRegistro}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditTipoprofesionLabel_fechaModificacion}" for="fechaModificacion" />
+                    <h:inputText id="fechaModificacion" value="#{tipoprofesionController.selected.fechaModificacion}" title="#{bundle.EditTipoprofesionTitle_fechaModificacion}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditTipoprofesionLabel_codigoUsuario}" for="codigoUsuario" />
+                    <h:selectOneMenu id="codigoUsuario" value="#{tipoprofesionController.selected.codigoUsuario}" title="#{bundle.EditTipoprofesionTitle_codigoUsuario}" >
+                        <f:selectItems value="#{usuarioController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditTipoprofesionLabel_codigoUsuarioModifico}" for="codigoUsuarioModifico" />
+                    <h:selectOneMenu id="codigoUsuarioModifico" value="#{tipoprofesionController.selected.codigoUsuarioModifico}" title="#{bundle.EditTipoprofesionTitle_codigoUsuarioModifico}" >
+                        <f:selectItems value="#{usuarioController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{tipoprofesionController.update}" value="#{bundle.EditTipoprofesionSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditTipoprofesionViewLink}"/>
+                <br />
+                <h:commandLink action="#{tipoprofesionController.prepareList}" value="#{bundle.EditTipoprofesionShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditTipoprofesionIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

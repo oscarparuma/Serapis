@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.AppName}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <div class="col-lg-8">
+                    <p:panel>
+                        <div align="center">
+                            <p:panel header="#{bundle.devSede}">
+                                <div class="panel-body">
+                                    <div class="col-lg-4">
+                                        <p:dataTable id="lalmeida"  reflow="true" value="#{glosaEpsController.listaGlosaEps}" var="item" emptyMessage=" " selectionMode="single"  paginator="true"  rowKey="#{item.codigoGlosa}" rows="20"  rowsPerPageTemplate="20,50,100">
+                                            
+                                            <p:column>
+                                                <f:facet name="header">
+                                                    <h:outputText value="#{bundle.Seleccione}" />
+                                                </f:facet>
+                                                <p:commandButton id="editButtonM" icon="ui-icon-pencil" process="@all" styleClass="button" ajax="false" action="#{glosaEpsController.prepareEditGlosaEps(item)}" value="#{bundle.Seleccione}"/>
+                                            </p:column>
+                                            <p:column>
+                                                <f:facet name="header">
+                                                    <h:outputText value="#{bundle.ListGlosaEpsTitle_codigoFactura}"/>
+                                                </f:facet>
+                                                <h:outputText value="#{item.codigoFactura}"/>
+                                            </p:column>
+                                            <p:column>
+                                                <f:facet name="header">
+                                                    <h:outputText value="#{bundle.ListGlosaEpsTitle_codigoTipoGlosa}"/>
+                                                </f:facet>
+                                                <h:outputText value=" #{item.codigoTipoGlosa}"/>
+                                            </p:column>
+                                            <p:column>
+                                                <f:facet name="header">
+                                                    <h:outputText value="#{bundle.ListGlosaEpsTitle_valorGlosa}"/>
+                                                </f:facet>
+                                                <h:outputText value="#{item.valorGlosa}">
+                                                    <f:convertNumber pattern="$ #,###.00" /> 
+                                                </h:outputText>
+                                            </p:column>
+
+                                            <p:column>
+                                                <f:facet name="header">
+                                                    <h:outputText value="#{bundle.ListGlosaEpsTitle_valorAceptado}"/>
+                                                </f:facet>
+                                                <h:outputText value="#{item.valorAceptado}">
+                                                    <f:convertNumber pattern="$ #,###.00" /> 
+                                                </h:outputText>
+                                            </p:column>
+                                            <p:column>
+                                                <f:facet name="header">
+                                                    <h:outputText value="#{bundle.ListGlosaEpsTitle_valorReclamado}"/>
+                                                </f:facet>
+                                                <h:outputText value="#{item.valorReclamado}">
+                                                    <f:convertNumber pattern="$ #,###.00" /> 
+                                                </h:outputText>
+                                            </p:column>
+                                            <p:column>
+                                                <f:facet name="header">
+                                                    <h:outputText value="#{bundle.ListGlosaEpsTitle_fecharegistro}"/>
+                                                </f:facet>
+                                                <h:outputText value="#{item.fecharegistro}">
+                                                    <f:convertDateTime pattern="yyyy-MM-dd" />
+                                                </h:outputText>
+                                            </p:column>
+                                            <p:column>
+                                                <f:facet name="header">
+                                                    <h:outputText value="#{bundle.ListGlosaEpsTitle_codigoUsuario}"/>
+                                                </f:facet>
+                                                <h:outputText value=" #{item.codigoUsuario}"/>
+                                            </p:column>
+
+                                        </p:dataTable>
+                                        <f:facet name="footer">
+                                            <p:panel>
+                                                <div align="center"  >                                        
+                                                    <p:panel>
+                                                        <p:commandButton style="max-width: 250px; margin-right: 10px;" id="createButton" icon="ui-icon-plus" action="#{glosaEpsController.prepareCreate}" value="#{bundle.ListGlosaEpsCreateLink}"/>
+                                                        <p:commandButton style="max-width: 150px; margin-right: 10px;" id="editButton"   icon="ui-icon-circle-arrow-w" update="@all" action="/vista/listaRadicadoEps/ListMenuRadicacionGlosa.xhtml" value="#{bundle.Regresar}"/>
+                                                    </p:panel>                                   
+                                                </div>
+                                            </p:panel>
+                                        </f:facet>
+                                    </div>
+                                </div>
+                            </p:panel>
+                        </div>
+                    </p:panel>
+                </div>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

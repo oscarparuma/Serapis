@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.AppName}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <p:panel header="#{bundle.ListIndicacionmedicaTitle}" >
+                    <p:dataTable value="#{indicacionmedicaController.listaIndicacionmedica}" var="item"
+                                 selectionMode="single" paginator="true"  emptyMessage=" " rowKey="#{item.codigoIndicacionMedica}" rows="10" rowsPerPageTemplate="10,20,30,40,50"  lazy="true" > 
+
+
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.Seleccione}" />
+                            </f:facet>
+                            <p:commandButton id="editButtonM" icon="ui-icon-pencil" process="@all" styleClass="button" ajax="false" action="#{indicacionmedicaController.prepareEditIndMedic(item)}" value="#{bundle.Seleccione}"/>
+                        
+                        </p:column>
+                       
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListIndicacionmedicaTitle_recomendacionesMedicas}" />
+                            </f:facet>
+                            <h:outputText value="#{item.recomendacionesMedicas}"/>
+                        </p:column>
+                        <p:column width="110">
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListIndicacionmedicaTitle_fechaRegistro}" />
+                            </f:facet>
+                            <h:outputText value="#{item.fechaRegistro}">
+                                <f:convertDateTime pattern="yyyy-MM-dd" />
+                            </h:outputText>
+                        </p:column>
+                        <p:column width="70">
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListIndicacionmedicaTitle_actvo}" />
+                            </f:facet>
+                            <h:outputText value="#{item.actvo}"/>
+                        </p:column>
+                       
+                       
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListIndicacionmedicaTitle_codigoSede}" />
+                            </f:facet>
+                            <h:outputText value=" #{item.codigoSede}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListIndicacionmedicaTitle_codigoUsuario}" />
+                            </f:facet>
+                            <h:outputText value=" #{item.codigoUsuario}"/>
+                        </p:column>
+                       
+
+                        <f:facet name="footer">
+                            <p:commandButton id="createButtonC" icon="ui-icon-plus" process="@all"  ajax="false" action="#{indicacionmedicaController.prepareCreate}" value="#{bundle.ListIndicacionmedicaCreateLink}"/>
+                            <p:commandButton id="editButton"   icon="ui-icon-circle-arrow-w" action="/vista/administracion/ListSede.xhtml" value="#{bundle.Regresar}"/>
+
+                        </f:facet>
+
+
+                    </p:dataTable>
+
+                </p:panel>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <f:view contentType="text/html" beforePhase="#{usuarioController.beforePhase}"  >
+        <ui:composition template="/templateIngreso.xhtml">
+
+
+            <ui:define name="title">
+                <h:outputText value="#{bundle.AppName}"></h:outputText>
+            </ui:define>
+
+            <ui:define name="body">
+                <h:form id="SedeListForm">
+                    <p:panel header="#{bundle.ListSedeTitle}">
+                        <p:dataTable id="datalist" value="#{sedeController.listaIdentificacionNit}" var="item" emptyMessage=" ">
+
+
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="#{bundle.nombreSede}"/>
+                                </f:facet>
+                                <h:outputText value="#{item.nombreSede}"/>
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="#{bundle.ListSedeTitle_identificacionNit}"/>
+                                </f:facet>
+                                <h:outputText value="#{item.identificacionNit}"/>
+                            </p:column>
+                            
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="#{bundle.ListSedeTitle_direccion}"/>
+                                </f:facet>
+                                <h:outputText value="#{item.direccion}"/>
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="#{bundle.ListSedeTitle_telefono}"/>
+                                </f:facet>
+                                <h:outputText value="#{item.telefono}"/>
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="#{bundle.ListSedeTitle_email}"/>
+                                </f:facet>
+                                <h:outputText value="#{item.email}"/>
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="#{bundle.ListSedeTitle_paginaWeb}"/>
+                                </f:facet>
+                                <h:outputText value="#{item.paginaWeb}"/>
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="#{bundle.ListSedeTitle_fechaRegistro}"/>
+                                </f:facet>
+                                <h:outputText value="#{item.fechaRegistro}">
+                                    <f:convertDateTime pattern="yyyy-MM-dd" />
+                                </h:outputText>
+                            </p:column>
+                                                
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="#{bundle.ListSedeTitle_codigoMunicipio}"/>
+                                </f:facet>
+                                <h:outputText value=" #{item.codigoMunicipio}"/>
+                            </p:column>
+
+
+                            <f:facet name="footer">
+                                <p:commandButton style="margin-right: 10px;" id="createButtonI" icon="ui-icon-plus" action="/vista/sede/DatosSedeIngreso" value="#{bundle.CreateDatosRegistroSedeSaveLink}"/>
+                                <p:commandButton style="margin-right: 10px;" id="createButtonC" icon="ui-icon-plus" action="/vista/sede/ingresoSistema" value="#{bundle.consInformacion}"/>
+                                <p:commandButton style="margin-right: 10px;" rendered="#{sedeController.selected.estadoRadicacion!='A'}" id="createButtonU" icon="ui-icon-plus" action="/vista/sede/DatosSedeIngreso" value="#{bundle.CreateDatosRegistroSedeSaveLink}"/>
+                                <p:commandButton id="editButton"   icon="ui-icon-circle-arrow-w" update="@all" ajax="false" action="/index.xhtml?faces-redirect=true"  immediate="true" value="#{bundle.Regresar}"/>
+
+
+                            </f:facet>
+                        </p:dataTable>
+                    </p:panel>
+                </h:form>
+
+
+            </ui:define>
+        </ui:composition>
+    </f:view>
+</html>
+

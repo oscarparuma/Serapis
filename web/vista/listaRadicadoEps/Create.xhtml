@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/templateIngreso.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.AppName}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+
+            <h:form>
+                <p:panel>
+                    <div align="center">
+                        <div class="container text-center">   
+                            <div class="row">
+                                <div class="col-sm-3 well">
+                                    <p:panel>
+                                        <p:panel header="#{bundle.listRadi}">
+                                            <h:panelGrid columns="1">
+                                                <p:panelGrid columns="2">
+                                                    <p:outputLabel value="#{bundle.CreateListaRadicadoEpsLabel_codigoEps}" for="codigoEps" />
+                                                    <p:selectOneMenu id="codigoEps" required="true" requiredMessage="#{bundle.CreateListaRadicadoEpsRequiredMessage_codigoEps}" value="#{listaRadicadoEpsController.selected.codigoEps}">
+                                                        <f:selectItems value="#{epsController.itemsAvailableSelectOne}"/>
+                                                    </p:selectOneMenu>
+                                                </p:panelGrid>
+                                                <f:facet name="footer">
+                                                    <p:panel>
+                                                        <br></br>
+                                                        <div align="center">
+                                                            <p:commandButton style="max-width: 150px; margin-right: 10px;" id="createButton" icon="ui-icon-plus" process="@all" styleClass="button" ajax="false" action="#{listaRadicadoEpsController.create}" value="#{bundle.CreateUsuarioSaveLink}" />
+                                                            <p:commandButton style="max-width: 150px; margin-right: 10px;" id="editButton" icon="ui-icon-circle-arrow-w" process="@all" styleClass="button" ajax="false" action="#{listaRadicadoEpsController.prepareList}" value="#{bundle.Regresar}" immediate="true"/>
+                                                        </div>
+                                                    </p:panel>
+                                                </f:facet>
+                                            </h:panelGrid>
+                                        </p:panel>
+                                    </p:panel>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </p:panel>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

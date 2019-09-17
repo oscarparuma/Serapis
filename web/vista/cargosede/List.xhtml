@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListCargosedeTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListCargosedeEmpty}" rendered="#{cargosedeController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{cargosedeController.items.rowCount > 0}">
+                    <h:outputText value="#{cargosedeController.pagination.pageFirstItem + 1}..#{cargosedeController.pagination.pageLastItem + 1}/#{cargosedeController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{cargosedeController.previous}" value="#{bundle.Previous} #{cargosedeController.pagination.pageSize}" rendered="#{cargosedeController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{cargosedeController.next}" value="#{bundle.Next} #{cargosedeController.pagination.pageSize}" rendered="#{cargosedeController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{cargosedeController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListCargosedeTitle_codigoCargo}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.codigoCargo}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListCargosedeTitle_nombreCargo}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.nombreCargo}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListCargosedeTitle_activo}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.activo}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListCargosedeTitle_fechaRegistro}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.fechaRegistro}">
+                                <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListCargosedeTitle_fechaModificacion}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.fechaModificacion}">
+                                <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListCargosedeTitle_codigoSede}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.codigoSede}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListCargosedeTitle_codigoUsuario}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.codigoUsuario}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListCargosedeTitle_usuarioModificacion}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.usuarioModificacion}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{cargosedeController.prepareView}" value="#{bundle.ListCargosedeViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{cargosedeController.prepareEdit}" value="#{bundle.ListCargosedeEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{cargosedeController.destroy}" value="#{bundle.ListCargosedeDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{cargosedeController.prepareCreate}" value="#{bundle.ListCargosedeCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListCargosedeIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

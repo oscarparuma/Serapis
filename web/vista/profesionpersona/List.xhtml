@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListProfesionpersonaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListProfesionpersonaEmpty}" rendered="#{profesionpersonaController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{profesionpersonaController.items.rowCount > 0}">
+                    <h:outputText value="#{profesionpersonaController.pagination.pageFirstItem + 1}..#{profesionpersonaController.pagination.pageLastItem + 1}/#{profesionpersonaController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{profesionpersonaController.previous}" value="#{bundle.Previous} #{profesionpersonaController.pagination.pageSize}" rendered="#{profesionpersonaController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{profesionpersonaController.next}" value="#{bundle.Next} #{profesionpersonaController.pagination.pageSize}" rendered="#{profesionpersonaController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{profesionpersonaController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListProfesionpersonaTitle_codigoProfesionPersona}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.codigoProfesionPersona}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListProfesionpersonaTitle_identificacionProfesion}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.identificacionProfesion}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListProfesionpersonaTitle_nombreProfesionPersona}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.nombreProfesionPersona}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListProfesionpersonaTitle_activo}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.activo}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListProfesionpersonaTitle_fechaRegistro}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.fechaRegistro}">
+                                <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListProfesionpersonaTitle_fechaModificacion}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.fechaModificacion}">
+                                <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListProfesionpersonaTitle_codigoCargoPersona}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.codigoCargoPersona}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListProfesionpersonaTitle_codigoUsuario}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.codigoUsuario}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListProfesionpersonaTitle_usuarioModifico}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.usuarioModifico}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{profesionpersonaController.prepareView}" value="#{bundle.ListProfesionpersonaViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{profesionpersonaController.prepareEdit}" value="#{bundle.ListProfesionpersonaEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{profesionpersonaController.destroy}" value="#{bundle.ListProfesionpersonaDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{profesionpersonaController.prepareCreate}" value="#{bundle.ListProfesionpersonaCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListProfesionpersonaIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewDetalleRadicadoSedeTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewDetalleRadicadoSedeLabel_codigoDetalleRadicado}"/>
+                    <h:outputText value="#{detalleRadicadoSedeController.selected.codigoDetalleRadicado}" title="#{bundle.ViewDetalleRadicadoSedeTitle_codigoDetalleRadicado}"/>
+                    <h:outputText value="#{bundle.ViewDetalleRadicadoSedeLabel_numeroDocumentoIdentidad}"/>
+                    <h:outputText value="#{detalleRadicadoSedeController.selected.numeroDocumentoIdentidad}" title="#{bundle.ViewDetalleRadicadoSedeTitle_numeroDocumentoIdentidad}"/>
+                    <h:outputText value="#{bundle.ViewDetalleRadicadoSedeLabel_valorFacturaTotal}"/>
+                    <h:outputText value="#{detalleRadicadoSedeController.selected.valorFacturaTotal}" title="#{bundle.ViewDetalleRadicadoSedeTitle_valorFacturaTotal}"/>
+                    <h:outputText value="#{bundle.ViewDetalleRadicadoSedeLabel_valorCopago}"/>
+                    <h:outputText value="#{detalleRadicadoSedeController.selected.valorCopago}" title="#{bundle.ViewDetalleRadicadoSedeTitle_valorCopago}"/>
+                    <h:outputText value="#{bundle.ViewDetalleRadicadoSedeLabel_valorFacturado}"/>
+                    <h:outputText value="#{detalleRadicadoSedeController.selected.valorFacturado}" title="#{bundle.ViewDetalleRadicadoSedeTitle_valorFacturado}"/>
+                    <h:outputText value="#{bundle.ViewDetalleRadicadoSedeLabel_valorTotalFactura}"/>
+                    <h:outputText value="#{detalleRadicadoSedeController.selected.valorTotalFactura}" title="#{bundle.ViewDetalleRadicadoSedeTitle_valorTotalFactura}"/>
+                    <h:outputText value="#{bundle.ViewDetalleRadicadoSedeLabel_valorTotalCopago}"/>
+                    <h:outputText value="#{detalleRadicadoSedeController.selected.valorTotalCopago}" title="#{bundle.ViewDetalleRadicadoSedeTitle_valorTotalCopago}"/>
+                    <h:outputText value="#{bundle.ViewDetalleRadicadoSedeLabel_fechaRegistro}"/>
+                    <h:outputText value="#{detalleRadicadoSedeController.selected.fechaRegistro}" title="#{bundle.ViewDetalleRadicadoSedeTitle_fechaRegistro}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewDetalleRadicadoSedeLabel_fechaSistema}"/>
+                    <h:outputText value="#{detalleRadicadoSedeController.selected.fechaSistema}" title="#{bundle.ViewDetalleRadicadoSedeTitle_fechaSistema}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewDetalleRadicadoSedeLabel_estado}"/>
+                    <h:outputText value="#{detalleRadicadoSedeController.selected.estado}" title="#{bundle.ViewDetalleRadicadoSedeTitle_estado}"/>
+                    <h:outputText value="#{bundle.ViewDetalleRadicadoSedeLabel_saldoRadicado}"/>
+                    <h:outputText value="#{detalleRadicadoSedeController.selected.saldoRadicado}" title="#{bundle.ViewDetalleRadicadoSedeTitle_saldoRadicado}"/>
+                    <h:outputText value="#{bundle.ViewDetalleRadicadoSedeLabel_saldoListado}"/>
+                    <h:outputText value="#{detalleRadicadoSedeController.selected.saldoListado}" title="#{bundle.ViewDetalleRadicadoSedeTitle_saldoListado}"/>
+                    <h:outputText value="#{bundle.ViewDetalleRadicadoSedeLabel_codigoPersona}"/>
+                    <h:outputText value="#{detalleRadicadoSedeController.selected.codigoPersona}" title="#{bundle.ViewDetalleRadicadoSedeTitle_codigoPersona}"/>
+                    <h:outputText value="#{bundle.ViewDetalleRadicadoSedeLabel_codigoEps}"/>
+                    <h:outputText value="#{detalleRadicadoSedeController.selected.codigoEps}" title="#{bundle.ViewDetalleRadicadoSedeTitle_codigoEps}"/>
+                    <h:outputText value="#{bundle.ViewDetalleRadicadoSedeLabel_codigoFactura}"/>
+                    <h:outputText value="#{detalleRadicadoSedeController.selected.codigoFactura}" title="#{bundle.ViewDetalleRadicadoSedeTitle_codigoFactura}"/>
+                    <h:outputText value="#{bundle.ViewDetalleRadicadoSedeLabel_codigoListadoRadicado}"/>
+                    <h:outputText value="#{detalleRadicadoSedeController.selected.codigoListadoRadicado}" title="#{bundle.ViewDetalleRadicadoSedeTitle_codigoListadoRadicado}"/>
+                    <h:outputText value="#{bundle.ViewDetalleRadicadoSedeLabel_codigoSede}"/>
+                    <h:outputText value="#{detalleRadicadoSedeController.selected.codigoSede}" title="#{bundle.ViewDetalleRadicadoSedeTitle_codigoSede}"/>
+                    <h:outputText value="#{bundle.ViewDetalleRadicadoSedeLabel_codigoUsuario}"/>
+                    <h:outputText value="#{detalleRadicadoSedeController.selected.codigoUsuario}" title="#{bundle.ViewDetalleRadicadoSedeTitle_codigoUsuario}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{detalleRadicadoSedeController.destroyAndView}" value="#{bundle.ViewDetalleRadicadoSedeDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewDetalleRadicadoSedeEditLink}"/>
+                <br />
+                <h:commandLink action="#{detalleRadicadoSedeController.prepareCreate}" value="#{bundle.ViewDetalleRadicadoSedeCreateLink}" />
+                <br />
+                <h:commandLink action="#{detalleRadicadoSedeController.prepareList}" value="#{bundle.ViewDetalleRadicadoSedeShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewDetalleRadicadoSedeIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

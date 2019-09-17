@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditExamenesApoyoDiagnosticoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditExamenesApoyoDiagnosticoLabel_consecutivo}" for="consecutivo" />
+                    <h:inputText id="consecutivo" value="#{examenesApoyoDiagnosticoController.selected.consecutivo}" title="#{bundle.EditExamenesApoyoDiagnosticoTitle_consecutivo}" required="true" requiredMessage="#{bundle.EditExamenesApoyoDiagnosticoRequiredMessage_consecutivo}"/>
+                    <h:outputLabel value="#{bundle.EditExamenesApoyoDiagnosticoLabel_fechaRegistro}" for="fechaRegistro" />
+                    <h:inputText id="fechaRegistro" value="#{examenesApoyoDiagnosticoController.selected.fechaRegistro}" title="#{bundle.EditExamenesApoyoDiagnosticoTitle_fechaRegistro}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditExamenesApoyoDiagnosticoLabel_cantidad}" for="cantidad" />
+                    <h:inputText id="cantidad" value="#{examenesApoyoDiagnosticoController.selected.cantidad}" title="#{bundle.EditExamenesApoyoDiagnosticoTitle_cantidad}" />
+                    <h:outputLabel value="#{bundle.EditExamenesApoyoDiagnosticoLabel_justificacionMedica}" for="justificacionMedica" />
+                    <h:inputTextarea rows="4" cols="30" id="justificacionMedica" value="#{examenesApoyoDiagnosticoController.selected.justificacionMedica}" title="#{bundle.EditExamenesApoyoDiagnosticoTitle_justificacionMedica}" />
+                    <h:outputLabel value="#{bundle.EditExamenesApoyoDiagnosticoLabel_interpretacionMedica}" for="interpretacionMedica" />
+                    <h:inputTextarea rows="4" cols="30" id="interpretacionMedica" value="#{examenesApoyoDiagnosticoController.selected.interpretacionMedica}" title="#{bundle.EditExamenesApoyoDiagnosticoTitle_interpretacionMedica}" />
+                    <h:outputLabel value="#{bundle.EditExamenesApoyoDiagnosticoLabel_fechaModificacion}" for="fechaModificacion" />
+                    <h:inputText id="fechaModificacion" value="#{examenesApoyoDiagnosticoController.selected.fechaModificacion}" title="#{bundle.EditExamenesApoyoDiagnosticoTitle_fechaModificacion}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditExamenesApoyoDiagnosticoLabel_fechaInterpretacion}" for="fechaInterpretacion" />
+                    <h:inputText id="fechaInterpretacion" value="#{examenesApoyoDiagnosticoController.selected.fechaInterpretacion}" title="#{bundle.EditExamenesApoyoDiagnosticoTitle_fechaInterpretacion}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditExamenesApoyoDiagnosticoLabel_codigoCita}" for="codigoCita" />
+                    <h:selectOneMenu id="codigoCita" value="#{examenesApoyoDiagnosticoController.selected.codigoCita}" title="#{bundle.EditExamenesApoyoDiagnosticoTitle_codigoCita}" >
+                        <f:selectItems value="#{citapersonaController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditExamenesApoyoDiagnosticoLabel_codigoPersona}" for="codigoPersona" />
+                    <h:selectOneMenu id="codigoPersona" value="#{examenesApoyoDiagnosticoController.selected.codigoPersona}" title="#{bundle.EditExamenesApoyoDiagnosticoTitle_codigoPersona}" >
+                        <f:selectItems value="#{datospersonaController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditExamenesApoyoDiagnosticoLabel_codigoCups}" for="codigoCups" />
+                    <h:selectOneMenu id="codigoCups" value="#{examenesApoyoDiagnosticoController.selected.codigoCups}" title="#{bundle.EditExamenesApoyoDiagnosticoTitle_codigoCups}" >
+                        <f:selectItems value="#{manualtarifasController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditExamenesApoyoDiagnosticoLabel_modificadoPor}" for="modificadoPor" />
+                    <h:selectOneMenu id="modificadoPor" value="#{examenesApoyoDiagnosticoController.selected.modificadoPor}" title="#{bundle.EditExamenesApoyoDiagnosticoTitle_modificadoPor}" >
+                        <f:selectItems value="#{usuarioController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditExamenesApoyoDiagnosticoLabel_codigoUsuario}" for="codigoUsuario" />
+                    <h:selectOneMenu id="codigoUsuario" value="#{examenesApoyoDiagnosticoController.selected.codigoUsuario}" title="#{bundle.EditExamenesApoyoDiagnosticoTitle_codigoUsuario}" >
+                        <f:selectItems value="#{usuarioController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditExamenesApoyoDiagnosticoLabel_codigoInterpretacion}" for="codigoInterpretacion" />
+                    <h:selectOneMenu id="codigoInterpretacion" value="#{examenesApoyoDiagnosticoController.selected.codigoInterpretacion}" title="#{bundle.EditExamenesApoyoDiagnosticoTitle_codigoInterpretacion}" >
+                        <f:selectItems value="#{usuarioController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{examenesApoyoDiagnosticoController.update}" value="#{bundle.EditExamenesApoyoDiagnosticoSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditExamenesApoyoDiagnosticoViewLink}"/>
+                <br />
+                <h:commandLink action="#{examenesApoyoDiagnosticoController.prepareList}" value="#{bundle.EditExamenesApoyoDiagnosticoShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditExamenesApoyoDiagnosticoIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

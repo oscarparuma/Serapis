@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <f:view contentType="text/html" beforePhase="#{usuarioController.beforePhase}"  >
+
+        <ui:composition template="/templateAdministracion.xhtml">
+            <ui:define name="title">
+                <h:outputText value="#{bundle.AppName}"></h:outputText>
+            </ui:define>
+
+            <ui:define name="body">
+                <br></br>
+                <h:form>
+                    <div align="center">
+                        <p:panel header="#{bundle.datosSede}">
+                            <br></br>
+                            <h:panelGrid columns="1">
+                                <p:panelGrid columns="2">
+                                    <p:outputLabel value="#{bundle.CreateSedeLabel_codigoTipoIdentificacionSede}" for="codigoTipoIdentificacionSede" />
+                                    <p:selectOneMenu id="codigoTipoIdentificacionSede" value="#{sedeController.selected.codigoTipoIdentificacionSede}"  required="true" requiredMessage="#{bundle.CreateSedeRequiredMessage_codigoTipoIdentificacionSede}"  >
+                                        <f:selectItems value="#{tipoidentificacionController.itemsAvailableSelectOne}"/>
+                                    </p:selectOneMenu>
+                                    <p:outputLabel value="#{bundle.CreateSedeLabel_identificacionNit}" for="identificacionNit" />
+                                    <p:inputText size="30" id="identificacionNit" style="text-transform: uppercase" onkeyup="javascript:this.value = this.value.toUpperCase();" value="#{sedeController.selected.identificacionNit}" 
+                                                 required="true" requiredMessage="#{bundle.CreateSedeRequiredMessage_identificacionNit}" title="#{bundle.CreateSedeTitle_identificacionNit}" />
+                                    <p:outputLabel value="#{bundle.CreateSedeLabel_nombreSede}" for="nombreSede" />
+                                    <p:inputText size="30" id="nombreSede" style="text-transform: uppercase" onkeyup="javascript:this.value = this.value.toUpperCase();" value="#{sedeController.selected.nombreSede}" 
+                                                 required="true" requiredMessage="#{bundle.CreateSedeRequiredMessage_nombreSede}" title="#{bundle.CreateSedeTitle_nombreSede}" />
+                                    <p:outputLabel value="#{bundle.CreateSedeLabel_siglasSede}" for="siglasSede" />
+                                    <p:inputText size="30"  id="siglasSede" style="text-transform: uppercase" onkeyup="javascript:this.value = this.value.toUpperCase();" value="#{sedeController.selected.siglasSede}" 
+                                                 required="true" requiredMessage="#{bundle.CreateSedeRequiredMessage_siglasSede}" title="#{bundle.CreateSedeTitle_siglasSede}" />
+                                    <p:outputLabel value="#{bundle.CreateSedeLabel_direccion}" for="direccion" />
+                                    <p:inputText size="30" id="direccion" style="text-transform: uppercase" onkeyup="javascript:this.value = this.value.toUpperCase();" value="#{sedeController.selected.direccion}" 
+                                                 required="true" requiredMessage="#{bundle.CreateSedeRequiredMessage_direccion}" title="#{bundle.CreateSedeTitle_direccion}" />
+                                    <p:outputLabel value="#{bundle.CreateSedeLabel_telefono}" for="telefono" />
+                                    <p:inputText size="30" id="telefono" value="#{sedeController.selected.telefono}" required="true" requiredMessage="#{bundle.CreateSedeRequiredMessage_telefono}" title="#{bundle.CreateSedeTitle_telefono}" />
+                                    <p:outputLabel value="#{bundle.CreateSedeLabel_email}" for="email" />
+                                    <p:inputText size="30" id="email" value="#{sedeController.selected.email}" title="#{bundle.CreateSedeTitle_email}" />
+                                    <p:outputLabel value="#{bundle.CreateSedeLabel_paginaWeb}" for="paginaWeb" />
+                                    <p:inputText size="30" id="paginaWeb" value="#{sedeController.selected.paginaWeb}" title="#{bundle.CreateSedeTitle_paginaWeb}" />
+
+                                    <p:outputLabel  value="#{bundle.CreateDepartamentoLabel_codigoPais}" for="codigoPais" />
+                                    <p:selectOneMenu style="min-width: 230px;" filter="true" filterMatchMode="contains" id="codigoPais" value="#{sedeController.paisSelected}"
+                                                     styleClass="input" >
+                                        <f:selectItem noSelectionOption="true" itemLabel="-Seleccione- " />
+                                        <f:selectItems value="#{paisController.itemsAvailableSelectMany}"/>
+                                        <p:ajax process="codigoPais" update="codigoDepartamento, codigoMunicipio" event="change"  />
+                                    </p:selectOneMenu>
+                                    <p:outputLabel  value="#{bundle.CreateMunicipioLabel_codigoDepartamento}" for="codigoDepartamento" />
+                                    <p:selectOneMenu style="min-width: 230px;" filter="true" filterMatchMode="contains" id="codigoDepartamento" value="#{sedeController.departamentoSelected}"
+                                                     styleClass="input"  >
+                                        <f:selectItem noSelectionOption="true" itemLabel="-Seleccione- " />
+                                        <f:selectItems value="#{sedeController.paisSelected.departamentoList}"/>
+                                        <p:ajax process="codigoDepartamento"  update="codigoMunicipio" event="change" />
+                                    </p:selectOneMenu>
+                                    <p:outputLabel  value="#{bundle.CreateSedeLabel_codigoMunicipio}" for="codigoMunicipio" />
+                                    <p:selectOneMenu style="min-width: 230px;" filter="true" filterMatchMode="contains"  id="codigoMunicipio" required="true" requiredMessage="#{bundle.CreateSedeRequiredMessage_codigoMunicipio}" 
+                                                     value="#{sedeController.selected.codigoMunicipio}"
+                                                     styleClass="input"  >
+                                        <f:selectItem noSelectionOption="true" itemLabel="-Seleccione- " />
+                                        <f:selectItems value="#{sedeController.departamentoSelected.municipioList}"/>
+                                        <p:ajax process="codigoMunicipio" event="change" />
+                                    </p:selectOneMenu> 
+
+                                </p:panelGrid>
+                            </h:panelGrid>
+                            <br></br>
+                            <p:panel>
+                                <p:commandButton style="margin-right: 10px;" id="createButton" icon="ui-icon-plus" process="@all" styleClass="button" ajax="false" action="#{sedeController.create}" value="#{bundle.CreateUsuarioSaveLink}" />
+                                <p:commandButton id="editButton" icon="ui-icon-circle-arrow-w" process="@all" styleClass="button" ajax="false" action="#{sedeController.prepareList}" value="#{bundle.CreateSedeShowAllLink}" immediate="true"/>
+                            </p:panel>
+
+                        </p:panel>
+                    </div>
+                </h:form>
+            </ui:define>
+        </ui:composition>
+    </f:view>
+</html>

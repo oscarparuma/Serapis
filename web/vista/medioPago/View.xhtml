@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewMedioPagoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewMedioPagoLabel_codigoMedioPago}"/>
+                    <h:outputText value="#{medioPagoController.selected.codigoMedioPago}" title="#{bundle.ViewMedioPagoTitle_codigoMedioPago}"/>
+                    <h:outputText value="#{bundle.ViewMedioPagoLabel_nombre}"/>
+                    <h:outputText value="#{medioPagoController.selected.nombre}" title="#{bundle.ViewMedioPagoTitle_nombre}"/>
+                    <h:outputText value="#{bundle.ViewMedioPagoLabel_activo}"/>
+                    <h:outputText value="#{medioPagoController.selected.activo}" title="#{bundle.ViewMedioPagoTitle_activo}"/>
+                    <h:outputText value="#{bundle.ViewMedioPagoLabel_fechaRegistro}"/>
+                    <h:outputText value="#{medioPagoController.selected.fechaRegistro}" title="#{bundle.ViewMedioPagoTitle_fechaRegistro}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewMedioPagoLabel_fechaModificacion}"/>
+                    <h:outputText value="#{medioPagoController.selected.fechaModificacion}" title="#{bundle.ViewMedioPagoTitle_fechaModificacion}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewMedioPagoLabel_codigoUsuario}"/>
+                    <h:outputText value="#{medioPagoController.selected.codigoUsuario}" title="#{bundle.ViewMedioPagoTitle_codigoUsuario}"/>
+                    <h:outputText value="#{bundle.ViewMedioPagoLabel_codigousuarioModifico}"/>
+                    <h:outputText value="#{medioPagoController.selected.codigousuarioModifico}" title="#{bundle.ViewMedioPagoTitle_codigousuarioModifico}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{medioPagoController.destroyAndView}" value="#{bundle.ViewMedioPagoDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewMedioPagoEditLink}"/>
+                <br />
+                <h:commandLink action="#{medioPagoController.prepareCreate}" value="#{bundle.ViewMedioPagoCreateLink}" />
+                <br />
+                <h:commandLink action="#{medioPagoController.prepareList}" value="#{bundle.ViewMedioPagoShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewMedioPagoIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

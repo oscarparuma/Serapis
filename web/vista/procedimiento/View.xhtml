@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewProcedimientoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewProcedimientoLabel_consecutivo}"/>
+                    <h:outputText value="#{procedimientoController.selected.consecutivo}" title="#{bundle.ViewProcedimientoTitle_consecutivo}"/>
+                    <h:outputText value="#{bundle.ViewProcedimientoLabel_fechaRegistro}"/>
+                    <h:outputText value="#{procedimientoController.selected.fechaRegistro}" title="#{bundle.ViewProcedimientoTitle_fechaRegistro}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewProcedimientoLabel_descripcionProcedimiento}"/>
+                    <h:outputText value="#{procedimientoController.selected.descripcionProcedimiento}" title="#{bundle.ViewProcedimientoTitle_descripcionProcedimiento}"/>
+                    <h:outputText value="#{bundle.ViewProcedimientoLabel_fechaModificacion}"/>
+                    <h:outputText value="#{procedimientoController.selected.fechaModificacion}" title="#{bundle.ViewProcedimientoTitle_fechaModificacion}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewProcedimientoLabel_botProcedimiento}"/>
+                    <h:outputText value="#{procedimientoController.selected.botProcedimiento}" title="#{bundle.ViewProcedimientoTitle_botProcedimiento}"/>
+                    <h:outputText value="#{bundle.ViewProcedimientoLabel_activo}"/>
+                    <h:outputText value="#{procedimientoController.selected.activo}" title="#{bundle.ViewProcedimientoTitle_activo}"/>
+                    <h:outputText value="#{bundle.ViewProcedimientoLabel_codigoCausa}"/>
+                    <h:outputText value="#{procedimientoController.selected.codigoCausa}" title="#{bundle.ViewProcedimientoTitle_codigoCausa}"/>
+                    <h:outputText value="#{bundle.ViewProcedimientoLabel_codigoCita}"/>
+                    <h:outputText value="#{procedimientoController.selected.codigoCita}" title="#{bundle.ViewProcedimientoTitle_codigoCita}"/>
+                    <h:outputText value="#{bundle.ViewProcedimientoLabel_codigoPersona}"/>
+                    <h:outputText value="#{procedimientoController.selected.codigoPersona}" title="#{bundle.ViewProcedimientoTitle_codigoPersona}"/>
+                    <h:outputText value="#{bundle.ViewProcedimientoLabel_codigoFinalidad}"/>
+                    <h:outputText value="#{procedimientoController.selected.codigoFinalidad}" title="#{bundle.ViewProcedimientoTitle_codigoFinalidad}"/>
+                    <h:outputText value="#{bundle.ViewProcedimientoLabel_codigoAnestesia}"/>
+                    <h:outputText value="#{procedimientoController.selected.codigoAnestesia}" title="#{bundle.ViewProcedimientoTitle_codigoAnestesia}"/>
+                    <h:outputText value="#{bundle.ViewProcedimientoLabel_codigoUsuario}"/>
+                    <h:outputText value="#{procedimientoController.selected.codigoUsuario}" title="#{bundle.ViewProcedimientoTitle_codigoUsuario}"/>
+                    <h:outputText value="#{bundle.ViewProcedimientoLabel_modificadoPor}"/>
+                    <h:outputText value="#{procedimientoController.selected.modificadoPor}" title="#{bundle.ViewProcedimientoTitle_modificadoPor}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{procedimientoController.destroyAndView}" value="#{bundle.ViewProcedimientoDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewProcedimientoEditLink}"/>
+                <br />
+                <h:commandLink action="#{procedimientoController.prepareCreate}" value="#{bundle.ViewProcedimientoCreateLink}" />
+                <br />
+                <h:commandLink action="#{procedimientoController.prepareList}" value="#{bundle.ViewProcedimientoShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewProcedimientoIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

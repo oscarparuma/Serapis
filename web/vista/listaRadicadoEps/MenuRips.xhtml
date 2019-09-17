@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.AppName}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+
+            <h:form>
+                <p:panel>
+                    <div class="col-lg-8">
+                        <p:panel>
+
+                            <div align="center">
+                                <p:panel header="#{bundle.carteraSede}" style="min-width: 200px; max-width: 1000px;">
+                                    <br></br><br></br>
+                                    <div class="panel-body">
+                                        <div class="col-lg-4">
+                                            <p:dataTable reflow="true" var="estado" value="" emptyMessage=" ">
+                                                <p:column >                                               
+                                                    <div align="center">
+                                                        <p:commandLink title="#{bundle.RipsCT}" id="createButtonl"  process="@all" styleClass="button" ajax="false" action="#{listaRadicadoEpsController.CT()}" immediate="true">
+                                                            <h:graphicImage id="RipsCT" alt="#{m.ingles}" style="min-width: 100px; max-width: 150px;" url="/imagenes/ImagSisitema/excel-ct.png" class="img-responsive" />
+                                                        </p:commandLink>
+                                                    </div>
+                                                </p:column>
+                                                <p:column >                                               
+                                                    <div align="center">
+                                                        <p:commandLink title="#{bundle.RipsAF}" id="createButton3"  process="@all" styleClass="button" ajax="false" action="#{listaRadicadoEpsController.AF()}" immediate="true">
+                                                            <h:graphicImage id="RipsAF" alt="#{m.ingles}" style="min-width: 100px; max-width: 150px;" url="/imagenes/ImagSisitema/excel-af.png" class="img-responsive" />
+                                                        </p:commandLink>
+                                                    </div>
+                                                </p:column>
+                                                <p:column >                                               
+                                                    <div align="center">
+                                                        <p:commandLink title="#{bundle.RipsAC}" id="createButton2"  process="@all" styleClass="button" ajax="false" action="#{listaRadicadoEpsController.AC()}" immediate="true">
+                                                            <h:graphicImage id="RipsAC" alt="#{m.ingles}" style="min-width: 100px; max-width: 150px;" url="/imagenes/ImagSisitema/excel-ac.png" class="img-responsive" />
+                                                        </p:commandLink>
+                                                    </div>
+                                                </p:column>
+                                                
+                                                <p:column >                                               
+                                                    <div align="center">
+                                                        <p:commandLink title="#{bundle.RipsUS}" id="createButton4"  process="@all" styleClass="button" ajax="false" action="#{listaRadicadoEpsController.US()}" immediate="true">
+                                                            <h:graphicImage id="RipsUS" alt="#{m.ingles}" style="min-width: 100px; max-width: 150px;" url="/imagenes/ImagSisitema/excel-us.png" class="img-responsive" />
+                                                        </p:commandLink>
+                                                    </div>
+                                                </p:column>
+                                            </p:dataTable>
+                                             <br/>
+                                             <p:dataTable reflow="true" var="estado" value="" emptyMessage=" ">
+                                                 <p:column >                                               
+                                                    <div align="center">
+                                                        <p:commandLink title="#{bundle.RipsTxCT}" id="createButtonl"  process="@all" styleClass="button" ajax="false" action="#{listaRadicadoEpsController.TXTCT()}" immediate="true">
+                                                            <h:graphicImage id="RipsTxCT" alt="#{m.ingles}" style="min-width: 100px; max-width: 150px;" url="/imagenes/ImagSisitema/txt-ct.png" class="img-responsive" />
+                                                        </p:commandLink>
+                                                    </div>
+                                                </p:column>
+                                                <p:column >                                               
+                                                    <div align="center">
+                                                        <p:commandLink title="#{bundle.RipsTxAC}" id="createButton2"  process="@all" styleClass="button" ajax="false" action="#{listaRadicadoEpsController.TXTAC()}" immediate="true">
+                                                            <h:graphicImage id="RipsTxAC" alt="#{m.ingles}" style="min-width: 100px; max-width: 150px;" url="/imagenes/ImagSisitema/txt-ac.png" class="img-responsive" />
+                                                        </p:commandLink>
+                                                    </div>
+                                                </p:column>
+                                                <p:column >                                               
+                                                    <div align="center">
+                                                        <p:commandLink title="#{bundle.RipsTxAF}" id="createButton3"  process="@all" styleClass="button" ajax="false" action="#{listaRadicadoEpsController.TXTAF()}" immediate="true">
+                                                            <h:graphicImage id="RipsTxAF" alt="#{m.ingles}" style="min-width: 100px; max-width: 150px;" url="/imagenes/ImagSisitema/txt-af.png" class="img-responsive" />
+                                                        </p:commandLink>
+                                                    </div>
+                                                </p:column>
+                                                <p:column >                                               
+                                                    <div align="center">
+                                                        <p:commandLink title="#{bundle.RipsTxUS}" id="createButton4"  process="@all" styleClass="button" ajax="false" action="#{listaRadicadoEpsController.TXTUS()}" immediate="true">
+                                                            <h:graphicImage id="RipsTxUS" alt="#{m.ingles}" style="min-width: 100px; max-width: 150px;" url="/imagenes/ImagSisitema/txt-us.png" class="img-responsive" />
+                                                        </p:commandLink>
+                                                    </div>
+                                                </p:column>
+                                             </p:dataTable>
+                                        </div>
+                                        <h:panelGrid columns="1" >
+                                            <div align="center"  >
+                                                <br></br><br></br>
+                                                <h:panelGrid columns="2">                                            
+                                                    <p:commandLink rendered="#{usuarioController.selected.codigoPerfil.codigoPerfil ==1 || usuarioController.selected.codigoPerfil.codigoPerfil ==2}"  title="#{bundle.Regresar}"  update="@all" action="/vista/menuSistema/MenuCartera.xhtml"   immediate="true">
+                                                        <h:graphicImage id="menuConsultas" alt="#{m.ingles}"  url="/imagenes/ImagSisitema/regresar.jpg" class="img-responsive"/>
+                                                    </p:commandLink>
+                                                    <p:commandLink  rendered="#{usuarioController.selected.codigoPerfil.codigoPerfil ==1 || usuarioController.selected.codigoPerfil.codigoPerfil ==2}" title="#{bundle.salir}"  update="@all" action="/index.xhtml"  immediate="true">
+                                                        <h:graphicImage id="Salir" alt="#{m.ingles}"  url="/imagenes/ImagSisitema/salirSistema.jpg" class="img-responsive" />
+                                                    </p:commandLink>
+                                                </h:panelGrid>
+                                            </div>
+                                        </h:panelGrid>
+                                    </div>
+                                </p:panel> 
+                            </div>
+                        </p:panel> 
+                    </div>                    
+                </p:panel>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

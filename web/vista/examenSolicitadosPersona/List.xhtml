@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListExamenesApoyoDiagnosticoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListExamenesApoyoDiagnosticoEmpty}" rendered="#{examenesApoyoDiagnosticoController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{examenesApoyoDiagnosticoController.items.rowCount > 0}">
+                    <h:outputText value="#{examenesApoyoDiagnosticoController.pagination.pageFirstItem + 1}..#{examenesApoyoDiagnosticoController.pagination.pageLastItem + 1}/#{examenesApoyoDiagnosticoController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{examenesApoyoDiagnosticoController.previous}" value="#{bundle.Previous} #{examenesApoyoDiagnosticoController.pagination.pageSize}" rendered="#{examenesApoyoDiagnosticoController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{examenesApoyoDiagnosticoController.next}" value="#{bundle.Next} #{examenesApoyoDiagnosticoController.pagination.pageSize}" rendered="#{examenesApoyoDiagnosticoController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{examenesApoyoDiagnosticoController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListExamenesApoyoDiagnosticoTitle_consecutivo}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.consecutivo}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListExamenesApoyoDiagnosticoTitle_fechaRegistro}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.fechaRegistro}">
+                                <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListExamenesApoyoDiagnosticoTitle_cantidad}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.cantidad}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListExamenesApoyoDiagnosticoTitle_justificacionMedica}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.justificacionMedica}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListExamenesApoyoDiagnosticoTitle_interpretacionMedica}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.interpretacionMedica}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListExamenesApoyoDiagnosticoTitle_fechaModificacion}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.fechaModificacion}">
+                                <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListExamenesApoyoDiagnosticoTitle_fechaInterpretacion}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.fechaInterpretacion}">
+                                <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListExamenesApoyoDiagnosticoTitle_botEvolucionMedica}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.botEvolucionMedica}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListExamenesApoyoDiagnosticoTitle_resultados}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.resultados}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListExamenesApoyoDiagnosticoTitle_evilucionado}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.evilucionado}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListExamenesApoyoDiagnosticoTitle_numeroDocumentoIdentidad}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.numeroDocumentoIdentidad}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListExamenesApoyoDiagnosticoTitle_codigoCita}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.codigoCita}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListExamenesApoyoDiagnosticoTitle_codigoCitaEvolucion}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.codigoCitaEvolucion}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListExamenesApoyoDiagnosticoTitle_codigoPersona}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.codigoPersona}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListExamenesApoyoDiagnosticoTitle_codigoCups}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.codigoCups}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListExamenesApoyoDiagnosticoTitle_codigoSede}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.codigoSede}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListExamenesApoyoDiagnosticoTitle_medicoEvolucion}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.medicoEvolucion}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListExamenesApoyoDiagnosticoTitle_modificadoPor}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.modificadoPor}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListExamenesApoyoDiagnosticoTitle_codigoUsuario}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.codigoUsuario}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListExamenesApoyoDiagnosticoTitle_codigoInterpretacion}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.codigoInterpretacion}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{examenesApoyoDiagnosticoController.prepareView}" value="#{bundle.ListExamenesApoyoDiagnosticoViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{examenesApoyoDiagnosticoController.prepareEdit}" value="#{bundle.ListExamenesApoyoDiagnosticoEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{examenesApoyoDiagnosticoController.destroy}" value="#{bundle.ListExamenesApoyoDiagnosticoDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{examenesApoyoDiagnosticoController.prepareCreate}" value="#{bundle.ListExamenesApoyoDiagnosticoCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListExamenesApoyoDiagnosticoIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

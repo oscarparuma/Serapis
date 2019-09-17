@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewConsultamedicaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewConsultamedicaLabel_consecutivo}"/>
+                    <h:outputText value="#{consultamedicaController.selected.consecutivo}" title="#{bundle.ViewConsultamedicaTitle_consecutivo}"/>
+                    <h:outputText value="#{bundle.ViewConsultamedicaLabel_fechaRegistro}"/>
+                    <h:outputText value="#{consultamedicaController.selected.fechaRegistro}" title="#{bundle.ViewConsultamedicaTitle_fechaRegistro}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewConsultamedicaLabel_evolucionPaciente}"/>
+                    <h:outputText value="#{consultamedicaController.selected.evolucionPaciente}" title="#{bundle.ViewConsultamedicaTitle_evolucionPaciente}"/>
+                    <h:outputText value="#{bundle.ViewConsultamedicaLabel_fechaModificacion}"/>
+                    <h:outputText value="#{consultamedicaController.selected.fechaModificacion}" title="#{bundle.ViewConsultamedicaTitle_fechaModificacion}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewConsultamedicaLabel_modificadoPor}"/>
+                    <h:outputText value="#{consultamedicaController.selected.modificadoPor}" title="#{bundle.ViewConsultamedicaTitle_modificadoPor}"/>
+                    <h:outputText value="#{bundle.ViewConsultamedicaLabel_codigoUsuario}"/>
+                    <h:outputText value="#{consultamedicaController.selected.codigoUsuario}" title="#{bundle.ViewConsultamedicaTitle_codigoUsuario}"/>
+                    <h:outputText value="#{bundle.ViewConsultamedicaLabel_codigoFinalidad}"/>
+                    <h:outputText value="#{consultamedicaController.selected.codigoFinalidad}" title="#{bundle.ViewConsultamedicaTitle_codigoFinalidad}"/>
+                    <h:outputText value="#{bundle.ViewConsultamedicaLabel_codigoPersona}"/>
+                    <h:outputText value="#{consultamedicaController.selected.codigoPersona}" title="#{bundle.ViewConsultamedicaTitle_codigoPersona}"/>
+                    <h:outputText value="#{bundle.ViewConsultamedicaLabel_codigoCita}"/>
+                    <h:outputText value="#{consultamedicaController.selected.codigoCita}" title="#{bundle.ViewConsultamedicaTitle_codigoCita}"/>
+                    <h:outputText value="#{bundle.ViewConsultamedicaLabel_codigoCausa}"/>
+                    <h:outputText value="#{consultamedicaController.selected.codigoCausa}" title="#{bundle.ViewConsultamedicaTitle_codigoCausa}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{consultamedicaController.destroyAndView}" value="#{bundle.ViewConsultamedicaDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewConsultamedicaEditLink}"/>
+                <br />
+                <h:commandLink action="#{consultamedicaController.prepareCreate}" value="#{bundle.ViewConsultamedicaCreateLink}" />
+                <br />
+                <h:commandLink action="#{consultamedicaController.prepareList}" value="#{bundle.ViewConsultamedicaShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewConsultamedicaIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

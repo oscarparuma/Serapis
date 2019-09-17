@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:pe="http://primefaces.org/ui/extensions"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+        <br></br>
+        <ui:define name="title">
+            <h:outputText value="#{bundle.AppName}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+
+            <h:form>
+                <div align="center">
+                    <div class="container text-center">   
+                        <div class="row">
+                            <div class="col-sm-3 well">                           
+                                <p:panel header="#{bundle.CreateExamenesApoyoDiagnosticoTitle} #{examenesApoyoDiagnosticoController.actAgenCit.codigoPersonaCita}">
+                                    <br></br>
+                                    <p:panelGrid columns="1" rendered="#{examenesApoyoDiagnosticoController.selected != null}">
+                                        <p:panel>
+                                            <h:panelGrid columns="1">
+                                                <p:panelGrid columns="2" >
+                                                    <p:outputLabel value="#{bundle.CreateExamenesApoyoDiagnosticoLabel_codigoCups}" for="codigoCups" />
+                                                    <p:selectOneMenu filter="true" filterMatchMode="contains" style="min-width: 200px;"  id="codigoCups" value="#{examenesApoyoDiagnosticoController.selected.codigoCups}" required="true" requiredMessage="#{bundle.CreateExamenesApoyoDiagnosticoRequiredMessage_codigoCups}">
+                                                        <f:selectItems value="#{manualtarifasController.itemsAvailableSelectOne}"/>
+                                                    </p:selectOneMenu>
+                                                </p:panelGrid>
+                                                <p:panelGrid columns="4">
+                                                    <p:outputLabel value="#{bundle.CreateExamenesApoyoDiagnosticoLabel_cantidad}" for="cantidad" />
+                                                    <p:inputText size="2" id="cantidad" value="#{examenesApoyoDiagnosticoController.selected.cantidad}" required="true" requiredMessage="#{bundle.CreateExamenesApoyoDiagnosticoRequiredMessage_cantidad}" style="min-width: 100px;"/>
+
+
+                                                    <p:outputLabel value="#{bundle.CreateExamenesApoyoDiagnosticoLabel_resultados}" for="resultados" />
+                                                    <p:selectOneMenu id="resultados" value="#{examenesApoyoDiagnosticoController.selected.resultados}" 
+                                                                     title="#{bundle.CreateExamenesApoyoDiagnosticoTitle_resultados}" 
+                                                                     required="true" requiredMessage="#{bundle.CreateExamenesApoyoDiagnosticoRequiredMessage_resultados}" styleClass="input"  style="min-width: 100px;">
+                                                        <f:selectItem noSelectionOption="true" itemLabel=" ---- "/>
+                                                        <f:selectItem itemValue="#{bundle.itemValueN}" itemLabel="#{bundle.itemLabelN}"/>
+                                                        <f:selectItem itemValue="#{bundle.itemValueS}" itemLabel="#{bundle.itemLabelS}"/>
+                                                    </p:selectOneMenu>
+                                                </p:panelGrid>
+                                            </h:panelGrid>
+                                            <br></br>
+                                            <p:panelGrid columns="1">
+                                                <p:panel header="#{bundle.CreateExamenesApoyoDiagnosticoLabel_justificacionMedica}">
+                                                    <p:editor id="justificacionMedica" required="true" requiredMessage="#{bundle.CreateExamenesApoyoDiagnosticoRequiredMessage_justificacionMedica}" value="#{examenesApoyoDiagnosticoController.selected.justificacionMedica}" height="90" width="600" controls="bold italic underline strikethrough size color highlight bullets numbering alignright
+                                                              center alignleft justify undo redo pastetext"/>
+                                                </p:panel>
+                                                <p:panel>
+                                                    <div align="center">
+                                                        <p:commandButton style="margin-right: 10px;" icon="ui-icon-pencil" id="createButton" process="@all" styleClass="button" ajax="false" action="#{examenesApoyoDiagnosticoController.create}" value="#{bundle.CreateExamenesApoyoDiagnosticoSaveLink}" immediate="false"/>
+                                                        <p:commandButton icon="ui-icon-circle-arrow-w" id="editButton" process="@all" styleClass="button" ajax="false" action="#{examenesApoyoDiagnosticoController.prepareList}" value="#{bundle.CreateExamenesApoyoDiagnosticoShowAllLink}" immediate="true"/>
+                                                    </div>
+                                                </p:panel>
+                                            </p:panelGrid>
+                                        </p:panel>
+                                    </p:panelGrid>
+                                </p:panel>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

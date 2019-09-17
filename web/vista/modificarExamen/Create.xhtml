@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/templateIngreso.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateModificarExamenTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+
+            <h:form>
+                <p:panel>
+                    <div align="center">
+                        <div class="container text-center">   
+                            <div class="row">
+                                <div class="col-sm-3 well">
+                                    <p:panel header="#{bundle.modifExamenSede}" >
+                                        <div align="center">
+                                            <p:panel header="#{procedimientosedeController.selected.codigoCups.codigoCups} #{procedimientosedeController.selected.codigoCups.descripcionCups} #{bundle.codigRips} #{procedimientosedeController.selected.codigoRips}" >
+
+                                                <h:panelGrid columns="1" cellpadding="5" >
+                                                    <div align="center">
+                                                        <p:panel>
+                                                            <h:panelGrid columns="1">
+                                                                <h:outputText value="#{bundle.inactExamen}" /> 
+                                                            </h:panelGrid>
+                                                        </p:panel>
+                                                        <p:panel>
+                                                            <div align="center">
+                                                                <h:panelGrid columns="2">
+                                                                    <p:panel header="#{bundle.CreateModificarExamenLabel_justificacion}">
+                                                                        <p:inputTextarea rows="4" cols="50" id="justificacion" style="text-transform: uppercase" onkeyup="javascript:this.value = this.value.toUpperCase();" value="#{modificarExamenController.selected.justificacion}" 
+                                                                                         required="true" requiredMessage="#{bundle.CreateModificarExamenRequiredMessage_justificacion}" title="#{bundle.CreateModificarExamenTitle_justificacion}" />
+                                                                    </p:panel>
+                                                                </h:panelGrid>
+                                                                <f:facet name="footer">
+                                                                    <p:panel>
+                                                                        <div align="center">
+                                                                            <p:commandButton id="editButton"   icon="ui-icon-plus" process="@all" styleClass="button" ajax="false" action="#{modificarExamenController.create}" value="#{bundle.CreateModificarExamenSaveLink}" />
+                                                                            <p:commandButton icon="ui-icon-circle-arrow-w" process="@all" styleClass="button" ajax="false" action="/vista/menuSistema/MenuIngresos.xhtml" value="#{bundle.Regresar}" immediate="true"/>
+                                                                        </div>
+                                                                    </p:panel>
+                                                                </f:facet>
+                                                            </div>
+                                                        </p:panel>
+                                                    </div>
+                                                </h:panelGrid>
+                                            </p:panel>
+                                        </div>
+                                    </p:panel>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </p:panel>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

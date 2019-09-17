@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListModificarExamenTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListModificarExamenEmpty}" rendered="#{modificarExamenController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{modificarExamenController.items.rowCount > 0}">
+                    <h:outputText value="#{modificarExamenController.pagination.pageFirstItem + 1}..#{modificarExamenController.pagination.pageLastItem + 1}/#{modificarExamenController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{modificarExamenController.previous}" value="#{bundle.Previous} #{modificarExamenController.pagination.pageSize}" rendered="#{modificarExamenController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{modificarExamenController.next}" value="#{bundle.Next} #{modificarExamenController.pagination.pageSize}" rendered="#{modificarExamenController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{modificarExamenController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListModificarExamenTitle_codigoExamen}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.codigoExamen}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListModificarExamenTitle_fechaRegistro}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.fechaRegistro}">
+                                <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListModificarExamenTitle_activo}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.activo}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListModificarExamenTitle_estadoAnterior}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.estadoAnterior}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListModificarExamenTitle_justificacion}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.justificacion}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListModificarExamenTitle_codigoProcedimintoSede}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.codigoProcedimintoSede}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListModificarExamenTitle_codigoSede}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.codigoSede}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListModificarExamenTitle_codigoUsuario}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.codigoUsuario}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{modificarExamenController.prepareView}" value="#{bundle.ListModificarExamenViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{modificarExamenController.prepareEdit}" value="#{bundle.ListModificarExamenEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{modificarExamenController.destroy}" value="#{bundle.ListModificarExamenDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{modificarExamenController.prepareCreate}" value="#{bundle.ListModificarExamenCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListModificarExamenIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

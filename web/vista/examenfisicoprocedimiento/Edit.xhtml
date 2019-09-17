@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditExamenfisicoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditExamenfisicoLabel_consecutivo}" for="consecutivo" />
+                    <h:inputText id="consecutivo" value="#{examenfisicoController.selected.consecutivo}" title="#{bundle.EditExamenfisicoTitle_consecutivo}" required="true" requiredMessage="#{bundle.EditExamenfisicoRequiredMessage_consecutivo}"/>
+                    <h:outputLabel value="#{bundle.EditExamenfisicoLabel_cabeza}" for="cabeza" />
+                    <h:inputTextarea rows="4" cols="30" id="cabeza" value="#{examenfisicoController.selected.cabeza}" title="#{bundle.EditExamenfisicoTitle_cabeza}" />
+                    <h:outputLabel value="#{bundle.EditExamenfisicoLabel_ojos}" for="ojos" />
+                    <h:inputTextarea rows="4" cols="30" id="ojos" value="#{examenfisicoController.selected.ojos}" title="#{bundle.EditExamenfisicoTitle_ojos}" />
+                    <h:outputLabel value="#{bundle.EditExamenfisicoLabel_oidos}" for="oidos" />
+                    <h:inputTextarea rows="4" cols="30" id="oidos" value="#{examenfisicoController.selected.oidos}" title="#{bundle.EditExamenfisicoTitle_oidos}" />
+                    <h:outputLabel value="#{bundle.EditExamenfisicoLabel_agudezaAuditiva}" for="agudezaAuditiva" />
+                    <h:inputTextarea rows="4" cols="30" id="agudezaAuditiva" value="#{examenfisicoController.selected.agudezaAuditiva}" title="#{bundle.EditExamenfisicoTitle_agudezaAuditiva}" />
+                    <h:outputLabel value="#{bundle.EditExamenfisicoLabel_nariz}" for="nariz" />
+                    <h:inputTextarea rows="4" cols="30" id="nariz" value="#{examenfisicoController.selected.nariz}" title="#{bundle.EditExamenfisicoTitle_nariz}" />
+                    <h:outputLabel value="#{bundle.EditExamenfisicoLabel_faringe}" for="faringe" />
+                    <h:inputTextarea rows="4" cols="30" id="faringe" value="#{examenfisicoController.selected.faringe}" title="#{bundle.EditExamenfisicoTitle_faringe}" />
+                    <h:outputLabel value="#{bundle.EditExamenfisicoLabel_dental}" for="dental" />
+                    <h:inputTextarea rows="4" cols="30" id="dental" value="#{examenfisicoController.selected.dental}" title="#{bundle.EditExamenfisicoTitle_dental}" />
+                    <h:outputLabel value="#{bundle.EditExamenfisicoLabel_cuello}" for="cuello" />
+                    <h:inputTextarea rows="4" cols="30" id="cuello" value="#{examenfisicoController.selected.cuello}" title="#{bundle.EditExamenfisicoTitle_cuello}" />
+                    <h:outputLabel value="#{bundle.EditExamenfisicoLabel_aparatoCirculatorio}" for="aparatoCirculatorio" />
+                    <h:inputTextarea rows="4" cols="30" id="aparatoCirculatorio" value="#{examenfisicoController.selected.aparatoCirculatorio}" title="#{bundle.EditExamenfisicoTitle_aparatoCirculatorio}" />
+                    <h:outputLabel value="#{bundle.EditExamenfisicoLabel_aparatoRespitatorio}" for="aparatoRespitatorio" />
+                    <h:inputTextarea rows="4" cols="30" id="aparatoRespitatorio" value="#{examenfisicoController.selected.aparatoRespitatorio}" title="#{bundle.EditExamenfisicoTitle_aparatoRespitatorio}" />
+                    <h:outputLabel value="#{bundle.EditExamenfisicoLabel_abdomen}" for="abdomen" />
+                    <h:inputTextarea rows="4" cols="30" id="abdomen" value="#{examenfisicoController.selected.abdomen}" title="#{bundle.EditExamenfisicoTitle_abdomen}" />
+                    <h:outputLabel value="#{bundle.EditExamenfisicoLabel_genitales}" for="genitales" />
+                    <h:inputTextarea rows="4" cols="30" id="genitales" value="#{examenfisicoController.selected.genitales}" title="#{bundle.EditExamenfisicoTitle_genitales}" />
+                    <h:outputLabel value="#{bundle.EditExamenfisicoLabel_tanner}" for="tanner" />
+                    <h:inputTextarea rows="4" cols="30" id="tanner" value="#{examenfisicoController.selected.tanner}" title="#{bundle.EditExamenfisicoTitle_tanner}" />
+                    <h:outputLabel value="#{bundle.EditExamenfisicoLabel_neurologico}" for="neurologico" />
+                    <h:inputTextarea rows="4" cols="30" id="neurologico" value="#{examenfisicoController.selected.neurologico}" title="#{bundle.EditExamenfisicoTitle_neurologico}" />
+                    <h:outputLabel value="#{bundle.EditExamenfisicoLabel_desarrolloSicomotor}" for="desarrolloSicomotor" />
+                    <h:inputTextarea rows="4" cols="30" id="desarrolloSicomotor" value="#{examenfisicoController.selected.desarrolloSicomotor}" title="#{bundle.EditExamenfisicoTitle_desarrolloSicomotor}" />
+                    <h:outputLabel value="#{bundle.EditExamenfisicoLabel_osteomuscular}" for="osteomuscular" />
+                    <h:inputTextarea rows="4" cols="30" id="osteomuscular" value="#{examenfisicoController.selected.osteomuscular}" title="#{bundle.EditExamenfisicoTitle_osteomuscular}" />
+                    <h:outputLabel value="#{bundle.EditExamenfisicoLabel_pielFanelas}" for="pielFanelas" />
+                    <h:inputTextarea rows="4" cols="30" id="pielFanelas" value="#{examenfisicoController.selected.pielFanelas}" title="#{bundle.EditExamenfisicoTitle_pielFanelas}" />
+                    <h:outputLabel value="#{bundle.EditExamenfisicoLabel_sistemasGanglionar}" for="sistemasGanglionar" />
+                    <h:inputTextarea rows="4" cols="30" id="sistemasGanglionar" value="#{examenfisicoController.selected.sistemasGanglionar}" title="#{bundle.EditExamenfisicoTitle_sistemasGanglionar}" />
+                    <h:outputLabel value="#{bundle.EditExamenfisicoLabel_bcg}" for="bcg" />
+                    <h:inputTextarea rows="4" cols="30" id="bcg" value="#{examenfisicoController.selected.bcg}" title="#{bundle.EditExamenfisicoTitle_bcg}" />
+                    <h:outputLabel value="#{bundle.EditExamenfisicoLabel_otros}" for="otros" />
+                    <h:inputTextarea rows="4" cols="30" id="otros" value="#{examenfisicoController.selected.otros}" title="#{bundle.EditExamenfisicoTitle_otros}" />
+                    <h:outputLabel value="#{bundle.EditExamenfisicoLabel_fechaRegistro}" for="fechaRegistro" />
+                    <h:inputText id="fechaRegistro" value="#{examenfisicoController.selected.fechaRegistro}" title="#{bundle.EditExamenfisicoTitle_fechaRegistro}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditExamenfisicoLabel_fechaModificacion}" for="fechaModificacion" />
+                    <h:inputText id="fechaModificacion" value="#{examenfisicoController.selected.fechaModificacion}" title="#{bundle.EditExamenfisicoTitle_fechaModificacion}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditExamenfisicoLabel_modificadoPor}" for="modificadoPor" />
+                    <h:selectOneMenu id="modificadoPor" value="#{examenfisicoController.selected.modificadoPor}" title="#{bundle.EditExamenfisicoTitle_modificadoPor}" >
+                        <f:selectItems value="#{usuarioController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditExamenfisicoLabel_codigoUsuario}" for="codigoUsuario" />
+                    <h:selectOneMenu id="codigoUsuario" value="#{examenfisicoController.selected.codigoUsuario}" title="#{bundle.EditExamenfisicoTitle_codigoUsuario}" >
+                        <f:selectItems value="#{usuarioController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditExamenfisicoLabel_codigoPersona}" for="codigoPersona" />
+                    <h:selectOneMenu id="codigoPersona" value="#{examenfisicoController.selected.codigoPersona}" title="#{bundle.EditExamenfisicoTitle_codigoPersona}" >
+                        <f:selectItems value="#{datospersonaController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditExamenfisicoLabel_codigoCita}" for="codigoCita" />
+                    <h:selectOneMenu id="codigoCita" value="#{examenfisicoController.selected.codigoCita}" title="#{bundle.EditExamenfisicoTitle_codigoCita}" >
+                        <f:selectItems value="#{citaPersonaController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{examenfisicoController.update}" value="#{bundle.EditExamenfisicoSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditExamenfisicoViewLink}"/>
+                <br />
+                <h:commandLink action="#{examenfisicoController.prepareList}" value="#{bundle.EditExamenfisicoShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditExamenfisicoIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

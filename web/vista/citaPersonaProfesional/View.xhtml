@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.AppName}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+
+            <h:form>
+                <p:panel>
+                    <p:panel header="#{bundle.citAsignada}">
+
+                        <p:panelGrid columns="2">
+                            <h:outputText value="#{bundle.TratPersona}"/>
+                            <h:outputText value=" #{citapersonaController.selected.codigoPersonaCita}" />
+                            <h:outputText value="#{bundle.fechaCitaPersona}"/>
+                            <h:outputText value="#{citapersonaController.selected.fechaCita}">
+                                <f:convertDateTime pattern="yyyy-MM-dd" timeZone="America/Bogota"/>
+                            </h:outputText>
+                            <h:outputText value="#{bundle.horaCita}"/>
+                            <h:outputText value="#{citapersonaController.selected.fechaCita}">
+                                <f:convertDateTime pattern="HH:mm" timeZone="America/Bogota"/>
+                            </h:outputText>
+                            <h:outputText value="#{bundle.ViewCitapersonaLabel_codigoConsultorio}"/>
+                            <h:outputText value=" #{citapersonaController.selected.codigoConsultorio}"/>
+                            <h:outputText value="#{bundle.MedicoTratante}"/>
+                            <h:outputText value=" #{citapersonaController.selected.codigoProfesional}"/>
+                            <h:outputText value="#{bundle.TipoExamen}"/>
+                            <h:outputText value=" #{citapersonaController.selected.codigoExamenRealizar}"/>
+                            <h:outputText value="#{bundle.sede}"/>
+                            <h:outputText value=" #{citapersonaController.selected.codigoSede}" />
+                            <h:outputText value="#{bundle.DireccionSede}"/>
+                            <h:outputText value=" #{citapersonaController.selected.codigoSede.direccion}" />
+                            <h:outputText value="#{bundle.TelefonoSede}"/>
+                            <h:outputText value=" #{citapersonaController.selected.codigoSede.telefono}" />
+                        </p:panelGrid>
+                        <f:facet name="footer">
+                            <p:commandButton id="editButton"   icon="ui-icon-pencil" action="/vista/datospersona/DatosPersona.xhtml" value="#{bundle.Regresar}"/>
+
+                        </f:facet>
+                    </p:panel>
+                </p:panel>
+
+
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

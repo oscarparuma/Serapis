@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListCie10Title}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListCie10Empty}" rendered="#{cie10Controller.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{cie10Controller.items.rowCount > 0}">
+                    <h:outputText value="#{cie10Controller.pagination.pageFirstItem + 1}..#{cie10Controller.pagination.pageLastItem + 1}/#{cie10Controller.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{cie10Controller.previous}" value="#{bundle.Previous} #{cie10Controller.pagination.pageSize}" rendered="#{cie10Controller.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{cie10Controller.next}" value="#{bundle.Next} #{cie10Controller.pagination.pageSize}" rendered="#{cie10Controller.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{cie10Controller.items}" var="item" border="0" cellpadding="2" cellspacing="0" rules="all"">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListCie10Title_codigoCie10}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.codigoCie10}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListCie10Title_nombre}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.nombre}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListCie10Title_activo}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.activo}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListCie10Title_fechaRegistro}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.fechaRegistro}">
+                                <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListCie10Title_fechaModificacion}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.fechaModificacion}">
+                                <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListCie10Title_codigoUsuario}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.codigoUsuario}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListCie10Title_codigoUsuarioModifico}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.codigoUsuarioModifico}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{cie10Controller.prepareView}" value="#{bundle.ListCie10ViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{cie10Controller.prepareEdit}" value="#{bundle.ListCie10EditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{cie10Controller.destroy}" value="#{bundle.ListCie10DestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{cie10Controller.prepareCreate}" value="#{bundle.ListCie10CreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListCie10IndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

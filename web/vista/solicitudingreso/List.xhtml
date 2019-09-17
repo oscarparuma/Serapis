@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListSolicitudingresoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+
+                <p:dataTable value="#{solicitudingresoController.items}" var="item" lazy="true" emptyMessage=" ">
+                    <p:column width="120">
+                        <f:facet name="header">
+                            <h:outputText value="#{bundle.Seleccione}" />
+                        </f:facet>
+                        <p:commandButton id="editButton" icon="ui-icon-pencil" process="@all" styleClass="button" ajax="false" action="#{solicitudingresoController.prepareEdit}" value="#{bundle.Seguimiento}"/> 
+                    </p:column>
+                    <p:column>
+                        <p:panelGrid columns="1">
+
+                            <p:panel header="#{bundle.SoliIngreso}">
+                                <p:panelGrid columns="6">
+                                    <h:outputText value="#{bundle.ListSolicitudingresoTitle_nombreSede}"/>
+                                    <h:outputText value="#{item.nombreSede}"/>
+                                    <h:outputText value="#{bundle.ListSolicitudingresoTitle_identificacionNit}"/>
+                                    <h:outputText value=" #{item.identificacionNit}"/>
+                                    <h:outputText value="#{bundle.ListSolicitudingresoTitle_siglasSede}"/>
+                                    <h:outputText value="#{item.siglasSede}"/>
+                                    <h:outputText value="#{bundle.ListSolicitudingresoTitle_codigoMunicipio}"/>
+                                    <h:outputText value=" #{item.codigoMunicipio}"/>
+                                    <h:outputText value="#{bundle.ListSolicitudingresoTitle_direccion}"/>
+                                    <h:outputText value="#{item.direccion}"/>
+                                    <h:outputText value="#{bundle.ListSolicitudingresoTitle_telefono}"/>
+                                    <h:outputText value="#{item.telefono}"/>
+                                    <h:outputText value="#{bundle.ListSolicitudingresoTitle_email}"/>
+                                    <h:outputText value="#{item.email}"/>                                   
+                                    <h:outputText value="#{bundle.ListSolicitudingresoTitle_paginaWeb}"/>
+                                    <h:outputText value="#{item.paginaWeb}"/>
+                                    <h:outputText value="#{bundle.ListSolicitudingresoTitle_fechaSolicitud}"/>
+                                    <h:outputText value="#{item.fechaSolicitud}">
+                                        <f:convertDateTime pattern="yyyy-MM-dd" timeZone="America/Bogota"/>
+                                    </h:outputText>
+                                </p:panelGrid>
+                                <p:fieldset legend="#{bundle.DatUsuariosSede}" style="font-size: 14px;">
+                                    <p:panelGrid columns="7">
+                                        <p:column>
+                                            <h:outputText value="#{bundle.ListSolicitudingresoTitle_numeroIdentificacion}"/>
+                                        </p:column>
+                                        <p:column>
+                                            <h:outputText value="#{bundle.ListSolicitudingresoTitle_nombreUsuario}"/>
+                                        </p:column>
+                                        <p:column>
+                                            <h:outputText value="#{bundle.ListSolicitudingresoTitle_registroMedico}"/>
+                                        </p:column>
+                                        <p:column>
+                                            <h:outputText value=" #{bundle.ListSolicitudingresoTitle_codigoCargo}"/>
+                                        </p:column>
+                                        <p:column>
+                                            <h:outputText value=" #{bundle.ListSolicitudingresoTitle_codigoEspecialidad}"/>
+                                        </p:column>
+                                        <p:column>
+                                            <h:outputText value="#{bundle.ListSolicitudingresoTitle_otroCargo}"/>
+                                        </p:column>
+                                        <p:column>
+                                            <h:outputText value="#{bundle.ListSolicitudingresoTitle_otraEspecialidad}"/>
+                                        </p:column>
+
+                                        <p:column>
+                                            <h:outputText value="#{item.numeroIdentificacion}"/>
+                                        </p:column>
+                                        <p:column>
+                                            <h:outputText value="#{item.nombreUsuario}"/>
+                                        </p:column>
+                                        <p:column>
+                                            <h:outputText value="#{item.registroMedico}"/>
+                                        </p:column>
+                                        <p:column>
+                                            <h:outputText value=" #{item.codigoCargo}"/>                                          
+                                        </p:column>
+                                        <p:column>
+                                            <h:outputText value=" #{item.codigoEspecialidad}"/>
+                                        </p:column>
+                                        <p:column>                                           
+                                            <h:outputText value="#{item.otroCargo}"/>
+                                        </p:column>
+                                        <p:column>                                           
+                                            <h:outputText value="#{item.otraEspecialidad}"/>
+                                        </p:column>
+
+                                        <p:column> 
+                                            <h:outputText value="#{item.numeroIdentificacionA}"/>
+                                        </p:column>
+                                        <p:column>                       
+                                            <h:outputText value="#{item.nombreUsuarioA}"/>
+                                        </p:column>
+                                        <p:column>                       
+                                            <h:outputText value="#{item.registroMedicoA}"/>
+                                        </p:column>
+                                        <p:column>
+                                            <h:outputText value=" #{item.codigoCargoA}"/>
+                                        </p:column>
+                                        <p:column>
+                                            <h:outputText value=" #{item.codigoEspecialidadA}"/>
+                                        </p:column>
+                                        <p:column>
+                                            <h:outputText value="#{item.otroCargoA}"/>
+                                        </p:column>
+                                        <p:column>
+                                            <h:outputText value="#{item.otraEspecialidadA}"/>
+                                        </p:column>
+                                        <p:column>                      
+                                            <h:outputText value="#{item.numeroIdentificacionB}"/>
+                                        </p:column>
+                                        <p:column>
+                                            <h:outputText value="#{item.nombreUsuarioB}"/>
+                                        </p:column>
+                                        <p:column>
+                                            <h:outputText value="#{item.registroMedicoB}"/>
+                                        </p:column>
+                                        <p:column>
+                                            <h:outputText value=" #{item.codigoCargoB}"/>
+                                        </p:column>
+                                        <p:column>
+                                            <h:outputText value=" #{item.codigoEspecialidadB}"/>
+                                        </p:column>
+                                        <p:column>
+                                            <h:outputText value="#{item.otroCargoB}"/>
+                                        </p:column>
+                                        <p:column>
+                                            <h:outputText value="#{item.otraEspecialidadB}"/>
+                                        </p:column>
+                                        <p:column>
+                                            <h:outputText value="#{item.numeroIdentificacionC}"/>
+                                        </p:column>
+                                        <p:column>                       
+                                            <h:outputText value="#{item.nombreUsuarioC}"/>
+                                        </p:column>
+                                        <p:column>                       
+                                            <h:outputText value="#{item.registroMedicoC}"/>
+                                        </p:column>
+                                        <p:column>                      
+                                            <h:outputText value=" #{item.codigoCargoC}"/>
+                                        </p:column>
+                                        <p:column>
+                                            <h:outputText value=" #{item.codigoEspecialidadC}"/>
+                                        </p:column>
+                                        <p:column>                        
+                                            <h:outputText value="#{item.otroCargoC}"/>
+                                        </p:column>
+                                        <p:column>                       
+                                            <h:outputText value="#{item.otraEspecialidadC}"/>
+                                        </p:column>
+                                        <p:column>
+                                            <h:outputText value="#{item.numeroIdentificacionD}"/>
+                                        </p:column>
+                                        <p:column>
+                                            <h:outputText value="#{item.nombreUsuarioD}"/>
+                                        </p:column>
+                                        <p:column>
+                                            <h:outputText value="#{item.registroMedicoD}"/>
+                                        </p:column>
+                                        <p:column>
+                                            <h:outputText value=" #{item.codigoCargoD}"/>
+                                        </p:column>
+                                        <p:column>
+                                            <h:outputText value=" #{item.codigoEspecialidadD}"/>
+                                        </p:column>
+                                        <p:column>
+                                            <h:outputText value="#{item.otroCargoD}"/>
+                                        </p:column>
+                                        <p:column>
+                                            <h:outputText value="#{item.otraEspecialidadD}"/>
+                                        </p:column>
+
+                                    </p:panelGrid>
+                                </p:fieldset>
+                            </p:panel>
+                        </p:panelGrid>
+                    </p:column>  
+
+                </p:dataTable>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

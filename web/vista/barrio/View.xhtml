@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewBarrioTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewBarrioLabel_codigoBarrio}"/>
+                    <h:outputText value="#{barrioController.selected.codigoBarrio}" title="#{bundle.ViewBarrioTitle_codigoBarrio}"/>
+                    <h:outputText value="#{bundle.ViewBarrioLabel_nombreBarrio}"/>
+                    <h:outputText value="#{barrioController.selected.nombreBarrio}" title="#{bundle.ViewBarrioTitle_nombreBarrio}"/>
+                    <h:outputText value="#{bundle.ViewBarrioLabel_activo}"/>
+                    <h:outputText value="#{barrioController.selected.activo}" title="#{bundle.ViewBarrioTitle_activo}"/>
+                    <h:outputText value="#{bundle.ViewBarrioLabel_fechaRegistro}"/>
+                    <h:outputText value="#{barrioController.selected.fechaRegistro}" title="#{bundle.ViewBarrioTitle_fechaRegistro}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewBarrioLabel_fechaModificacion}"/>
+                    <h:outputText value="#{barrioController.selected.fechaModificacion}" title="#{bundle.ViewBarrioTitle_fechaModificacion}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewBarrioLabel_codigoLocalidad}"/>
+                    <h:outputText value="#{barrioController.selected.codigoLocalidad}" title="#{bundle.ViewBarrioTitle_codigoLocalidad}"/>
+                    <h:outputText value="#{bundle.ViewBarrioLabel_codigoMunicipio}"/>
+                    <h:outputText value="#{barrioController.selected.codigoMunicipio}" title="#{bundle.ViewBarrioTitle_codigoMunicipio}"/>
+                    <h:outputText value="#{bundle.ViewBarrioLabel_codigoUpz}"/>
+                    <h:outputText value="#{barrioController.selected.codigoUpz}" title="#{bundle.ViewBarrioTitle_codigoUpz}"/>
+                    <h:outputText value="#{bundle.ViewBarrioLabel_codigoUsuario}"/>
+                    <h:outputText value="#{barrioController.selected.codigoUsuario}" title="#{bundle.ViewBarrioTitle_codigoUsuario}"/>
+                    <h:outputText value="#{bundle.ViewBarrioLabel_codigousuarioModifico}"/>
+                    <h:outputText value="#{barrioController.selected.codigousuarioModifico}" title="#{bundle.ViewBarrioTitle_codigousuarioModifico}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{barrioController.destroyAndView}" value="#{bundle.ViewBarrioDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewBarrioEditLink}"/>
+                <br />
+                <h:commandLink action="#{barrioController.prepareCreate}" value="#{bundle.ViewBarrioCreateLink}" />
+                <br />
+                <h:commandLink action="#{barrioController.prepareList}" value="#{bundle.ViewBarrioShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewBarrioIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

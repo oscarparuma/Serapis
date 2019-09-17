@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="DiagnosticoIngresoEditDlg" widgetVar="DiagnosticoIngresoEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditDiagnosticoIngresoTitle}">
+            <h:form id="DiagnosticoIngresoEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="1" rendered="#{diagnosticoIngresoController.selected != null}">
+                        <p:panel>
+                            <p:panel>
+                                <p:panelGrid columns="2">
+                                    <p:outputLabel value="#{bundle.CreateDiagnosticoIngresoLabel_codigoCie10}" for="codigoCie10" />
+                                    <h:selectOneMenu style="max-width: 500px" id="codigoCie10" value="#{diagnosticoIngresoController.selected.codigoCie10}" styleClass="input"  >
+                                        <f:selectItem noSelectionOption="true" itemLabel="-Seleccione- " />
+                                        <f:selectItems value="#{cie10Controller.itemsAvailableSelectOne}"/>
+                                         <p:ajax process="codigoCie10"  update="clasificacionCie10" event="change" />
+                                    </h:selectOneMenu>
+                                    <p:outputLabel value="#{bundle.CreateDiagnosticoIngresoLabel_clasificacionCie10}" for="clasificacionCie10" />
+                                    <h:selectOneMenu  style="max-width: 500px" id="clasificacionCie10" value="#{diagnosticoIngresoController.selected.clasificacionCie10}" styleClass="input" >
+                                       <f:selectItem noSelectionOption="true" itemLabel="-Seleccione- " />
+                                       <f:selectItems value="#{diagnosticoIngresoController.selected.codigoCie10.descripcioncie10List}"/>
+                                <p:ajax process="clasificacionCie10" event="change" />
+                                    </h:selectOneMenu>
+                                    
+                                </p:panelGrid>
+                            </p:panel>
+                        </p:panel>
+                    </p:panelGrid>
+                    <p:commandButton style="margin-right: 10px;" actionListener="#{diagnosticoIngresoController.update}" onclick="DiagnosticoIngresoEditDialog.hide()" value="#{bundle.Save}" update="display,:DiagnosticoIngresoListForm:datalist,:growl" oncomplete="handleSubmit(args, 'DiagnosticoIngresoEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="DiagnosticoIngresoEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

@@ -1,0 +1,132 @@
+ ?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListCarteraSedeTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListCarteraSedeEmpty}" rendered="#{carteraSedeController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{carteraSedeController.items.rowCount > 0}">
+                    <h:outputText value="#{carteraSedeController.pagination.pageFirstItem + 1}..#{carteraSedeController.pagination.pageLastItem + 1}/#{carteraSedeController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{carteraSedeController.previous}" value="#{bundle.Previous} #{carteraSedeController.pagination.pageSize}" rendered="#{carteraSedeController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{carteraSedeController.next}" value="#{bundle.Next} #{carteraSedeController.pagination.pageSize}" rendered="#{carteraSedeController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{carteraSedeController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListCarteraSedeTitle_codigoCartera}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.codigoCartera}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListCarteraSedeTitle_valorTotalfactura}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.valorTotalfactura}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListCarteraSedeTitle_valorCancelado}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.valorCancelado}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListCarteraSedeTitle_saldoFactura}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.saldoFactura}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListCarteraSedeTitle_fechaRegistro}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.fechaRegistro}">
+                                <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListCarteraSedeTitle_observacion}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.observacion}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListCarteraSedeTitle_reciboPago}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.reciboPago}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListCarteraSedeTitle_ccsRecibo}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.ccsRecibo}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListCarteraSedeTitle_registroPagoEps}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.registroPagoEps}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListCarteraSedeTitle_fechaReciboPagoEps}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.fechaReciboPagoEps}">
+                                <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListCarteraSedeTitle_codigoCitaPersona}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.codigoCitaPersona}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListCarteraSedeTitle_codigoFacturacion}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.codigoFacturacion}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListCarteraSedeTitle_codigoSede}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.codigoSede}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListCarteraSedeTitle_codigoUsuario}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.codigoUsuario}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{carteraSedeController.prepareView}" value="#{bundle.ListCarteraSedeViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{carteraSedeController.prepareEdit}" value="#{bundle.ListCarteraSedeEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{carteraSedeController.destroy}" value="#{bundle.ListCarteraSedeDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{carteraSedeController.prepareCreate}" value="#{bundle.ListCarteraSedeCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListCarteraSedeIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

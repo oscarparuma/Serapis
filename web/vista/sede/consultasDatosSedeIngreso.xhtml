@@ -1,0 +1,106 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="es" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:pe="http://primefaces.org/ui/extensions"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <f:view contentType="text/html">
+        <h:head>
+            <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+            <meta http-equiv="expires" content="-1"/>
+            <meta name="Robots" content="nofollow" />
+            <title><ui:insert name="title">"#{bundle.AppName}"</ui:insert></title>
+            <link rel="shortcut icon" href="#{request.contextPath}/logo.jpg" />
+            <link rel="icon" href="#{request.contextPath}/logo.jpg" /> 
+            <link type="text/css" rel="stylesheet" href="serapis-sede.css" />
+  
+        </h:head>
+
+        <h:body> 
+            <h:form>
+                <p:idleMonitor id="yyy2" timeout="1800000"
+                               onidle="idleDialog.show();"   />
+                <p:dialog header="Sesión finalizada" resizable="false" closable="false"
+                          widgetVar="idleDialog" modal="true" width="400">
+                    <h:panelGrid columns="2">
+                        <p:graphicImage value="/imagenes/ingreso/rt.jpg" height="100" width="100" />
+                        <h:panelGroup>
+                            <div style=" text-align:justify; font-size: 16px; color:#df6; font-weight: bold">
+                                <h:outputText value="Por politica de seguridad, el sistema se cierra automaticamente a los 30 minutos de no recibir interacción por parte del usuario  " />
+                            </div>
+                        </h:panelGroup>
+                    </h:panelGrid>
+                    <div style=" text-align:center" >
+                        <p:commandButton ajax="false" value="Aceptar"/>
+                    </div>
+                </p:dialog>
+            </h:form>
+            
+            <div class="ui-g">
+                <div class="ui-g-12 ui-md-6 ui-lg-3">
+                    <img src="#{request.contextPath}/imagenes/index/logo.png"></img>
+                </div>
+            </div>  
+            <br></br>
+            <div class="ui-g-12" align="center"><h1>Verificación de datos Consultorio</h1></div>
+                <br></br>
+                    
+                    <div class="ui-g-12" align="center"><h2>Por favor ingrese el Nit y/o identificación del consultorio.</h2></div>
+                <br></br>
+                    <br></br>    
+                      
+                  <!-- aqui se empieza la validación del usuario -->
+                    
+                        <h:form prependId="false" >
+
+                          
+                                <br/><br/>
+                                <div align="center">
+                                                                      
+
+                                        
+                                        
+                                       
+                                        <div align="center">
+                                            <br/>
+                                            <div> 
+                                                <h:panelGrid columns="2">
+
+                                                    <h:panelGrid columns="2">
+                                                        <h:outputLabel  style=" font-size: 18px; " value="#{bundle.NitIdentif}" for="identificacionNit"/>
+                                                        <p:inputText  id="identificacionNit"  required="true" requiredMessage="Ingrese el numero del  Nit y/o Numero de identificación del consultorio" value="#{sedeController.identificacionNit}" styleClass="input" />
+
+
+                                                        <div align="justify">
+                                                            <h:panelGrid columns="2">
+                                                                <p:commandButton style=" font-size: 18px; margin-right: 10px;" id="createButton" icon="ui-icon-locked" ajax="false" action="#{sedeController.prepareListconsXCedulaSede}" value="Ingresar" />
+                                                                <p:commandButton style=" font-size: 18px;" id="createButtonExit" icon="ui-icon-home" ajax="false"  value="#{bundle.Regresar}" update="@all" action="/index.xhtml"  immediate="true"/>
+                                                            </h:panelGrid>
+                                                        </div>
+                                                    </h:panelGrid>
+
+                                                   
+                                                </h:panelGrid>
+                                            
+                                                </div>
+                                            <br/><br/>
+                                        </div>
+                                       <br/><br/>
+                                </div>
+                            
+
+
+
+
+                        </h:form>
+             <div class="ui-g-12 footer"> © Serapis web / info@serapismedico.com</div>        
+               
+            </h:body>
+    </f:view>
+</html>
+
+
+

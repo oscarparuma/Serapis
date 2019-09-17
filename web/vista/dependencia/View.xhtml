@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewDependenciaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewDependenciaLabel_codigoDependencia}"/>
+                    <h:outputText value="#{dependenciaController.selected.codigoDependencia}" title="#{bundle.ViewDependenciaTitle_codigoDependencia}"/>
+                    <h:outputText value="#{bundle.ViewDependenciaLabel_nombreDependencia}"/>
+                    <h:outputText value="#{dependenciaController.selected.nombreDependencia}" title="#{bundle.ViewDependenciaTitle_nombreDependencia}"/>
+                    <h:outputText value="#{bundle.ViewDependenciaLabel_activo}"/>
+                    <h:outputText value="#{dependenciaController.selected.activo}" title="#{bundle.ViewDependenciaTitle_activo}"/>
+                    <h:outputText value="#{bundle.ViewDependenciaLabel_fechaRegistro}"/>
+                    <h:outputText value="#{dependenciaController.selected.fechaRegistro}" title="#{bundle.ViewDependenciaTitle_fechaRegistro}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewDependenciaLabel_fechaModificacion}"/>
+                    <h:outputText value="#{dependenciaController.selected.fechaModificacion}" title="#{bundle.ViewDependenciaTitle_fechaModificacion}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewDependenciaLabel_siglasDependencia}"/>
+                    <h:outputText value="#{dependenciaController.selected.siglasDependencia}" title="#{bundle.ViewDependenciaTitle_siglasDependencia}"/>
+                    <h:outputText value="#{bundle.ViewDependenciaLabel_direccion}"/>
+                    <h:outputText value="#{dependenciaController.selected.direccion}" title="#{bundle.ViewDependenciaTitle_direccion}"/>
+                    <h:outputText value="#{bundle.ViewDependenciaLabel_telefono}"/>
+                    <h:outputText value="#{dependenciaController.selected.telefono}" title="#{bundle.ViewDependenciaTitle_telefono}"/>
+                    <h:outputText value="#{bundle.ViewDependenciaLabel_email}"/>
+                    <h:outputText value="#{dependenciaController.selected.email}" title="#{bundle.ViewDependenciaTitle_email}"/>
+                    <h:outputText value="#{bundle.ViewDependenciaLabel_logo}"/>
+                    <h:outputText value="#{dependenciaController.selected.logo}" title="#{bundle.ViewDependenciaTitle_logo}"/>
+                    <h:outputText value="#{bundle.ViewDependenciaLabel_encabezado}"/>
+                    <h:outputText value="#{dependenciaController.selected.encabezado}" title="#{bundle.ViewDependenciaTitle_encabezado}"/>
+                    <h:outputText value="#{bundle.ViewDependenciaLabel_piePagina}"/>
+                    <h:outputText value="#{dependenciaController.selected.piePagina}" title="#{bundle.ViewDependenciaTitle_piePagina}"/>
+                    <h:outputText value="#{bundle.ViewDependenciaLabel_codigoArea}"/>
+                    <h:outputText value="#{dependenciaController.selected.codigoArea}" title="#{bundle.ViewDependenciaTitle_codigoArea}"/>
+                    <h:outputText value="#{bundle.ViewDependenciaLabel_codigoMunicipio}"/>
+                    <h:outputText value="#{dependenciaController.selected.codigoMunicipio}" title="#{bundle.ViewDependenciaTitle_codigoMunicipio}"/>
+                    <h:outputText value="#{bundle.ViewDependenciaLabel_codigoSede}"/>
+                    <h:outputText value="#{dependenciaController.selected.codigoSede}" title="#{bundle.ViewDependenciaTitle_codigoSede}"/>
+                    <h:outputText value="#{bundle.ViewDependenciaLabel_codigousuario}"/>
+                    <h:outputText value="#{dependenciaController.selected.codigousuario}" title="#{bundle.ViewDependenciaTitle_codigousuario}"/>
+                    <h:outputText value="#{bundle.ViewDependenciaLabel_codigoUsuarioModifico}"/>
+                    <h:outputText value="#{dependenciaController.selected.codigoUsuarioModifico}" title="#{bundle.ViewDependenciaTitle_codigoUsuarioModifico}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{dependenciaController.destroyAndView}" value="#{bundle.ViewDependenciaDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewDependenciaEditLink}"/>
+                <br />
+                <h:commandLink action="#{dependenciaController.prepareCreate}" value="#{bundle.ViewDependenciaCreateLink}" />
+                <br />
+                <h:commandLink action="#{dependenciaController.prepareList}" value="#{bundle.ViewDependenciaShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewDependenciaIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

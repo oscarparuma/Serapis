@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditTipoManualTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditTipoManualLabel_codigoManual}" for="codigoManual" />
+                    <h:inputText id="codigoManual" value="#{tipoManualController.selected.codigoManual}" title="#{bundle.EditTipoManualTitle_codigoManual}" required="true" requiredMessage="#{bundle.EditTipoManualRequiredMessage_codigoManual}"/>
+                    <h:outputLabel value="#{bundle.EditTipoManualLabel_nombreManual}" for="nombreManual" />
+                    <h:inputText id="nombreManual" value="#{tipoManualController.selected.nombreManual}" title="#{bundle.EditTipoManualTitle_nombreManual}" />
+                    <h:outputLabel value="#{bundle.EditTipoManualLabel_activo}" for="activo" />
+                    <h:inputText id="activo" value="#{tipoManualController.selected.activo}" title="#{bundle.EditTipoManualTitle_activo}" />
+                </h:panelGrid>
+                <h:commandLink action="#{tipoManualController.update}" value="#{bundle.EditTipoManualSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditTipoManualViewLink}"/>
+                <br />
+                <h:commandLink action="#{tipoManualController.prepareList}" value="#{bundle.EditTipoManualShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditTipoManualIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

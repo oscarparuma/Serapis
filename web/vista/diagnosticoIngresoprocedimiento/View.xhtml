@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewDiagnosticoIngresoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewDiagnosticoIngresoLabel_codigoDianosticoIngreso}"/>
+                    <h:outputText value="#{diagnosticoIngresoController.selected.codigoDianosticoIngreso}" title="#{bundle.ViewDiagnosticoIngresoTitle_codigoDianosticoIngreso}"/>
+                    <h:outputText value="#{bundle.ViewDiagnosticoIngresoLabel_fechaRegistro}"/>
+                    <h:outputText value="#{diagnosticoIngresoController.selected.fechaRegistro}" title="#{bundle.ViewDiagnosticoIngresoTitle_fechaRegistro}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewDiagnosticoIngresoLabel_fechaModificacion}"/>
+                    <h:outputText value="#{diagnosticoIngresoController.selected.fechaModificacion}" title="#{bundle.ViewDiagnosticoIngresoTitle_fechaModificacion}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewDiagnosticoIngresoLabel_fechaBorrado}"/>
+                    <h:outputText value="#{diagnosticoIngresoController.selected.fechaBorrado}" title="#{bundle.ViewDiagnosticoIngresoTitle_fechaBorrado}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewDiagnosticoIngresoLabel_activo}"/>
+                    <h:outputText value="#{diagnosticoIngresoController.selected.activo}" title="#{bundle.ViewDiagnosticoIngresoTitle_activo}"/>
+                    <h:outputText value="#{bundle.ViewDiagnosticoIngresoLabel_borrado}"/>
+                    <h:outputText value="#{diagnosticoIngresoController.selected.borrado}" title="#{bundle.ViewDiagnosticoIngresoTitle_borrado}"/>
+                    <h:outputText value="#{bundle.ViewDiagnosticoIngresoLabel_modificado}"/>
+                    <h:outputText value="#{diagnosticoIngresoController.selected.modificado}" title="#{bundle.ViewDiagnosticoIngresoTitle_modificado}"/>
+                    <h:outputText value="#{bundle.ViewDiagnosticoIngresoLabel_borradoPor}"/>
+                    <h:outputText value="#{diagnosticoIngresoController.selected.borradoPor}" title="#{bundle.ViewDiagnosticoIngresoTitle_borradoPor}"/>
+                    <h:outputText value="#{bundle.ViewDiagnosticoIngresoLabel_modificadoPor}"/>
+                    <h:outputText value="#{diagnosticoIngresoController.selected.modificadoPor}" title="#{bundle.ViewDiagnosticoIngresoTitle_modificadoPor}"/>
+                    <h:outputText value="#{bundle.ViewDiagnosticoIngresoLabel_codigoUsuario}"/>
+                    <h:outputText value="#{diagnosticoIngresoController.selected.codigoUsuario}" title="#{bundle.ViewDiagnosticoIngresoTitle_codigoUsuario}"/>
+                    <h:outputText value="#{bundle.ViewDiagnosticoIngresoLabel_clasificacionCie10}"/>
+                    <h:outputText value="#{diagnosticoIngresoController.selected.clasificacionCie10}" title="#{bundle.ViewDiagnosticoIngresoTitle_clasificacionCie10}"/>
+                    <h:outputText value="#{bundle.ViewDiagnosticoIngresoLabel_codigoPersona}"/>
+                    <h:outputText value="#{diagnosticoIngresoController.selected.codigoPersona}" title="#{bundle.ViewDiagnosticoIngresoTitle_codigoPersona}"/>
+                    <h:outputText value="#{bundle.ViewDiagnosticoIngresoLabel_codigoClasificacionDiagnostico}"/>
+                    <h:outputText value="#{diagnosticoIngresoController.selected.codigoClasificacionDiagnostico}" title="#{bundle.ViewDiagnosticoIngresoTitle_codigoClasificacionDiagnostico}"/>
+                    <h:outputText value="#{bundle.ViewDiagnosticoIngresoLabel_codigoCita}"/>
+                    <h:outputText value="#{diagnosticoIngresoController.selected.codigoCita}" title="#{bundle.ViewDiagnosticoIngresoTitle_codigoCita}"/>
+                    <h:outputText value="#{bundle.ViewDiagnosticoIngresoLabel_codigoCie10}"/>
+                    <h:outputText value="#{diagnosticoIngresoController.selected.codigoCie10}" title="#{bundle.ViewDiagnosticoIngresoTitle_codigoCie10}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{diagnosticoIngresoController.destroyAndView}" value="#{bundle.ViewDiagnosticoIngresoDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewDiagnosticoIngresoEditLink}"/>
+                <br />
+                <h:commandLink action="#{diagnosticoIngresoController.prepareCreate}" value="#{bundle.ViewDiagnosticoIngresoCreateLink}" />
+                <br />
+                <h:commandLink action="#{diagnosticoIngresoController.prepareList}" value="#{bundle.ViewDiagnosticoIngresoShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewDiagnosticoIngresoIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewExamenesApoyoDiagnosticoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewExamenesApoyoDiagnosticoLabel_consecutivo}"/>
+                    <h:outputText value="#{examenesApoyoDiagnosticoController.selected.consecutivo}" title="#{bundle.ViewExamenesApoyoDiagnosticoTitle_consecutivo}"/>
+                    <h:outputText value="#{bundle.ViewExamenesApoyoDiagnosticoLabel_fechaRegistro}"/>
+                    <h:outputText value="#{examenesApoyoDiagnosticoController.selected.fechaRegistro}" title="#{bundle.ViewExamenesApoyoDiagnosticoTitle_fechaRegistro}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewExamenesApoyoDiagnosticoLabel_cantidad}"/>
+                    <h:outputText value="#{examenesApoyoDiagnosticoController.selected.cantidad}" title="#{bundle.ViewExamenesApoyoDiagnosticoTitle_cantidad}"/>
+                    <h:outputText value="#{bundle.ViewExamenesApoyoDiagnosticoLabel_justificacionMedica}"/>
+                    <h:outputText value="#{examenesApoyoDiagnosticoController.selected.justificacionMedica}" title="#{bundle.ViewExamenesApoyoDiagnosticoTitle_justificacionMedica}"/>
+                    <h:outputText value="#{bundle.ViewExamenesApoyoDiagnosticoLabel_interpretacionMedica}"/>
+                    <h:outputText value="#{examenesApoyoDiagnosticoController.selected.interpretacionMedica}" title="#{bundle.ViewExamenesApoyoDiagnosticoTitle_interpretacionMedica}"/>
+                    <h:outputText value="#{bundle.ViewExamenesApoyoDiagnosticoLabel_fechaModificacion}"/>
+                    <h:outputText value="#{examenesApoyoDiagnosticoController.selected.fechaModificacion}" title="#{bundle.ViewExamenesApoyoDiagnosticoTitle_fechaModificacion}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewExamenesApoyoDiagnosticoLabel_fechaInterpretacion}"/>
+                    <h:outputText value="#{examenesApoyoDiagnosticoController.selected.fechaInterpretacion}" title="#{bundle.ViewExamenesApoyoDiagnosticoTitle_fechaInterpretacion}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewExamenesApoyoDiagnosticoLabel_codigoCita}"/>
+                    <h:outputText value="#{examenesApoyoDiagnosticoController.selected.codigoCita}" title="#{bundle.ViewExamenesApoyoDiagnosticoTitle_codigoCita}"/>
+                    <h:outputText value="#{bundle.ViewExamenesApoyoDiagnosticoLabel_codigoPersona}"/>
+                    <h:outputText value="#{examenesApoyoDiagnosticoController.selected.codigoPersona}" title="#{bundle.ViewExamenesApoyoDiagnosticoTitle_codigoPersona}"/>
+                    <h:outputText value="#{bundle.ViewExamenesApoyoDiagnosticoLabel_codigoCups}"/>
+                    <h:outputText value="#{examenesApoyoDiagnosticoController.selected.codigoCups}" title="#{bundle.ViewExamenesApoyoDiagnosticoTitle_codigoCups}"/>
+                    <h:outputText value="#{bundle.ViewExamenesApoyoDiagnosticoLabel_modificadoPor}"/>
+                    <h:outputText value="#{examenesApoyoDiagnosticoController.selected.modificadoPor}" title="#{bundle.ViewExamenesApoyoDiagnosticoTitle_modificadoPor}"/>
+                    <h:outputText value="#{bundle.ViewExamenesApoyoDiagnosticoLabel_codigoUsuario}"/>
+                    <h:outputText value="#{examenesApoyoDiagnosticoController.selected.codigoUsuario}" title="#{bundle.ViewExamenesApoyoDiagnosticoTitle_codigoUsuario}"/>
+                    <h:outputText value="#{bundle.ViewExamenesApoyoDiagnosticoLabel_codigoInterpretacion}"/>
+                    <h:outputText value="#{examenesApoyoDiagnosticoController.selected.codigoInterpretacion}" title="#{bundle.ViewExamenesApoyoDiagnosticoTitle_codigoInterpretacion}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{examenesApoyoDiagnosticoController.destroyAndView}" value="#{bundle.ViewExamenesApoyoDiagnosticoDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewExamenesApoyoDiagnosticoEditLink}"/>
+                <br />
+                <h:commandLink action="#{examenesApoyoDiagnosticoController.prepareCreate}" value="#{bundle.ViewExamenesApoyoDiagnosticoCreateLink}" />
+                <br />
+                <h:commandLink action="#{examenesApoyoDiagnosticoController.prepareList}" value="#{bundle.ViewExamenesApoyoDiagnosticoShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewExamenesApoyoDiagnosticoIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

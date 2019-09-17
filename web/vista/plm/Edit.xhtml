@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditPlmTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditPlmLabel_consecutivo}" for="consecutivo" />
+                    <h:inputText id="consecutivo" value="#{plmController.selected.consecutivo}" title="#{bundle.EditPlmTitle_consecutivo}" required="true" requiredMessage="#{bundle.EditPlmRequiredMessage_consecutivo}"/>
+                    <h:outputLabel value="#{bundle.EditPlmLabel_codigoClasificacion}" for="codigoClasificacion" />
+                    <h:inputText id="codigoClasificacion" value="#{plmController.selected.codigoClasificacion}" title="#{bundle.EditPlmTitle_codigoClasificacion}" />
+                    <h:outputLabel value="#{bundle.EditPlmLabel_nombreMedicamento}" for="nombreMedicamento" />
+                    <h:inputText id="nombreMedicamento" value="#{plmController.selected.nombreMedicamento}" title="#{bundle.EditPlmTitle_nombreMedicamento}" />
+                    <h:outputLabel value="#{bundle.EditPlmLabel_concentracion}" for="concentracion" />
+                    <h:inputText id="concentracion" value="#{plmController.selected.concentracion}" title="#{bundle.EditPlmTitle_concentracion}" />
+                    <h:outputLabel value="#{bundle.EditPlmLabel_formulaMedica}" for="formulaMedica" />
+                    <h:inputText id="formulaMedica" value="#{plmController.selected.formulaMedica}" title="#{bundle.EditPlmTitle_formulaMedica}" />
+                    <h:outputLabel value="#{bundle.EditPlmLabel_unidadMedida}" for="unidadMedida" />
+                    <h:inputText id="unidadMedida" value="#{plmController.selected.unidadMedida}" title="#{bundle.EditPlmTitle_unidadMedida}" />
+                    <h:outputLabel value="#{bundle.EditPlmLabel_viaAdministracion}" for="viaAdministracion" />
+                    <h:inputText id="viaAdministracion" value="#{plmController.selected.viaAdministracion}" title="#{bundle.EditPlmTitle_viaAdministracion}" />
+                    <h:outputLabel value="#{bundle.EditPlmLabel_nivelUso}" for="nivelUso" />
+                    <h:inputText id="nivelUso" value="#{plmController.selected.nivelUso}" title="#{bundle.EditPlmTitle_nivelUso}" />
+                    <h:outputLabel value="#{bundle.EditPlmLabel_observaciones}" for="observaciones" />
+                    <h:inputTextarea rows="4" cols="30" id="observaciones" value="#{plmController.selected.observaciones}" title="#{bundle.EditPlmTitle_observaciones}" />
+                    <h:outputLabel value="#{bundle.EditPlmLabel_fechaRegistro}" for="fechaRegistro" />
+                    <h:inputText id="fechaRegistro" value="#{plmController.selected.fechaRegistro}" title="#{bundle.EditPlmTitle_fechaRegistro}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditPlmLabel_fechaModificacion}" for="fechaModificacion" />
+                    <h:inputText id="fechaModificacion" value="#{plmController.selected.fechaModificacion}" title="#{bundle.EditPlmTitle_fechaModificacion}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditPlmLabel_activo}" for="activo" />
+                    <h:inputText id="activo" value="#{plmController.selected.activo}" title="#{bundle.EditPlmTitle_activo}" />
+                    <h:outputLabel value="#{bundle.EditPlmLabel_codigoTipoMedicamento}" for="codigoTipoMedicamento" />
+                    <h:selectOneMenu id="codigoTipoMedicamento" value="#{plmController.selected.codigoTipoMedicamento}" title="#{bundle.EditPlmTitle_codigoTipoMedicamento}" >
+                        <f:selectItems value="#{clasificacionmedicamentoController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditPlmLabel_codigoUsuario}" for="codigoUsuario" />
+                    <h:selectOneMenu id="codigoUsuario" value="#{plmController.selected.codigoUsuario}" title="#{bundle.EditPlmTitle_codigoUsuario}" >
+                        <f:selectItems value="#{usuarioController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditPlmLabel_modificadoPor}" for="modificadoPor" />
+                    <h:selectOneMenu id="modificadoPor" value="#{plmController.selected.modificadoPor}" title="#{bundle.EditPlmTitle_modificadoPor}" >
+                        <f:selectItems value="#{usuarioController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{plmController.update}" value="#{bundle.EditPlmSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditPlmViewLink}"/>
+                <br />
+                <h:commandLink action="#{plmController.prepareList}" value="#{bundle.EditPlmShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditPlmIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditCarteraSedeTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditCarteraSedeLabel_codigoCartera}" for="codigoCartera" />
+                    <h:inputText id="codigoCartera" value="#{carteraSedeController.selected.codigoCartera}" title="#{bundle.EditCarteraSedeTitle_codigoCartera}" required="true" requiredMessage="#{bundle.EditCarteraSedeRequiredMessage_codigoCartera}"/>
+                    <h:outputLabel value="#{bundle.EditCarteraSedeLabel_valorTotalfactura}" for="valorTotalfactura" />
+                    <h:inputText id="valorTotalfactura" value="#{carteraSedeController.selected.valorTotalfactura}" title="#{bundle.EditCarteraSedeTitle_valorTotalfactura}" />
+                    <h:outputLabel value="#{bundle.EditCarteraSedeLabel_valorCancelado}" for="valorCancelado" />
+                    <h:inputText id="valorCancelado" value="#{carteraSedeController.selected.valorCancelado}" title="#{bundle.EditCarteraSedeTitle_valorCancelado}" />
+                    <h:outputLabel value="#{bundle.EditCarteraSedeLabel_saldoFactura}" for="saldoFactura" />
+                    <h:inputText id="saldoFactura" value="#{carteraSedeController.selected.saldoFactura}" title="#{bundle.EditCarteraSedeTitle_saldoFactura}" />
+                    <h:outputLabel value="#{bundle.EditCarteraSedeLabel_fechaRegistro}" for="fechaRegistro" />
+                    <h:inputText id="fechaRegistro" value="#{carteraSedeController.selected.fechaRegistro}" title="#{bundle.EditCarteraSedeTitle_fechaRegistro}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditCarteraSedeLabel_observacion}" for="observacion" />
+                    <h:inputTextarea rows="4" cols="30" id="observacion" value="#{carteraSedeController.selected.observacion}" title="#{bundle.EditCarteraSedeTitle_observacion}" />
+                    <h:outputLabel value="#{bundle.EditCarteraSedeLabel_reciboPago}" for="reciboPago" />
+                    <h:inputText id="reciboPago" value="#{carteraSedeController.selected.reciboPago}" title="#{bundle.EditCarteraSedeTitle_reciboPago}" />
+                    <h:outputLabel value="#{bundle.EditCarteraSedeLabel_ccsRecibo}" for="ccsRecibo" />
+                    <h:inputText id="ccsRecibo" value="#{carteraSedeController.selected.ccsRecibo}" title="#{bundle.EditCarteraSedeTitle_ccsRecibo}" />
+                    <h:outputLabel value="#{bundle.EditCarteraSedeLabel_registroPagoEps}" for="registroPagoEps" />
+                    <h:inputText id="registroPagoEps" value="#{carteraSedeController.selected.registroPagoEps}" title="#{bundle.EditCarteraSedeTitle_registroPagoEps}" />
+                    <h:outputLabel value="#{bundle.EditCarteraSedeLabel_fechaReciboPagoEps}" for="fechaReciboPagoEps" />
+                    <h:inputText id="fechaReciboPagoEps" value="#{carteraSedeController.selected.fechaReciboPagoEps}" title="#{bundle.EditCarteraSedeTitle_fechaReciboPagoEps}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditCarteraSedeLabel_codigoCitaPersona}" for="codigoCitaPersona" />
+                    <h:selectOneMenu id="codigoCitaPersona" value="#{carteraSedeController.selected.codigoCitaPersona}" title="#{bundle.EditCarteraSedeTitle_codigoCitaPersona}" >
+                        <f:selectItems value="#{citaPersonaController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditCarteraSedeLabel_codigoFacturacion}" for="codigoFacturacion" />
+                    <h:selectOneMenu id="codigoFacturacion" value="#{carteraSedeController.selected.codigoFacturacion}" title="#{bundle.EditCarteraSedeTitle_codigoFacturacion}" >
+                        <f:selectItems value="#{facturacionController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditCarteraSedeLabel_codigoSede}" for="codigoSede" />
+                    <h:selectOneMenu id="codigoSede" value="#{carteraSedeController.selected.codigoSede}" title="#{bundle.EditCarteraSedeTitle_codigoSede}" >
+                        <f:selectItems value="#{sedeController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditCarteraSedeLabel_codigoUsuario}" for="codigoUsuario" />
+                    <h:selectOneMenu id="codigoUsuario" value="#{carteraSedeController.selected.codigoUsuario}" title="#{bundle.EditCarteraSedeTitle_codigoUsuario}" >
+                        <f:selectItems value="#{usuarioController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{carteraSedeController.update}" value="#{bundle.EditCarteraSedeSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditCarteraSedeViewLink}"/>
+                <br />
+                <h:commandLink action="#{carteraSedeController.prepareList}" value="#{bundle.EditCarteraSedeShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditCarteraSedeIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
