@@ -31,7 +31,7 @@
                     <p:panel style="min-width: 200px; max-width: 1300px;">
                         <h:panelGrid columns="1">
                             <p:panel header="#{bundle.CreateRecomendacionesMedicasOtrasLabel_recoMedica}">
-                                <p:textEditor id="asunto" value="#{consecutivoDependenciaController.selected.recoMedica}" height="200" style="margin-bottom:10px" placeholder="" required="true" requiredMessage="#{bundle.CreateRecomendacionesMedicasOtraRequiredMessage_recoMedica}">
+                                <p:textEditor id="asunto" value="#{recomendacionesMedicasOtrasController.selected.recoMedica}" height="200" style="margin-bottom:10px" placeholder="" required="true" requiredMessage="#{bundle.CreateRecomendacionesMedicasOtraRequiredMessage_recoMedica}">
                                     <f:facet name="toolbar">
                                         <span class="ql-formats">
                                             <button class="ql-bold">Negrita</button>
@@ -48,7 +48,7 @@
                                         </span> 
                                     </f:facet>
                                 </p:textEditor>
-
+                            </p:panel>
                         </h:panelGrid>
                     </p:panel>
                     <p:panel>
