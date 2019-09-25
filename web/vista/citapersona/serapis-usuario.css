@@ -65,7 +65,6 @@ body
 }
 .ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default {
     background-color:#FFFFFF;
-    background-image:-webkit-linear-gradient(top, #FFFFFF, #f9f6f6);
     background-repeat:repeat-x;
     border-image:initial;
     border-radius:4px;
@@ -78,6 +77,14 @@ body
     font-size: 14px;
     /* fondo header tabla */
 }
+
+.ui-datatable-tablewrapper th.ui-state-default {
+    background-image:-webkit-linear-gradient(top, #FFFFFF, #f9f6f6);
+    /* Líneas horizontales en Menú Consulta Médica */
+    /* Este estilo se remueve de las reglas definidas para los selectores .ui-widget-content .ui-state-default
+       para mostrar los íconos asociados a los componentes select y calendar en la pantalla Asignar Cita */
+}
+
 .ui-button-text-icon-left .ui-button-text {
     font-family: 'Roboto';
     background-image:-webkit-linear-gradient(top, #f6edbc, #f9d927);
@@ -181,3 +188,14 @@ body
     color: #265a99;
     border-radius: 3px;}
 /*botones derechos*/
+
+div .ui-slider-horizontal.ui-widget.ui-widget-content {
+    border: 1px solid #A6C9E2;
+    /* Borde del slider en el componente Calendar */
+}
+
+span.ui-slider-handle.ui-corner-all.ui-state-default {
+    border: 1px solid #77d5f7;
+    background: #0078ae url("/Serapis/javax.faces.resource/images/ui-bg_glass_45_0078ae_1x400.png.xhtml?ln=primefaces-start") 50% 50% repeat-x;
+    /* Control del slider en el componente Calendar */
+}
