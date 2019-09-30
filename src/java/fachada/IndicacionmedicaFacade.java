@@ -33,6 +33,7 @@ public class IndicacionmedicaFacade extends AbstractFacade<Indicacionmedica> {
     }
     //-------------------- se creo este query para listar las indicaciones medicas por Sede---------------------------------------------------------//
     public List<Indicacionmedica> findAll(Sede codigoSede) {
+        em.getEntityManagerFactory().getCache().evict(Indicacionmedica.class); // Remove the data for entities of the specified class (and its subclasses) from the cache.
         Query q = em.createQuery("select u from Indicacionmedica u where u.codigoSede=?1 and u.actvo='S' order by u.recomendacionesMedicas asc").setParameter(1, codigoSede);
         return q.getResultList();
     }
