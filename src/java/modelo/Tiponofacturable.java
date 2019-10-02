@@ -162,7 +162,7 @@ public class Tiponofacturable implements Serializable {
 
     @Override
     public String toString() {
-        return "modelo.Tiponofacturable[ codigoNoFacturable=" + codigoNoFacturable + " ]";
+        return nombre;
     }
     
 }
