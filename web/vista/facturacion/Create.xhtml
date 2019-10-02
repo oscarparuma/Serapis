@@ -60,16 +60,16 @@
                                         </p:panelGrid>
                                     </p:panel>
                                     <h:panelGrid id="botS" columns="1">
-                                        <p:panelGrid rendered="#{facturacionController.selected.facturableSN.codigoFacturableSN=='S'}" columns="4">
+                                        <h:panelGrid rendered="#{facturacionController.selected.facturableSN.codigoFacturableSN=='S'}" columns="4">
                                             <p:commandButton style="margin-right: 10px;" id="createButton" icon="ui-icon-plus" process="@all" styleClass="button" ajax="false" action="#{facturacionController.create}" value="#{bundle.CreateFacturacionSaveLink}" />
                                             <p:commandButton id="editButtonE" icon="ui-icon-pencil" process="@all" styleClass="button" ajax="false" action="#{citaPersonaController.prepareListCitaXSedes(usuarioController.selected)}" value="#{bundle.CreateFacturacionShowAllLink}" immediate="true"/>
-                                        </p:panelGrid>
+                                        </h:panelGrid>
                                     </h:panelGrid>
                                     <h:panelGrid id="botN" columns="1">
-                                        <p:panelGrid rendered="#{facturacionController.selected.facturableSN.codigoFacturableSN=='N'}" columns="4">
+                                        <h:panelGrid rendered="#{facturacionController.selected.facturableSN.codigoFacturableSN=='N'}" columns="4">
                                             <p:commandButton style="margin-right: 10px;" id="createButtonNF" icon="ui-icon-plus" process="@all" styleClass="button" ajax="false" action="#{facturacionController.createNF}" value="#{bundle.CreateFacturacionSaveLink}" />
                                             <p:commandButton id="editButton" icon="ui-icon-pencil" process="@all" styleClass="button" ajax="false" action="#{citaPersonaController.prepareListCitaXSedes(usuarioController.selected)}" value="#{bundle.CreateFacturacionShowAllLink}" immediate="true"/>
-                                        </p:panelGrid>
+                                        </h:panelGrid>
                                     </h:panelGrid>
                                 </p:panel>
                             </div> 
