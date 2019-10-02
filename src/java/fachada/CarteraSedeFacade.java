@@ -34,7 +34,7 @@ public class CarteraSedeFacade extends AbstractFacade<CarteraSede> {
         String sql = " SELECT  "
                 + "IFNULL(MAX(m.ccsRecibo), 0) + 1 AS maxRadicado "
                 + "FROM carterasede AS m "
-                + "WHERE m.codigoSede = ?1 AND YEAR(m.fechaRegistro) = YEAR(GETDATE())";
+                + "WHERE m.codigoSede = ?1 AND YEAR(m.fechaRegistro) = YEAR(SYSDATE())";
         javax.persistence.Query q = getEntityManager().createNativeQuery(sql);
         q = q.setParameter(1, ccsRecibo);
 
