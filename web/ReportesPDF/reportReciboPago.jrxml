@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="reportReciboPago" language="groovy" pageWidth="198" pageHeight="340" columnWidth="158" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="d25f40a5-efa0-4cc7-bbc2-0005d6a67c6e">
+	<property name="ireport.zoom" value="3.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="288"/>
+	<parameter name="codigoCartera" class="java.lang.Long"/>
+	<queryString>
+		<![CDATA[SELECT     CitaPersona.codigoCitaPersona, CitaPersona.cscIngreso, sede.nombreSede, sede.direccion, sede.telefono, sede.piePagina, sede.identificacionNit, CitaPersona.primerApellido, CitaPersona.segundoApellido, CitaPersona.primerNombre, CitaPersona.segundoNombre,
+                      municipio.nombreMunicipio, CitaPersona.numeroDocumentoIdentidad AS numIdentif, procedimientosede.codigoCups, manualtarifas.descripcionCups AS exmRealizar,
+                      tipoexamen.nombreExamene AS nomExam, facturacion.valorCopago, facturacion.valorTotalFactura, facturacion.valorUnitario, carteraSede.valorCancelado, carteraSede.fechaRegistro,
+                      usuario.nombreUsuario, carteraSede.reciboPago, usuario_1.identificacionNit AS nitIdenti
+FROM         tipoexamen RIGHT OUTER JOIN
+                      facturacion RIGHT OUTER JOIN
+                      carteraSede LEFT OUTER JOIN
+                      usuario ON carteraSede.codigoUsuario = usuario.codigoUsuario ON facturacion.codigoFactura = carteraSede.codigoFacturacion RIGHT OUTER JOIN
+                      municipio RIGHT OUTER JOIN
+                      sede ON municipio.codigoMunicipio = sede.codigoMunicipio RIGHT OUTER JOIN
+                      usuario AS usuario_1 RIGHT OUTER JOIN
+                      CitaPersona ON usuario_1.codigoUsuario = CitaPersona.codigoProfesional ON sede.codigoSede = CitaPersona.codigoSede ON facturacion.codigoCitaPersona = CitaPersona.codigoCitaPersona ON
+                      tipoexamen.codigo = CitaPersona.codigoExamenRealizar RIGHT OUTER JOIN
+                      procedimientosede RIGHT OUTER JOIN
+                      manualtarifas ON procedimientosede.codigoCups = manualtarifas.codigoCups ON CitaPersona.codigoExamen = procedimientosede.codigoValorConsulta
+
+WHERE     (carteraSede.codigoCartera = $P{codigoCartera})
+
+UNION ALL
+
+SELECT     CitaPersona.codigoCitaPersona, CitaPersona.cscIngreso, sede.nombreSede, sede.direccion, sede.telefono, sede.piePagina, sede.identificacionNit, CitaPersona.primerApellido, CitaPersona.segundoApellido, CitaPersona.primerNombre, CitaPersona.segundoNombre,
+                      municipio.nombreMunicipio, CitaPersona.numeroDocumentoIdentidad AS numIdentif, procedimientosede.codigoCups, manualtarifas.descripcionCups AS exmRealizar,
+                      tipoexamen.nombreExamene AS nomExam, facturacion.valorCopago, facturacion.valorTotalFactura, facturacion.valorUnitario, carteraSede.valorCancelado, carteraSede.fechaRegistro,
+                      usuario.nombreUsuario, carteraSede.reciboPago, usuario_1.identificacionNit AS nitIdenti
+FROM         tipoexamen LEFT OUTER JOIN
+                      facturacion LEFT OUTER JOIN
+                      carteraSede LEFT OUTER JOIN
+                      usuario ON carteraSede.codigoUsuario = usuario.codigoUsuario ON facturacion.codigoFactura = carteraSede.codigoFacturacion LEFT OUTER JOIN
+                      municipio RIGHT OUTER JOIN
+                      sede ON municipio.codigoMunicipio = sede.codigoMunicipio LEFT OUTER JOIN
+                      usuario AS usuario_1 RIGHT OUTER JOIN
+                      CitaPersona ON usuario_1.codigoUsuario = CitaPersona.codigoProfesional ON sede.codigoSede = CitaPersona.codigoSede ON facturacion.codigoCitaPersona = CitaPersona.codigoCitaPersona ON
+                      tipoexamen.codigo = CitaPersona.codigoExamenRealizar LEFT OUTER JOIN
+                      procedimientosede LEFT OUTER JOIN
+                      manualtarifas ON procedimientosede.codigoCups = manualtarifas.codigoCups ON CitaPersona.codigoExamen = procedimientosede.codigoValorConsulta
+
+WHERE     (carteraSede.codigoCartera = $P{codigoCartera})]]>
+	</queryString>
+	<field name="codigoCitaPersona" class="java.math.BigDecimal"/>
+	<field name="cscIngreso" class="java.math.BigDecimal"/>
+	<field name="nombreSede" class="java.lang.String"/>
+	<field name="direccion" class="java.lang.String"/>
+	<field name="telefono" class="java.lang.String"/>
+	<field name="piePagina" class="java.sql.Clob"/>
+	<field name="identificacionNit" class="java.lang.String"/>
+	<field name="primerApellido" class="java.lang.String"/>
+	<field name="segundoApellido" class="java.lang.String"/>
+	<field name="primerNombre" class="java.lang.String"/>
+	<field name="segundoNombre" class="java.lang.String"/>
+	<field name="nombreMunicipio" class="java.lang.String"/>
+	<field name="numIdentif" class="java.lang.String"/>
+	<field name="codigoCups" class="java.lang.String"/>
+	<field name="exmRealizar" class="java.lang.String"/>
+	<field name="nomExam" class="java.lang.String"/>
+	<field name="valorCopago" class="java.math.BigDecimal"/>
+	<field name="valorTotalFactura" class="java.math.BigDecimal"/>
+	<field name="valorUnitario" class="java.math.BigDecimal"/>
+	<field name="valorCancelado" class="java.math.BigDecimal"/>
+	<field name="fechaRegistro" class="java.sql.Timestamp"/>
+	<field name="nombreUsuario" class="java.lang.String"/>
+	<field name="reciboPago" class="java.lang.String"/>
+	<field name="nitIdenti" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="88" splitType="Stretch">
+			<textField isStretchWithOverflow="true">
+				<reportElement x="0" y="10" width="158" height="20" uuid="00855af1-a194-40fc-8e25-3cd49003ab56"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nombreSede}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="0" y="32" width="158" height="20" uuid="74c65315-90a3-415c-9033-026af028de3f"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA["NIT"+" "+$F{nitIdenti}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="0" y="51" width="158" height="13" uuid="b05e0627-9c4d-4e52-9322-f9133a0b1388"/>
+				<textElement>
+					<font fontName="Arial" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{direccion}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="0" y="63" width="158" height="13" uuid="20b6637c-565a-455c-8af0-28baf456efa2"/>
+				<textElement>
+					<font fontName="Arial" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Teléfono:"+" "+$F{telefono}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="dd/MM/yyyy HH.mm.ss">
+				<reportElement x="0" y="75" width="158" height="13" uuid="dad96f55-50cf-443e-a509-d03f0cd36aa3"/>
+				<textElement>
+					<font fontName="Arial" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nombreMunicipio}+" "+$F{fechaRegistro}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="171" splitType="Stretch">
+			<textField isStretchWithOverflow="true">
+				<reportElement x="0" y="5" width="158" height="13" uuid="c60d42ba-0554-4c21-ad9a-5693c5fa19a6"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA["RECIBO DE CAJA N°"+" "+$F{reciboPago}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="0" y="38" width="158" height="13" uuid="6b95cde8-1748-49cb-9632-91428aabb75d"/>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{primerNombre}+" "+$F{segundoNombre}+" "+$F{primerApellido}+" "+$F{segundoApellido}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="2" y="24" width="156" height="13" uuid="385d97ad-2367-454e-80b9-72203b3344ff"/>
+				<textElement>
+					<font fontName="Arial" size="9"/>
+				</textElement>
+				<text><![CDATA[Recibí de:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="2" y="50" width="156" height="26" uuid="304340bf-b488-40ea-b743-d002ef4b6054"/>
+				<textElement>
+					<font fontName="Arial" size="9"/>
+				</textElement>
+				<text><![CDATA[Por concepto de: Copago y/o Pago total]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="2" y="75" width="156" height="13" uuid="cdf9434f-9cfd-486d-b891-1d420458ddaf"/>
+				<textElement>
+					<font fontName="Arial" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nomExam}]]></textFieldExpression>
+			</textField>
+			<textField pattern="¤ #,##0">
+				<reportElement x="2" y="87" width="156" height="13" uuid="56219927-4b96-4ea0-aec5-c321b162a00b"/>
+				<textElement>
+					<font fontName="Arial" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{valorCancelado}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="2" y="125" width="156" height="13" uuid="ef7526d6-1c8c-4d84-8f9e-3c27167c2d5d"/>
+				<textElement>
+					<font fontName="Arial" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nombreUsuario}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="2" y="105" width="156" height="13" uuid="fbda5335-bd83-4de5-a64c-1bca341f3ff4"/>
+				<text><![CDATA[Elaborado por:]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>
