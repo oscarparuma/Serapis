@@ -67,7 +67,7 @@ public class ListaRadicadoEpsFacade extends AbstractFacade<ListaRadicadoEps> {
     
     @JoinColumn
     public List<ListaRadicadoEps> listReporEgresosXSede(int codigoSede, Date fechaInicial, Date fechaFinal) {
-        Format format = new SimpleDateFormat("dd/MM/yyyy");//new SimpleDateFormat("yyyy-MM-dd");
+        Format format = new SimpleDateFormat("yyyy-MM-dd");//new SimpleDateFormat("dd/MM/yyyy");
         String sqlEgresoSede = ("select * from ListaRadicadoEps WHERE ListaRadicadoEps.codigoSede = ?1 AND (ListaRadicadoEps.fechaFactura between '" + format.format(fechaInicial) + " 00:01' and '" + format.format(fechaFinal) + " 23:59') ");
         javax.persistence.Query q = getEntityManager().createNativeQuery(sqlEgresoSede, ListaRadicadoEps.class).setParameter(1, codigoSede);
         return q.getResultList();
