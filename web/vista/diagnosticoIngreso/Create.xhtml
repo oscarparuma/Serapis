@@ -28,7 +28,7 @@
                                                     <f:selectItems value="#{tipoDiagnosticoController.itemsAvailableSelectOne}"/>
                                                 </p:selectOneMenu>
                                                 <p:outputLabel value="#{bundle.CreateDiagnosticoIngresoLabel_codigoCie10}" for="codigoCie10" />
-                                                <p:selectOneMenu style="min-width: 280px; max-width: 800px;" filter="true" filterMatchMode="contains"  id="codigoCie10" required="true" requiredMessage="#{bundle.CreateDiagnosticoIngresoRequiredMessage_codigoCie10}" value="#{diagnosticoIngresoController.selected.codigoCie10}" styleClass="input"  >
+                                                <p:selectOneMenu filter="true" filterMatchMode="contains"  id="codigoCie10" required="true" requiredMessage="#{bundle.CreateDiagnosticoIngresoRequiredMessage_codigoCie10}" value="#{diagnosticoIngresoController.selected.codigoCie10}" styleClass="input"  >
                                                     <f:selectItem noSelectionOption="true" itemLabel="-Seleccione- " />
                                                     <f:selectItems value="#{cie10Controller.itemsAvailableSelectOne}"/>
                                                     <p:ajax process="codigoCie10"  update="clasificacionCie10" event="change" />
