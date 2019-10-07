@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="CT" language="groovy" pageWidth="400" pageHeight="555" orientation="Landscape" columnWidth="400" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="cc7c6002-c69a-494c-95bf-bb3246d68edd">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="consecutivoRacadoEps" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT     sede.identificacionNit, ListaRadicadoEps.fechaFactura,
+SUM(CASE WHEN citapersona.codigoRipsAC = 4 THEN 1 ELSE 0 END) AS AC,
+SUM(CASE WHEN citapersona.codigoRipsAP = 5 THEN 1 ELSE 0 END) AS AP,
+SUM(CASE WHEN citapersona.codigoRipsCT = 1 THEN 1 ELSE 0 END) AS CT,
+COUNT(CASE WHEN citapersona.codigoRipsAF = 2 THEN 1 ELSE 0 END) AS AF,
+SUM(CASE WHEN citapersona.codigoRipsUS = 3 THEN 1 ELSE 0 END) AS US,
+SUM(CASE WHEN citapersona.codigoRipsAU = 6 THEN 1 ELSE 0 END) AS AU,
+SUM(CASE WHEN citapersona.codigoRipsAH = 7 THEN 1 ELSE 0 END) AS AH,
+SUM(CASE WHEN citapersona.codigoRipsAM = 9 THEN 1 ELSE 0 END) AS AM,
+SUM(CASE WHEN citapersona.codigoRipsAT = 10 THEN 1 ELSE 0 END) AS AT,
+'1' as CT
+FROM         facturacion INNER JOIN
+                      citapersona ON facturacion.codigoCitaPersona = citapersona.codigoCitaPersona LEFT OUTER JOIN
+                      sede ON citapersona.codigoSede = sede.codigoSede RIGHT OUTER JOIN
+                      DetalleRadicadoSede ON facturacion.codigoFactura = DetalleRadicadoSede.codigoFactura RIGHT OUTER JOIN
+                      ListaRadicadoEps ON DetalleRadicadoSede.codigoListadoRadicado = ListaRadicadoEps.consecutivoRacadoEps
+WHERE      (ListaRadicadoEps.consecutivoRacadoEps =$P{consecutivoRacadoEps})
+GROUP BY DetalleRadicadoSede.codigoListadoRadicado, citapersona.codigoRipsCT, sede.identificacionNit, citapersona.codigoRipsAF, citapersona.codigoRipsUS, citapersona.codigoRipsAC,
+                      citapersona.codigoRipsAP, citapersona.codigoRipsAU, citapersona.codigoRipsAH, citapersona.codigoRipsAM, citapersona.codigoRipsAT, citapersona.codigoRipsAN, ListaRadicadoEps.fechaFactura
+
+UNION ALL
+
+SELECT     sede.identificacionNit, ListaRadicadoEps.fechaFactura,
+SUM(CASE WHEN citapersona.codigoRipsAC = 4 THEN 1 ELSE 0 END) AS AC,
+SUM(CASE WHEN citapersona.codigoRipsAP = 5 THEN 1 ELSE 0 END) AS AP,
+SUM(CASE WHEN citapersona.codigoRipsCT = 1 THEN 1 ELSE 0 END) AS CT,
+COUNT(CASE WHEN citapersona.codigoRipsAF = 2 THEN 1 ELSE 0 END) AS AF,
+SUM(CASE WHEN citapersona.codigoRipsUS = 3 THEN 1 ELSE 0 END) AS US,
+SUM(CASE WHEN citapersona.codigoRipsAU = 6 THEN 1 ELSE 0 END) AS AU,
+SUM(CASE WHEN citapersona.codigoRipsAH = 7 THEN 1 ELSE 0 END) AS AH,
+SUM(CASE WHEN citapersona.codigoRipsAM = 9 THEN 1 ELSE 0 END) AS AM,
+SUM(CASE WHEN citapersona.codigoRipsAT = 10 THEN 1 ELSE 0 END) AS AT,
+'1' as CT
+FROM         facturacion INNER JOIN
+                      citapersona ON facturacion.codigoCitaPersona = citapersona.codigoCitaPersona LEFT OUTER JOIN
+                      sede ON citapersona.codigoSede = sede.codigoSede LEFT OUTER JOIN
+                      DetalleRadicadoSede ON facturacion.codigoFactura = DetalleRadicadoSede.codigoFactura LEFT OUTER JOIN
+                      ListaRadicadoEps ON DetalleRadicadoSede.codigoListadoRadicado = ListaRadicadoEps.consecutivoRacadoEps
+WHERE      (ListaRadicadoEps.consecutivoRacadoEps =$P{consecutivoRacadoEps})
+GROUP BY DetalleRadicadoSede.codigoListadoRadicado, citapersona.codigoRipsCT, sede.identificacionNit, citapersona.codigoRipsAF, citapersona.codigoRipsUS, citapersona.codigoRipsAC,
+                      citapersona.codigoRipsAP, citapersona.codigoRipsAU, citapersona.codigoRipsAH, citapersona.codigoRipsAM, citapersona.codigoRipsAT, citapersona.codigoRipsAN, ListaRadicadoEps.fechaFactura]]>
+	</queryString>
+	<field name="identificacionNit" class="java.lang.String"/>
+	<field name="fechaFactura" class="java.sql.Timestamp"/>
+	<field name="AC" class="java.lang.Integer"/>
+	<field name="AP" class="java.lang.Integer"/>
+	<field name="CT" class="java.lang.Integer"/>
+	<field name="AF" class="java.lang.Integer"/>
+	<field name="US" class="java.lang.Integer"/>
+	<field name="AU" class="java.lang.Integer"/>
+	<field name="AH" class="java.lang.Integer"/>
+	<field name="AM" class="java.lang.Integer"/>
+	<field name="AT" class="java.lang.Integer"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<detail>
+		<band height="80" splitType="Stretch">
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="101" y="0" width="100" height="20" uuid="e569ee59-50c9-4f8a-910c-40e53a6124dc"/>
+				<textFieldExpression><![CDATA[$F{fechaFactura}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="1" y="0" width="100" height="20" uuid="4fe24db9-c3a2-427a-acd6-4f1afc5e49fc"/>
+				<textFieldExpression><![CDATA[$F{identificacionNit}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="101" y="20" width="100" height="20" uuid="c7f309c2-bc44-46d4-826d-2c3468f1d720"/>
+				<textFieldExpression><![CDATA[$F{fechaFactura}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="1" y="20" width="100" height="20" uuid="b912ed2b-8b67-4625-aaed-b50551645b64"/>
+				<textFieldExpression><![CDATA[$F{identificacionNit}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="101" y="40" width="100" height="20" uuid="2dfa2f07-514b-4718-8815-b8b988228d84"/>
+				<textFieldExpression><![CDATA[$F{fechaFactura}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="1" y="40" width="100" height="20" uuid="cc29f262-3164-4bdd-86d6-d3491e294ab8"/>
+				<textFieldExpression><![CDATA[$F{identificacionNit}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="301" y="0" width="100" height="20" uuid="a64d8416-7f2b-444e-a7e3-05dde6275af4"/>
+				<textFieldExpression><![CDATA[$F{AC}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="201" y="0" width="100" height="20" uuid="d5fb2671-88dc-4bbc-8f36-e7189e7aaa82"/>
+				<text><![CDATA[AC]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="301" y="20" width="100" height="20" uuid="40824441-8dce-4edd-976e-1033fccdf336"/>
+				<textFieldExpression><![CDATA[$F{AP}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="201" y="20" width="100" height="20" uuid="4665885a-9625-4999-87a6-9aacbf52a2a6"/>
+				<text><![CDATA[AP]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="301" y="40" width="100" height="20" uuid="c6139b6a-6359-42d2-9134-e2bf2a7eaa4c"/>
+				<textFieldExpression><![CDATA[$F{US}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="201" y="40" width="100" height="20" uuid="3bd888e4-511f-440f-9de9-4986829c0a07"/>
+				<text><![CDATA[US]]></text>
+			</staticText>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="101" y="60" width="100" height="20" uuid="d955a47c-8deb-49fd-8072-5ad0626295f0"/>
+				<textFieldExpression><![CDATA[$F{fechaFactura}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="1" y="60" width="100" height="20" uuid="5696c6cd-00a8-42c4-9fcc-8c13d2a63770"/>
+				<textFieldExpression><![CDATA[$F{identificacionNit}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="201" y="60" width="100" height="20" uuid="e9675bf0-3851-450b-a119-15c1689fcd73"/>
+				<text><![CDATA[AF]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="301" y="60" width="100" height="20" uuid="264948f7-e944-4853-83c9-f833fc770623"/>
+				<text><![CDATA[1]]></text>
+			</staticText>
+		</band>
+	</detail>
+</jasperReport>
