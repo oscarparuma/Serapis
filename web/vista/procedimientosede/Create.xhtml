@@ -34,7 +34,7 @@
                                                         <p:ajax process="codigoManualTarifario"  update="codigoCups" event="change" />
                                                     </p:selectOneMenu>
                                                     <p:outputLabel value="#{bundle.CreateProcedimientosedeLabel_codigoCups}" for="codigoCups" />
-                                                    <p:selectOneMenu style="min-width: 280px;" filter="true" filterMatchMode="contains" id="codigoCups"  value="#{procedimientosedeController.selected.codigoCups}" required="true" requiredMessage="#{bundle.CreateProcedimientosedeRequiredMessage_codigoCups}" title="#{bundle.CreateProcedimientosedeTitle_codigoCups}" styleClass="input">
+                                                    <p:selectOneMenu filter="true" filterMatchMode="contains" id="codigoCups"  value="#{procedimientosedeController.selected.codigoCups}" required="true" requiredMessage="#{bundle.CreateProcedimientosedeRequiredMessage_codigoCups}" title="#{bundle.CreateProcedimientosedeTitle_codigoCups}" styleClass="input">
                                                         <f:selectItem noSelectionOption="true" itemLabel="-Seleccione- " />
                                                         <f:selectItems value="#{procedimientosedeController.referenciaXManualTarifas}"/>
                                                         <p:ajax process="codigoCups" event="change" />
