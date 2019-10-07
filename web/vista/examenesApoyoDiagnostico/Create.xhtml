@@ -26,7 +26,7 @@
                                             <h:panelGrid columns="1">
                                                 <p:panelGrid columns="2" >
                                                     <p:outputLabel value="#{bundle.CreateExamenesApoyoDiagnosticoLabel_codigoCups}" for="codigoCups" />
-                                                    <p:selectOneMenu filter="true" filterMatchMode="contains" style="min-width: 200px;"  id="codigoCups" value="#{examenesApoyoDiagnosticoController.selected.codigoCups}" required="true" requiredMessage="#{bundle.CreateExamenesApoyoDiagnosticoRequiredMessage_codigoCups}">
+                                                    <p:selectOneMenu filter="true" filterMatchMode="contains" id="codigoCups" value="#{examenesApoyoDiagnosticoController.selected.codigoCups}" required="true" requiredMessage="#{bundle.CreateExamenesApoyoDiagnosticoRequiredMessage_codigoCups}">
                                                         <f:selectItems value="#{manualtarifasController.itemsAvailableSelectOne}"/>
                                                     </p:selectOneMenu>
                                                 </p:panelGrid>
