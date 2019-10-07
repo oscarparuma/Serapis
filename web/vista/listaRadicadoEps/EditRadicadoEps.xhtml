@@ -25,7 +25,7 @@
                                                     <p:panelGrid columns="2">
                                                         <p:outputLabel value="#{bundle.CreateListaRadicadoEpsLabel_numeroRadicado}" for="numeroRadicado" />
                                                         <p:inputText style="text-transform: uppercase" onkeyup="javascript:this.value = this.value.toUpperCase();" id="numeroRadicado" value="#{listaRadicadoEpsController.selected.numeroRadicado}" 
-                                                                     required="true" requiredMessage="#{bundle.CreateListaRadicadoEpsLabel_numeroRadicado}" title="#{bundle.CreateListaRadicadoEpsTitle_numeroRadicado}" />
+                                                                     required="true" requiredMessage="#{bundle.CreateListaRadicadoEpsLabel_numeroRadicado}" title="#{bundle.CreateListaRadicadoEpsLabel_numeroRadicado}" />
                                                         <p:outputLabel value="#{bundle.CreateListaRadicadoEpsLabel_fechaRegistro}" for="fechaRegistro" />
                                                         <p:calendar locale="es" lang="es" size="15" id="fechaRegistro" pattern="yyyy-MM-dd" maxdate="true" value="#{listaRadicadoEpsController.selected.fechaRegistro}" showOn="button" 
                                                                     required="true" requiredMessage="#{bundle.CreateListaRadicadoEpsRequiredMessage_fechaRegistro}">
