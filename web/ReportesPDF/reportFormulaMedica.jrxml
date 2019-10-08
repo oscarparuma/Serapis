@@ -1,0 +1,404 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="reportDatosCita" language="groovy" pageWidth="612" pageHeight="792" columnWidth="556" leftMargin="28" rightMargin="28" topMargin="20" bottomMargin="20" uuid="bb12f921-75fd-4587-905a-97520667439b">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["E:\\Reportes\\ReportesFormulaMedica\\"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="codigoCita" class="java.lang.Long"/>
+	<queryString>
+		<![CDATA[SELECT     citapersona.primerApellido, citapersona.segundoApellido, citapersona.primerNombre, citapersona.segundoNombre, citapersona.direccion, citapersona.telefono, citapersona.email,
+                      citapersona.edadAnos, citapersona.edad, citapersona.edadMeses, citapersona.edadPersona, citapersona.personasACargo, citapersona.cscIngreso, citapersona.numeroDocumentoIdentidad,
+                      usuario.nombreUsuario AS medico, usuario.registroMedico, especialidadsede.nombreEspecialidad, cargosede.nombreCargo, municipio_1.nombreMunicipio AS municNacim,
+                      municipio_2.nombreMunicipio AS muncExpedic, municipio.nombreMunicipio AS muncResid, tipoafiliacion.nombreAfiliacion, estadocivil.nombre AS estCivil, eps.nombreEps, sede.nombreSede,
+                      sede.direccion AS dirSede, sede.telefono AS telSede, sede.email AS emailSede, sede.logo AS logSede, clasificacioncopago.codigoNivelCopago as nivelCop, citapersona.fechaSolicitud, citapersona.fechaCita,
+                      citapersona.fechaNacimiento, citapersona.codigoCitaPersona, procedimientosede.codigoCups, manualtarifas.descripcionCups AS tipoConsl, usuario.identificacionNit,
+                      tipoidentificacion.nombreIdentificacion AS tipIderntif, tipogenero.nombreGenero as genero
+FROM         procedimientosede LEFT OUTER JOIN
+                      manualtarifas ON procedimientosede.codigoCups = manualtarifas.codigoCups RIGHT OUTER JOIN
+                      estadocivil RIGHT OUTER JOIN
+                      clasificacioncopago RIGHT OUTER JOIN
+                      tipoidentificacion RIGHT OUTER JOIN
+                      tipogenero RIGHT OUTER JOIN
+                      citapersona ON tipogenero.codigoGenero = citapersona.genero ON tipoidentificacion.codigoIdentificacion = citapersona.codigoIdentificacion ON
+                      clasificacioncopago.codigoCopago = citapersona.codigoAfiliacion ON estadocivil.codigoEstadoCivil = citapersona.codigoEstadoCivil LEFT OUTER JOIN
+                      tipoafiliacion ON citapersona.nivelAfiliacion = tipoafiliacion.codigoAfiliacion RIGHT OUTER JOIN
+                      usuario ON citapersona.codigoProfesional = usuario.codigoUsuario ON procedimientosede.codigoValorConsulta = citapersona.codigoExamen RIGHT OUTER JOIN
+                      eps ON citapersona.codigoEps = eps.codigoEps RIGHT OUTER JOIN
+                      sede ON citapersona.codigoSede = sede.codigoSede RIGHT OUTER JOIN
+                      municipio AS municipio_1 ON citapersona.codigoMunicipioNacimiento = municipio_1.codigoMunicipio RIGHT OUTER JOIN
+                      municipio AS municipio_2 ON citapersona.codigoMunicipioExpedicion = municipio_2.codigoMunicipio RIGHT OUTER JOIN
+                      municipio ON citapersona.codigoMunicipioResidencia = municipio.codigoMunicipio RIGHT OUTER JOIN
+                      especialidadsede ON usuario.codigoEspecialidad = especialidadsede.codigoEspecialidad RIGHT OUTER JOIN
+                      cargosede ON usuario.codigoCargo = cargosede.codigoCargo
+WHERE     (CitaPersona.codigoCitaPersona = $P{codigoCita})
+
+UNION ALL
+
+SELECT     citapersona.primerApellido, citapersona.segundoApellido, citapersona.primerNombre, citapersona.segundoNombre, citapersona.direccion, citapersona.telefono, citapersona.email,
+                      citapersona.edadAnos, citapersona.edad, citapersona.edadMeses, citapersona.edadPersona, citapersona.personasACargo, citapersona.cscIngreso, citapersona.numeroDocumentoIdentidad,
+                      usuario.nombreUsuario AS medico, usuario.registroMedico, especialidadsede.nombreEspecialidad, cargosede.nombreCargo, municipio_1.nombreMunicipio AS municNacim,
+                      municipio_2.nombreMunicipio AS muncExpedic, municipio.nombreMunicipio AS muncResid, tipoafiliacion.nombreAfiliacion, estadocivil.nombre AS estCivil, eps.nombreEps, sede.nombreSede,
+                      sede.direccion AS dirSede, sede.telefono AS telSede, sede.email AS emailSede, sede.logo AS logSede, clasificacioncopago.codigoNivelCopago as nivelCop, citapersona.fechaSolicitud, citapersona.fechaCita,
+                      citapersona.fechaNacimiento, citapersona.codigoCitaPersona, procedimientosede.codigoCups, manualtarifas.descripcionCups AS tipoConsl, usuario.identificacionNit,
+                      tipoidentificacion.nombreIdentificacion AS tipIderntif, tipogenero.nombreGenero as genero
+FROM         procedimientosede LEFT OUTER JOIN
+                      manualtarifas ON procedimientosede.codigoCups = manualtarifas.codigoCups LEFT OUTER JOIN
+                      estadocivil RIGHT OUTER JOIN
+                      clasificacioncopago RIGHT OUTER JOIN
+                      tipoidentificacion RIGHT OUTER JOIN
+                      tipogenero RIGHT OUTER JOIN
+                      citapersona ON tipogenero.codigoGenero = citapersona.genero ON tipoidentificacion.codigoIdentificacion = citapersona.codigoIdentificacion ON
+                      clasificacioncopago.codigoCopago = citapersona.codigoAfiliacion ON estadocivil.codigoEstadoCivil = citapersona.codigoEstadoCivil LEFT OUTER JOIN
+                      tipoafiliacion ON citapersona.nivelAfiliacion = tipoafiliacion.codigoAfiliacion LEFT OUTER JOIN
+                      usuario ON citapersona.codigoProfesional = usuario.codigoUsuario ON procedimientosede.codigoValorConsulta = citapersona.codigoExamen LEFT OUTER JOIN
+                      eps ON citapersona.codigoEps = eps.codigoEps LEFT OUTER JOIN
+                      sede ON citapersona.codigoSede = sede.codigoSede LEFT OUTER JOIN
+                      municipio AS municipio_1 ON citapersona.codigoMunicipioNacimiento = municipio_1.codigoMunicipio LEFT OUTER JOIN
+                      municipio AS municipio_2 ON citapersona.codigoMunicipioExpedicion = municipio_2.codigoMunicipio LEFT OUTER JOIN
+                      municipio ON citapersona.codigoMunicipioResidencia = municipio.codigoMunicipio LEFT OUTER JOIN
+                      especialidadsede ON usuario.codigoEspecialidad = especialidadsede.codigoEspecialidad LEFT OUTER JOIN
+                      cargosede ON usuario.codigoCargo = cargosede.codigoCargo
+WHERE     (CitaPersona.codigoCitaPersona = $P{codigoCita})]]>
+	</queryString>
+	<field name="primerApellido" class="java.lang.String"/>
+	<field name="segundoApellido" class="java.lang.String"/>
+	<field name="primerNombre" class="java.lang.String"/>
+	<field name="segundoNombre" class="java.lang.String"/>
+	<field name="direccion" class="java.lang.String"/>
+	<field name="telefono" class="java.lang.String"/>
+	<field name="email" class="java.lang.String"/>
+	<field name="edadAnos" class="java.math.BigDecimal"/>
+	<field name="edad" class="java.sql.Timestamp"/>
+	<field name="edadMeses" class="java.math.BigDecimal"/>
+	<field name="edadPersona" class="java.lang.String"/>
+	<field name="personasACargo" class="java.lang.String"/>
+	<field name="cscIngreso" class="java.math.BigDecimal"/>
+	<field name="numeroDocumentoIdentidad" class="java.lang.String"/>
+	<field name="medico" class="java.lang.String"/>
+	<field name="registroMedico" class="java.lang.String"/>
+	<field name="nombreEspecialidad" class="java.lang.String"/>
+	<field name="nombreCargo" class="java.lang.String"/>
+	<field name="municNacim" class="java.lang.String"/>
+	<field name="muncExpedic" class="java.lang.String"/>
+	<field name="muncResid" class="java.lang.String"/>
+	<field name="nombreAfiliacion" class="java.lang.String"/>
+	<field name="estCivil" class="java.lang.String"/>
+	<field name="nombreEps" class="java.lang.String"/>
+	<field name="nombreSede" class="java.lang.String"/>
+	<field name="dirSede" class="java.lang.String"/>
+	<field name="telSede" class="java.lang.String"/>
+	<field name="emailSede" class="java.lang.String"/>
+	<field name="logSede" class="java.sql.Blob"/>
+	<field name="nivelCop" class="java.lang.String"/>
+	<field name="fechaSolicitud" class="java.sql.Timestamp"/>
+	<field name="fechaCita" class="java.sql.Timestamp"/>
+	<field name="fechaNacimiento" class="java.sql.Timestamp"/>
+	<field name="codigoCitaPersona" class="java.math.BigDecimal"/>
+	<field name="codigoCups" class="java.lang.String"/>
+	<field name="tipoConsl" class="java.lang.String"/>
+	<field name="identificacionNit" class="java.lang.String"/>
+	<field name="tipIderntif" class="java.lang.String"/>
+	<field name="genero" class="java.lang.String"/>
+	<group name="FORMULA_MEDICA">
+		<groupExpression><![CDATA[$F{primerApellido}]]></groupExpression>
+		<groupHeader>
+			<band height="11">
+				<subreport>
+					<reportElement x="1" y="0" width="555" height="11" uuid="3fdbc091-1f94-48c0-9aca-6d916894b4e9"/>
+					<subreportParameter name="codigoCita">
+						<subreportParameterExpression><![CDATA[$P{codigoCita}]]></subreportParameterExpression>
+					</subreportParameter>
+					<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					<subreportExpression><![CDATA[$P{SUBREPORT_DIR}+"subReportFormulaMedica.jasper"]]></subreportExpression>
+				</subreport>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band/>
+		</groupFooter>
+	</group>
+	<group name="firmas">
+		<groupExpression><![CDATA[$F{primerApellido}]]></groupExpression>
+		<groupHeader>
+			<band height="142">
+				<textField>
+					<reportElement x="305" y="92" width="247" height="15" uuid="d93d95ea-9cae-4061-97b7-0a6505c4505a"/>
+					<textElement>
+						<font fontName="Arial" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{medico}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="305" y="106" width="247" height="15" uuid="1fb2148c-67e9-46a7-b197-85847f8bcb27"/>
+					<textFieldExpression><![CDATA[$F{nombreCargo}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="305" y="120" width="38" height="15" uuid="988c34c4-4691-4da0-8af0-46f5dbfee9fd"/>
+					<textElement>
+						<font fontName="Arial" size="9"/>
+					</textElement>
+					<text><![CDATA[R.M.]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="333" y="120" width="219" height="15" uuid="5bbfed59-2173-4de7-849f-4ba96f7ab71d"/>
+					<textElement>
+						<font fontName="Arial" size="10"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{registroMedico}]]></textFieldExpression>
+				</textField>
+				<line>
+					<reportElement x="305" y="92" width="247" height="1" uuid="ad0ab872-c637-4727-b958-977fcc42f14c"/>
+				</line>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band/>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="240" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="92" width="556" height="148" uuid="72e3f278-f9e0-422e-92e5-386f9c458c30"/>
+			</rectangle>
+			<textField>
+				<reportElement x="0" y="15" width="556" height="20" uuid="4ed86836-e91a-4f9a-9713-f47918baea61"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nombreSede}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="34" width="556" height="20" uuid="9c5a4c5f-2e11-4d6b-9eb8-fc9079a33e4b"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression><![CDATA["NIT"+" "+$F{identificacionNit}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="53" width="556" height="20" uuid="282439c3-b2cb-4d4f-ab21-5f3f7d44b8fa"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Dirección:"+" "+$F{dirSede}+" "+"Teléfono:"+" "+$F{telSede}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="104" width="556" height="20" uuid="f6e728b0-2729-4a49-a35b-7f38d1e03e0d"/>
+				<textElement>
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nombreEspecialidad}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="72" width="556" height="20" uuid="338d5ce8-410e-4e43-818a-e196f218e1c4"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[FORMULA MEDICA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="123" width="556" height="15" uuid="e3289481-7238-4cf7-9316-7e4f1d3efe20"/>
+				<textElement>
+					<font fontName="Arial" isBold="false"/>
+				</textElement>
+				<text><![CDATA[DATOS PERSONALES]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="137" width="87" height="15" uuid="a7e6470f-28be-4da1-b4fe-71a25ddbd456"/>
+				<textElement>
+					<font fontName="Arial" size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nombre Paciente:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="87" y="137" width="240" height="15" uuid="bbcb6419-877c-4085-982b-e399bd0fa04a"/>
+				<textElement>
+					<font fontName="Arial" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{primerNombre}+" "+$F{segundoNombre}+" "+$F{primerApellido}+" "+$F{segundoApellido}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="326" y="138" width="230" height="15" uuid="6470ebdf-0243-4b5a-ad6b-beaad6ed439d"/>
+				<textElement>
+					<font fontName="Arial" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tipIderntif}+" "+$F{numeroDocumentoIdentidad}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="1" y="151" width="87" height="15" uuid="9fe40852-be88-4ab0-bf70-0895e6448d42"/>
+				<textElement>
+					<font fontName="Arial" size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Edad Actual:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="87" y="151" width="140" height="15" uuid="213b2690-607f-429c-9999-7335665e8d07"/>
+				<textElement>
+					<font fontName="Arial" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{edadPersona}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="308" y="152" width="100" height="15" uuid="8747ab14-f871-47ff-81eb-50a3bc0d9e94"/>
+				<textElement>
+					<font fontName="Arial" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{estCivil}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="226" y="151" width="83" height="15" uuid="abf1f0ee-eba7-4ced-9c5f-f1bc6362a5d3"/>
+				<textElement>
+					<font fontName="Arial" size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Estado Civil:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="460" y="152" width="96" height="15" uuid="5401b011-b00e-4c39-8bcc-84dae0b43693"/>
+				<textElement>
+					<font fontName="Arial" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{genero}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="407" y="152" width="54" height="15" uuid="6328cd76-e921-4ef5-a39b-c4a96accd5b4"/>
+				<textElement>
+					<font fontName="Arial" size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Genero:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="165" width="87" height="15" uuid="5a06154c-f9eb-4d4e-8b4a-4bf25201c5ce"/>
+				<textElement>
+					<font fontName="Arial" size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Dirección:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="87" y="165" width="140" height="15" uuid="ee07b552-74cb-4500-8361-063c4788c8b7"/>
+				<textElement>
+					<font fontName="Arial" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{direccion}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="226" y="165" width="83" height="15" uuid="94a2966d-e88b-4053-8578-af7bd15be75e"/>
+				<textElement>
+					<font fontName="Arial" size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Teléfono:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="308" y="167" width="99" height="15" uuid="f979b4ac-1efe-43b5-8cc5-4d223c21cad9"/>
+				<textElement>
+					<font fontName="Arial" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{telefono}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="406" y="167" width="54" height="15" uuid="2d4323c1-d405-41ba-8476-647a25ddc0fb"/>
+				<textElement>
+					<font fontName="Arial" size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Procedencia:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="460" y="167" width="96" height="15" uuid="34a385d8-14ab-4a8c-9414-c84a9f1545c2"/>
+				<textElement>
+					<font fontName="Arial" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{muncResid}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="1" y="181" width="555" height="15" uuid="2259da9e-6281-41cb-b62c-de75240b99b5"/>
+				<textElement>
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DATOS DE AFILIACIÓN]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="195" width="87" height="15" uuid="c035c5fe-6e3c-46c3-a68f-68cf6afad745"/>
+				<textElement>
+					<font fontName="Arial" size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Entidad:]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="86" y="195" width="257" height="15" uuid="85e81fae-a8aa-4775-a8dc-7299cd3fdaaa"/>
+				<textElement>
+					<font fontName="Arial" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nombreEps}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="1" y="209" width="87" height="15" uuid="c1daae68-0619-4c1a-85ee-5e63f0ae8074"/>
+				<textElement>
+					<font fontName="Arial" size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Plan Benefificios:]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="87" y="209" width="469" height="15" uuid="fee52b3f-b10e-45c7-9feb-9c5b6d9ec6a8"/>
+				<textElement>
+					<font fontName="Arial" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{codigoCups}+" "+$F{tipoConsl}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="351" y="196" width="100" height="15" uuid="c65451a0-2edb-46b0-8aaf-cccf3e4e8932"/>
+				<textElement>
+					<font fontName="Arial" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nombreAfiliacion}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="452" y="195" width="100" height="15" uuid="6ac2d50c-3071-4a1e-bf82-f704c2df6e81"/>
+				<textElement>
+					<font fontName="Arial" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Nivel Afiliación:"+" "+$F{nivelCop}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="17" splitType="Stretch">
+			<staticText>
+				<reportElement x="1" y="2" width="555" height="15" uuid="6edcf160-b033-40ab-ac2e-c441640d8385"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<text><![CDATA[INDICACIONES A PACIENTE EXTERNO]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="32" splitType="Stretch">
+			<textField pattern="dd/MM/yyyy h.mm a">
+				<reportElement x="308" y="17" width="247" height="15" uuid="30495d21-1682-40d4-a6de-70587e87ee99"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Fecha Formula"+" "+$F{fechaSolicitud}]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Page" isBlankWhenNull="false">
+				<reportElement key="textField-11" x="309" y="2" width="243" height="15" uuid="a4832b82-938b-40f0-b3dc-d34d791f2040"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Pagina"+" "+$V{PAGE_NUMBER}+"de"+$V{COLUMN_COUNT}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>
