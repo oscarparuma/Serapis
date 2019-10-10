@@ -43,7 +43,8 @@ public class RadicacionFacturasFacade extends AbstractFacade<RadicacionFacturas>
     //-------------------- se creo este query para listar suma de radicado Sede---------------------------------------------------------//
 
     public List<RadicacionFacturas> findRange(int[] range, FacturaRadicacion f) {
-        javax.persistence.Query q = getEntityManager().createNativeQuery("select c from RadicacionFacturas c  where c.codigoRadicacionFactura=?1 order by c.codigoFactura asc  ");
+        em.getEntityManagerFactory().getCache().evict(RadicacionFacturas.class); // Remove the data for entities of the specified class (and its subclasses) from the cache.
+        javax.persistence.Query q = getEntityManager().createQuery("select c from RadicacionFacturas c  where c.codigoRadicacionFactura=?1 order by c.codigoFactura asc  ");
         q.setParameter(1, f);
         q.setMaxResults(range[1] - range[0]);
         q.setFirstResult(range[0]);
