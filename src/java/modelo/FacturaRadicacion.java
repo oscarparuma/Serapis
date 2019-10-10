@@ -277,7 +277,7 @@ public class FacturaRadicacion implements Serializable {
 
     @Override
     public String toString() {
-        return "modelo.FacturaRadicacion[ codigoFacturaRadicacion=" + codigoFacturaRadicacion + " ]";
+        return codigoFacturaRadicacion + " ";
     }
 
 }

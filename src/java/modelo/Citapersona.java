@@ -1738,7 +1738,7 @@ public class Citapersona implements Serializable {
 
     @Override
     public String toString() {
-        return "modelo.Citapersona[ codigoCitaPersona=" + codigoCitaPersona + " ]";
+        return codigoCitaPersona + " ";
     }
 
 }
